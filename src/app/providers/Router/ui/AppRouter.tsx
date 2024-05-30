@@ -1,8 +1,8 @@
 import { memo, Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppRoutesProps, routeConfig } from '../config/routeConfig';
-import { Box } from '@mui/material';
-import { PageLoader } from '@/widgets/PageLoader/ui/PageLoader';
+import { PageLoader } from '@/widgets/PageLoader';
+import { Layout } from '@/widgets/Layout';
 
 const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
@@ -11,9 +11,9 @@ const AppRouter = () => {
 
     return (
         <Suspense fallback={<PageLoader />}>
-            <Box className="page-wrapper">
+            <Layout>
                 <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>{' '}
-            </Box>
+            </Layout>
         </Suspense>
     );
 };
