@@ -1,3 +1,4 @@
+import { ProjectsPage } from '@/pages/ProjectsPage';
 import { RouteProps } from 'react-router-dom';
 
 export type AppRoutesProps = RouteProps
@@ -19,6 +20,6 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
     [AppRoutes.Main]: {
         path: RoutePath.Main,
-        element: <div />,
+        element: <ProjectsPage />,
     },
 };
