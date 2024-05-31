@@ -2,15 +2,17 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { StateSchema } from './StateSchema';
 import { baseApi } from '@/shared/api';
+import { filterReducer } from '@/features/Filter';
 
 const rootReducer = combineReducers({
+    filter: filterReducer,
     [baseApi.reducerPath]: baseApi.reducer,
 });
 
 export function createReduxStore(initialState?: StateSchema) {
     const store = configureStore({
         reducer: rootReducer,
-        middleware:  getDefaultMiddleware =>
+        middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({
                 serializableCheck: false,
             }),

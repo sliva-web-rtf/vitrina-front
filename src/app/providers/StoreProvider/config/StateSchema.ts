@@ -1,7 +1,9 @@
 import { baseApi } from '@/shared/api';
-import { EnhancedStore, Reducer, ReducersMapObject, AnyAction, CombinedState } from '@reduxjs/toolkit';
+import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { FilterSchema } from '@/features/Filter';
 
 export interface StateSchema {
+    filter: FilterSchema;
     [baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 }
 
