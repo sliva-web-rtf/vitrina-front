@@ -35,10 +35,6 @@ export const Details = memo(() => {
                     <Typography>{data.aim}</Typography>
                 </Stack>
                 <Stack className={classNames.block}>
-                    <Typography variant="h3">Достижения команды</Typography>
-                    <Typography>{data.client || 'Достижения не указаны'}</Typography>
-                </Stack>
-                <Stack className={classNames.block}>
                     <Typography variant="h3">Заказчик</Typography>
                     <Typography>{data.client || 'Неизвестен'}</Typography>
                 </Stack>
