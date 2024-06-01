@@ -10,7 +10,7 @@ export const components: Components<Omit<Theme, 'components'>> | undefined = {
         styleOverrides: {
             root: {
                 color: '#AECBF5',
-                backgroundColor: '#E7F0FF',
+                backgroundColor: '#F2F4FE',
                 '.MuiSvgIcon-root': {
                     width: '45%',
                     height: '45%',

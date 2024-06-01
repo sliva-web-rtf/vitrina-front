@@ -1,9 +1,11 @@
 import { baseApi } from '@/shared/api';
 import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { FilterSchema } from '@/features/Filter';
+import { FilterSchema } from 'src/features/filter';
+import { ProjectsListSchema } from '@/widgets/ProjectsList';
 
 export interface StateSchema {
     filter: FilterSchema;
+    projectsList: ProjectsListSchema;
     [baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 }
 
