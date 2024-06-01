@@ -1,3 +1,3 @@
 export interface Image {
-    readonly imageBytes: Array<number>;
+    readonly imageBytes: Uint8Array;
 }

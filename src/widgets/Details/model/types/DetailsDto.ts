@@ -1,4 +1,4 @@
-import { Image } from '@/shared/lib/types/image.ts';
+import { Image } from '@/shared/lib/types/image';
 
 export interface DetailsDto {
     readonly id: number;

@@ -20,6 +20,10 @@ export const typography: TypographyOptions | ((palette: Palette) => TypographyOp
         fontSize: 20,
         fontWeight: 500,
     },
+    h5: {
+        fontSize: 18,
+        fontWeight: 600,
+    },
     subtitle1: {
         fontSize: 14,
         fontWeight: 500,

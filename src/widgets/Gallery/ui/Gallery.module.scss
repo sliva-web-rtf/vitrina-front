@@ -1,0 +1,16 @@
+.gallery {
+  gap: var(--space-m)
+}
+
+.mainImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: var(--space-m);
+}
