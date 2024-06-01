@@ -14,6 +14,6 @@ export interface DetailsDto {
         readonly lastName: string;
         readonly patronymic: string;
         readonly roles: Array<{ name: string }>;
-        readonly avatar: Array<Image>;
+        readonly avatar: Image;
     }>;
 }
