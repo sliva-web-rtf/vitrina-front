@@ -9,7 +9,7 @@ interface ThemeProviderProps {
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => (
     <Theme theme={theme}>
-        <GlobalStyles styles={{ body: { backgroundColor: 'var(--bg-color)' } }} />
+{/*         <GlobalStyles styles={{ body: { backgroundColor: 'var(--bg-color)' } }} /> */}
         {children}
     </Theme>
 );
