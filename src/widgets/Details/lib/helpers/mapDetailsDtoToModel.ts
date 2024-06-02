@@ -1,8 +1,8 @@
 import { DetailsDto } from '../../model/types/DetailsDto';
-import { Project } from '@/entities/project';
+import { ProjectDetails } from '@/entities/project';
 import { capitalizeFirstLetter } from '@/shared/lib/helpers/capitalize';
 
-export const mapDetailsDtoToModel = (dto: DetailsDto): Project => ({
+export const mapDetailsDtoToModel = (dto: DetailsDto): ProjectDetails => ({
     ...dto,
     tags: dto.tags.map(item => capitalizeFirstLetter(item.name)),
     users: dto.users.map(item => ({
