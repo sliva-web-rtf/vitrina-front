@@ -38,12 +38,14 @@ export const ChipsList = memo((props: ChipsListProps) => {
 });
 
 export const ChipsListSkeleton = (props: Omit<ChipsListProps, 'items'>) => {
-    const { columnGap, rowGap } = props;
+    const { columnGap, rowGap, big } = props;
+
+    const styles = big ? bigStyles : null;
 
     return (
         <Stack direction="row" columnGap={columnGap || 1} rowGap={rowGap || 0.5} sx={{ flexWrap: 'wrap' }}>
-            <Skeleton width="40%" height={32} sx={{ borderRadius: 16 }} />
-            <Skeleton width="20%" height={32} sx={{ borderRadius: 16 }} />
+            <Skeleton width="40%" height={32} sx={{ borderRadius: 16, ...styles }} />
+            <Skeleton width="20%" height={32} sx={{ borderRadius: 16, ...styles }} />
         </Stack>
     );
 };

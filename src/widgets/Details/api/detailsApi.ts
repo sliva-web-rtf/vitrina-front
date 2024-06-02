@@ -1,7 +1,7 @@
 import { baseApi } from '@/shared/api';
 import { Project } from '@/entities/project';
 import { mapDetailsDtoToModel } from '../lib/helpers/mapDetailsDtoToModel';
-import { DetailsDto } from '../model/types/DetailsDto.ts';
+import { DetailsDto } from '../model/types/DetailsDto';
 
 const detailsApi = baseApi.injectEndpoints({
     endpoints: build => ({

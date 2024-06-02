@@ -1,4 +1,4 @@
-import { Image } from '@/shared/lib/types/image.ts';
+import { Image } from '@/shared/lib/types/image';
 
 export interface DetailsDto {
     readonly id: number;
@@ -14,6 +14,6 @@ export interface DetailsDto {
         readonly lastName: string;
         readonly patronymic: string;
         readonly roles: Array<{ name: string }>;
-        readonly avatar: Array<Image>;
+        readonly avatar: Image;
     }>;
 }

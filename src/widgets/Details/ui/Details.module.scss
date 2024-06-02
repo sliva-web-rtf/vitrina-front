@@ -4,8 +4,8 @@
   gap: calc(5 * var(--space-m));
 }
 
-.leftCol {
-  gap: var(--space-m)
+.col {
+  gap: calc(var(--space-l) * 3);
 }
 
 .mainBlock {
