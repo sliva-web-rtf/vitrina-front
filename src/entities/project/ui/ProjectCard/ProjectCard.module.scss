@@ -1,0 +1,14 @@
+.projectCard {
+  height: var(--card-height);
+  border-radius: var(--space-m);
+  background-color: var(--inverted-font-color);
+  outline: 1px solid var(--border-color);
+}
+
+.clipped {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

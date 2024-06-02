@@ -1,0 +1,17 @@
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(5 * var(--space-m));
+}
+
+.col {
+  gap: calc(var(--space-l) * 3);
+}
+
+.mainBlock {
+  gap: var(--space-l)
+}
+
+.block {
+  gap: var(--space-m)
+}

@@ -1,0 +1,8 @@
+@import "variables";
+@import "reset";
+
+#root {
+  position: relative;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}

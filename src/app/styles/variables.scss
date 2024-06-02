@@ -1,0 +1,19 @@
+:root {
+  --space-s: 8px;
+  --space-m: calc(var(--space-s) * 2);
+  --space-l: calc(var(--space-s) * 3);
+  --space-xl: calc(var(--space-s) * 4);
+
+  --page-width: 1400px;
+  --card-height: 480px;
+  --footer-urfu-name-width: 430px;
+  --footer-links-size: 30px;
+
+  --bg-color: #F5F5F5;
+  --primary-color: #1166EE;
+  --footer-bg-color: #323232;
+  --font-color: #292929;
+  --dim-font-color: #8C8C8C;
+  --inverted-font-color: #fff;
+  --border-color: #D3D3D3;
+}
