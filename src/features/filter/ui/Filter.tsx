@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useCallback, useState } from 'react';
+import { ChangeEvent, memo, useCallback } from 'react';
 import classNames from './Filter.module.scss';
 import { Stack } from '@mui/material';
 import { BaseSearch } from '@/shared/ui/Field/BaseSearch';
@@ -34,10 +34,8 @@ export const Filter = memo(() => {
         dispatch(clear());
     }, [dispatch]);
 
-    const { isFetching: isPeriodsFetching, data: periodOptions } = useGetPeriodsQuery(undefined, {
-    });
-    const { isFetching: isOrgsFetching, data: orgsOptions } = useGetOrganizationsQuery(undefined, {
-    });
+    const { isFetching: isPeriodsFetching, data: periodOptions } = useGetPeriodsQuery(undefined);
+    const { isFetching: isOrgsFetching, data: orgsOptions } = useGetOrganizationsQuery(undefined);
 
     return (
         <Stack className={classNames.filter}>
