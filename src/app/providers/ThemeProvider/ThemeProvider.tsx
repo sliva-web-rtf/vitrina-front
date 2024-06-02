@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { GlobalStyles, ThemeProvider as Theme } from '@mui/material';
+import { ThemeProvider as Theme } from '@mui/material';
 
 import { theme } from '@/shared/theme';
 
