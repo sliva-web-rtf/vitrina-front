@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useCallback, useState } from 'react';
+import { ChangeEvent, memo, useCallback } from 'react';
 import classNames from './Filter.module.scss';
 import { Stack } from '@mui/material';
 import { BaseSearch } from '@/shared/ui/Field/BaseSearch';
@@ -21,8 +21,6 @@ const actionMap = {
 
 export const Filter = memo(() => {
     const dispatch = useDispatch();
-    const [isPeriodsOpen, setPeriosOpen] = useState(false);
-    const [isOrgsOpen, setOrgsOpen] = useState(false);
     const { name, period, semester, organization } = useSelector(getFilter);
 
     const handleFilterChange = useCallback(
@@ -36,12 +34,8 @@ export const Filter = memo(() => {
         dispatch(clear());
     }, [dispatch]);
 
-    const { isFetching: isPeriodsFetching, data: periodOptions } = useGetPeriodsQuery(undefined, {
-        skip: !isPeriodsOpen,
-    });
-    const { isFetching: isOrgsFetching, data: orgsOptions } = useGetOrganizationsQuery(undefined, {
-        skip: !isOrgsOpen,
-    });
+    const { isFetching: isPeriodsFetching, data: periodOptions } = useGetPeriodsQuery(undefined);
+    const { isFetching: isOrgsFetching, data: orgsOptions } = useGetOrganizationsQuery(undefined);
 
     return (
         <Stack className={classNames.filter}>
@@ -58,7 +52,6 @@ export const Filter = memo(() => {
                         value={period}
                         loading={isPeriodsFetching}
                         onChange={handleFilterChange(FilterType.Period)}
-                        onClick={() => setPeriosOpen(true)}
                     />
                     <BaseSelect
                         label="Семестр"
@@ -72,7 +65,6 @@ export const Filter = memo(() => {
                         value={organization}
                         loading={isOrgsFetching}
                         onChange={handleFilterChange(FilterType.Organization)}
-                        onClick={() => setOrgsOpen(true)}
                     />
                 </Stack>
                 <BaseButton variant="outlined" startIcon={<ClearIcon />} onClick={handleClearFilters}>
