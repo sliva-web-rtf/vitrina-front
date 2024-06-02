@@ -23,7 +23,7 @@ export const ProjectsList = memo(() => {
     return (
         <Box className={classNames.projectsList}>
             {data.items.map(item => (
-                <ProjectCard key={item.name} {...item} />
+                <ProjectCard key={item.id} {...item} />
             ))}
         </Box>
     );
