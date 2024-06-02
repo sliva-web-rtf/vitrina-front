@@ -1,0 +1,17 @@
+.filter {
+  row-gap: var(--space-xl)
+}
+
+.row,
+.selects {
+  column-gap: var(--space-xl)
+}
+
+.selects {
+  width: 80%;
+}
+
+.row {
+  justify-content: space-between;
+  align-items: center;
+}

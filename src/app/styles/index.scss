@@ -1,15 +1,8 @@
+@import "variables";
 @import "reset";
-@import "variables/global";
-@import "fonts";
 
 #root {
+  position: relative;
   background-color: var(--bg-color);
-}
-
-.page-wrapper {
-  width: var(--page-width);
-  min-height: 100vh;
-  column-gap: var(--space-xl);
-  padding: var(--space-m) 0;
-  margin: 0 auto;
+  color: var(--font-color);
 }

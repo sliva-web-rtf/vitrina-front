@@ -1,0 +1,24 @@
+.container {
+  //position: fixed;
+  //bottom: 0;
+  //right: 0;
+  //left: 0;
+  background-color: var(--footer-bg-color);
+  color: var(--inverted-font-color);
+}
+
+.contentWrapper {
+  margin: 0 auto;
+  max-width: var(--page-width);
+  padding: var(--space-xl) 0;
+}
+
+.firstItem {
+  max-width: var(--footer-urfu-name-width);
+}
+
+.link {
+  display: inline-block;
+  height: var(--footer-links-size);
+  width: var(--footer-links-size);
+}

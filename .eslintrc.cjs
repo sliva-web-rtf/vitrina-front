@@ -19,6 +19,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'max-classes-per-file': 'off',
     'react/prop-types': 'off',
+    "react/display-name": "off",
     'max-len': ['warn', 120],
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-namespace': 'off',

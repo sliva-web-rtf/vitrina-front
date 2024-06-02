@@ -1,3 +1,4 @@
+import { Stack, Typography } from '@mui/material';
 import { Component, ErrorInfo, ReactNode, Suspense } from 'react';
 
 interface ErrorBoundaryProps {
@@ -29,7 +30,11 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         if (hasError) {
             return (
                 <Suspense fallback="">
-                    <div>Что-то пошло не так</div>
+                    <Stack sx={{width: '100wh', height: '100vh'}} justifyContent='center' alignItems='center'>
+                        <Typography variant='h2'>
+                            Что-то пошло не так :(
+                        </Typography>
+                    </Stack>
                 </Suspense>
             );
         }
