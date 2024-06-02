@@ -6,9 +6,9 @@ interface ProjectCardAvatarProps extends StackProps {
 }
 
 export const ProjectCardAvatar = (props: ProjectCardAvatarProps) => {
-    const { logoSrc } = props
+    const { logoSrc, ...stackProps } = props
     return (
-        <Stack alignItems="center" justifyContent="center" bgcolor="#F2F4FE" {...props}>
+        <Stack alignItems="center" justifyContent="center" bgcolor="#F2F4FE" {...stackProps}>
             <Avatar src={logoSrc && logoSrc !== "" ? logoSrc : logo} sx={{ width: '80%', height: '80%', border: 0 }} />
         </Stack>
     );
