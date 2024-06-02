@@ -34,7 +34,7 @@ const projectCreationApi = baseApi.injectEndpoints({
                     ...project,
                     users: project.users.map(user => ({
                         ...user,
-                        roles: user.roles && user.roles !== '' ? [{ name: user.roles }] : '',
+                        roles: user.roles && user.roles !== '' ? [{ name: user.roles }] : [],
                     })),
                 },
             }),
