@@ -1,5 +1,4 @@
-import classNames from './ProjectsList.module.scss';
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { ProjectCardSkeleton } from '@/entities/project';
 import { memo } from 'react';
 
@@ -12,10 +11,14 @@ export const ProjectsListSkeleton = memo((props: ProjectsListSkeletonProps) => {
     const items = Array.from({ length: amount }, (_, index) => `project-${index}`);
 
     return (
-        <Box className={classNames.projectsList}>
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2} alignItems='center' >
             {items.map(item => (
-                <ProjectCardSkeleton key={item} />
+                <Grid key={item} item  xs={12} md={6} lg={4} xl={3}>
+                    <ProjectCardSkeleton />
+                </Grid>
             ))}
+            </Grid>
         </Box>
     );
 });

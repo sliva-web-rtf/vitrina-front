@@ -1,16 +1,12 @@
 .container {
-  //position: fixed;
-  //bottom: 0;
-  //right: 0;
-  //left: 0;
   background-color: var(--footer-bg-color);
   color: var(--inverted-font-color);
 }
 
 .contentWrapper {
   margin: 0 auto;
-  max-width: var(--page-width);
-  padding: var(--space-xl) 0;
+  max-width: calc(var(--page-width) + 2 * var(--space-m));
+  padding: var(--space-xl) var(--space-m);
 }
 
 .firstItem {

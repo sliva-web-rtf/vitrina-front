@@ -1,0 +1,13 @@
+// TODO: Убрать статически заданные значений
+@media (max-width: 768px) {
+  .logo {
+    width: 180px;
+    height: 52px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo {
+    margin: 0 auto;
+  }
+}
