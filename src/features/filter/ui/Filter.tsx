@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useCallback } from 'react';
+import { ChangeEvent, memo, useCallback, useEffect, useState } from 'react';
 import classNames from './Filter.module.scss';
 import { Stack } from '@mui/material';
 import { BaseSearch } from '@/shared/ui/Field/BaseSearch';
@@ -10,6 +10,7 @@ import { filterActions } from '../model/slice/filterSlice';
 import { FilterType } from '../model/types/filterType';
 import { semesterOptions } from '../model/const/semesterOptions';
 import { useGetOrganizationsQuery, useGetPeriodsQuery } from '../api/filterApi.ts';
+import { useDebounce, useDebouncedCallback } from 'use-debounce';
 
 const { setName, setSemester, setPeriod, setOrganization, clear } = filterActions;
 const actionMap = {
@@ -22,10 +23,12 @@ const actionMap = {
 export const Filter = memo(() => {
     const dispatch = useDispatch();
     const { name, period, semester, organization } = useSelector(getFilter);
+    const [search, setSearch] = useState(name);
+    const [debounceSearch] = useDebounce(search, 300);
 
     const handleFilterChange = useCallback(
         (type: FilterType) => (e: ChangeEvent<HTMLInputElement>) => {
-            dispatch(actionMap[type](e.target.value as never));
+            dispatch(actionMap[type](e.target.value));
         },
         [dispatch],
     );
@@ -34,6 +37,13 @@ export const Filter = memo(() => {
         dispatch(clear());
     }, [dispatch]);
 
+
+    useEffect(() => {
+        if (debounceSearch !== name) {
+            dispatch(setName(debounceSearch));
+        }
+    }, [dispatch, name, debounceSearch])
+
     const { isFetching: isPeriodsFetching, data: periodOptions } = useGetPeriodsQuery(undefined);
     const { isFetching: isOrgsFetching, data: orgsOptions } = useGetOrganizationsQuery(undefined);
 
@@ -41,8 +51,7 @@ export const Filter = memo(() => {
         <Stack className={classNames.filter}>
             <BaseSearch
                 placeholder="Введите название проекта или описание"
-                onChange={handleFilterChange(FilterType.Name)}
-                value={name}
+                onChange={e => setSearch(e.target.value)}
             />
             <Stack className={classNames.row} direction="row">
                 <Stack className={classNames.selects} direction="row">
