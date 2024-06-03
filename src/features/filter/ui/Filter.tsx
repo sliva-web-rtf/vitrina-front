@@ -10,7 +10,7 @@ import { filterActions } from '../model/slice/filterSlice';
 import { FilterType } from '../model/types/filterType';
 import { semesterOptions } from '../model/const/semesterOptions';
 import { useGetOrganizationsQuery, useGetPeriodsQuery } from '../api/filterApi.ts';
-import { useDebounce, useDebouncedCallback } from 'use-debounce';
+import { useDebounce } from 'use-debounce';
 
 const { setName, setSemester, setPeriod, setOrganization, clear } = filterActions;
 const actionMap = {
