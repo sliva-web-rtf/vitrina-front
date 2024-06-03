@@ -1,6 +1,5 @@
-import classNames from './ProjectsList.module.scss';
 import { memo } from 'react';
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { useGetProjectsQuery } from '../api/projectsApi';
 import { useSelector } from 'react-redux';
 import { getFilter } from '@/features/filter';
@@ -21,10 +20,14 @@ export const ProjectsList = memo(() => {
     }
 
     return (
-        <Box className={classNames.projectsList}>
-            {data.items.map(item => (
-                <ProjectCard key={item.id} {...item} />
-            ))}
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2} alignItems='center' >
+                {data.items.map(item => (
+                    <Grid key={item.id} item  xs={12} md={6} lg={4} xl={3}>
+                        <ProjectCard  {...item} />
+                    </Grid>
+                ))}
+            </Grid>
         </Box>
     );
 });
