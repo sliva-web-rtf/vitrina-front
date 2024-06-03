@@ -1,7 +1,7 @@
 .container {
-  max-width: var(--page-width);
+  max-width: calc(var(--page-width) + 2 * var(--space-m));
   min-height: 100vh;
   column-gap: var(--space-xl);
-  padding: var(--space-xl) 0;
+  padding: var(--space-xl) var(--space-m);
   margin: 0 auto calc(var(--space-m) * 5);
 }

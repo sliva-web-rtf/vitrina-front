@@ -1,5 +1,4 @@
 import { ChangeEvent, memo, useCallback, useEffect, useState } from 'react';
-import classNames from './Filter.module.scss';
 import { Stack } from '@mui/material';
 import { BaseSearch } from '@/shared/ui/Field/BaseSearch';
 import { BaseButton, BaseSelect } from '@/shared/ui';
@@ -37,25 +36,40 @@ export const Filter = memo(() => {
         dispatch(clear());
     }, [dispatch]);
 
-
     useEffect(() => {
         if (debounceSearch !== name) {
             dispatch(setName(debounceSearch));
         }
-    }, [dispatch, name, debounceSearch])
+    }, [dispatch, name, debounceSearch]);
 
     const { isFetching: isPeriodsFetching, data: periodOptions } = useGetPeriodsQuery(undefined);
     const { isFetching: isOrgsFetching, data: orgsOptions } = useGetOrganizationsQuery(undefined);
 
     return (
-        <Stack className={classNames.filter}>
+        <Stack sx={{rowGap: 'var(--space-xl)'}}>
             <BaseSearch
                 placeholder="Введите название проекта или описание"
                 onChange={e => setSearch(e.target.value)}
             />
-            <Stack className={classNames.row} direction="row">
-                <Stack className={classNames.selects} direction="row">
+            <Stack
+                sx={theme => ({
+                    flex: 1,
+                    gap: 'var(--space-xl)',
+                    flexDirection: 'row',
+                    [theme.breakpoints.down('md')]: {
+                        flexDirection: 'column',
+                    },
+                })}
+            >
+                <Stack direction='row' sx={theme => ({
+                    flex: 1,
+                    gap: 'var(--space-m)',
+                    [theme.breakpoints.down('sm')]: {
+                        flexDirection: 'column',
+                    },
+                })}>
                     <BaseSelect
+                        fullWidth
                         label="Период"
                         options={periodOptions}
                         value={period}
@@ -63,12 +77,14 @@ export const Filter = memo(() => {
                         onChange={handleFilterChange(FilterType.Period)}
                     />
                     <BaseSelect
+                        fullWidth
                         label="Семестр"
                         options={semesterOptions}
                         value={semester}
                         onChange={handleFilterChange(FilterType.Semester)}
                     />
                     <BaseSelect
+                        fullWidth
                         label="Организация"
                         options={orgsOptions}
                         value={organization}
