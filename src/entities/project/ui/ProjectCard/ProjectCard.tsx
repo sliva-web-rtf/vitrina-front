@@ -16,14 +16,14 @@ export const ProjectCard = (props: ProjectCardProps) => {
     return (
         <Link className="link-block" to={`/${id}`}>
             <Stack className={classNames.projectCard}>
-                <ProjectCardAvatar height="245px" logoSrc={imageUrl} />
+                <ProjectCardAvatar className={classNames.image} logoSrc={imageUrl} />
                 <Stack p={3} spacing={2}>
                     <ChipsList items={tags} />
-                    <Typography variant="h3" className={classNames.clipped}>
+                    <Typography variant="h3" className={classNames.clippedTitle}>
                         {name}
                     </Typography>
 
-                    <Typography variant="subtitle1" className={classNames.clipped}>
+                    <Typography variant="subtitle1" className={classNames.clippedText}>
                         {description}
                     </Typography>
                 </Stack>

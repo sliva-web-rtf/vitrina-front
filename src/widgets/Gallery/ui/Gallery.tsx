@@ -12,11 +12,11 @@ export const Gallery = memo((props: GalleryProps) => {
     const [mainImage, setMainImage] = useState(images[0]!);
     const [thumbnails, setThumbnails] = useState(images.slice(1));
     // const [thumbnails, setThumbnails] = useState([
-        // 'https://placehold.co/400',
-        // 'https://placehold.co/500',
-        // 'https://placehold.co/600',
-        // 'https://placehold.co/700',
-        // 'https://placehold.co/800',
+    //     'https://placehold.co/400',
+    //     'https://placehold.co/500',
+    //     'https://placehold.co/600',
+    //     'https://placehold.co/700',
+    //     'https://placehold.co/800',
     // ]);
 
     const handleThumbnailClick = (clickedImage: string) => {
@@ -35,13 +35,9 @@ export const Gallery = memo((props: GalleryProps) => {
                     <Avatar
                         key={image}
                         src={image}
+                        className={classNames.thumbnail}
                         alt={alt ?? 'Картинка проекта'}
                         onClick={() => handleThumbnailClick(image as string)}
-                        sx={{
-                            cursor: 'pointer',
-                            width: '110px',
-                            height: '110px',
-                        }}
                     />
                 ))}
             </Stack>

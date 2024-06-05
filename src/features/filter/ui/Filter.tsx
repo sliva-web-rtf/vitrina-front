@@ -34,6 +34,7 @@ export const Filter = memo(() => {
 
     const handleClearFilters = useCallback(() => {
         dispatch(clear());
+        setSearch('');
     }, [dispatch]);
 
     useEffect(() => {
@@ -46,9 +47,10 @@ export const Filter = memo(() => {
     const { isFetching: isOrgsFetching, data: orgsOptions } = useGetOrganizationsQuery(undefined);
 
     return (
-        <Stack sx={{rowGap: 'var(--space-xl)'}}>
+        <Stack sx={{ rowGap: 'var(--space-xl)' }}>
             <BaseSearch
-                placeholder="Введите название проекта или описание"
+                placeholder="Название или описание проекта"
+                value={search}
                 onChange={e => setSearch(e.target.value)}
             />
             <Stack
@@ -61,13 +63,16 @@ export const Filter = memo(() => {
                     },
                 })}
             >
-                <Stack direction='row' sx={theme => ({
-                    flex: 1,
-                    gap: 'var(--space-m)',
-                    [theme.breakpoints.down('sm')]: {
-                        flexDirection: 'column',
-                    },
-                })}>
+                <Stack
+                    direction="row"
+                    sx={theme => ({
+                        flex: 1,
+                        gap: 'var(--space-m)',
+                        [theme.breakpoints.down('sm')]: {
+                            flexDirection: 'column',
+                        },
+                    })}
+                >
                     <BaseSelect
                         fullWidth
                         label="Период"

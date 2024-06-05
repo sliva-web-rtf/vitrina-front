@@ -6,10 +6,10 @@ export const ProjectCardSkeleton = () => {
     return (
         <Stack className={classNames.projectCard}>
             <Skeleton
+                className={classNames.image}
                 variant="rectangular"
                 sx={theme => ({
                     width: '100%',
-                    height: '245px',
                     borderTopLeftRadius: theme.spacing(2),
                     borderTopRightRadius: theme.spacing(2),
                 })}

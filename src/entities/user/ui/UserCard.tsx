@@ -12,7 +12,7 @@ export const UserCard = memo((props: User) => {
                 <ChipsList items={roles?.length ? roles : ['Не указана']} />
                 <Stack>
                     <Typography variant="h5">
-                        {firstName} {lastName} {patronymic}
+                        {lastName} {firstName} {patronymic}
                     </Typography>
                     <Typography color="secondary" variant="subtitle1">
                         {email || 'почта не указана'}
