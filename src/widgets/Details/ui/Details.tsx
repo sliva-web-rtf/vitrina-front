@@ -40,7 +40,7 @@ export const Details = memo(() => {
                 </Stack>
             </Stack>
             <Stack className={classNames.col}>
-                <Gallery imagesBytes={[]} />
+                <Gallery images={data.contents} alt={data.name} />
                 <Stack className={classNames.mainBlock}>
                     <Typography variant="h3">Команда</Typography>
                     {data.users.map(user => (

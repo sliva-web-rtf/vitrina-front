@@ -10,7 +10,6 @@
 }
 
 .thumbnails {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  flex-direction: row;
   gap: var(--space-m);
 }

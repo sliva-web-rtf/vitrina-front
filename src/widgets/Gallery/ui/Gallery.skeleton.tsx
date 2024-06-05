@@ -7,11 +7,11 @@ export const GallerySkeleton = memo(() => {
         <Stack className={classNames.gallery}>
             <Skeleton variant="rounded" className={classNames.mainImage} />
             <Stack className={classNames.thumbnails}>
-                <Skeleton variant="rounded" width="100%" height="110px" />
-                <Skeleton variant="rounded" width="100%" height="110px" />
-                <Skeleton variant="rounded" width="100%" height="110px" />
-                <Skeleton variant="rounded" width="100%" height="110px" />
-                <Skeleton variant="rounded" width="100%" height="110px" />
+                <Skeleton variant="rounded" width="110px" height="110px" />
+                <Skeleton variant="rounded" width="110px" height="110px" />
+                <Skeleton variant="rounded" width="110px" height="110px" />
+                <Skeleton variant="rounded" width="110px" height="110px" />
+                <Skeleton variant="rounded" width="110px" height="110px" />
             </Stack>
         </Stack>
     );
