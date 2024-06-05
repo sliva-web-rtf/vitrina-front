@@ -10,7 +10,7 @@ interface GalleryProps {
 export const Gallery = memo((props: GalleryProps) => {
     const { images, alt } = props;
     const [mainImage, setMainImage] = useState(images[0]!);
-    const [thumbnails, setThumbnails] = useState(images.slice(1));
+    const [thumbnails, setThumbnails] = useState(images.slice(1, 5));
     // const [thumbnails, setThumbnails] = useState([
     //     'https://placehold.co/400',
     //     'https://placehold.co/500',
