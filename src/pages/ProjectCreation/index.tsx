@@ -178,7 +178,7 @@ export const ProjectCreation = () => {
                                 const formData = new FormData();
                                 const filesConverted: File[] = Array.from(files);
                                 filesConverted.forEach(file => {
-                                    formData.append(file.name, file);
+                                    formData.append('files', file);
                                 });
                                 await uploadAvatars({formData, id});
                               } 
