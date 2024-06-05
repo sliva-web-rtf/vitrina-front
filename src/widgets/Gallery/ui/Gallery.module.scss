@@ -10,7 +10,28 @@
 }
 
 .thumbnails {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  display: flex;
+  flex-direction: row;
   gap: var(--space-m);
+  width: var(--page-width);
 }
+
+.thumbnail {
+  width: 20vw;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+
+@media (min-width: 1024px) {
+  .thumbnails {
+    width: calc(var(--page-width) / 2);
+  }
+
+  .thumbnail {
+    width: calc((100% - 3 * var(--space-m))/ 4);
+  }
+}
+

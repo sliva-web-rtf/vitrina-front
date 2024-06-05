@@ -1,14 +1,34 @@
 .projectCard {
-  height: var(--card-height);
+  height: 300px;
   border-radius: var(--space-m);
   background-color: var(--inverted-font-color);
   outline: 1px solid var(--border-color);
 }
 
-.clipped {
+.clippedTitle,
+.clippedText {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.clippedText {
+  -webkit-line-clamp: 3;
+}
+
+.image {
+  height: 100px !important;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .projectCard {
+    height: var(--card-height);
+  }
+
+  .image {
+    height: 50% !important;
+  }
 }

@@ -1,5 +1,4 @@
 import { User } from '@/entities/user';
-import { Image } from '@/shared/lib/types/image.ts';
 
 export interface ProjectDetails {
     readonly id: number;
@@ -7,7 +6,7 @@ export interface ProjectDetails {
     readonly description: string;
     readonly aim: string;
     readonly client: string;
-    readonly contents: Array<Image>;
+    readonly contents: Array<string>;
     readonly tags: Array<string>;
     readonly users: Array<User>;
 }

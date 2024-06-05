@@ -1,7 +1,6 @@
 import classNames from './Details.module.scss';
 import { useParams } from 'react-router-dom';
 import { Stack, Typography } from '@mui/material';
-import { ChipsList } from '@/shared/ui';
 import { useGetDetailsQuery } from '../api/detailsApi';
 import { UserCard } from '@/entities/user';
 import { Gallery } from '@/widgets/Gallery';
@@ -24,9 +23,23 @@ export const Details = memo(() => {
         <Stack className={classNames.details}>
             <Stack className={classNames.col}>
                 <Stack className={classNames.block}>
-                    <ChipsList big items={data.tags} />
                     <Stack className={classNames.mainBlock}>
-                        <Typography variant="h2">{data.name}</Typography>
+                        <Typography
+                            variant="h2"
+                            sx={theme => ({
+                                [theme.breakpoints.up('xl')]: {
+                                    fontSize: 64,
+                                },
+                                [theme.breakpoints.up('sm')]: {
+                                    fontSize: 48,
+                                },
+                                [theme.breakpoints.up('xs')]: {
+                                    fontSize: 32,
+                                },
+                            })}
+                        >
+                            {data.name}
+                        </Typography>
                         <Typography>{data.description}</Typography>
                     </Stack>
                 </Stack>
@@ -40,7 +53,7 @@ export const Details = memo(() => {
                 </Stack>
             </Stack>
             <Stack className={classNames.col}>
-                <Gallery imagesBytes={[]} />
+                <Gallery images={data.contents} alt={data.name} />
                 <Stack className={classNames.mainBlock}>
                     <Typography variant="h3">Команда</Typography>
                     {data.users.map(user => (

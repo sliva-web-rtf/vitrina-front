@@ -1,18 +1,16 @@
 import { Avatar, Stack } from '@mui/material';
-import { memo, useMemo, useState } from 'react';
-import { Image } from '@/shared/lib/types/image.ts';
-import { bytesToImage } from '@/shared/lib/helpers/bytesToImage';
+import { memo, useState } from 'react';
 import classNames from './Gallery.module.scss';
 
 interface GalleryProps {
-    readonly imagesBytes: Array<Image>;
+    readonly images: Array<string>;
+    readonly alt?: string;
 }
 
 export const Gallery = memo((props: GalleryProps) => {
-    const { imagesBytes } = props;
-    const images = useMemo(() => imagesBytes.map(bytes => bytesToImage(bytes)), [imagesBytes]);
+    const { images, alt } = props;
     const [mainImage, setMainImage] = useState(images[0]!);
-    const [thumbnails, setThumbnails] = useState(images.slice(1));
+    const [thumbnails, setThumbnails] = useState(images.slice(1, 5));
     // const [thumbnails, setThumbnails] = useState([
     //     'https://placehold.co/400',
     //     'https://placehold.co/500',
@@ -31,19 +29,15 @@ export const Gallery = memo((props: GalleryProps) => {
 
     return (
         <Stack className={classNames.gallery}>
-            <Avatar className={classNames.mainImage} variant="square" src={mainImage} alt={mainImage} />
+            <Avatar className={classNames.mainImage} variant="square" src={mainImage} alt={alt ?? 'Картинка проекта'} />
             <Stack className={classNames.thumbnails}>
                 {thumbnails.map(image => (
                     <Avatar
                         key={image}
                         src={image}
-                        alt={image}
+                        className={classNames.thumbnail}
+                        alt={alt ?? 'Картинка проекта'}
                         onClick={() => handleThumbnailClick(image as string)}
-                        sx={{
-                            cursor: 'pointer',
-                            width: '100%',
-                            height: 'auto',
-                        }}
                     />
                 ))}
             </Stack>

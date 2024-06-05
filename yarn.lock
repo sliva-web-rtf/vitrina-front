@@ -2677,6 +2677,11 @@ react-router-dom@^6.23.1:
     "@remix-run/router" "1.16.1"
     react-router "6.23.1"
 
+react-router-scroll-top@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/react-router-scroll-top/-/react-router-scroll-top-0.3.1.tgz#ba5248563ac83c09ad17df857dba79751f97239f"
+  integrity sha512-sdIYw7SVAqWNcH/WhNHIPsOrIVUEUUHYuddGj7aMNjRCTwAfZo2B/CHqXElAnDdSd9MMCfVFfWxtroi1ozTb8Q==
+
 react-router@6.23.1:
   version "6.23.1"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.23.1.tgz#d08cbdbd9d6aedc13eea6e94bc6d9b29cb1c4be9"
