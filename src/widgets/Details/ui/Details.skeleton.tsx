@@ -1,6 +1,5 @@
 import classNames from './Details.module.scss';
 import { Skeleton, Stack, Typography } from '@mui/material';
-import { ChipsListSkeleton } from '@/shared/ui';
 import { memo } from 'react';
 import { GallerySkeleton } from '@/widgets/Gallery';
 import { UserCardSkeleton } from '@/entities/user';
@@ -9,7 +8,7 @@ export const DetailsSkeleton = memo(() => (
     <Stack className={classNames.details}>
         <Stack className={classNames.col}>
             <Stack className={classNames.block}>
-                <ChipsListSkeleton big />
+                {/*<ChipsListSkeleton big />*/}
                 <Stack className={classNames.mainBlock}>
                     <Typography variant="h2">
                         <Skeleton width="70%" />

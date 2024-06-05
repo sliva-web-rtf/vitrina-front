@@ -1,7 +1,6 @@
 import classNames from './Details.module.scss';
 import { useParams } from 'react-router-dom';
 import { Stack, Typography } from '@mui/material';
-import { ChipsList } from '@/shared/ui';
 import { useGetDetailsQuery } from '../api/detailsApi';
 import { UserCard } from '@/entities/user';
 import { Gallery } from '@/widgets/Gallery';
@@ -24,7 +23,7 @@ export const Details = memo(() => {
         <Stack className={classNames.details}>
             <Stack className={classNames.col}>
                 <Stack className={classNames.block}>
-                    <ChipsList big items={data.tags} />
+                    {/*<ChipsList big items={data.tags} />*/}
                     <Stack className={classNames.mainBlock}>
                         <Typography
                             variant="h2"

@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import classNames from './ProjectCard.module.scss';
-import { ChipsList, ProjectCardAvatar } from '@/shared/ui';
+import { ProjectCardAvatar } from '@/shared/ui';
 import { Link } from 'react-router-dom';
 
 interface ProjectCardProps {
@@ -8,17 +8,16 @@ interface ProjectCardProps {
     readonly name?: string;
     readonly description?: string;
     readonly imageUrl?: string;
-    readonly tags?: Array<string>;
+    // readonly tags?: Array<string>;
 }
 
 export const ProjectCard = (props: ProjectCardProps) => {
-    const { id, name, description, tags, imageUrl } = props;
+    const { id, name, description, imageUrl } = props;
     return (
         <Link className="link-block" to={`/${id}`}>
             <Stack className={classNames.projectCard}>
                 <ProjectCardAvatar className={classNames.image} logoSrc={imageUrl} />
                 <Stack p={3} spacing={2}>
-                    <ChipsList items={tags} />
                     <Typography variant="h3" className={classNames.clippedTitle}>
                         {name}
                     </Typography>

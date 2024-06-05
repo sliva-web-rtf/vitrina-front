@@ -8,18 +8,18 @@
 .clippedTitle,
 .clippedText {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .clippedText {
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
 }
 
 .image {
-  height: 100px;
+  height: 100px !important;
   object-fit: cover;
 }
 
