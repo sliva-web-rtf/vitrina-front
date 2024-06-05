@@ -8,14 +8,19 @@ const MainPage = memo(() => (
     <Stack spacing={10}>
         <Box
             sx={theme => ({
-                display: 'flex',
+                display: 'grid',
                 [theme.breakpoints.up('sm')]: {
-                    flexDirection: 'row',
+                    gridTemplateColumns: 'auto auto',
+
+                    columnGap: theme.spacing(3),
                     justifyContent: 'space-between',
-                    alignItems: 'center'
+                    alignItems: 'center',
                 },
                 [theme.breakpoints.down('sm')]: {
+                    display: 'flex',
                     flexDirection: 'column-reverse',
+                    rowGap: theme.spacing(3),
+                    alignItems: 'center',
                 },
             })}
         >
@@ -26,9 +31,6 @@ const MainPage = memo(() => (
                     },
                     [theme.breakpoints.up('lg')]: {
                         fontSize: 64,
-                    },
-                    [theme.breakpoints.up('md')]: {
-                        fontSize: 48,
                     },
                     [theme.breakpoints.up('sm')]: {
                         fontSize: 48,

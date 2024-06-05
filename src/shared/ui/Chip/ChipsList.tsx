@@ -33,6 +33,7 @@ export const ChipsList = memo((props: ChipsListProps) => {
                     }}
                 />
             ))}
+            {!items?.length && <BaseChip label="Неизвестно" sx={styles} />}
         </Stack>
     );
 });

@@ -1,6 +1,6 @@
 .details {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: calc(5 * var(--space-m));
 }
 
@@ -14,4 +14,11 @@
 
 .block {
   gap: var(--space-m)
+}
+
+
+@media (min-width: 1024px) {
+  .details {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
