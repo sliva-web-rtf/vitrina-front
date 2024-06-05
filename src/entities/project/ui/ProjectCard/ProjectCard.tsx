@@ -8,7 +8,7 @@ interface ProjectCardProps {
     readonly name?: string;
     readonly description?: string;
     readonly imageUrl?: string;
-    readonly tags?: Array<string>;
+    // readonly tags?: Array<string>;
 }
 
 export const ProjectCard = (props: ProjectCardProps) => {

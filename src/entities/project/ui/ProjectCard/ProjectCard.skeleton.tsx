@@ -1,6 +1,5 @@
 import { Skeleton, Stack, Typography } from '@mui/material';
 import classNames from './ProjectCard.module.scss';
-import { ChipsListSkeleton } from '@/shared/ui';
 
 export const ProjectCardSkeleton = () => {
     return (
@@ -15,7 +14,7 @@ export const ProjectCardSkeleton = () => {
                 })}
             />
             <Stack p={3} spacing={2}>
-                <ChipsListSkeleton />
+                {/*<ChipsListSkeleton />*/}
                 <Typography variant="h3">
                     <Skeleton />
                     <Skeleton width="70%" />
@@ -25,6 +24,7 @@ export const ProjectCardSkeleton = () => {
                     <Skeleton width="70%" />
                     <Skeleton width="90%" />
                     <Skeleton width="90%" />
+                    <Skeleton width="80%" />
                 </Typography>
             </Stack>
         </Stack>
