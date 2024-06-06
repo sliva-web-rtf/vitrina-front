@@ -13,7 +13,6 @@ export const Showcase = memo(() => {
     const handlePageChange = (_: ChangeEvent<unknown>, value: number) => {
         dispatch(filterActions.setPage(value));
     };
-
     return (
         <Stack spacing={8}>
             <Filter />
