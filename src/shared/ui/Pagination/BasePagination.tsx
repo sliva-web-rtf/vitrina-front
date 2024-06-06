@@ -1,25 +1,7 @@
 import { Pagination, PaginationItem, PaginationProps, Stack, styled } from '@mui/material';
-import { ReactNode } from 'react';
-
-interface NavigationButtonProps {
-    children: ReactNode;
-}
-
-const NavigationButton = ({ children }: NavigationButtonProps) => (
-    <Stack direction="row" spacing={1}>
-        {children}
-    </Stack>
-);
-
-const PrevSlot = () => <NavigationButton>Назад</NavigationButton>;
-const NextSlot = () => <NavigationButton>Вперед</NavigationButton>;
 
 const StyledPagination = styled((props: PaginationProps) => (
-    <Pagination
-        shape="rounded"
-        renderItem={item => <PaginationItem slots={{ previous: PrevSlot, next: NextSlot }} {...item} />}
-        {...props}
-    />
+    <Pagination shape="rounded" renderItem={item => <PaginationItem {...item} />} siblingCount={0} {...props} />
 ))(({ theme }) => ({
     '& .MuiPaginationItem-page': {
         fontWeight: 500,
@@ -28,7 +10,6 @@ const StyledPagination = styled((props: PaginationProps) => (
         color: theme.palette.primary.contrastText,
         background: theme.palette.primary.main,
     },
-    '& .Mui-disabled': {},
     '& .MuiPagination-ul': {
         columnGap: theme.spacing(0.5),
     },

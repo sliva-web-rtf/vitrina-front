@@ -1,6 +1,7 @@
 import { Avatar, Stack } from '@mui/material';
 import { memo, useState } from 'react';
 import classNames from './Gallery.module.scss';
+import { BaseAvatar } from '@/shared/ui';
 
 interface GalleryProps {
     readonly images: Array<string>;
@@ -16,7 +17,6 @@ export const Gallery = memo((props: GalleryProps) => {
     //     'https://placehold.co/500',
     //     'https://placehold.co/600',
     //     'https://placehold.co/700',
-    //     'https://placehold.co/800',
     // ]);
 
     const handleThumbnailClick = (clickedImage: string) => {
@@ -29,7 +29,11 @@ export const Gallery = memo((props: GalleryProps) => {
 
     return (
         <Stack className={classNames.gallery}>
-            <Avatar className={classNames.mainImage} variant="square" src={mainImage} alt={alt ?? 'Картинка проекта'} />
+            <BaseAvatar
+                className={`${classNames.mainImage} ${mainImage ? '' : classNames.empty}`}
+                src={mainImage}
+                alt={alt ?? 'Картинка проекта'}
+            />
             <Stack className={classNames.thumbnails}>
                 {thumbnails.map(image => (
                     <Avatar

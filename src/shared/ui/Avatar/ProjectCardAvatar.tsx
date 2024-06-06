@@ -1,15 +1,17 @@
-import { Avatar, Stack, StackProps } from '@mui/material';
-import logo from '@/shared/assets/logo-icon.png';
+import { Stack, StackProps } from '@mui/material';
+import { BaseAvatar } from '@/shared/ui';
+import { memo } from 'react';
 
 interface ProjectCardAvatarProps extends StackProps {
     readonly logoSrc?: string;
 }
 
-export const ProjectCardAvatar = (props: ProjectCardAvatarProps) => {
-    const { logoSrc, ...stackProps } = props
+export const ProjectCardAvatar = memo((props: ProjectCardAvatarProps) => {
+    const { logoSrc, ...stackProps } = props;
+
     return (
         <Stack alignItems="center" justifyContent="center" bgcolor="#F2F4FE" {...stackProps}>
-            <Avatar src={logoSrc && logoSrc !== "" ? logoSrc : logo} sx={{ width: '80%', height: '80%', border: 0 }} />
+            <BaseAvatar src={logoSrc} alt="" sx={{ border: 0 }} />
         </Stack>
     );
-};
+});
