@@ -17,7 +17,7 @@ export function createReduxStore(initialState?: StateSchema) {
         middleware: getDefaultMiddleware =>
             getDefaultMiddleware({
                 serializableCheck: false,
-            }),
+            }).concat(baseApi.middleware),
         preloadedState: initialState,
         devTools: import.meta.env.VITE_MODE === 'development',
     });

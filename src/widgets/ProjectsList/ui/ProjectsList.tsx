@@ -24,7 +24,7 @@ export const ProjectsList = memo(() => {
             <Grid container spacing={2} alignItems="center">
                 {data.items.map(item => (
                     <Grid key={item.id} item xs={12} md={6} lg={4} xl={3}>
-                        <ProjectCard {...item} />
+                        <ProjectCard project={item} />
                     </Grid>
                 ))}
             </Grid>

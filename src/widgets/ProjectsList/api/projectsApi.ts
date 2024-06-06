@@ -22,7 +22,7 @@ const projectsApi = baseApi.injectEndpoints({
                 } catch (err) {
                     /* empty */
                 }
-            },
+            },  
             transformResponse: (response: ProjectsResponse) => mapProjectsDtoToModel(response),
         }),
     }),
