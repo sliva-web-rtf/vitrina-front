@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
 import { memo } from 'react';
-import logoSrc from '@/shared/assets/logo.png';
+import logoSrc from '@/shared/assets/logo.svg';
 import { Showcase } from '@/widgets/Showcase';
 import styles from './MainPage.module.scss';
 
