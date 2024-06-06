@@ -23,7 +23,6 @@ export const Details = memo(() => {
         <Stack className={classNames.details}>
             <Stack className={classNames.col}>
                 <Stack className={classNames.block}>
-                    {/*<ChipsList big items={data.tags} />*/}
                     <Stack className={classNames.mainBlock}>
                         <Typography
                             variant="h2"

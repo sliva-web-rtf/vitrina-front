@@ -28,5 +28,6 @@ export const ProjectCard = (props: ProjectCardProps) => {
                 </Stack>
             </Stack>
         </Link>
+
     );
 };
