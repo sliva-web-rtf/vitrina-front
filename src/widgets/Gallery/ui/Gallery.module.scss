@@ -9,6 +9,11 @@
   object-fit: cover;
 }
 
+.empty img {
+  width: 20% !important;
+  height: auto !important;
+}
+
 .thumbnails {
   display: flex;
   flex-direction: row;
@@ -31,7 +36,7 @@
   }
 
   .thumbnail {
-    width: calc((100% - 3 * var(--space-m))/ 4);
+    width: calc((100% - 3 * var(--space-m)) / 4) !important;
   }
 }
 

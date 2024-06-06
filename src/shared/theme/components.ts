@@ -16,7 +16,7 @@ export const components: Components<Omit<Theme, 'components'>> | undefined = {
                     height: '45%',
                 },
                 border: '1px solid var(--border-color)',
-                borderRadius: 'var(--space-s)',
+                borderRadius: 'var(--space-m)',
             },
         },
     },
