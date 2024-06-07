@@ -5,7 +5,7 @@ export const initialState: FilterSchema = {
     name: '',
     period: '',
     organization: '',
-    semester: 1,
+    semester: null,
     page: 1,
     pageSize: 8,
 };
