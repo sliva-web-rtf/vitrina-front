@@ -85,7 +85,7 @@ export const Filter = memo(() => {
                         fullWidth
                         label="Семестр"
                         options={semesterOptions}
-                        value={semester}
+                        value={semester || ''}
                         onChange={handleFilterChange(FilterType.Semester)}
                     />
                     <BaseSelect

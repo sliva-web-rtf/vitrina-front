@@ -15,10 +15,9 @@ export const ProjectCard = (props: ProjectCardProps) => {
             <Stack className={classNames.projectCard}>
                 <ProjectCardAvatar className={classNames.image} logoSrc={project.imageUrl} />
                 <Stack p={3} spacing={2}>
-                    <Typography variant="h3" className={classNames.clippedTitle}>
+                    <Typography variant="h3" className={classNames.clippedText}>
                         {project.name}
                     </Typography>
-
                     <Typography variant="subtitle1" className={classNames.clippedText}>
                         {project.description}
                     </Typography>

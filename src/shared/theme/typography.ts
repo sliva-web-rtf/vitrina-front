@@ -14,7 +14,6 @@ export const typography: TypographyOptions | ((palette: Palette) => TypographyOp
     h3: {
         fontSize: 24,
         fontWeight: 600,
-        lineHeight: 0.9,
     },
     h4: {
         fontSize: 20,
