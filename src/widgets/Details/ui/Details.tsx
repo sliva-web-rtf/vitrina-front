@@ -1,6 +1,6 @@
 import classNames from './Details.module.scss';
 import { useParams } from 'react-router-dom';
-import { Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { useGetDetailsQuery } from '../api/detailsApi';
 import { UserCard } from '@/entities/user';
 import { Gallery } from '@/widgets/Gallery';
@@ -20,7 +20,7 @@ export const Details = memo(() => {
     }
 
     return (
-        <Stack className={classNames.details}>
+        <Box className={classNames.details}>
             <Stack className={classNames.col}>
                 <Stack className={classNames.block}>
                     <Stack className={classNames.mainBlock}>
@@ -61,6 +61,6 @@ export const Details = memo(() => {
                     ))}
                 </Stack>
             </Stack>
-        </Stack>
+        </Box>
     );
 });

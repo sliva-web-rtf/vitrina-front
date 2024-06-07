@@ -12,7 +12,7 @@ export const BackButton = memo((props: BackButtonProps) => {
     const { children } = props;
     const navigate = useNavigate();
 
-    const handleClick = () => navigate(-1);
+    const handleClick = () => navigate('/');
 
     return (
         <BaseButton
