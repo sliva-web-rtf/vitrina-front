@@ -16,7 +16,6 @@ export const filterSlice = createSlice({
     reducers: {
         setName: (state, action: PayloadAction<FilterSchema['name']>) => {
             state.name = action.payload;
-            state.page = initialState.page;
         },
         setSemester: (state, action: PayloadAction<string>) => {
             state.semester = parseInt(action.payload, 10);
