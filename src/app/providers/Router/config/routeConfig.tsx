@@ -8,13 +8,13 @@ export type AppRoutesProps = RouteProps;
 export enum AppRoutes {
     Main = 'Main',
     Details = 'Details',
-    Creation = 'Creation'
+    Creations = 'Creations'
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.Main]: '*',
     [AppRoutes.Details]: '/:id',
-    [AppRoutes.Creation]: '/creation'
+    [AppRoutes.Creations]: '/creation',
 };
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -26,8 +26,8 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: RoutePath.Details,
         element: <DetailsPage />,
     },
-    [AppRoutes.Creation]: {
-        path: RoutePath.Creation,
-        element: <ProjectCreation></ProjectCreation>,
+    [AppRoutes.Creations]: {
+        path: RoutePath.Details,
+        element: <ProjectCreation />,
     },
 };
