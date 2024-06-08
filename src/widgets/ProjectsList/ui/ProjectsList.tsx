@@ -1,15 +1,21 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { Box, Grid } from '@mui/material';
 import { useGetProjectsQuery } from '../api/projectsApi';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getFilter } from '@/features/filter';
 import { ProjectsListSkeleton } from '@/widgets/ProjectsList/ui/ProjectsList.skeleton.tsx';
 import { ProjectCard } from '@/entities/project';
 import { ProjectsListEmpty } from '@/widgets/ProjectsList/ui/ProjectsList.empty.tsx';
+import { projectsListActions } from '@/widgets/ProjectsList';
 
 export const ProjectsList = memo(() => {
+    const dispatch = useDispatch();
     const filter = useSelector(getFilter);
     const { isFetching, data } = useGetProjectsQuery(filter);
+
+    useEffect(() => {
+        dispatch(projectsListActions.setTotalPages(data?.metadata?.totalPages || 1));
+    }, [data?.metadata?.totalPages, dispatch]);
 
     if (isFetching) {
         return <ProjectsListSkeleton amount={filter.pageSize / 2} />;
