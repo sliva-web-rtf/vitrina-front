@@ -7,7 +7,7 @@ export const initialState: FilterSchema = {
     organization: '',
     semester: null,
     page: 1,
-    pageSize: 8,
+    pageSize: 16,
 };
 
 export const filterSlice = createSlice({

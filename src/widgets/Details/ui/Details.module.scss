@@ -5,7 +5,7 @@
 }
 
 .col {
-  gap: calc(var(--space-l) * 3);
+  gap: var(--space-l);
 }
 
 .mainBlock {
@@ -20,5 +20,9 @@
 @media (min-width: 1024px) {
   .details {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .col {
+    gap: calc(var(--space-l) * 2);
   }
 }
