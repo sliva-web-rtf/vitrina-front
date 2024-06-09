@@ -3,29 +3,9 @@ import { typography } from './typography';
 import { blue, blueGrey, green, grey, red } from '@mui/material/colors';
 import { components } from './components.ts';
 
-// declare module '@mui/material/styles' {
-//     interface BreakpointOverrides {
-//         xs: false;
-//         sm: false;
-//         mobile: true;
-//         tablet: true;
-//         md: true;
-//         lg: true;
-//         xl: false;
-//     }
-// }
-
 export const theme = createTheme({
     typography,
     components,
-    // breakpoints: {
-    //     values: {
-    //         mobile: 320,
-    //         tablet: 480,
-    //         md: 700,
-    //         lg: 1024,
-    //     },
-    // },
     palette: {
         background: {
             default: '#F5F5F5',
@@ -47,3 +27,32 @@ export const theme = createTheme({
         },
     },
 });
+
+theme.typography.h1 = {
+    ...theme.typography.h1,
+    [theme.breakpoints.up('xs')]: {
+        fontSize: 32,
+    },
+    [theme.breakpoints.up('sm')]: {
+        fontSize: 48,
+    },
+    [theme.breakpoints.up('lg')]: {
+        fontSize: 64,
+    },
+    [theme.breakpoints.up('xl')]: {
+        fontSize: 96,
+    },
+};
+
+theme.typography.h2 = {
+    ...theme.typography.h2,
+    [theme.breakpoints.up('xs')]: {
+        fontSize: 32,
+    },
+    [theme.breakpoints.up('sm')]: {
+        fontSize: 40,
+    },
+    [theme.breakpoints.up('xl')]: {
+        fontSize: 52,
+    },
+};
