@@ -11,7 +11,6 @@ const MainPage = memo(() => (
                 display: 'grid',
                 [theme.breakpoints.up('sm')]: {
                     gridTemplateColumns: 'auto auto',
-
                     columnGap: theme.spacing(3),
                     justifyContent: 'space-between',
                     alignItems: 'center',
@@ -24,26 +23,7 @@ const MainPage = memo(() => (
                 },
             })}
         >
-            <Typography
-                sx={theme => ({
-                    [theme.breakpoints.up('xl')]: {
-                        fontSize: 96,
-                    },
-                    [theme.breakpoints.up('lg')]: {
-                        fontSize: 64,
-                    },
-                    [theme.breakpoints.up('sm')]: {
-                        fontSize: 48,
-                    },
-                    [theme.breakpoints.up('xs')]: {
-                        fontSize: 32,
-                    },
-                })}
-                variant="h1"
-            >
-                Витрина проектов
-            </Typography>
-            {/* TODO: получить svg картинку */}
+            <Typography variant="h1">Витрина проектов</Typography>
             <img src={logoSrc} className={styles.logo} alt="Логотип" />
         </Box>
         <Showcase />

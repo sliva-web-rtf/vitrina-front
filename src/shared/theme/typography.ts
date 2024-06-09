@@ -9,6 +9,7 @@ export const typography: TypographyOptions | ((palette: Palette) => TypographyOp
     },
     h2: {
         fontWeight: 800,
+        wordBreak: 'break-word',
         lineHeight: 1,
     },
     h3: {
