@@ -24,22 +24,7 @@ export const Details = memo(() => {
             <Stack className={classNames.col}>
                 <Stack className={classNames.block}>
                     <Stack className={classNames.mainBlock}>
-                        <Typography
-                            variant="h2"
-                            sx={theme => ({
-                                [theme.breakpoints.up('xl')]: {
-                                    fontSize: 64,
-                                },
-                                [theme.breakpoints.up('sm')]: {
-                                    fontSize: 48,
-                                },
-                                [theme.breakpoints.up('xs')]: {
-                                    fontSize: 32,
-                                },
-                            })}
-                        >
-                            {data.name}
-                        </Typography>
+                        <Typography variant="h2">{data.name}</Typography>
                         <Typography>{data.description}</Typography>
                     </Stack>
                 </Stack>
