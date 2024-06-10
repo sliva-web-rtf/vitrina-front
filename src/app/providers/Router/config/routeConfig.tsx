@@ -1,6 +1,7 @@
 import { MainPage } from '@/pages/MainPage';
 import { RouteProps } from 'react-router-dom';
 import { DetailsPage } from '@/pages/DetailsPage';
+import { ProjectCreation } from '@/pages/ProjectCreation';
 
 export type AppRoutesProps = RouteProps;
 
@@ -26,7 +27,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         element: <DetailsPage />,
     },
      [AppRoutes.Creations]: {
-         path: RoutePath.Details,
+         path: RoutePath.Creations,
          element: <ProjectCreation />,
      },
 };
