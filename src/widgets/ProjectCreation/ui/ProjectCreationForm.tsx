@@ -79,13 +79,15 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                 <Stack spacing={2}>
                     <Typography>Команда:</Typography>
                     {userFields.map((field, index) => (
-                        <Box
+                        <Stack
+                          
                             sx={(theme) => ({
                                 borderWidth: '1px',
                                 borderStyle: 'solid',
                                 borderColor: theme.palette.primary.main,
                                 padding: '8px',
                                 borderRadius: '8px',
+                                gap: '4px',
                             })}
                             key={field.id}
                         >
@@ -97,7 +99,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                             <BaseButton color="error" type="button" onClick={() => removeUser(index)}>
                                 Удалить
                             </BaseButton>
-                        </Box>
+                        </Stack>
                     ))}
                     <BaseButton
                         color="success"
