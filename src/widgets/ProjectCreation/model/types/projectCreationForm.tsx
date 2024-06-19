@@ -12,7 +12,7 @@ export const projectCreationFormSchema = z.object({
     users:  z
     .array(
         z.object({
-            email: z.string().email(),
+            email: z.string(),
             firstName: z.string(),
             lastName: z.string(),
             patronymic: z.string(),

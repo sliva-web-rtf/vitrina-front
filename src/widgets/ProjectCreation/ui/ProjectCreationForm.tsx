@@ -52,14 +52,14 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                 <BaseField
                     multiline
                     autoFocus
-                    label="Описание"
+                    label="Описание карточки на главной странице"
                     fullWidth
                     autoComplete="false"
                     {...register('description')}
                 />
                 <BaseField autoFocus label="Цель" fullWidth autoComplete="false" {...register('aim')} />
                 <BaseField autoFocus label="Заказчик" fullWidth autoComplete="false" {...register('client')} />
-                <BaseField autoFocus label="Ссылка на видео" fullWidth autoComplete="false" {...register('videoUrl')} />
+                <BaseField autoFocus label="ID видео" fullWidth autoComplete="false" {...register('videoUrl')} />
                 <FormControl fullWidth>
                     <InputLabel id="semester">Семестр</InputLabel>
                     <Select labelId="semester" id="demo-simple-select" label="Семестр" {...register('semester')}>
