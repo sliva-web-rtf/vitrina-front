@@ -34,7 +34,7 @@ export const Details = memo(() => {
                 </Stack>
                 <Stack className={classNames.block}>
                     <Typography variant="h3">Заказчик</Typography>
-                    <Typography>{data.client || 'Неизвестен'}</Typography>
+                    <Typography>{data.client}</Typography>
                 </Stack>
             </Stack>
             <Stack className={classNames.col}>

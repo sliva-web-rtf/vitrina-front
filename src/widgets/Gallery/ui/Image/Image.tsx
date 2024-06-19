@@ -1,6 +1,6 @@
 import { BaseAvatar } from '@/shared/ui';
 import { memo, useCallback, useState } from 'react';
-import { Box, Modal } from '@mui/material';
+import { Box, Modal, Fade } from '@mui/material';
 import classNames from './Image.module.scss';
 
 interface ImageProps {
@@ -24,15 +24,17 @@ export const Image = memo((props: ImageProps) => {
     return (
         <>
             <BaseAvatar className={className} src={src} alt={alt ?? 'Картинка проекта'} onClick={handleToggleModal} />
-            <Modal open={open} className={classNames.modal} disableAutoFocus>
-                <Box className={classNames.container}>
+            <Modal open={open} onClose={handleToggleModal} className={classNames.modal} disableAutoFocus>
+                <Fade in={open}>
+                    <Box className={classNames.container}>
                     <img
                         className={classNames.image}
                         src={src}
                         alt={alt ?? 'Картинка проекта'}
                         onClick={handleToggleModal}
                     />
-                </Box>
+                    </Box>
+                </Fade>
             </Modal>
         </>
     );
