@@ -2,7 +2,7 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ProjectCreationFormSchema, projectCreationFormSchema } from '../model/types/projectCreationForm';
 import { useCreateProjectMutation } from '../api/projectCreationApi';
-import { Box, FormControl, InputLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
 import { memo, useCallback, useState } from 'react';
 import { TextEditor } from '@/widgets/TextEditor';
 import { BaseButton, BaseField } from '@/shared/ui';
