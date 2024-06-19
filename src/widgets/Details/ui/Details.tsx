@@ -54,12 +54,14 @@ export const Details = memo(() => {
                         allowFullScreen
                     ></iframe>
                 )}
-                <Stack className={classNames.mainBlock}>
-                    <Typography variant="h3">Команда</Typography>                                                                                                                       
-                    {data.users.map((user) => (
-                        <UserCard key={user.lastName + user.firstName} {...user} />
-                    ))}
-                </Stack>
+                {data.users && data.users.length > 0 && (
+                    <Stack className={classNames.mainBlock}>
+                        <Typography variant="h3">Команда</Typography>
+                        {data.users.map((user) => (
+                            <UserCard key={user.lastName + user.firstName} {...user} />
+                        ))}
+                    </Stack>
+                )}
             </Stack>
         </Box>
     );
