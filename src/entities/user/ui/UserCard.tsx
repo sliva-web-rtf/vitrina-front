@@ -9,7 +9,7 @@ export const UserCard = memo((props: User) => {
     return (
         <Stack className={classNames.card}>
             <Stack className={classNames.content}>
-                {roles?.length  && <ChipsList items={roles} />}
+                {roles && roles.length > 0  && <ChipsList items={roles} />}
                 <Stack>
                     <Typography variant="h5">
                         {lastName} {firstName} {patronymic}

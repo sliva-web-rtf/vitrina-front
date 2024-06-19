@@ -25,17 +25,17 @@ export const Details = memo(() => {
                 <Stack className={classNames.block}>
                     <Stack className={classNames.mainBlock}>
                         <Typography variant="h2">{data.name}</Typography>
-                        <Typography>{data.description}</Typography>
+                        {data.customTemplate && <Box className='customTemplate' dangerouslySetInnerHTML={{ __html: data.customTemplate }} />}
                     </Stack>
                 </Stack>
-                <Stack className={classNames.block}>
+                {data.aim && <Stack className={classNames.block}>
                     <Typography variant="h3">Цель проекта</Typography>
                     <Typography>{data.aim}</Typography>
-                </Stack>
-                <Stack className={classNames.block}>
+                </Stack>}
+                {data.client && <Stack className={classNames.block}>
                     <Typography variant="h3">Заказчик</Typography>
                     <Typography>{data.client}</Typography>
-                </Stack>
+                </Stack>}
             </Stack>
             <Stack className={classNames.col}>
                 <Gallery images={data.contents} alt={data.name} />
