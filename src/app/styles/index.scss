@@ -6,3 +6,18 @@
   background-color: var(--bg-color);
   color: var(--font-color);
 }
+
+.customTemplate {
+  p {
+    word-wrap: break-word;
+  }
+
+  ul, ol {
+    padding-left: var(--space-xl);
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+} 

@@ -12,7 +12,7 @@ const AppRouter = () => {
     return (
         <Suspense fallback={<PageLoader />}>
             <Layout>
-                <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>
+                <Routes>{Object.values(routeConfig).filter(route => !route.ignore).map(renderWithWrapper)}</Routes>
             </Layout>
         </Suspense>
     );
