@@ -1,7 +1,7 @@
 .details {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: calc(5 * var(--space-m));
+  gap: var(--space-xl);
 }
 
 .col {
@@ -17,12 +17,19 @@
 }
 
 
+.video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
 @media (min-width: 1024px) {
   .details {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
   }
 
   .col {
-    gap: calc(var(--space-l) * 2);
+    gap:  calc(3 * var(--space-m));
   }
 }
