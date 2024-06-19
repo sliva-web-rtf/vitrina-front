@@ -4,6 +4,8 @@ export interface DetailsDto {
     readonly description: string;
     readonly aim: string;
     readonly client: string;
+    readonly markdown?: string;
+    readonly videoUrl?: string;
     readonly contents: Array<{ imageUrl: string }>;
     readonly tags: Array<{ name: string }>;
     readonly users: Array<{
