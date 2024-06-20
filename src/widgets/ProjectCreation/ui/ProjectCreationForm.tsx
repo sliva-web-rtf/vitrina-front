@@ -1,8 +1,8 @@
-import { useFieldArray, useForm } from 'react-hook-form';
+import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ProjectCreationFormSchema, projectCreationFormSchema } from '../model/types/projectCreationForm';
 import { useCreateProjectMutation } from '../api/projectCreationApi';
-import { FormControl, InputLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Autocomplete, Chip, FormControl, InputLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
 import { memo, useCallback, useState } from 'react';
 import { TextEditor } from '@/widgets/TextEditor';
 import { BaseButton, BaseField } from '@/shared/ui';
@@ -80,7 +80,6 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                     <Typography>Команда:</Typography>
                     {userFields.map((field, index) => (
                         <Stack
-                          
                             sx={(theme) => ({
                                 borderWidth: '1px',
                                 borderStyle: 'solid',
@@ -95,7 +94,27 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                             <BaseField label="Фамилия" {...register(`users.${index}.lastName` as const)} />
                             <BaseField label="Отчество" {...register(`users.${index}.patronymic` as const)} />
                             <BaseField label="Почта" {...register(`users.${index}.email` as const)} />
-                            <BaseField label="Роль" {...register(`users.${index}.role` as const)} />
+                            <Controller
+                                control={control}
+                                name={`users.${index}.roles`}
+                                render={({ field: { onChange, onBlur, value } }) => (
+                                    <Autocomplete
+                                        multiple
+                                        options={[]}
+                                        onChange={(_, targetValue) => onChange(targetValue)}
+                                        onBlur={onBlur}
+                                        value={value}
+                                        freeSolo
+                                        renderTags={(value, getTagProps) =>
+                                            value.map((option, index) => (
+                                                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                                            ))
+                                        }
+                                        renderInput={(params) => <BaseField {...params} label="Роли" />}
+                                    />
+                                )}
+                            />
+
                             <BaseButton color="error" type="button" onClick={() => removeUser(index)}>
                                 Удалить
                             </BaseButton>
@@ -111,7 +130,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                                 firstName: '',
                                 lastName: '',
                                 patronymic: '',
-                                role: '',
+                                roles: [],
                             })
                         }
                     >

@@ -49,7 +49,7 @@ export const Filter = memo(() => {
     return (
         <Stack sx={{ rowGap: 'var(--space-xl)' }}>
             <BaseSearch
-                placeholder="Название или описание проекта"
+                placeholder="Название"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
             />
