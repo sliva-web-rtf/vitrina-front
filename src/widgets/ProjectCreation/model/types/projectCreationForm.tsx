@@ -16,7 +16,7 @@ export const projectCreationFormSchema = z.object({
             firstName: z.string(),
             lastName: z.string(),
             patronymic: z.string(),
-            role: z.string(),
+            roles: z.array(z.string()),
         }),
     ).optional(),
 });
