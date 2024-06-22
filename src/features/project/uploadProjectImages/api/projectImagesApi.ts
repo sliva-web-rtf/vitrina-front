@@ -9,7 +9,14 @@ const projectImagesApi = baseApi.injectEndpoints({
               body: formData,
           }),
       }),
+      uploadPreviewImage: build.mutation<void, { formData: FormData; id: number }>({
+        query: ({ formData, id }) => ({
+            method: 'POST',
+            url: `project/${id}/upload-preview-images`,
+            body: formData,
+        }),
+    }),
   }),
 });
 
-export const { useUploadImagesMutation } = projectImagesApi;
+export const { useUploadImagesMutation, useUploadPreviewImageMutation } = projectImagesApi;
