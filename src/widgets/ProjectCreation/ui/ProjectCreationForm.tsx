@@ -24,6 +24,10 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const form = useForm<ProjectCreationFormSchema>({
         mode: 'onBlur',
         resolver: zodResolver(projectCreationFormSchema),
+        defaultValues: {
+            semester: 0,
+            priority: 0,
+        }
     });
 
     const { register, formState: { errors }, control, handleSubmit } = form;
@@ -72,7 +76,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
 
                 <FormControl fullWidth>
                     <InputLabel id="semester">Семестр</InputLabel>
-                    <Select defaultValue={0} labelId="semester" id="demo-simple-select" label="Семестр" {...register('semester')} error={Boolean(errors.semester)}>
+                    <Select labelId="semester" id="demo-simple-select" label="Семестр" {...register('semester')} error={Boolean(errors.semester)}>
                         <MenuItem value={0}>Отсутствует</MenuItem>
                         <MenuItem value={1}>Весенний</MenuItem>
                         <MenuItem value={2}>Осенний</MenuItem>
