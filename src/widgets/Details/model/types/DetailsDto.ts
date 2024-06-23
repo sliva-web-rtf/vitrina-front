@@ -8,6 +8,7 @@ export interface DetailsDto {
     readonly videoUrl?: string;
     readonly contents: Array<{ imageUrl: string }>;
     readonly tags: Array<{ name: string }>;
+    readonly previewImagePath: string | null;
     readonly users: Array<{
         readonly email: string;
         readonly firstName: string;
