@@ -10,6 +10,7 @@ export interface CreateProjectDto {
   name: string;
   description?: string;
   aim?: string;
+  priority?: number;
   client?: string;
   semester?: number;
   period?: string;

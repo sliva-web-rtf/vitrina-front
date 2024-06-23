@@ -9,6 +9,10 @@ export const mapProjectsDtoToModel = (dto: ProjectsResponse): ProjectsModel => (
             value.imageUrl && value.imageUrl !== ''
                 ? `${import.meta.env.VITE_IMAGES_PATH}${value.imageUrl}`
                 : undefined,
+        previewImagePath:
+                value.previewImagePath && value.previewImagePath !== ''
+                    ? `${import.meta.env.VITE_PREVIEW_IMAGE}${value.previewImagePath}`
+                    : null,
         tags: value.tags.map(tag => capitalizeFirstLetter(tag.name)),
     })),
     metadata: {

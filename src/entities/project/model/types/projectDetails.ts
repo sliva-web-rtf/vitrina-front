@@ -11,4 +11,5 @@ export interface ProjectDetails {
     readonly users: Array<User>;
     readonly customTemplate?: string;
     readonly videoUrl?: string;
+    readonly previewImagePath: string | null;
 }

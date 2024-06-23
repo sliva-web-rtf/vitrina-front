@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react';
 import { ProjectCreationForm } from '@/widgets/ProjectCreation';
 import { ProjectImagesUploader } from '@/features/project/uploadProjectImages';
 import { ProjectDeletion } from '@/features/project/projectDeletion';
+import { ProjectPreviewImageUploader } from '@/features/project/uploadProjectImages/ui/ProjectPreviewImageUploader/ProjectPreviewImageUploader';
 
 const projectCreationApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
@@ -31,7 +32,10 @@ const AdminPage = () => {
             <Typography sx={{ color: 'red' }}>Первый этап:</Typography>
             <ProjectCreationForm onSuccess={onProjectCreationSuccess} />
             <Typography sx={{ color: 'red' }}>Второй этап (загрузка картинок):</Typography>
+            <Typography>Картинки для страницы детальной информации</Typography>
             <ProjectImagesUploader id={id ?? undefined} />
+            <Typography>Preview картинка</Typography>
+            <ProjectPreviewImageUploader id={id ?? undefined} />
             <Typography variant='h3'>Удаление проекта</Typography>
             <ProjectDeletion />
         </Stack>

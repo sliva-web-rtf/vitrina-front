@@ -55,11 +55,13 @@ export const Details = memo(() => {
                     ></iframe>
                 )}
                 {data.users && data.users.length > 0 && (
-                    <Stack className={classNames.mainBlock}>
+                    <Stack spacing={2}>
                         <Typography variant="h3">Команда</Typography>
-                        {data.users.map((user) => (
-                            <UserCard key={user.lastName + user.firstName} {...user} />
-                        ))}
+                        <Stack spacing={4}>
+                            {data.users.map((user) => (
+                                <UserCard key={user.lastName + user.firstName} {...user} />
+                            ))}
+                        </Stack>
                     </Stack>
                 )}
             </Stack>

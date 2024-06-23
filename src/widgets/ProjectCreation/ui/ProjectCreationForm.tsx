@@ -26,7 +26,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
         resolver: zodResolver(projectCreationFormSchema),
     });
 
-    const { register, control, handleSubmit } = form;
+    const { register, formState: { errors }, control, handleSubmit } = form;
 
     const {
         fields: userFields,
@@ -46,9 +46,11 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
+            {}
             <Stack spacing={2}>
                 <TextEditor value={customValue} onChange={onCustomValueChange} />
-                <BaseField autoFocus label="Название" fullWidth autoComplete="false" {...register('name')} />
+                <BaseField autoFocus label="Название" fullWidth autoComplete="false" {...register('name')} error={Boolean(errors.name)}
+                helperText={errors.name?.message} />
                 <BaseField
                     multiline
                     autoFocus
@@ -60,9 +62,17 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                 <BaseField autoFocus label="Цель" fullWidth autoComplete="false" {...register('aim')} />
                 <BaseField autoFocus label="Заказчик" fullWidth autoComplete="false" {...register('client')} />
                 <BaseField autoFocus label="ID видео" fullWidth autoComplete="false" {...register('videoUrl')} />
+                <BaseField
+                placeholder="Приоритетность"
+                type="number"
+                {...register('priority', {valueAsNumber: true })} 
+                error={Boolean(errors.priority)}
+                helperText={errors.priority?.message}
+            />
+
                 <FormControl fullWidth>
                     <InputLabel id="semester">Семестр</InputLabel>
-                    <Select labelId="semester" id="demo-simple-select" label="Семестр" {...register('semester')}>
+                    <Select defaultValue={0} labelId="semester" id="demo-simple-select" label="Семестр" {...register('semester')} error={Boolean(errors.semester)}>
                         <MenuItem value={0}>Отсутствует</MenuItem>
                         <MenuItem value={1}>Весенний</MenuItem>
                         <MenuItem value={2}>Осенний</MenuItem>

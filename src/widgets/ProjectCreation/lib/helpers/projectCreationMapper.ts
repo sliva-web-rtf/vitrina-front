@@ -11,6 +11,7 @@ export const projectCreationToDto = (model: ProjectCreationFormSchema): CreatePr
         period: model.period,
         markdown: model.customTemplate,
         videoUrl: model.videoUrl,
+        priority: model.priority,
         users:
             model.users?.map((user) => ({
                 email: user.email,

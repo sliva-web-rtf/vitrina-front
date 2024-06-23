@@ -8,10 +8,6 @@
   gap: var(--space-l);
 }
 
-.mainBlock {
-  gap: var(--space-l)
-}
-
 .block {
   gap: var(--space-m)
 }
@@ -21,6 +17,7 @@
   width: 100%;
   height: auto;
   aspect-ratio: 16/9;
+  border-radius: var(--border-radius);
 }
 
 @media (min-width: 1024px) {

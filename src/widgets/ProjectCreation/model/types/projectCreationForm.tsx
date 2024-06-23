@@ -9,6 +9,7 @@ export const projectCreationFormSchema = z.object({
     period: z.string().optional(),
     customTemplate: z.string().optional(),
     videoUrl: z.string().optional(),
+    priority: z.number().optional(),
     users:  z
     .array(
         z.object({
