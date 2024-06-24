@@ -1,9 +1,9 @@
+import { ProjectDetails } from '@/entities/project';
 import { z } from 'zod';
 
 export const projectCreationFormSchema = z.object({
     name: z.string(),
     description: z.string().optional(),
-    aim: z.string().optional(),
     client: z.string().optional(),
     semester: z.number().optional(),
     period: z.string().optional(),
@@ -19,7 +19,12 @@ export const projectCreationFormSchema = z.object({
             patronymic: z.string(),
             roles: z.array(z.string()),
         }),
-    ).optional(),
+    ),
 });
 
 export type ProjectCreationFormSchema = z.infer<typeof projectCreationFormSchema>;
+
+// TODO: вынести в отдельный файл
+export type ProjectEditFormSchema = ProjectCreationFormSchema & {
+    id: ProjectDetails['id'],
+}

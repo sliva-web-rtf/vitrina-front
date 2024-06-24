@@ -12,4 +12,7 @@ export interface ProjectDetails {
     readonly customTemplate?: string;
     readonly videoUrl?: string;
     readonly previewImagePath: string | null;
+    readonly priority?: number;
+    readonly semester?:
+    readonly period?:
 }

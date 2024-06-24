@@ -1,6 +1,8 @@
 import { baseApi } from '@/shared/api';
-import { ProjectCreationFormSchema } from '../model/types/projectCreationForm';
+import { ProjectCreationFormSchema, ProjectEditFormSchema } from '../model/types/projectCreationForm';
 import { projectCreationToDto } from '../lib/helpers/projectCreationMapper';
+import { projectEditToDto } from '../lib/helpers/projectEditMapper';
+
 
 const projectCreationApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -13,7 +15,16 @@ const projectCreationApi = baseApi.injectEndpoints({
               },
           }),
       }),
+      updateProject: build.mutation<void, ProjectEditFormSchema>({
+        query: (project) => ({
+            method: 'PUT',
+            url: `project/${project.id}`,
+            body: {
+              ...projectEditToDto(project)
+            },
+        }),
+    }),
   }),
 });
 
-export const { useCreateProjectMutation } = projectCreationApi;
+export const { useCreateProjectMutation, useUpdateProjectMutation } = projectCreationApi;

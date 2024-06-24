@@ -5,7 +5,6 @@ export const projectCreationToDto = (model: ProjectCreationFormSchema): CreatePr
     return {
         name: model.name,
         description: model.description ?? '',
-        aim: model.aim,
         client: model.client,
         semester: model.semester,
         period: model.period,

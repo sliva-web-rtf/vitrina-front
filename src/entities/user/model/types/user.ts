@@ -4,5 +4,4 @@ export interface User {
     readonly lastName: string;
     readonly patronymic: string;
     readonly roles: Array<string>;
-    readonly avatar: string;
 }

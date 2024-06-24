@@ -10,7 +10,6 @@ interface ProjectCardProps {
 
 export const ProjectCard = (props: ProjectCardProps) => {
     const { project } = props;
-    console.log(project.previewImagePath, project.id)
     return (
         <Link className="link-block" to={`/${project.id}`}>
             <Stack className={classNames.projectCard}>

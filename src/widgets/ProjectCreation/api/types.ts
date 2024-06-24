@@ -18,3 +18,7 @@ export interface CreateProjectDto {
   videoUrl?: string;
   users?: UserCreationDto[];
 }
+
+export interface EditProjectDto extends CreateProjectDto {
+  id: number,
+}
