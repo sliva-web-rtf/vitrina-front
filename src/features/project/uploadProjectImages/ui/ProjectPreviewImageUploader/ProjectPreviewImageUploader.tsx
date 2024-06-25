@@ -28,7 +28,7 @@ export const ProjectPreviewImageUploader = memo((props: ProjectPreviewImageUploa
                 placeholder="Id проекта"
                 type="number"
                 value={projectId}
-                onChange={(event) => setID(Number(event.target.value))}
+                onChange={event => setID(Number(event.target.value))}
             />
             <input type="file" ref={inputRef} accept="image/png, image/jpeg" />
             <BaseButton
@@ -38,7 +38,7 @@ export const ProjectPreviewImageUploader = memo((props: ProjectPreviewImageUploa
                         if (files) {
                             const formData = new FormData();
                             const filesConverted: File[] = Array.from(files);
-                            filesConverted.forEach((file) => {
+                            filesConverted.forEach(file => {
                                 formData.append('file', file);
                             });
                             await uploadAvatars({ formData, id: projectId });

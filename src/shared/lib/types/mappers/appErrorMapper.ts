@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 
 import { type FetchQueryApiError } from '@/shared/api';
 import { AppError } from '../appError';

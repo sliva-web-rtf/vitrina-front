@@ -9,6 +9,7 @@ export interface DetailsDto {
     readonly contents: Array<{ imageUrl: string }>;
     readonly tags: Array<{ name: string }>;
     readonly previewImagePath: string | null;
+    readonly priority?: number;
     readonly users: Array<{
         readonly email: string;
         readonly firstName: string;

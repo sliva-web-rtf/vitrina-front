@@ -12,4 +12,8 @@ export interface ProjectDetails {
     readonly customTemplate?: string;
     readonly videoUrl?: string;
     readonly previewImagePath: string | null;
+    readonly priority?: number;
+    // TODO: переделать в читаемую модель.
+    readonly semester?: number;
+    readonly period?: string;
 }

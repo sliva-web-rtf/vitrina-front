@@ -28,9 +28,9 @@ export const ProjectImagesUploader = memo((props: ProjectImagesUploaderProps) =>
                 placeholder="Id проекта"
                 type="number"
                 value={projectId}
-                onChange={(event) => setID(Number(event.target.value))}
+                onChange={event => setID(Number(event.target.value))}
             />
-            <input type="file" ref={inputRef} multiple accept="image/png, image/jpeg" />
+            <input type="file" ref={inputRef} multiple accept="image/png, image/jpeg, image/jpeg+-" />
             <BaseButton
                 onClick={async () => {
                     if (inputRef != null) {
@@ -38,7 +38,7 @@ export const ProjectImagesUploader = memo((props: ProjectImagesUploaderProps) =>
                         if (files) {
                             const formData = new FormData();
                             const filesConverted: File[] = Array.from(files);
-                            filesConverted.forEach((file) => {
+                            filesConverted.forEach(file => {
                                 formData.append('files', file);
                             });
                             await uploadAvatars({ formData, id: projectId });
