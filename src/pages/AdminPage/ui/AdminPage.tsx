@@ -17,7 +17,7 @@ const AdminPage = () => {
     const onProjectCreationSuccess = useCallback(
         (id: number, project: ProjectCreationFormSchema) => {
             setID(id);
-            // TODO: Попросить бек возращать ProjectDetails с запроса на создание и редактирование.
+            // TODO: Пересмотреть всю эту логику работы. 
             dispatch(
                 detailsActions.changeEditableProject({
                     id,
