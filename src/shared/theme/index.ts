@@ -31,28 +31,35 @@ export const theme = createTheme({
 theme.typography.h1 = {
     ...theme.typography.h1,
     [theme.breakpoints.up('xs')]: {
-        fontSize: 32,
+        fontSize: '2rem',
     },
     [theme.breakpoints.up('sm')]: {
-        fontSize: 48,
+        fontSize: '3rem',
     },
     [theme.breakpoints.up('lg')]: {
-        fontSize: 64,
+        fontSize: '4rem',
     },
     [theme.breakpoints.up('xl')]: {
-        fontSize: 96,
+        fontSize: '5rem',
     },
 };
 
 theme.typography.h2 = {
     ...theme.typography.h2,
     [theme.breakpoints.up('xs')]: {
-        fontSize: 32,
+        fontSize: '2rem',
     },
     [theme.breakpoints.up('sm')]: {
-        fontSize: 40,
+        fontSize: '2.5rem',
     },
     [theme.breakpoints.up('xl')]: {
-        fontSize: 52,
+        fontSize: '3rem',
+    },
+};
+
+theme.typography.h4 = {
+    ...theme.typography.h4,
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1rem',
     },
 };
