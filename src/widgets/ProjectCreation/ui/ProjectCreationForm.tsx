@@ -16,6 +16,7 @@ interface ProjectCreationFormProps {
 // TODO: отрефакторить логику, добавить нормальное тексты ошибок, catch и обработку ошибок с сервера. Подумать над naming'ом
 export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const { onSuccess, project } = props;
+    console.log(project)
     const [createProject, { isLoading: isCreationProjectLoading, error: projectCreationErrors }] =
         useCreateProjectMutation();
     const [editProject, { isLoading: isEditProjectLoading, error: projectEditErrors }] = useUpdateProjectMutation();
