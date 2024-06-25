@@ -14,9 +14,8 @@ export const projectCreationFormSchema = z.object({
     .array(
         z.object({
             email: z.string(),
-            firstName: z.string(),
-            lastName: z.string(),
-            patronymic: z.string(),
+            // TODO: вернуть 3 поля, вместо одного (firstname, lastname, middlename)
+            fullname: z.string(),
             roles: z.array(z.string()),
         }),
     ),

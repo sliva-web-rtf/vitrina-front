@@ -14,9 +14,9 @@ export const projectCreationToDto = (model: ProjectCreationFormSchema): CreatePr
         users:
             model.users?.map(user => ({
                 email: user.email,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                patronymic: user.patronymic,
+                firstName: user.fullname.split(' ').at(1) ?? '',
+                lastName: user.fullname.split(' ').at(0) ?? '',
+                patronymic: user.fullname.split(' ').at(2) ?? '',
                 roles: user.roles
                     ? user.roles.map(role => ({
                           name: role,

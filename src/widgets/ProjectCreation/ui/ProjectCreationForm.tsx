@@ -2,7 +2,7 @@ import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ProjectCreationFormSchema, projectCreationFormSchema } from '../model/types/projectCreationForm';
 import { useCreateProjectMutation, useUpdateProjectMutation } from '../api/projectCreationApi';
-import { Autocomplete, Box, Chip, FormControl, InputLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Autocomplete, Chip, FormControl, InputLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
 import { memo, useCallback, useState } from 'react';
 import { TextEditor } from '@/widgets/TextEditor';
 import { BaseButton, BaseField } from '@/shared/ui';
@@ -34,7 +34,10 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
             name: project?.name,
             client: project?.client,
             description: project?.description,
-            users: project?.users,
+            users: project?.users.map(user => ({
+                ...user,
+                fullname: `${user.lastName} ${user.firstName} ${user.patronymic}`,
+            })),
             videoUrl: project?.videoUrl,
             semester: project?.semester,
             period: project?.period,
@@ -74,7 +77,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     };
 
     return (
-        <Box>
+        <Stack spacing={2}>
             <form>
                 <Stack spacing={2}>
                     <TextEditor value={customValue} onChange={onCustomValueChange} />
@@ -141,9 +144,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                                 })}
                                 key={field.id}
                             >
-                                <BaseField label="Имя" {...register(`users.${index}.firstName` as const)} />
-                                <BaseField label="Фамилия" {...register(`users.${index}.lastName` as const)} />
-                                <BaseField label="Отчество" {...register(`users.${index}.patronymic` as const)} />
+                                <BaseField label="ФИО" {...register(`users.${index}.fullname` as const)} />
                                 <BaseField label="Почта" {...register(`users.${index}.email` as const)} />
                                 <Controller
                                     control={control}
@@ -183,9 +184,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                             onClick={() =>
                                 appendUser({
                                     email: '',
-                                    firstName: '',
-                                    lastName: '',
-                                    patronymic: '',
+                                    fullname: '',
                                     roles: [],
                                 })
                             }
@@ -195,17 +194,19 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                     </Stack>
                 </Stack>
             </form>
-            {isCreationProjectLoading && <Typography>Loading...</Typography>}
+            <Stack direction="row" justifyContent="center" spacing={2}>
+                <BaseButton onClick={handleSubmit(onCreationSubmit)} variant="contained">
+                    Создать проект
+                </BaseButton>
+                <BaseButton disabled={project === undefined} onClick={handleSubmit(onUpdateSubmit)} variant="contained">
+                    Редактировать проект
+                </BaseButton>
+            </Stack>
             {/* TODO: подумать над семантическим решением и убрать костыли с loading стейтом */}
-            <BaseButton onClick={handleSubmit(onCreationSubmit)} variant="contained">
-                Создать проект
-            </BaseButton>
-            {projectCreationErrors && <Typography>Что-то пошло не так</Typography>}
-            {isEditProjectLoading && <Typography>Loading...</Typography>}
-            <BaseButton disabled={project === undefined} onClick={handleSubmit(onUpdateSubmit)} variant="contained">
-                Редактировать проект
-            </BaseButton>
-            {projectEditErrors && <Typography>Что-то пошло не так</Typography>}
-        </Box>
+            {isCreationProjectLoading && <Typography>Проект создается...</Typography>}
+            {projectCreationErrors && <Typography>При создании проекта что-то пошло не так</Typography>}
+            {isEditProjectLoading && <Typography>Редактируем проект...</Typography>}
+            {projectEditErrors && <Typography>При редактировании проекта что-то пошло не так</Typography>}
+        </Stack>
     );
 });
