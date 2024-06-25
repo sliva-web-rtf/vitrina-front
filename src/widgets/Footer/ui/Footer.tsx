@@ -51,7 +51,7 @@ export const Footer = memo(() => (
             >
                 <Stack spacing={1}>
                     <Typography sx={{ color: 'var(--dim-font-color)' }}>Контакты</Typography>
-                    <a href="mailto:m.a.shesterov@urfu.ru">Написать нам</a>
+                    <a href="mailto:project.irit@urfu.ru м">Написать нам</a>
                     <Typography>Екатеринбург, ул. Мира 32</Typography>
                 </Stack>
                 <Stack spacing={1}>
