@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+ 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { StateSchema } from './StateSchema';
 import { baseApi } from '@/shared/api';

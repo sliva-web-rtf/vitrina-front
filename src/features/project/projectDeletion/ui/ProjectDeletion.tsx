@@ -17,7 +17,7 @@ export const ProjectDeletion = memo(() => {
                     placeholder="Id проекта"
                     type="number"
                     value={projectId}
-                    onChange={(event) => setID(Number(event.target.value))}
+                    onChange={event => setID(Number(event.target.value))}
                 />
             <BaseButton
                 color="error"

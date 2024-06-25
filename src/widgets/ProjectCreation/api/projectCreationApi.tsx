@@ -5,9 +5,9 @@ import { projectEditToDto } from '../lib/helpers/projectEditMapper';
 
 
 const projectCreationApi = baseApi.injectEndpoints({
-  endpoints: (build) => ({
+  endpoints: build => ({
       createProject: build.mutation<string, ProjectCreationFormSchema>({
-          query: (project) => ({
+          query: project => ({
               method: 'POST',
               url: 'project/create',
               body: {
@@ -16,7 +16,7 @@ const projectCreationApi = baseApi.injectEndpoints({
           }),
       }),
       updateProject: build.mutation<void, ProjectEditFormSchema>({
-        query: (project) => ({
+        query: project => ({
             method: 'PUT',
             url: `project/${project.id}`,
             body: {

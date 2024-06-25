@@ -1,7 +1,7 @@
 import { baseApi } from '@/shared/api';
 
 const projectImagesApi = baseApi.injectEndpoints({
-  endpoints: (build) => ({
+  endpoints: build => ({
       uploadImages: build.mutation<void, { formData: FormData; id: number }>({
           query: ({ formData, id }) => ({
               method: 'POST',

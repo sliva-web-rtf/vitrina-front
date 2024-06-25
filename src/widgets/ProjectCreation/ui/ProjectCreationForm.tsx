@@ -16,9 +16,9 @@ interface ProjectCreationFormProps {
 // TODO: отрефакторить логику, добавить нормальное тексты ошибок, catch и обработку ошибок с сервера. Подумать над naming'ом
 export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const { onSuccess, project } = props;
-    const [createProject, { isLoading: isCreationProjectLoading, error: projectCreationErrors }] = useCreateProjectMutation();
+    const [createProject, { isLoading: isCreationProjectLoading, error: projectCreationErrors }] =
+        useCreateProjectMutation();
     const [editProject, { isLoading: isEditProjectLoading, error: projectEditErrors }] = useUpdateProjectMutation();
-    
 
     const [customValue, setCustomValue] = useState(project?.customTemplate ?? '');
 
@@ -36,7 +36,8 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
             description: project?.description,
             users: project?.users,
             videoUrl: project?.videoUrl,
-            semester: project?.se
+            semester: project?.semester,
+            period: project?.period,
         },
     });
 
@@ -59,7 +60,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const onCreationSubmit = async (data: ProjectCreationFormSchema) => {
         const response = await createProject({ ...data, customTemplate: customValue });
         if ('data' in response) {
-            onSuccess?.(Number(response.data), {...data, customTemplate: customValue });
+            onSuccess?.(Number(response.data), { ...data, customTemplate: customValue });
         }
     };
 
@@ -67,7 +68,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
         if (project?.id) {
             const response = await editProject({ ...data, customTemplate: customValue, id: project.id });
             if ('data' in response) {
-                onSuccess?.(project.id, { ...data, customTemplate: customValue});
+                onSuccess?.(project.id, { ...data, customTemplate: customValue });
             }
         }
     };
@@ -130,7 +131,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                         <Typography>Команда:</Typography>
                         {userFields.map((field, index) => (
                             <Stack
-                                sx={(theme) => ({
+                                sx={theme => ({
                                     borderWidth: '1px',
                                     borderStyle: 'solid',
                                     borderColor: theme.palette.primary.main,
@@ -161,10 +162,11 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                                                         variant="outlined"
                                                         label={option}
                                                         {...getTagProps({ index })}
+                                                        key={option}
                                                     />
                                                 ))
                                             }
-                                            renderInput={(params) => <BaseField {...params} label="Роли" />}
+                                            renderInput={params => <BaseField {...params} label="Роли" />}
                                         />
                                     )}
                                 />

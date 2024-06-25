@@ -13,6 +13,7 @@ export interface ProjectDetails {
     readonly videoUrl?: string;
     readonly previewImagePath: string | null;
     readonly priority?: number;
-    readonly semester?:
-    readonly period?:
+    // TODO: переделать в читаемую модель.
+    readonly semester?: number;
+    readonly period?: string;
 }

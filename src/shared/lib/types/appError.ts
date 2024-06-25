@@ -1,4 +1,4 @@
-/* eslint-disable no-use-before-define */
+ 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export type EntityValidationErrors<T extends Record<string, any>> = {

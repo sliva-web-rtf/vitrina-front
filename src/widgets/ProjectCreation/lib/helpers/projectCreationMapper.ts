@@ -12,13 +12,13 @@ export const projectCreationToDto = (model: ProjectCreationFormSchema): CreatePr
         videoUrl: model.videoUrl,
         priority: model.priority,
         users:
-            model.users?.map((user) => ({
+            model.users?.map(user => ({
                 email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName,
                 patronymic: user.patronymic,
                 roles: user.roles
-                    ? user.roles.map((role) => ({
+                    ? user.roles.map(role => ({
                           name: role,
                       }))
                     : [],

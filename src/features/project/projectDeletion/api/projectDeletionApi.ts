@@ -1,9 +1,9 @@
 import { baseApi } from '@/shared/api';
 
 const projectDeletionApi = baseApi.injectEndpoints({
-  endpoints: (build) => ({
+  endpoints: build => ({
       deleteProject: build.mutation<void, number>({
-          query: (id) => ({
+          query: id => ({
               method: 'DELETE',
               url: `project/${id}`,
           }),

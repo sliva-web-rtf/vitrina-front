@@ -1,5 +1,5 @@
 import classNames from './Details.module.scss';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { useGetDetailsQuery } from '../api/detailsApi';
 import { UserCard } from '@/entities/user';
@@ -73,7 +73,7 @@ export const Details = memo(() => {
                     <Stack spacing={2}>
                         <Typography variant="h3">Команда</Typography>
                         <Stack spacing={4}>
-                            {data.users.map((user) => (
+                            {data.users.map(user => (
                                 <UserCard key={user.lastName + user.firstName} {...user} />
                             ))}
                         </Stack>
