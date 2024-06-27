@@ -23,9 +23,11 @@ const MainPage = memo(() => (
                 },
             })}
         >
-            <Stack spacing={3}>
-                <Typography variant="h1">Витрина проектов РТФ</Typography>
-                <Typography sx={{fontStyle: 'italic'}} variant="h4">Проекты, а не просто подделки</Typography>
+            <Stack spacing={2}>
+                <Typography variant="h2">Витрина проектов ИРИТ-РТФ</Typography>
+                <Typography sx={{ fontStyle: 'italic' }} variant="h4">
+                    Проекты, а не просто подделки
+                </Typography>
             </Stack>
             <img src={logoSrc} className={styles.logo} alt="Логотип" />
         </Box>
