@@ -1,3 +1,4 @@
+import { Semester } from '@/entities/semester';
 import { User } from '@/entities/user';
 
 export interface ProjectDetails {
@@ -13,7 +14,6 @@ export interface ProjectDetails {
     readonly videoUrl?: string;
     readonly previewImagePath: string | null;
     readonly priority?: number;
-    // TODO: переделать в читаемую модель.
-    readonly semester?: number;
+    readonly semester?: Semester;
     readonly period?: string;
 }

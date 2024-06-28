@@ -3,7 +3,6 @@ import { ProjectCreationFormSchema, ProjectEditFormSchema } from '../model/types
 import { projectCreationToDto } from '../lib/helpers/projectCreationMapper';
 import { projectEditToDto } from '../lib/helpers/projectEditMapper';
 
-
 const projectCreationApi = baseApi.injectEndpoints({
   endpoints: build => ({
       createProject: build.mutation<string, ProjectCreationFormSchema>({

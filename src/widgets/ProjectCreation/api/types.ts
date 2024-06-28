@@ -1,4 +1,7 @@
+import { Semester } from '@/entities/semester';
+
 interface UserCreationDto {
+  id: number;
   email: string;
   firstName: string;
   lastName: string;
@@ -12,7 +15,7 @@ export interface CreateProjectDto {
   aim?: string;
   priority?: number;
   client?: string;
-  semester?: number;
+  semester?: Semester;
   period?: string;
   markdown?: string;
   videoUrl?: string;

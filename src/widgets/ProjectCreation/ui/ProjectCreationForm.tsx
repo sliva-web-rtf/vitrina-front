@@ -7,6 +7,7 @@ import { memo, useCallback, useState } from 'react';
 import { TextEditor } from '@/widgets/TextEditor';
 import { BaseButton, BaseField } from '@/shared/ui';
 import { ProjectDetails } from '@/entities/project';
+import { Semester } from '@/entities/semester';
 
 interface ProjectCreationFormProps {
     onSuccess?: (id: ProjectDetails['id'], project: ProjectCreationFormSchema) => void;
@@ -16,7 +17,6 @@ interface ProjectCreationFormProps {
 // TODO: отрефакторить логику, добавить нормальное тексты ошибок, catch и обработку ошибок с сервера. Подумать над naming'ом
 export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const { onSuccess, project } = props;
-    console.log(project)
     const [createProject, { isLoading: isCreationProjectLoading, error: projectCreationErrors }] =
         useCreateProjectMutation();
     const [editProject, { isLoading: isEditProjectLoading, error: projectEditErrors }] = useUpdateProjectMutation();
@@ -111,17 +111,26 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
 
                     <FormControl fullWidth>
                         <InputLabel id="semester">Семестр</InputLabel>
-                        <Select
-                            labelId="semester"
-                            id="demo-simple-select"
-                            label="Семестр"
-                            {...register('semester')}
-                            error={Boolean(errors.semester)}
-                        >
-                            <MenuItem value={0}>Отсутствует</MenuItem>
-                            <MenuItem value={1}>Весенний</MenuItem>
-                            <MenuItem value={2}>Осенний</MenuItem>
-                        </Select>
+                        <Controller
+                            control={control}
+                            name={'semester'}
+                            render={({ field: { onChange, onBlur, value } }) => (
+                                <Select
+                                    onChange={onChange}
+                                    onBlur={onBlur}
+                                    value={value}
+                                    labelId="semester"
+                                    id="demo-simple-select"
+                                    label="Семестр"
+                                    error={Boolean(errors.semester)}
+                                >
+                                    {/* TODO: вынести все значения title в отдельную общую переменную в semester entity */}
+                                    <MenuItem value={Semester.None}>Отсутствует</MenuItem>
+                                    <MenuItem value={Semester.Spring}>Весенний</MenuItem>
+                                    <MenuItem value={Semester.Autumn}>Осенний</MenuItem>
+                                </Select>
+                            )}
+                        />
                     </FormControl>
                     <BaseField
                         autoFocus
@@ -184,6 +193,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                             type="button"
                             onClick={() =>
                                 appendUser({
+                                    id: 0,
                                     email: '',
                                     fullname: '',
                                     roles: [],
