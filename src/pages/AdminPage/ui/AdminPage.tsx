@@ -1,40 +1,33 @@
 import { Stack, Typography } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
-import { ProjectCreationForm, ProjectCreationFormSchema } from '@/widgets/ProjectCreation';
+import { ProjectCreationForm } from '@/widgets/ProjectCreation';
 import { ProjectImagesUploader } from '@/features/project/uploadProjectImages';
 import { ProjectDeletion } from '@/features/project/projectDeletion';
 import { ProjectPreviewImageUploader } from '@/features/project/uploadProjectImages/ui/ProjectPreviewImageUploader/ProjectPreviewImageUploader';
 import { useSelector } from 'react-redux';
 import { detailsActions, getEditableProject } from '@/entities/project';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
+import { useLazyGetDetailsQuery } from '@/widgets/Details';
 
 const AdminPage = () => {
     const dispatch = useAppDispatch();
     const editableProject = useSelector(getEditableProject);
+    const [getDetails] = useLazyGetDetailsQuery()
 
     const [id, setID] = useState<number | null>(null);
 
     const onProjectCreationSuccess = useCallback(
-        (id: number, project: ProjectCreationFormSchema) => {
+        async (id: number) => {
             setID(id);
-            // TODO: Пересмотреть всю эту логику работы. 
-            dispatch(
-                detailsActions.changeEditableProject({
-                    id,
-                    ...project,
-                    users: project.users.map(user => ({
-                        ...user,
-                        firstName: user.fullname.split(' ').at(1) ?? '',
-                        lastName:  user.fullname.split(' ').at(0) ?? '',
-                        patronymic:  user.fullname.split(' ').at(2) ?? '',
-                    })),
-                    contents: [],
-                    tags: [],
-                    previewImagePath: null,
-                }),
-            );
+            // TODO: Пересмотреть всю эту логику работы. Нужно после создания давать перенаправлять на детали.
+            const response = await getDetails(id);
+            if ('data' in response) {
+                dispatch(
+                    detailsActions.changeEditableProject(response.data),
+                );
+            }
         },
-        [dispatch],
+        [dispatch, getDetails],
     );
 
     useEffect(() => {
