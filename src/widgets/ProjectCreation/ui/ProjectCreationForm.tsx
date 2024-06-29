@@ -13,7 +13,7 @@ interface ProjectCreationFormProps {
     onSuccess?: (id: ProjectDetails['id'], project: ProjectCreationFormSchema) => void;
     project?: ProjectDetails;
 }
-
+// eslint-disable-next-line max-len
 // TODO: отрефакторить логику, добавить нормальное тексты ошибок, catch и обработку ошибок с сервера. Подумать над naming'ом
 export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const { onSuccess, project } = props;
@@ -124,6 +124,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                                     label="Семестр"
                                     error={Boolean(errors.semester)}
                                 >
+                                    {/* eslint-disable-next-line max-len */}
                                     {/* TODO: вынести все значения title в отдельную общую переменную в semester entity */}
                                     <MenuItem value={Semester.None}>Отсутствует</MenuItem>
                                     <MenuItem value={Semester.Spring}>Весенний</MenuItem>
