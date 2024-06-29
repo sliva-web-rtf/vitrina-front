@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Stack, Typography } from '@mui/material';
 
 interface EmptyOverlayProps {
