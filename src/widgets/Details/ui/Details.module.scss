@@ -1,5 +1,5 @@
 .details {
-  display: grid;
+  display: grid !important;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--space-xl);
 }
@@ -27,6 +27,6 @@
   }
 
   .col {
-    gap:  calc(3 * var(--space-m));
+    gap: calc(3 * var(--space-m));
   }
 }

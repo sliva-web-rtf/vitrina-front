@@ -41,7 +41,7 @@ export const BaseSelect = memo((props: BaseSelectProps) => {
             <option value="" disabled>
                 {label}
             </option>
-            {options?.map(option => (
+            {options?.map((option) => (
                 <option key={option.value} value={option.value}>
                     {option.label}
                 </option>
@@ -49,3 +49,5 @@ export const BaseSelect = memo((props: BaseSelectProps) => {
         </BaseField>
     );
 });
+
+BaseSelect.displayName = 'BaseSelect';

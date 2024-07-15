@@ -1,3 +1,3 @@
-import { lazy } from 'react';
+import dynamic from 'next/dynamic';
 
-export const MainPageAsync = lazy(() => import('./MainPage.tsx'));
+export const MainPageAsync = dynamic(() => import('./MainPage'));

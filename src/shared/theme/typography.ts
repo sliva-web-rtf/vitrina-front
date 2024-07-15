@@ -1,8 +1,15 @@
 import { Palette } from '@mui/material';
 import { TypographyOptions } from '@mui/material/styles/createTypography';
+import { Manrope } from 'next/font/google';
+
+const manrope = Manrope({
+    weight: ['400', '500', '700', '800'],
+    subsets: ['latin', 'cyrillic'],
+    display: 'swap',
+});
 
 export const typography: TypographyOptions | ((palette: Palette) => TypographyOptions) | undefined = {
-    fontFamily: ['Manrope', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
+    fontFamily: manrope.style.fontFamily,
     h1: {
         fontWeight: 800,
         lineHeight: 0.9,

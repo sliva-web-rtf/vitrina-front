@@ -1,3 +1,5 @@
+'use client';
+
 import { memo, useState } from 'react';
 import { Avatar, Stack } from '@mui/material';
 import classNames from './Gallery.module.scss';
@@ -15,17 +17,17 @@ export const Gallery = memo((props: GalleryProps) => {
 
     const handleThumbnailClick = (clickedImage: string) => {
         setMainImage(clickedImage);
-        setThumbnails(prevThumbnails => {
-            const newThumbnails = prevThumbnails.filter(image => image !== clickedImage);
+        setThumbnails((prevThumbnails) => {
+            const newThumbnails = prevThumbnails.filter((image) => image !== clickedImage);
             return [mainImage, ...newThumbnails];
         });
     };
 
     return (
         <Stack className={classNames.gallery}>
-            <Image src={mainImage} className={`${classNames.mainImage} ${mainImage ? '' : classNames.empty}`} />
+            <Image src={mainImage} className={`${classNames.mainImage} ${mainImage ? '' : classNames.empty}`} alt="" />
             <Stack className={classNames.thumbnails}>
-                {thumbnails.map(image => (
+                {thumbnails.map((image) => (
                     <Avatar
                         key={image}
                         src={image}
@@ -38,3 +40,5 @@ export const Gallery = memo((props: GalleryProps) => {
         </Stack>
     );
 });
+
+Gallery.displayName = 'Gallery';

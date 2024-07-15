@@ -1,7 +1,9 @@
+'use client';
+
 import { createTheme } from '@mui/material';
 import { typography } from './typography';
 import { blue, blueGrey, green, grey, red } from '@mui/material/colors';
-import { components } from './components.ts';
+import { components } from './components';
 
 export const theme = createTheme({
     typography,

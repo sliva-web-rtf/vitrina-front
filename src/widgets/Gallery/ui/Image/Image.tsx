@@ -1,6 +1,9 @@
+'use client';
+
 import { BaseAvatar } from '@/shared/ui';
 import { memo, useCallback, useState } from 'react';
-import { Box, Modal, Fade } from '@mui/material';
+import { Box, Fade, Modal } from '@mui/material';
+import ImageNext from 'next/image';
 import classNames from './Image.module.scss';
 
 interface ImageProps {
@@ -13,7 +16,7 @@ export const Image = memo((props: ImageProps) => {
     const [open, setOpen] = useState(false);
     const { src, alt, className } = props;
 
-    const handleToggleModal = useCallback(() => setOpen(prev => !prev), []);
+    const handleToggleModal = useCallback(() => setOpen((prev) => !prev), []);
 
     if (!src) {
         return (
@@ -27,15 +30,17 @@ export const Image = memo((props: ImageProps) => {
             <Modal open={open} onClose={handleToggleModal} className={classNames.modal} disableAutoFocus>
                 <Fade in={open}>
                     <Box className={classNames.container}>
-                    <img
-                        className={classNames.image}
-                        src={src}
-                        alt={alt ?? 'Картинка проекта'}
-                        onClick={handleToggleModal}
-                    />
+                        <ImageNext
+                            className={classNames.image}
+                            src={src}
+                            alt={alt ?? 'Картинка проекта'}
+                            onClick={handleToggleModal}
+                        />
                     </Box>
                 </Fade>
             </Modal>
         </>
     );
 });
+
+Image.displayName = 'Image';

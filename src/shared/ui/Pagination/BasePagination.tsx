@@ -1,15 +1,18 @@
+'use client';
+
 import { Pagination, PaginationItem, PaginationProps, Stack, styled, useMediaQuery } from '@mui/material';
 
 const StyledPagination = styled((props: PaginationProps) => {
     const matches = useMediaQuery('(min-width:480px)');
-    return <Pagination
-        shape="rounded"
-        renderItem={item => <PaginationItem {...item} />}
-        siblingCount={matches ? 3 : 0}
-        {...props}
-    />
-}
-)(({ theme }) => ({
+    return (
+        <Pagination
+            shape="rounded"
+            renderItem={(item) => <PaginationItem {...item} />}
+            siblingCount={matches ? 3 : 0}
+            {...props}
+        />
+    );
+})(({ theme }) => ({
     '& .MuiPaginationItem-page': {
         fontWeight: 500,
     },

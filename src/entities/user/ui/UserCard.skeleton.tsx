@@ -21,3 +21,5 @@ export const UserCardSkeleton = memo(() => {
         </Stack>
     );
 });
+
+UserCardSkeleton.displayName = 'UserCardSkeleton';

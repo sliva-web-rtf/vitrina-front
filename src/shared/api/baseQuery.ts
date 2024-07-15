@@ -1,12 +1,12 @@
 import {
-    FetchArgs,
     type BaseQueryFn,
+    FetchArgs,
+    fetchBaseQuery,
     FetchBaseQueryError,
     FetchBaseQueryMeta,
-    fetchBaseQuery,
 } from '@reduxjs/toolkit/query';
 
 export const baseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, object, FetchBaseQueryMeta> =
     fetchBaseQuery({
-        baseUrl: import.meta.env.VITE_API,
+        baseUrl: process.env.NEXT_PUBLIC_API,
     });

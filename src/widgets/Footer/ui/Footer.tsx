@@ -1,15 +1,17 @@
-import { Box, Stack, Typography } from '@mui/material';
-import { memo } from 'react';
+'use client';
+
+import { Stack, Typography } from '@mui/material';
 import styles from './Footer.module.scss';
 import vkLogoSrc from '@/shared/assets/vk.svg';
 import telegramLogoSrc from '@/shared/assets/telegram.svg';
+import Image from 'next/image';
 
-export const Footer = memo(() => (
-    <Box className={styles.container}>
+export const Footer = () => (
+    <footer className={styles.container}>
         <Stack
             className={styles.contentWrapper}
             direction="row"
-            sx={theme => ({
+            sx={(theme) => ({
                 gap: 'calc(7 * var(--space-xl))',
                 [theme.breakpoints.down('xl')]: {
                     justifyContent: 'space-between',
@@ -28,7 +30,7 @@ export const Footer = memo(() => (
                 <Typography>Институт радиоэлектроники и информационных технологий - РТФ</Typography>
             </Stack>
             <Stack
-                sx={theme => ({
+                sx={(theme) => ({
                     flexDirection: 'row',
                     width: '100%',
                     justifyContent: 'space-between',
@@ -58,14 +60,14 @@ export const Footer = memo(() => (
                     <Typography sx={{ color: 'var(--dim-font-color)' }}>Мы в социальных сетях</Typography>
                     <Stack spacing={1} direction="row">
                         <a className={styles.link} href="https://vk.com/project__it" target="_blank" rel="noreferrer">
-                            <img src={vkLogoSrc} alt="Вконтакте" />
+                            <Image src={vkLogoSrc} alt="Вконтакте" />
                         </a>
                         <a className={styles.link} href="https://t.me/urfu_project" target="_blank" rel="noreferrer">
-                            <img src={telegramLogoSrc} alt="Телеграмм" />
+                            <Image src={telegramLogoSrc} alt="Телеграмм" />
                         </a>
                     </Stack>
                 </Stack>
             </Stack>
         </Stack>
-    </Box>
-));
+    </footer>
+);

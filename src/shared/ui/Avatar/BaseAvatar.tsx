@@ -17,6 +17,7 @@ export const BaseAvatar = (props: AvatarProps) => {
             />
         );
     }
+    
 
     return (
         <Avatar

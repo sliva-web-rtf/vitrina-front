@@ -1,5 +1,3 @@
- 
-
 import { type FetchQueryApiError } from '@/shared/api';
 import { AppError } from '../appError';
 

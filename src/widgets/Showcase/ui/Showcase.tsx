@@ -1,11 +1,11 @@
-import { ChangeEvent, memo } from 'react';
+import { ChangeEvent } from 'react';
 import { Filter, filterActions, getFilter } from '@/features/filter';
 import { Stack } from '@mui/material';
 import { getTotalPages, ProjectsList } from '@/widgets/ProjectsList';
 import { BasePagination } from '@/shared/ui';
 import { useDispatch, useSelector } from 'react-redux';
 
-export const Showcase = memo(() => {
+export const Showcase = () => {
     const dispatch = useDispatch();
     const { page } = useSelector(getFilter);
     const totalPages = useSelector(getTotalPages);
@@ -20,4 +20,4 @@ export const Showcase = memo(() => {
             <BasePagination page={page} count={totalPages} onChange={handlePageChange} />
         </Stack>
     );
-});
+};

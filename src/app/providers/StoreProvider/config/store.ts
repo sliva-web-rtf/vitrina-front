@@ -1,11 +1,9 @@
- 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { StateSchema } from './StateSchema';
 import { baseApi } from '@/shared/api';
 import { filterReducer } from '@/features/filter';
 import { projectsListReducer } from '@/widgets/ProjectsList';
 import { detailsReducer } from '@/entities/project';
-
 
 // TODO: добавить динамическую подгрузку стейта.
 const rootReducer = combineReducers({
@@ -18,12 +16,12 @@ const rootReducer = combineReducers({
 export function createReduxStore(initialState?: StateSchema) {
     const store = configureStore({
         reducer: rootReducer,
-        middleware: getDefaultMiddleware =>
+        middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({
                 serializableCheck: false,
             }).concat(baseApi.middleware),
         preloadedState: initialState,
-        devTools: import.meta.env.VITE_MODE === 'development',
+        devTools: process.env.NEXT_PUBLIC_MODE === 'development',
     });
 
     return store;

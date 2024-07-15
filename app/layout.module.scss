@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  width: var(--page-width);
+  min-height: 100vh;
+  row-gap: calc(6 * var(--space-m));
+  padding: var(--space-xl) 0 calc(2 * var(--space-xl));
+  margin: 0 auto;
+}

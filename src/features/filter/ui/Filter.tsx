@@ -1,3 +1,5 @@
+'use client';
+
 import { ChangeEvent, memo, useCallback, useEffect, useState } from 'react';
 import { Stack } from '@mui/material';
 import { BaseSearch } from '@/shared/ui/Field/BaseSearch';
@@ -8,7 +10,7 @@ import { getFilter } from '../model/selectors/getFilter/getFilter';
 import { filterActions } from '../model/slice/filterSlice';
 import { FilterType } from '../model/types/filterType';
 import { semesterOptions } from '../model/const/semesterOptions';
-import { useGetOrganizationsQuery, useGetPeriodsQuery } from '../api/filterApi.ts';
+import { useGetOrganizationsQuery, useGetPeriodsQuery } from '../api/filterApi';
 import { useDebounce } from 'use-debounce';
 
 const { setName, setSemester, setPeriod, setOrganization, clear } = filterActions;
@@ -48,13 +50,9 @@ export const Filter = memo(() => {
 
     return (
         <Stack sx={{ rowGap: 'var(--space-xl)' }}>
-            <BaseSearch
-                placeholder="Название"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-            />
+            <BaseSearch placeholder="Название" value={search} onChange={(e) => setSearch(e.target.value)} />
             <Stack
-                sx={theme => ({
+                sx={(theme) => ({
                     flex: 1,
                     gap: 'var(--space-xl)',
                     flexDirection: 'row',
@@ -65,7 +63,7 @@ export const Filter = memo(() => {
             >
                 <Stack
                     direction="row"
-                    sx={theme => ({
+                    sx={(theme) => ({
                         flex: 1,
                         gap: 'var(--space-m)',
                         [theme.breakpoints.down('sm')]: {
@@ -104,3 +102,5 @@ export const Filter = memo(() => {
         </Stack>
     );
 });
+
+Filter.displayName = 'Filter';

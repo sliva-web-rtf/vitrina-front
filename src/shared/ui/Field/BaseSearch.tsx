@@ -1,4 +1,4 @@
-import { BaseField } from './BaseField.tsx';
+import { BaseField } from './BaseField';
 import { InputAdornment, TextFieldProps } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 

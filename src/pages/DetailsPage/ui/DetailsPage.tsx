@@ -1,13 +1,12 @@
-import { BackButton } from '@/features/backButton';
 import { Stack } from '@mui/material';
-import { memo } from 'react';
+import { BackButton } from '@/features/backButton';
 import { Details } from '@/widgets/Details';
 
-const DetailsPage = memo(() => (
+const DetailsPage = () => (
     <Stack spacing={10}>
         <BackButton />
         <Details />
     </Stack>
-));
+);
 
 export default DetailsPage;

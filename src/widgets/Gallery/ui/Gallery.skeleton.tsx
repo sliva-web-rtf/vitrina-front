@@ -1,8 +1,7 @@
 import { Skeleton, Stack } from '@mui/material';
-import { memo } from 'react';
 import classNames from './Gallery.module.scss';
 
-export const GallerySkeleton = memo(() => {
+export const GallerySkeleton = () => {
     return (
         <Stack className={classNames.gallery}>
             <Skeleton variant="rounded" className={classNames.mainImage} />
@@ -14,4 +13,4 @@ export const GallerySkeleton = memo(() => {
             </Stack>
         </Stack>
     );
-});
+};

@@ -1,12 +1,11 @@
 import { Stack, StackProps } from '@mui/material';
 import { BaseAvatar } from '@/shared/ui';
-import { memo } from 'react';
 
 interface ProjectCardAvatarProps extends StackProps {
     readonly logoSrc?: string;
 }
 
-export const ProjectCardAvatar = memo((props: ProjectCardAvatarProps) => {
+export const ProjectCardAvatar = (props: ProjectCardAvatarProps) => {
     const { logoSrc, ...stackProps } = props;
 
     return (
@@ -14,4 +13,4 @@ export const ProjectCardAvatar = memo((props: ProjectCardAvatarProps) => {
             <BaseAvatar src={logoSrc} alt="" sx={{ border: 0 }} />
         </Stack>
     );
-});
+};

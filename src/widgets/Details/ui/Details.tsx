@@ -1,19 +1,17 @@
+'use client';
+
 import classNames from './Details.module.scss';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { useGetDetailsQuery } from '../api/detailsApi';
 import { UserCard } from '@/entities/user';
 import { Gallery } from '@/widgets/Gallery';
-import { memo } from 'react';
 import { DetailsEmpty, DetailsSkeleton } from '@/widgets/Details';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
-import { detailsActions } from '@/entities/project';
+import { memo } from 'react';
+import { useParams } from 'next/navigation';
 
-export const Details = memo(() => {
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-    const { id } = useParams();
-    const { isFetching, data } = useGetDetailsQuery(parseInt(id!, 10));
+function DetailsWidget() {
+    const params = useParams<{ projectId: string }>();
+    const { isFetching, data } = useGetDetailsQuery(Number(params!.projectId));
 
     if (isFetching) {
         return <DetailsSkeleton />;
@@ -26,17 +24,6 @@ export const Details = memo(() => {
     return (
         <Box className={classNames.details}>
             <Stack className={classNames.col}>
-                {import.meta.env.VITE_WITH_ADMIN === 'admin' && (
-                    <Button
-                        onClick={() => {
-                            // TODO: пересмотреть решение с link
-                            dispatch(detailsActions.changeEditableProject(data));
-                            navigate('/admin')
-                        }}
-                    >
-                        Редактировать
-                    </Button>
-                )}
                 <Stack className={classNames.block}>
                     <Stack className={classNames.mainBlock}>
                         <Typography variant="h2">{data.name}</Typography>
@@ -73,7 +60,7 @@ export const Details = memo(() => {
                     <Stack spacing={2}>
                         <Typography variant="h3">Команда</Typography>
                         <Stack spacing={4}>
-                            {data.users.map(user => (
+                            {data.users.map((user) => (
                                 <UserCard key={user.lastName + user.firstName} {...user} />
                             ))}
                         </Stack>
@@ -82,4 +69,6 @@ export const Details = memo(() => {
             </Stack>
         </Box>
     );
-});
+}
+
+export const Details = memo(DetailsWidget);

@@ -1,3 +1,4 @@
+'use client';
 import { Stack, Typography } from '@mui/material';
 import { Component, ErrorInfo, ReactNode, Suspense } from 'react';
 
@@ -9,7 +10,7 @@ interface ErrorBoundaryState {
     hasError: boolean;
 }
 
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     constructor(props: ErrorBoundaryProps) {
         super(props);
         this.state = { hasError: false };
@@ -30,10 +31,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         if (hasError) {
             return (
                 <Suspense fallback="">
-                    <Stack sx={{width: '100wh', height: '100vh'}} justifyContent='center' alignItems='center'>
-                        <Typography variant='h2'>
-                            Что-то пошло не так :(
-                        </Typography>
+                    <Stack sx={{ width: '100wh', height: '100vh' }} justifyContent="center" alignItems="center">
+                        <Typography variant="h2">Что-то пошло не так :(</Typography>
                     </Stack>
                 </Suspense>
             );
@@ -42,5 +41,3 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         return children;
     }
 }
-
-export default ErrorBoundary;

@@ -9,3 +9,5 @@ export const ProjectsListEmpty = memo(() => {
         </Stack>
     );
 });
+
+ProjectsListEmpty.displayName = 'ProjectsListEmpty';

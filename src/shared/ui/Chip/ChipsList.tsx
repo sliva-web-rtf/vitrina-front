@@ -1,7 +1,7 @@
 import { Skeleton, Stack } from '@mui/material';
 import { BaseChip } from '@/shared/ui';
 import { memo } from 'react';
-import { stringToColor } from '@/shared/lib/helpers/stringToColor.ts';
+import { stringToColor } from '@/shared/lib/helpers/stringToColor';
 
 interface ChipsListProps {
     readonly items?: Array<string>;
@@ -23,7 +23,7 @@ export const ChipsList = memo((props: ChipsListProps) => {
 
     return (
         <Stack direction="row" columnGap={columnGap || 1} rowGap={rowGap || 0.5} sx={{ flexWrap: 'wrap' }}>
-            {items?.map(item => (
+            {items?.map((item) => (
                 <BaseChip
                     key={item}
                     label={item}
@@ -36,6 +36,8 @@ export const ChipsList = memo((props: ChipsListProps) => {
         </Stack>
     );
 });
+
+ChipsList.displayName = 'ChipsList';
 
 export const ChipsListSkeleton = (props: Omit<ChipsListProps, 'items'>) => {
     const { columnGap, rowGap, big } = props;

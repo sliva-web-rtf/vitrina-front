@@ -1,7 +1,7 @@
 @import "variables";
 @import "reset";
 
-#root {
+body {
   position: relative;
   background-color: var(--bg-color);
   color: var(--font-color);
@@ -15,9 +15,9 @@
   ul, ol {
     padding-left: var(--space-xl);
   }
-  
+
   a {
     color: var(--primary-color);
     text-decoration: underline;
   }
-} 
+}
