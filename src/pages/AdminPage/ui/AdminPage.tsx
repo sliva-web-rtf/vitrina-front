@@ -3,16 +3,18 @@ import { useCallback, useEffect, useState } from 'react';
 import { ProjectCreationForm } from '@/widgets/ProjectCreation';
 import { ProjectImagesUploader } from '@/features/project/uploadProjectImages';
 import { ProjectDeletion } from '@/features/project/projectDeletion';
+// eslint-disable-next-line max-len
 import { ProjectPreviewImageUploader } from '@/features/project/uploadProjectImages/ui/ProjectPreviewImageUploader/ProjectPreviewImageUploader';
 import { useSelector } from 'react-redux';
 import { detailsActions, getEditableProject } from '@/entities/project';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { useLazyGetDetailsQuery } from '@/widgets/Details';
+import { ProjectImagesDeletion } from '@/features/project/projectImagesDeletion';
 
 const AdminPage = () => {
     const dispatch = useAppDispatch();
     const editableProject = useSelector(getEditableProject);
-    const [getDetails] = useLazyGetDetailsQuery()
+    const [getDetails] = useLazyGetDetailsQuery();
 
     const [id, setID] = useState<number | null>(null);
 
@@ -22,9 +24,7 @@ const AdminPage = () => {
             // TODO: Пересмотреть всю эту логику работы. Нужно после создания давать перенаправлять на детали.
             const response = await getDetails(id);
             if ('data' in response) {
-                dispatch(
-                    detailsActions.changeEditableProject(response.data),
-                );
+                dispatch(detailsActions.changeEditableProject(response.data));
             }
         },
         [dispatch, getDetails],
@@ -48,6 +48,8 @@ const AdminPage = () => {
             <ProjectPreviewImageUploader id={id ?? undefined} />
             <Typography variant="h3">Удаление проекта</Typography>
             <ProjectDeletion />
+            <Typography variant="h3">Удаление картинок</Typography>
+            <ProjectImagesDeletion />
         </Stack>
     );
 };

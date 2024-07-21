@@ -14,7 +14,11 @@ interface ProjectCreationFormProps {
     project?: ProjectDetails;
 }
 
-// TODO: отрефакторить логику, добавить нормальное тексты ошибок, catch и обработку ошибок с сервера. Подумать над naming'ом
+{
+    /*eslint-disable max-len*/
+}
+// TODO: отрефакторить логику, добавить нормальное тексты ошибок, catch и обработку ошибок с сервера. Подумать над
+//  naming'ом
 export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const { onSuccess, project } = props;
     const [createProject, { isLoading: isCreationProjectLoading, error: projectCreationErrors }] =
