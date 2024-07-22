@@ -3,8 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ProjectCreationForm } from '@/widgets/ProjectCreation';
 import { ProjectImagesUploader } from '@/features/project/uploadProjectImages';
 import { ProjectDeletion } from '@/features/project/projectDeletion';
-// eslint-disable-next-line max-len
-import { ProjectPreviewImageUploader } from '@/features/project/uploadProjectImages/ui/ProjectPreviewImageUploader/ProjectPreviewImageUploader';
+import { ProjectPreviewImageUploader } from '@/features/project/uploadProjectImages';
 import { useSelector } from 'react-redux';
 import { detailsActions, getEditableProject } from '@/entities/project';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';

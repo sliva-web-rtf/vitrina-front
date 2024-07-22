@@ -8,8 +8,8 @@ export const ProjectDeletion = memo(() => {
 
     const [projectId, setID] = useState<number>(0);
     const onDeleteClick = useCallback(async () => {
-        await deleteProject(projectId);
-    }, [deleteProject, projectId]);
+        await deleteProject(projectId)
+    }, [deleteProject, projectId])
 
     return (
         <Stack spacing={2}>
