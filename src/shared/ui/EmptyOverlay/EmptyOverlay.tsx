@@ -5,9 +5,6 @@ interface EmptyOverlayProps {
     readonly text: string;
 }
 
-{
-    /*eslint-disable max-len*/
-}
 export const EmptyOverlay = (props: EmptyOverlayProps) => {
     const { text } = props;
     return (
