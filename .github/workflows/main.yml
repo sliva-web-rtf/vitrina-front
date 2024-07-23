@@ -23,7 +23,7 @@ jobs:
         run: yarn install
 
       - name: Run linter
-        run: yarn lint
+        run: yarn lint:ts
   
   build:
     runs-on: ubuntu-latest

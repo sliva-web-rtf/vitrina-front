@@ -1,20 +1,27 @@
+import { KeyboardEvent, memo, useCallback, useState } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ProjectCreationFormSchema, projectCreationFormSchema } from '../model/types/projectCreationForm';
 import { useCreateProjectMutation, useUpdateProjectMutation } from '../api/projectCreationApi';
 import { Autocomplete, Chip, FormControl, InputLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
-import { memo, useCallback, useState } from 'react';
 import { TextEditor } from '@/widgets/TextEditor';
 import { BaseButton, BaseField } from '@/shared/ui';
 import { ProjectDetails } from '@/entities/project';
 import { Semester } from '@/entities/semester';
+import { getUsersWithoutId } from '@/shared/lib/helpers/getUsersWithoutId.ts';
+import { rolesOptions } from '../model/const/rolesOptions';
 
 interface ProjectCreationFormProps {
     onSuccess?: (id: ProjectDetails['id'], project: ProjectCreationFormSchema) => void;
     project?: ProjectDetails;
 }
 
-// TODO: отрефакторить логику, добавить нормальное тексты ошибок, catch и обработку ошибок с сервера. Подумать над naming'ом
+{
+    /*eslint-disable max-len*/
+}
+// TODO: отрефакторить логику, добавить нормальное тексты ошибок, catch и обработку ошибок с сервера. Подумать над
+//  naming'ом
+
 export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const { onSuccess, project } = props;
     const [createProject, { isLoading: isCreationProjectLoading, error: projectCreationErrors }] =
@@ -62,7 +69,11 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     });
 
     const onCreationSubmit = async (data: ProjectCreationFormSchema) => {
-        const response = await createProject({ ...data, customTemplate: customValue });
+        const newData = {
+            ...data,
+            users: getUsersWithoutId(data.users),
+        };
+        const response = await createProject({ ...newData, customTemplate: customValue });
         if ('data' in response) {
             onSuccess?.(Number(response.data), { ...data, customTemplate: customValue });
         }
@@ -162,7 +173,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                                     render={({ field: { onChange, onBlur, value } }) => (
                                         <Autocomplete
                                             multiple
-                                            options={[]}
+                                            options={rolesOptions}
                                             onChange={(_, targetValue) => onChange(targetValue)}
                                             onBlur={onBlur}
                                             value={value}
@@ -177,7 +188,22 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                                                     />
                                                 ))
                                             }
-                                            renderInput={params => <BaseField {...params} label="Роли" />}
+                                            renderInput={params => (
+                                                <BaseField
+                                                    {...params}
+                                                    label="Роли"
+                                                    onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+                                                        if (e.key === 'Enter') {
+                                                            e.preventDefault();
+                                                            const input = e.target as HTMLInputElement;
+                                                            if (input.value.trim() !== '') {
+                                                                onChange([...value, input.value.trim()]);
+                                                                input.value = '';
+                                                            }
+                                                        }
+                                                    }}
+                                                />
+                                            )}
                                         />
                                     )}
                                 />

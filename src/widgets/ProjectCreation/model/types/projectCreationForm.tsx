@@ -11,11 +11,10 @@ export const projectCreationFormSchema = z.object({
     customTemplate: z.string().optional(),
     videoUrl: z.string().optional(),
     priority: z.number().optional(),
-    users:  z
-    .array(
+    users: z.array(
         // TODO: пересмотреть логику с юзерами
         z.object({
-            id: z.number(),
+            id: z.number().optional(),
             email: z.string(),
             // TODO: вернуть 3 поля, вместо одного (firstname, lastname, middlename)
             fullname: z.string(),
@@ -28,5 +27,5 @@ export type ProjectCreationFormSchema = z.infer<typeof projectCreationFormSchema
 
 // TODO: вынести в отдельный файл
 export type ProjectEditFormSchema = ProjectCreationFormSchema & {
-    id: ProjectDetails['id'],
-}
+    id: ProjectDetails['id'];
+};
