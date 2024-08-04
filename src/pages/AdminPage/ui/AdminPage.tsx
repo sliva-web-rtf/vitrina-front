@@ -9,6 +9,8 @@ import { detailsActions, getEditableProject } from '@/entities/project';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { useLazyGetDetailsQuery } from '@/widgets/Details';
 import { ProjectImagesDeletion } from '@/features/project/projectImagesDeletion';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminPage = () => {
     const dispatch = useAppDispatch();
@@ -49,6 +51,7 @@ const AdminPage = () => {
             <ProjectDeletion />
             <Typography variant="h3">Удаление картинок</Typography>
             <ProjectImagesDeletion />
+            <ToastContainer />
         </Stack>
     );
 };

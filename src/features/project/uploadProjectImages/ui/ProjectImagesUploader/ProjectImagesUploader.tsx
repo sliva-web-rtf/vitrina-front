@@ -2,6 +2,8 @@ import { BaseButton, BaseField } from '@/shared/ui';
 import { memo, useEffect, useRef, useState } from 'react';
 import { useUploadImagesMutation } from '../../api/projectImagesApi';
 import { Stack, Typography } from '@mui/material';
+import { AppError, EntityValidationErrors } from '@/shared/lib/types/appError';
+import { toast } from 'react-toastify';
 
 interface ProjectImagesUploaderProps {
     id?: number;
@@ -16,10 +18,13 @@ export const ProjectImagesUploader = memo((props: ProjectImagesUploaderProps) =>
 
     const [uploadAvatars, { isLoading: isAvatarsLoading, error: avatarsErrors }] = useUploadImagesMutation();
 
+    const onValidationError = (validationData: EntityValidationErrors<{ file: FormData; id: number }> | undefined) =>
+        toast.error(validationData?.file || 'При загрузке избражений произошла ошибка');
+
     useEffect(() => {
-      if (id) {
-        setID(id);
-      }
+        if (id) {
+            setID(id);
+        }
     }, [id]);
 
     return (
@@ -41,7 +46,10 @@ export const ProjectImagesUploader = memo((props: ProjectImagesUploaderProps) =>
                             filesConverted.forEach(file => {
                                 formData.append('files', file);
                             });
-                            await uploadAvatars({ formData, id: projectId });
+                            const response = await uploadAvatars({ formData, id: projectId });
+                            if ('error' in response && response.error instanceof AppError) {
+                                onValidationError(response.error.validationData);
+                            }
                         }
                     }
                 }}

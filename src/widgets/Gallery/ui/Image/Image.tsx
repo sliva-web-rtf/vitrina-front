@@ -27,12 +27,12 @@ export const Image = memo((props: ImageProps) => {
             <Modal open={open} onClose={handleToggleModal} className={classNames.modal} disableAutoFocus>
                 <Fade in={open}>
                     <Box className={classNames.container}>
-                    <img
-                        className={classNames.image}
-                        src={src}
-                        alt={alt ?? 'Картинка проекта'}
-                        onClick={handleToggleModal}
-                    />
+                        <img
+                            className={classNames.image}
+                            src={src}
+                            alt={alt ?? 'Картинка проекта'}
+                            onClick={handleToggleModal}
+                        />
                     </Box>
                 </Fade>
             </Modal>

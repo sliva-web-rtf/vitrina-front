@@ -1,5 +1,8 @@
+import { ValidationErrorDto } from '@/shared/lib/types/dto/appErrorDto';
 import { CreateProjectDto } from '../../api/types';
 import { ProjectCreationFormSchema } from '../../model/types/projectCreationForm';
+import { EntityValidationErrors } from '@/shared/lib/types/appError';
+import { extractErrorMessage } from '@/shared/lib/helpers/extractErrorMessage';
 
 export const projectCreationToDto = (model: ProjectCreationFormSchema): CreateProjectDto => {
     return {
@@ -26,3 +29,20 @@ export const projectCreationToDto = (model: ProjectCreationFormSchema): CreatePr
             })) ?? [],
     };
 };
+
+export function validationProjectCreationErrorsFromDto(
+    errorDto?: ValidationErrorDto<CreateProjectDto>[] | null,
+): EntityValidationErrors<CreateProjectDto> {
+    return {
+        aim: extractErrorMessage('aim', errorDto),
+        client: extractErrorMessage('client', errorDto),
+        description: extractErrorMessage('description', errorDto),
+        markdown: extractErrorMessage('markdown', errorDto),
+        name: extractErrorMessage('name', errorDto),
+        period: extractErrorMessage('period', errorDto),
+        priority: extractErrorMessage('priority', errorDto),
+        semester: extractErrorMessage('semester', errorDto),
+        users: extractErrorMessage('users', errorDto),
+        videoUrl: extractErrorMessage('videoUrl', errorDto),
+    };
+}

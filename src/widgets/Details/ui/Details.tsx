@@ -31,7 +31,7 @@ export const Details = memo(() => {
                         onClick={() => {
                             // TODO: пересмотреть решение с link
                             dispatch(detailsActions.changeEditableProject(data));
-                            navigate('/admin')
+                            navigate('/admin');
                         }}
                     >
                         Редактировать

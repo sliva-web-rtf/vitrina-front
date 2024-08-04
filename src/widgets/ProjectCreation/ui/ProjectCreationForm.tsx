@@ -10,6 +10,8 @@ import { ProjectDetails } from '@/entities/project';
 import { Semester } from '@/entities/semester';
 import { getUsersWithoutId } from '@/shared/lib/helpers/getUsersWithoutId.ts';
 import { rolesOptions } from '../model/const/rolesOptions';
+import { AppError, EntityValidationErrors } from '@/shared/lib/types/appError';
+import { CreateProjectDto, EditProjectDto } from '../api/types';
 
 interface ProjectCreationFormProps {
     onSuccess?: (id: ProjectDetails['id'], project: ProjectCreationFormSchema) => void;
@@ -57,6 +59,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
         formState: { errors },
         control,
         handleSubmit,
+        setError,
     } = form;
 
     const {
@@ -68,13 +71,27 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
         control,
     });
 
+    // TODO: Возможно стоит вынести логику валидационных ошибок выше или отдельно, а также можно убрать фокус если он мешает
+    const onValidationError = (
+        validationData: EntityValidationErrors<EditProjectDto | CreateProjectDto> | undefined,
+    ) => {
+        for (const [key, value] of Object.entries(validationData || {})) {
+            if (value) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                setError(key as any, { message: value }, { shouldFocus: true });
+            }
+        }
+    };
+
     const onCreationSubmit = async (data: ProjectCreationFormSchema) => {
         const newData = {
             ...data,
             users: getUsersWithoutId(data.users),
         };
         const response = await createProject({ ...newData, customTemplate: customValue });
-        if ('data' in response) {
+        if ('error' in response && response.error instanceof AppError) {
+            onValidationError(response.error.validationData);
+        } else if ('data' in response) {
             onSuccess?.(Number(response.data), { ...data, customTemplate: customValue });
         }
     };
@@ -82,7 +99,9 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const onUpdateSubmit = async (data: ProjectCreationFormSchema) => {
         if (project?.id) {
             const response = await editProject({ ...data, customTemplate: customValue, id: project.id });
-            if ('data' in response) {
+            if ('error' in response && response.error instanceof AppError) {
+                onValidationError(response.error.validationData);
+            } else if ('data' in response) {
                 onSuccess?.(project.id, { ...data, customTemplate: customValue });
             }
         }

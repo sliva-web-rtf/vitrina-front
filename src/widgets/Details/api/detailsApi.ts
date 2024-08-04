@@ -3,7 +3,6 @@ import { ProjectDetails } from '@/entities/project';
 import { mapDetailsDtoToModel } from '../lib/helpers/mapDetailsDtoToModel';
 import { DetailsDto } from '../model/types/DetailsDto';
 
-
 // TODO: перенести это на уровень entity.
 const detailsApi = baseApi.injectEndpoints({
     endpoints: build => ({
