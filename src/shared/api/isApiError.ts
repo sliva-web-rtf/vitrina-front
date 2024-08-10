@@ -10,6 +10,6 @@ export type FetchQueryApiError<T extends Record<string, any>> = FetchBaseQueryEr
     data: ApiErrorDto<T>;
 };
 
-export function isApiError<TDto extends Record<string, any>>(error: unknown): error is FetchQueryApiError<TDto> {
+export function isApiError<TDto extends Record<string, unknown>>(error: unknown): error is FetchQueryApiError<TDto> {
     return isFetchBaseQueryError(error) && typeof error.data === 'object';
 }

@@ -41,7 +41,6 @@
         "@typescript-eslint/eslint-plugin": "^7.2.0",
         "@typescript-eslint/parser": "^7.2.0",
         "@vitejs/plugin-react": "^4.2.1",
-        "easymde": "^2.18.0",
         "eslint": "^8.57.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-prettier": "^9.1.0",
@@ -52,7 +51,6 @@
         "lint-staged": "^15.2.7",
         "prettier": "^3.2.5",
         "react-quill": "^2.0.0",
-        "react-simplemde-editor": "^5.2.0",
         "sass": "^1.77.3",
         "typescript": "^5.2.2",
         "vite": "^5.2.0"

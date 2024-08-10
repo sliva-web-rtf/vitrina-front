@@ -8,6 +8,7 @@ import { memo } from 'react';
 import { DetailsEmpty, DetailsSkeleton } from '@/widgets/Details';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { detailsActions } from '@/entities/project';
+import { AppRoutes, RoutePath } from '@/app/providers/Router/config/routeConfig';
 
 export const Details = memo(() => {
     const dispatch = useAppDispatch();
@@ -31,7 +32,7 @@ export const Details = memo(() => {
                         onClick={() => {
                             // TODO: пересмотреть решение с link
                             dispatch(detailsActions.changeEditableProject(data));
-                            navigate('/admin');
+                            navigate(RoutePath[AppRoutes.Admin]);
                         }}
                     >
                         Редактировать

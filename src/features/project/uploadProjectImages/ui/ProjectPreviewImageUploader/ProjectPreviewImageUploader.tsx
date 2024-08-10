@@ -4,6 +4,8 @@ import { useUploadPreviewImageMutation } from '../../api/projectImagesApi';
 import { Stack, Typography } from '@mui/material';
 import { AppError, EntityValidationErrors } from '@/shared/lib/types/appError';
 import { toast } from 'react-toastify';
+import { UploadProjectImagesSchema } from '../../model/types/UploadProjectImagesSchema';
+import { uploadImageUploadError } from '../../model/const/uploadImageUploadError';
 
 interface ProjectPreviewImageUploaderProps {
     id?: number;
@@ -18,8 +20,8 @@ export const ProjectPreviewImageUploader = memo((props: ProjectPreviewImageUploa
 
     const [uploadAvatars, { isLoading: isAvatarsLoading, error: avatarsErrors }] = useUploadPreviewImageMutation();
 
-    const onValidationError = (validationData: EntityValidationErrors<{ file: FormData; id: number }> | undefined) =>
-        toast.error(validationData?.file || 'При загрузке избражений произошла ошибка');
+    const onValidationError = (validationData: EntityValidationErrors<UploadProjectImagesSchema> | undefined) =>
+        toast.error(validationData?.file || uploadImageUploadError);
 
     useEffect(() => {
         if (id) {
