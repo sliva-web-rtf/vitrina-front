@@ -169,6 +169,8 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                         fullWidth
                         autoComplete="false"
                         {...register('period')}
+                        error={Boolean(errors.period)}
+                        helperText={errors.period?.message}
                     />
                     <Stack spacing={2}>
                         <Typography>Команда:</Typography>
