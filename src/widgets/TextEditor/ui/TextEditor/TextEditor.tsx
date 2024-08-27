@@ -18,12 +18,18 @@ export const TextEditor = (props: TextEditorProps) => {
 
     return (
         <Stack spacing={2}>
-          <Box>
-            <EditorToolbar id="t1" />
-            <ReactQuill theme="snow" modules={modules('t1')} formats={formats} value={value} onChange={handleChange} />
-          </Box>
-          <Typography variant='h4'>Предосмотр:</Typography>
-          <Box className='customTemplate' dangerouslySetInnerHTML={{ __html: value }} />
+            <Box>
+                <EditorToolbar id="t1" />
+                <ReactQuill
+                    theme="snow"
+                    modules={modules('t1')}
+                    formats={formats}
+                    value={value}
+                    onChange={handleChange}
+                />
+            </Box>
+            <Typography variant="h4">Предосмотр:</Typography>
+            <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: value }} />
         </Stack>
     );
 };

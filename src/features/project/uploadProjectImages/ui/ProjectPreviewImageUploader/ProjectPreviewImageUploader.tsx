@@ -2,6 +2,10 @@ import { BaseButton, BaseField } from '@/shared/ui';
 import { memo, useEffect, useRef, useState } from 'react';
 import { useUploadPreviewImageMutation } from '../../api/projectImagesApi';
 import { Stack, Typography } from '@mui/material';
+import { AppError, EntityValidationErrors } from '@/shared/lib/types/appError';
+import { toast } from 'react-toastify';
+import { UploadProjectImagesSchema } from '../../model/types/UploadProjectImagesSchema';
+import { uploadImageUploadError } from '../../model/const/uploadImageUploadError';
 
 interface ProjectPreviewImageUploaderProps {
     id?: number;
@@ -16,10 +20,13 @@ export const ProjectPreviewImageUploader = memo((props: ProjectPreviewImageUploa
 
     const [uploadAvatars, { isLoading: isAvatarsLoading, error: avatarsErrors }] = useUploadPreviewImageMutation();
 
+    const onValidationError = (validationData: EntityValidationErrors<UploadProjectImagesSchema> | undefined) =>
+        toast.error(validationData?.file || uploadImageUploadError);
+
     useEffect(() => {
-      if (id) {
-        setID(id);
-      }
+        if (id) {
+            setID(id);
+        }
     }, [id]);
 
     return (
@@ -42,6 +49,10 @@ export const ProjectPreviewImageUploader = memo((props: ProjectPreviewImageUploa
                                 formData.append('file', file);
                             });
                             await uploadAvatars({ formData, id: projectId });
+                            const response = await uploadAvatars({ formData, id: projectId });
+                            if ('error' in response && response.error instanceof AppError) {
+                                onValidationError(response.error.validationData);
+                            }
                         }
                     }
                 }}

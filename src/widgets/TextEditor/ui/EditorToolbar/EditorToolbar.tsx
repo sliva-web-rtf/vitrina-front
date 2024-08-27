@@ -58,21 +58,17 @@ export const EditorToolbar = memo((props: EditorToolbarProps) => {
                         <select defaultValue="medium" className="ql-size">
                             <option value="extra-small">Extra Small</option>
                             <option value="small">Small</option>
-                            <option value="medium">
-                                Medium
-                            </option>
+                            <option value="medium">Medium</option>
                             <option value="large">Large</option>
                         </select>
-                        <select defaultValue='normal' className="ql-header">
+                        <select defaultValue="normal" className="ql-header">
                             <option value="1">Heading 1</option>
                             <option value="2">Heading 2</option>
                             <option value="3">Heading 3</option>
                             <option value="4">Heading 4</option>
                             <option value="5">Heading 5</option>
                             <option value="6">Heading 6</option>
-                            <option value="normal">
-                                Normal
-                            </option>
+                            <option value="normal">Normal</option>
                         </select>
                     </span>
                     <span className="ql-formats">
