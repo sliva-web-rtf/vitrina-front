@@ -1,17 +1,18 @@
 'use client';
 
-import { ChangeEvent, memo, useCallback, useEffect, useState } from 'react';
-import { Stack } from '@mui/material';
+import { ToggleButtons } from '@/features/ToggleButtons';
+import { BaseButton, BaseSelect, HStack } from '@/shared/ui';
 import { BaseSearch } from '@/shared/ui/Field/BaseSearch';
-import { BaseButton, BaseSelect } from '@/shared/ui';
 import ClearIcon from '@mui/icons-material/Clear';
+import { Stack } from '@mui/material';
+import { ChangeEvent, memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useDebounce } from 'use-debounce';
+import { useGetOrganizationsQuery, useGetPeriodsQuery } from '../api/filterApi';
+import { semesterOptions } from '../model/const/semesterOptions';
 import { getFilter } from '../model/selectors/getFilter/getFilter';
 import { filterActions } from '../model/slice/filterSlice';
 import { FilterType } from '../model/types/filterType';
-import { semesterOptions } from '../model/const/semesterOptions';
-import { useGetOrganizationsQuery, useGetPeriodsQuery } from '../api/filterApi';
-import { useDebounce } from 'use-debounce';
 
 const { setName, setSemester, setPeriod, setOrganization, clear } = filterActions;
 const actionMap = {
@@ -26,6 +27,7 @@ export const Filter = memo(() => {
     const { name, period, semester, organization } = useSelector(getFilter);
     const [search, setSearch] = useState(name);
     const [debounceSearch] = useDebounce(search, 300);
+    const isFiltersApply = name || period || semester || organization;
 
     const handleFilterChange = useCallback(
         (type: FilterType) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -50,10 +52,9 @@ export const Filter = memo(() => {
 
     return (
         <Stack sx={{ rowGap: 'var(--space-xl)' }}>
-            <BaseSearch placeholder="Название" value={search} onChange={(e) => setSearch(e.target.value)} />
             <Stack
+                justifyContent="space-between"
                 sx={(theme) => ({
-                    flex: 1,
                     gap: 'var(--space-xl)',
                     flexDirection: 'row',
                     [theme.breakpoints.down('md')]: {
@@ -64,7 +65,6 @@ export const Filter = memo(() => {
                 <Stack
                     direction="row"
                     sx={(theme) => ({
-                        flex: 1,
                         gap: 'var(--space-m)',
                         [theme.breakpoints.down('sm')]: {
                             flexDirection: 'column',
@@ -72,7 +72,6 @@ export const Filter = memo(() => {
                     })}
                 >
                     <BaseSelect
-                        fullWidth
                         label="Период"
                         options={periodOptions}
                         value={period}
@@ -80,25 +79,29 @@ export const Filter = memo(() => {
                         onChange={handleFilterChange(FilterType.Period)}
                     />
                     <BaseSelect
-                        fullWidth
                         label="Семестр"
                         options={semesterOptions}
                         value={semester || ''}
                         onChange={handleFilterChange(FilterType.Semester)}
                     />
                     <BaseSelect
-                        fullWidth
                         label="Организация"
                         options={orgsOptions}
                         value={organization}
                         loading={isOrgsFetching}
                         onChange={handleFilterChange(FilterType.Organization)}
                     />
+                    {isFiltersApply && (
+                        <BaseButton variant="outlined" startIcon={<ClearIcon />} onClick={handleClearFilters}>
+                            Сбросить фильтры
+                        </BaseButton>
+                    )}
                 </Stack>
-                <BaseButton variant="outlined" startIcon={<ClearIcon />} onClick={handleClearFilters}>
-                    Сбросить фильтры
-                </BaseButton>
+                <BaseSearch placeholder="Поиск проекта" value={search} onChange={(e) => setSearch(e.target.value)} />
             </Stack>
+            <HStack justifyContent="center">
+                <ToggleButtons />
+            </HStack>
         </Stack>
     );
 });

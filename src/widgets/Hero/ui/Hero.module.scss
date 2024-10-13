@@ -1,0 +1,21 @@
+.container {
+    position: relative;
+    width: 100dvw;
+    height: 90dvh;
+    transform: translateX(calc(-1 * var(--space-xl)));
+    background-color: #062756;
+    color: var(--inverted-font-color);
+}
+
+.container > div {
+    z-index: 1;
+}
+
+.gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}

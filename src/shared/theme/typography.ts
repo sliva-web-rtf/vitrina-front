@@ -25,19 +25,19 @@ export const typography: TypographyOptions | ((palette: Palette) => TypographyOp
     },
     h4: {
         fontSize: 20,
-        fontWeight: 500,
+        fontWeight: 700,
     },
     h5: {
         fontSize: 18,
-        fontWeight: 600,
+        fontWeight: 700,
     },
     subtitle1: {
-        fontSize: 14,
-        fontWeight: 500,
+        fontSize: 16,
+        fontWeight: 700,
         lineHeight: 1.2,
     },
     subtitle2: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 500,
         lineHeight: 1.2,
     },

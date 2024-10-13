@@ -1,73 +1,47 @@
 'use client';
 
+import telegramLogo from '@/shared/assets/telegram.svg';
+import whatsappLogo from '@/shared/assets/whatsapp.svg';
+import { HStack, SocialIcon } from '@/shared/ui';
 import { Stack, Typography } from '@mui/material';
+import Link from 'next/link';
 import styles from './Footer.module.scss';
-import vkLogoSrc from '@/shared/assets/vk.svg';
-import telegramLogoSrc from '@/shared/assets/telegram.svg';
-import Image from 'next/image';
 
 export const Footer = () => (
-    <footer className={styles.container}>
-        <Stack
-            className={styles.contentWrapper}
-            direction="row"
-            sx={(theme) => ({
-                gap: 'calc(7 * var(--space-xl))',
-                [theme.breakpoints.down('xl')]: {
-                    justifyContent: 'space-between',
-                    gap: 0,
-                },
-                [theme.breakpoints.down('md')]: {
-                    flexDirection: 'column',
-                    gap: 'var(--space-m)',
-                },
-            })}
-        >
-            <Stack className={styles.firstItem} spacing={1}>
-                <Typography variant="h5" sx={{ fontWeight: 700 }}>
+    <Stack component="footer" className={styles.container}>
+        <HStack justifyContent="space-between" spacing={6}>
+            <Stack spacing={1}>
+                <Typography variant="h3" color="background.default">
+                    Институт радиоэлектроники
+                    <br />и информационных технологий - РТФ
+                </Typography>
+                <Typography color="secondary">
                     © ФГАОУ ВО «УрФУ имени первого Президента России Б.Н. Ельцина»
                 </Typography>
-                <Typography>Институт радиоэлектроники и информационных технологий - РТФ</Typography>
             </Stack>
-            <Stack
-                sx={(theme) => ({
-                    flexDirection: 'row',
-                    width: '100%',
-                    justifyContent: 'space-between',
-                    [theme.breakpoints.down('xl')]: {
-                        flexDirection: 'column',
-                        width: 'fit-content',
-                        justifyContent: 'center',
-                    },
-                    [theme.breakpoints.down('md')]: {
-                        width: '100%',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                    },
-                    [theme.breakpoints.down('sm')]: {
-                        flexDirection: 'column',
-                        justifyContent: 'normal',
-                        gap: 'var(--space-m)',
-                    },
-                })}
-            >
-                <Stack spacing={1}>
-                    <Typography sx={{ color: 'var(--dim-font-color)' }}>Контакты</Typography>
-                    <a href="mailto:project.irit@urfu.ru м">Написать нам</a>
-                    <Typography>Екатеринбург, ул. Мира 32</Typography>
-                </Stack>
-                <Stack spacing={1}>
-                    <Typography sx={{ color: 'var(--dim-font-color)' }}>Мы в социальных сетях</Typography>
-                    <Stack spacing={1} direction="row">
-                        <a className={styles.link} href="https://vk.com/project__it" target="_blank" rel="noreferrer">
-                            <Image src={vkLogoSrc} alt="Вконтакте" />
-                        </a>
-                        <a className={styles.link} href="https://t.me/urfu_project" target="_blank" rel="noreferrer">
-                            <Image src={telegramLogoSrc} alt="Телеграмм" />
-                        </a>
-                    </Stack>
-                </Stack>
+            <HStack spacing={2}>
+                <SocialIcon url="https://t.me/urfu_project" icon={telegramLogo} alt="Телеграм" />
+                <SocialIcon url="https://vk.com/project__it" icon={whatsappLogo} alt="Whats App" />
+                <SocialIcon url="https://vk.com/project__it" icon={telegramLogo} alt="Вконтакте" />
+            </HStack>
+        </HStack>
+
+        <HStack justifyContent="space-between">
+            <Stack spacing={1}>
+                <Typography color="secondary">Почта</Typography>
+                <Link href="mailto:project.irit@urfu.ru м">
+                    <Typography variant="h4" color="background.default">
+                        project.irit@urfu.ru
+                    </Typography>
+                </Link>
             </Stack>
-        </Stack>
-    </footer>
+
+            <Stack spacing={1} textAlign="end">
+                <Typography color="secondary">Адрес</Typography>
+                <Typography variant="h4" color="background.default">
+                    Екатеринбург, ул. Мира 32
+                </Typography>
+            </Stack>
+        </HStack>
+    </Stack>
 );

@@ -1,8 +1,8 @@
-import { baseApi } from '@/shared/api';
-import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { FilterSchema } from 'src/features/filter';
-import { ProjectsListSchema } from '@/widgets/ProjectsList';
 import { DetailsSchema } from '@/entities/project';
+import { FilterSchema } from '@/features/filter';
+import { baseApi } from '@/shared/api';
+import { ProjectsListSchema } from '@/widgets/ProjectsList';
+import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 
 export interface StateSchema {
     filter: FilterSchema;

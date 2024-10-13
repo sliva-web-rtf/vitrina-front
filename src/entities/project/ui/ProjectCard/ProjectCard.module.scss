@@ -1,13 +1,12 @@
 .projectCard {
   height: 300px;
-  border-radius: var(--space-m);
-  background-color: var(--inverted-font-color);
+  background-color: var(--primary-color-light);
   outline: 1px solid var(--border-color);
 }
 
 .clippedText {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -16,6 +15,15 @@
 .image {
   height: 100px !important;
   object-fit: cover;
+}
+
+.image, .projectCard {
+    border-radius: var(--space-m);
+}
+
+.projectCard span {
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 @media (min-width: 768px) {

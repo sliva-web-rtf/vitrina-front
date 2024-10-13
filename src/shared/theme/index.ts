@@ -1,19 +1,19 @@
 'use client';
 
 import { createTheme } from '@mui/material';
-import { typography } from './typography';
 import { blue, blueGrey, green, grey, red } from '@mui/material/colors';
 import { components } from './components';
+import { typography } from './typography';
 
 export const theme = createTheme({
     typography,
     components,
     palette: {
         background: {
-            default: '#F5F5F5',
+            default: '#FFFFFF',
         },
         primary: {
-            main: blue['600'],
+            main: blue['800'],
             light: blue['200'],
         },
         secondary: {
@@ -39,10 +39,10 @@ theme.typography.h1 = {
         fontSize: '3rem',
     },
     [theme.breakpoints.up('lg')]: {
-        fontSize: '4rem',
+        fontSize: '8rem',
     },
     [theme.breakpoints.up('xl')]: {
-        fontSize: '5rem',
+        fontSize: '10rem',
     },
 };
 

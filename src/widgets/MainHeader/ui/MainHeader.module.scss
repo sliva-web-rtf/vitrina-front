@@ -1,0 +1,11 @@
+.container {
+    position: fixed;
+    top: var(--space-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--page-width); 
+    background-color: var(--bg-color);
+    border-radius: 1000px;
+    padding: 12px;
+    z-index: 2;
+} 

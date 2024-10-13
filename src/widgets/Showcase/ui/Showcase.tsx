@@ -1,9 +1,10 @@
-import { ChangeEvent } from 'react';
 import { Filter, filterActions, getFilter } from '@/features/filter';
-import { Stack } from '@mui/material';
+import { BasePagination, VStack } from '@/shared/ui';
 import { getTotalPages, ProjectsList } from '@/widgets/ProjectsList';
-import { BasePagination } from '@/shared/ui';
+import { ShowcaseHeader } from '@/widgets/ShowcaseHeader';
+import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from './Showcase.module.scss';
 
 export const Showcase = () => {
     const dispatch = useDispatch();
@@ -13,11 +14,13 @@ export const Showcase = () => {
     const handlePageChange = (_: ChangeEvent<unknown>, value: number) => {
         dispatch(filterActions.setPage(value));
     };
+
     return (
-        <Stack spacing={8}>
+        <VStack spacing={8} className={styles.container}>
+            <ShowcaseHeader />
             <Filter />
             <ProjectsList />
             <BasePagination page={page} count={totalPages} onChange={handlePageChange} />
-        </Stack>
+        </VStack>
     );
 };

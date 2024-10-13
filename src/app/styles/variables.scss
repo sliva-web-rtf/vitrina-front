@@ -6,17 +6,19 @@
 
   --border-radius: 16px;
 
-  --page-width: min(90vw, 1400px);
-  --card-height: 400px;
+  --page-width: calc(100dvw - 2 * var(--space-xl));
+  --card-height: 450px;
   --footer-urfu-name-width: 430px;
   --footer-links-size: 30px;
-  --max-width-admin-container: 1000px;
 
-  --bg-color: #F5F5F5;
+  --bg-color: #FFFFFF;
   --primary-color: #1166EE;
-  --footer-bg-color: #323232;
+  // Project card background
+  --primary-color-light: #FCFBFF;
+  --footer-bg-color: #1B1B20;
+  --footer-social-color: #2F2F35;
   --font-color: #292929;
   --dim-font-color: #8C8C8C;
   --inverted-font-color: #fff;
-  --border-color: #D3D3D3;
+  --border-color: #F0EFF7;
 }

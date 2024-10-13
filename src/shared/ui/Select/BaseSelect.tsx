@@ -1,7 +1,7 @@
+import { SelectOption } from '@/shared/lib/types/selectOption';
 import { Box, CircularProgress, TextFieldProps } from '@mui/material';
 import { memo } from 'react';
 import { BaseField } from '../Field/BaseField';
-import { SelectOption } from '@/shared/lib/types/selectOption';
 
 type BaseSelectProps = TextFieldProps & {
     readonly loading?: boolean;
@@ -21,13 +21,12 @@ export const BaseSelect = memo((props: BaseSelectProps) => {
 
     return (
         <BaseField
-            fullWidth
             select
             SelectProps={{
                 native: true,
             }}
             sx={{
-                minWidth: 120,
+                maxWidth: 250,
                 '& .MuiSvgIcon-root': {
                     top: 'unset',
                 },

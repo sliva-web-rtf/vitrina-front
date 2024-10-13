@@ -1,20 +1,7 @@
 .container {
-  background-color: var(--footer-bg-color);
-  color: var(--inverted-font-color);
-  padding: calc(2 * var(--space-xl)) 0 calc(4 * var(--space-xl));
-}
-
-.contentWrapper {
-  width: var(--page-width);
-  margin: 0 auto;
-}
-
-.firstItem {
-  max-width: var(--footer-urfu-name-width);
-}
-
-.link {
-  display: inline-block;
-  height: var(--footer-links-size);
-  width: var(--footer-links-size);
+    width: 100%;
+    background-color: var(--footer-bg-color);
+    padding: var(--space-xl);
+    border-radius: var(--space-xl);
+    gap: var(--space-xl);
 }
