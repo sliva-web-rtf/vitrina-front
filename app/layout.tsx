@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import '@/app/styles/index.scss';
-import { ReactNode } from 'react';
 import { Providers } from '@/app/providers';
+import '@/app/styles/index.scss';
 import { Footer } from '@/widgets/Footer';
-import styles from './layout.module.scss';
 import { Stack } from '@mui/material';
+import type { Metadata } from 'next';
+import { ReactNode } from 'react';
+import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
     title: 'Витрина РТФ',
@@ -22,10 +22,12 @@ export default function RootLayout(props: RootLayoutProps) {
         <html lang="ru">
             <body>
                 <Providers>
-                    <Stack component="main" className={styles.container}>
-                        {children}
+                    <Stack className={styles.container}>
+                        <Stack component="main" className={styles.main}>
+                            {children}
+                        </Stack>
+                        <Footer />
                     </Stack>
-                    <Footer />
                 </Providers>
             </body>
         </html>

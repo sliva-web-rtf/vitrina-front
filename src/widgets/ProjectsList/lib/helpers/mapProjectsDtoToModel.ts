@@ -1,6 +1,6 @@
-import { ProjectsModel } from '../../model/types/projectsModel';
+import { capitalized } from '@/shared/lib/helpers/capitalized';
 import { ProjectsResponse } from '../../model/types/projectsDto';
-import { capitalizeFirstLetter } from '@/shared/lib/helpers/capitalize';
+import { ProjectsModel } from '../../model/types/projectsModel';
 
 export const mapProjectsDtoToModel = (dto: ProjectsResponse): ProjectsModel => ({
     items: dto.items.map((value) => ({
@@ -13,7 +13,7 @@ export const mapProjectsDtoToModel = (dto: ProjectsResponse): ProjectsModel => (
             value.previewImagePath && value.previewImagePath !== ''
                 ? `${process.env.NEXT_PUBLIC_PREVIEW_IMAGE}${value.previewImagePath}`
                 : null,
-        tags: value.tags.map((tag) => capitalizeFirstLetter(tag.name)),
+        tags: value.tags.map((tag) => capitalized(tag.name)),
     })),
     metadata: {
         totalPages: dto.metadata.totalPages,

@@ -1,5 +1,6 @@
 .gallery {
-  gap: var(--space-m)
+    gap: var(--space-m);
+    overflow-x: scroll;
 }
 
 .mainImage {
@@ -33,6 +34,13 @@
   cursor: pointer !important;
 }
 
+.image {
+    width: 80% !important;
+    height: auto !important;
+    aspect-ratio: 16/9 !important;
+    object-fit: cover !important;
+    cursor: zoom-in; 
+}
 
 @media (min-width: 1024px) {
   .thumbnails {

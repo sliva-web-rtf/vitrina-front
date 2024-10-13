@@ -2,9 +2,8 @@
 
 import telegramLogo from '@/shared/assets/telegram.svg';
 import whatsappLogo from '@/shared/assets/whatsapp.svg';
-import { HStack, SocialIcon } from '@/shared/ui';
+import { HStack, MailtoLink, SocialIcon } from '@/shared/ui';
 import { Stack, Typography } from '@mui/material';
-import Link from 'next/link';
 import styles from './Footer.module.scss';
 
 export const Footer = () => (
@@ -29,11 +28,11 @@ export const Footer = () => (
         <HStack justifyContent="space-between">
             <Stack spacing={1}>
                 <Typography color="secondary">Почта</Typography>
-                <Link href="mailto:project.irit@urfu.ru м">
+                <MailtoLink email="project.irit@urfu.ru">
                     <Typography variant="h4" color="background.default">
                         project.irit@urfu.ru
                     </Typography>
-                </Link>
+                </MailtoLink>
             </Stack>
 
             <Stack spacing={1} textAlign="end">

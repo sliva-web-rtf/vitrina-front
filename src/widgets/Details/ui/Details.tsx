@@ -1,13 +1,15 @@
 'use client';
 
-import classNames from './Details.module.scss';
-import { Box, Stack, Typography } from '@mui/material';
-import { useGetDetailsQuery } from '../api/detailsApi';
-import { UserCard } from '@/entities/user';
-import { Gallery } from '@/widgets/Gallery';
+import { DetailsBlock, VideoFrame, VStack } from '@/shared/ui';
 import { DetailsEmpty, DetailsSkeleton } from '@/widgets/Details';
-import { memo } from 'react';
+import { Gallery } from '@/widgets/Gallery';
+import { DetailsHero } from '@/widgets/Hero';
+import { Team } from '@/widgets/Team';
+import { Box } from '@mui/material';
 import { useParams } from 'next/navigation';
+import { memo } from 'react';
+import { useGetDetailsQuery } from '../api/detailsApi';
+import classNames from './Details.module.scss';
 
 function DetailsWidget() {
     const params = useParams<{ projectId: string }>();
@@ -22,52 +24,34 @@ function DetailsWidget() {
     }
 
     return (
-        <Box className={classNames.details}>
-            <Stack className={classNames.col}>
-                <Stack className={classNames.block}>
-                    <Stack className={classNames.mainBlock}>
-                        <Typography variant="h2">{data.name}</Typography>
-                        {data.customTemplate && (
-                            <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: data.customTemplate }} />
-                        )}
-                    </Stack>
-                </Stack>
-                {data.aim && (
-                    <Stack className={classNames.block}>
-                        <Typography variant="h3">Цель проекта</Typography>
-                        <Typography>{data.aim}</Typography>
-                    </Stack>
+        <>
+            <DetailsHero name={data.name} description={data.description} />
+            <VStack className={classNames.details}>
+                {data.customTemplate && (
+                    <DetailsBlock title="Полезная информация">
+                        <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: data.customTemplate }} />
+                    </DetailsBlock>
                 )}
-                {data.client && (
-                    <Stack className={classNames.block}>
-                        <Typography variant="h3">Заказчик</Typography>
-                        <Typography>{data.client}</Typography>
-                    </Stack>
+                {data.aim && <DetailsBlock title="Цель проекта" text={data.aim} />}
+                {data.client && <DetailsBlock title="Заказчик" text={data.client} />}
+
+                {data.contents?.length && (
+                    <DetailsBlock title="Галерея" noBackground noPadding>
+                        <Gallery images={data.contents} alt={data.name} />
+                    </DetailsBlock>
                 )}
-            </Stack>
-            <Stack className={classNames.col}>
-                <Gallery images={data.contents} alt={data.name} />
+
                 {data.videoUrl && (
-                    <iframe
-                        className={classNames.video}
-                        src={`https://www.youtube.com/embed/${data.videoUrl}`}
-                        title={`${data.name} video`}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
+                    <DetailsBlock title="Видео" noBackground noPadding>
+                        <VideoFrame url={data.videoUrl} name={data.name} className={classNames.video} />
+                    </DetailsBlock>
                 )}
-                {data.users && data.users.length > 0 && (
-                    <Stack spacing={2}>
-                        <Typography variant="h3">Команда</Typography>
-                        <Stack spacing={4}>
-                            {data.users.map((user) => (
-                                <UserCard key={user.lastName + user.firstName} {...user} />
-                            ))}
-                        </Stack>
-                    </Stack>
-                )}
-            </Stack>
-        </Box>
+
+                <DetailsBlock title="Команда проекта" noBackground noPadding>
+                    <Team team={data.users} />
+                </DetailsBlock>
+            </VStack>
+        </>
     );
 }
 

@@ -1,0 +1,14 @@
+'use client';
+
+import { Header } from '@/widgets/Header';
+
+const navLinks = [
+    { href: '#issue', text: 'Проблема' },
+    { href: '#idea', text: 'Идея' },
+    { href: '#solution', text: 'Решение' },
+    { href: '#team', text: 'Команда' },
+];
+
+const navButton = { href: '/about', text: 'О проектном практикуме' };
+
+export const DetailsHeader = () => <Header nav={navLinks} navButton={navButton} />;

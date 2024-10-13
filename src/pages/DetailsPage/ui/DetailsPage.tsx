@@ -1,12 +1,12 @@
-import { Stack } from '@mui/material';
-import { BackButton } from '@/features/backButton';
+import { VStack } from '@/shared/ui';
 import { Details } from '@/widgets/Details';
+import { DetailsHeader } from '@/widgets/DetailsHeader';
 
 const DetailsPage = () => (
-    <Stack spacing={10}>
-        <BackButton />
+    <VStack>
+        <DetailsHeader />
         <Details />
-    </Stack>
+    </VStack>
 );
 
 export default DetailsPage;

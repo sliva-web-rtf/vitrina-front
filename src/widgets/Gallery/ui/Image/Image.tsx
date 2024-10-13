@@ -1,20 +1,21 @@
 'use client';
 
 import { BaseAvatar } from '@/shared/ui';
-import { memo, useCallback, useState } from 'react';
 import { Box, Fade, Modal } from '@mui/material';
 import ImageNext from 'next/image';
+import { memo, useCallback, useState } from 'react';
 import classNames from './Image.module.scss';
 
 interface ImageProps {
     readonly src: string;
     readonly alt?: string;
     readonly className?: string;
+    readonly width?: number;
 }
 
 export const Image = memo((props: ImageProps) => {
     const [open, setOpen] = useState(false);
-    const { src, alt, className } = props;
+    const { src, alt, className, width } = props;
 
     const handleToggleModal = useCallback(() => setOpen((prev) => !prev), []);
 
@@ -35,6 +36,7 @@ export const Image = memo((props: ImageProps) => {
                             src={src}
                             alt={alt ?? 'Картинка проекта'}
                             onClick={handleToggleModal}
+                            width={width}
                         />
                     </Box>
                 </Fade>

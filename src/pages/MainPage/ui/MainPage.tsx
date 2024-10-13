@@ -1,6 +1,6 @@
 'use client';
 import { VStack } from '@/shared/ui';
-import { Hero } from '@/widgets/Hero';
+import { MainHero } from '@/widgets/Hero';
 import { MainHeader } from '@/widgets/MainHeader';
 import { Showcase } from '@/widgets/Showcase';
 
@@ -8,7 +8,7 @@ function MainPage() {
     return (
         <VStack>
             <MainHeader />
-            <Hero />
+            <MainHero />
             <Showcase />
         </VStack>
     );

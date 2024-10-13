@@ -1,25 +1,39 @@
-import classNames from './UserCard.module.scss';
-import { User } from '../model/types/user';
-import { Stack, Typography } from '@mui/material';
-import { ChipsList } from '@/shared/ui';
+import defaultUserImage from '@/shared/assets/defaultUserImage.jpg';
+import { lowercased } from '@/shared/lib/helpers/lowercased';
+import { MailtoLink, VStack } from '@/shared/ui';
+import { Typography } from '@mui/material';
+import Image from 'next/image';
 import { memo } from 'react';
+import { User } from '../model/types/user';
+import classNames from './UserCard.module.scss';
+import { UserRoles } from './UserRoles';
 
 export const UserCard = memo((props: User) => {
-    const { firstName, lastName, patronymic, email, roles } = props;
+    const { image, firstName, lastName, patronymic, description, email, roles } = props;
+    const fullName = `${lastName} ${firstName} ${patronymic}`;
+    const lowercasedEmail = lowercased(email);
+
     return (
-        <Stack className={classNames.card}>
-            <Stack className={classNames.content}>
-                {roles && roles.length > 0 && <ChipsList items={roles} />}
-                <Stack>
+        <VStack className={classNames.card}>
+            <Image src={image || defaultUserImage} alt={fullName} />
+            <VStack className={classNames.content}>
+                <UserRoles roles={roles} />
+
+                <VStack spacing={1}>
                     <Typography variant="h5">
-                        {lastName} {firstName} {patronymic}
+                        {lastName} {firstName} <br />
+                        {patronymic}
                     </Typography>
-                    <Typography color="secondary" variant="subtitle1">
-                        {email}
+                    <Typography>{description}</Typography>
+                </VStack>
+
+                <MailtoLink email={lowercasedEmail}>
+                    <Typography color="secondary" fontWeight={700}>
+                        {lowercasedEmail}
                     </Typography>
-                </Stack>
-            </Stack>
-        </Stack>
+                </MailtoLink>
+            </VStack>
+        </VStack>
     );
 });
 

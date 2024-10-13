@@ -34,7 +34,7 @@ export const filterSlice = createSlice({
         },
         setPage: (state, action: PayloadAction<FilterSchema['page']>) => {
             state.page = action.payload;
-            window.scrollTo(0, window.innerHeight);
+            window.scrollTo(0, 0.9 * window.innerHeight);
         },
         clear: () => initialState,
     },

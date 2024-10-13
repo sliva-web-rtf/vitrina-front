@@ -14,7 +14,12 @@ const StyledPagination = styled((props: PaginationProps) => {
     );
 })(({ theme }) => ({
     '& .MuiPaginationItem-page': {
-        fontWeight: 500,
+        fontWeight: 700,
+        color: theme.palette.primary.main,
+        borderRadius: theme.spacing(2),
+    },
+    '& .MuiPaginationItem-previousNext': {
+        color: theme.palette.primary.main,
     },
     '& .MuiPaginationItem-root.Mui-selected': {
         color: theme.palette.primary.contrastText,
@@ -27,6 +32,6 @@ const StyledPagination = styled((props: PaginationProps) => {
 
 export const BasePagination = (props: PaginationProps) => (
     <Stack direction="row" justifyContent="center">
-        <StyledPagination {...props} />
+        <StyledPagination size="large" {...props} />
     </Stack>
 );
