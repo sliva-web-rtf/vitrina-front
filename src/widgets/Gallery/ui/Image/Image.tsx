@@ -15,7 +15,7 @@ interface ImageProps {
 
 export const Image = memo((props: ImageProps) => {
     const [open, setOpen] = useState(false);
-    const { src, alt, className, width } = props;
+    const { src, alt, className } = props;
 
     const handleToggleModal = useCallback(() => setOpen((prev) => !prev), []);
 
@@ -31,13 +31,15 @@ export const Image = memo((props: ImageProps) => {
             <Modal open={open} onClose={handleToggleModal} className={classNames.modal} disableAutoFocus>
                 <Fade in={open}>
                     <Box className={classNames.container}>
-                        <ImageNext
-                            className={classNames.image}
-                            src={src}
-                            alt={alt ?? 'Картинка проекта'}
-                            onClick={handleToggleModal}
-                            width={width}
-                        />
+                        <Box className={classNames.image}>
+                            <ImageNext
+                                loading="lazy"
+                                src={src}
+                                alt={alt ?? 'Картинка проекта'}
+                                onClick={handleToggleModal}
+                                fill={true}
+                            />
+                        </Box>
                     </Box>
                 </Fade>
             </Modal>

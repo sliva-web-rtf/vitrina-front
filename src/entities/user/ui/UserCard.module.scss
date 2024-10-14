@@ -1,18 +1,23 @@
 .card {
-    min-width:  250px;
+    width: 300px;
     background-color: var(--bg-color);
 }
 
-.card, .content {
-  gap: var(--space-m);
+.card,
+.content {
+    gap: var(--space-m);
 }
 
-.card, .card img {
+.card,
+.card img {
+    border-radius: var(--space-m);
+}
+
+.card img {
     width: 100%;
     height: auto;
     aspect-ratio: 1/1;
     object-fit: cover;
-    border-radius: var(--space-m);
 }
 
 .content {

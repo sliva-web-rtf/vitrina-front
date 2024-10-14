@@ -1,54 +1,16 @@
-.gallery {
-    gap: var(--space-m);
-    overflow-x: scroll;
-}
-
-.mainImage {
-  width: 100%;
-  height: auto !important;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  cursor: zoom-in;
-}
-
 .empty {
-  cursor: unset;
+    cursor: unset;
 }
 
 .empty img {
-  width: 20% !important;
-  height: auto !important;
-}
-
-.thumbnails {
-  flex-direction: row !important;
-  gap: var(--space-m);
-  width: var(--page-width) !important;
-}
-
-.thumbnail {
-  width: 20vw !important;
-  height: auto !important;
-  aspect-ratio: 1 !important;
-  object-fit: cover !important;
-  cursor: pointer !important;
+    width: 20% !important;
+    height: auto !important;
 }
 
 .image {
-    width: 80% !important;
+    width: calc(var(--page-width) / 1.4) !important;
     height: auto !important;
     aspect-ratio: 16/9 !important;
     object-fit: cover !important;
-    cursor: zoom-in; 
+    cursor: zoom-in;
 }
-
-@media (min-width: 1024px) {
-  .thumbnails {
-    width: calc(var(--page-width) / 2) !important;
-  }
-
-  .thumbnail {
-    width: calc((100% - 3 * var(--space-m)) / 4) !important;
-  }
-}
-

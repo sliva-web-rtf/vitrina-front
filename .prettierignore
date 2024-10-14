@@ -1,5 +1,22 @@
-dist
+# Игнорирование билдов и зависимостей
 node_modules
-*.html
-*.css
-*.scss
+build
+dist
+coverage
+
+# Лог файлы и системные файлы
+*.log
+*.lock
+*.tmp
+
+# Игнорирование конфигураций
+.next
+*.config.js
+*.config.ts
+
+# Игнорирование специфичных директорий
+.vscode
+.idea
+
+# Игнорирование специфичных файлов
+package*.json

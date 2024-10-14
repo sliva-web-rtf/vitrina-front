@@ -1,7 +1,6 @@
 import { User, UserCard } from '@/entities/user';
-import { HStack } from '@/shared/ui';
+import { Slider } from '@/features/slider';
 import { memo } from 'react';
-import styles from './Team.module.scss';
 
 interface TeamProps {
     team: User[];
@@ -14,13 +13,9 @@ export const Team = memo((props: TeamProps) => {
         return null;
     }
 
-    return (
-        <HStack className={styles.container}>
-            {team.map((user) => (
-                <UserCard key={user.email} {...user} />
-            ))}
-        </HStack>
-    );
+    const items = team.map((user) => <UserCard key={user.email} {...user} />);
+
+    return <Slider name="team" items={items} />;
 });
 
 Team.displayName = 'Team';
