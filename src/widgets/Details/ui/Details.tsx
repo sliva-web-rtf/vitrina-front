@@ -24,7 +24,7 @@ function DetailsWidget() {
     }
 
     return (
-        <>
+        <VStack spacing={6} className={classNames.container}>
             <DetailsHero name={data.name} description={data.description} />
             <VStack className={classNames.details}>
                 {data.customTemplate && (
@@ -51,7 +51,7 @@ function DetailsWidget() {
                     <Team team={data.users} />
                 </DetailsBlock>
             </VStack>
-        </>
+        </VStack>
     );
 }
 

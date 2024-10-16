@@ -1,25 +1,27 @@
 :root {
-  --space-s: 8px;
-  --space-m: calc(var(--space-s) * 2);
-  --space-l: calc(var(--space-s) * 3);
-  --space-xl: calc(var(--space-s) * 4);
+    --space-s: 8px;
+    --space-m: calc(var(--space-s) * 2);
+    --space-l: calc(var(--space-s) * 3);
+    --space-xl: calc(var(--space-s) * 4);
 
-  --border-radius: 16px;
+    --border-radius: 16px;
 
-  --page-max-width: 1920px;
-  --page-width: min(calc(100dvw - 2 * var(--space-xl)), var(--page-max-width));
-  --card-height: 450px;
-  --footer-urfu-name-width: 430px;
-  --footer-links-size: 30px;
+    --page-max-width: 1920px;
+    --page-width: min(calc(100dvw - 2 * var(--space-xl)), var(--page-max-width));
+    --card-height: 450px;
+    --footer-urfu-name-width: 430px;
+    --footer-links-size: 30px;
 
-  --bg-color: #FFFFFF;
-  --primary-color: #1166EE;
-  // Project card background
-  --primary-color-light: #FCFBFF;
-  --footer-bg-color: #1B1B20;
-  --footer-social-color: #2F2F35;
-  --font-color: #292929;
-  --dim-font-color: #8C8C8C;
-  --inverted-font-color: #fff;
-  --border-color: #F0EFF7;
+    --bg-color: #ffffff;
+    --primary-color: #1166ee;
+    // Project card background
+    --primary-color-light: #fcfbff;
+    --primary-color-95: #d9e7ff;
+    --secondary-color-95: #f0eff7;
+    --footer-bg-color: #1b1b20;
+    --footer-social-color: #2f2f35;
+    --font-color: #292929;
+    --dim-font-color: #8c8c8c;
+    --inverted-font-color: #fff;
+    --border-color: #f0eff7;
 }

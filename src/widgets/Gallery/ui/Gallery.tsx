@@ -1,8 +1,7 @@
 'use client';
 
 import { Slider } from '@/features/slider';
-import { memo } from 'react';
-import styles from './Gallery.module.scss';
+import { memo, useMemo } from 'react';
 import { Image } from './Image/Image';
 
 interface GalleryProps {
@@ -12,10 +11,14 @@ interface GalleryProps {
 export const Gallery = memo((props: GalleryProps) => {
     const { images } = props;
 
-    const items = images.map((image, index) => (
-        <Image key={image} src={image} className={styles.image} alt={`gallery-img-${index}`} />
-    ));
+    const items = images.map((image, index) => <Image key={image} src={image} alt={`gallery-img-${index}`} />);
 
-    return <Slider name="gallery" items={items} />;
+    const itemWidth = useMemo(() => {
+        const width = window.innerWidth;
+        return width > 600 ? 600 : width * 0.8;
+    }, []);
+
+    return <Slider items={items} itemWidth={itemWidth} />;
 });
+
 Gallery.displayName = 'Gallery';

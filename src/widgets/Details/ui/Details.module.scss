@@ -1,20 +1,23 @@
+.container {
+    width: var(--page-width);
+    margin: 0 auto;
+}
+
 .details {
-  gap: var(--space-xl);
-  background-color: #F0EFF7;
+    gap: var(--space-xl);
 }
 
 .col {
-  gap: var(--space-l);
+    gap: var(--space-l);
 }
 
 .block {
-  gap: var(--space-m)
+    gap: var(--space-m);
 }
 
-
 .video {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16/9;
-  border-radius: var(--border-radius);
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    border-radius: var(--border-radius);
 }

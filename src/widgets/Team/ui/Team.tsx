@@ -15,7 +15,7 @@ export const Team = memo((props: TeamProps) => {
 
     const items = team.map((user) => <UserCard key={user.email} {...user} />);
 
-    return <Slider name="team" items={items} />;
+    return <Slider items={items} itemWidth={300} />;
 });
 
 Team.displayName = 'Team';
