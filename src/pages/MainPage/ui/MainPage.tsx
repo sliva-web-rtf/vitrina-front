@@ -1,4 +1,3 @@
-'use client';
 import { VStack } from '@/shared/ui';
 import { MainHero } from '@/widgets/Hero';
 import { MainHeader } from '@/widgets/MainHeader';

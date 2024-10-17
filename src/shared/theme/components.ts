@@ -1,11 +1,10 @@
 import { Components, Theme } from '@mui/material';
-import { blueGrey } from '@mui/material/colors';
 
 export const components: Components<Omit<Theme, 'components'>> | undefined = {
     MuiTextField: {
         styleOverrides: {
             root: {
-                backgroundColor: blueGrey['50'],
+                backgroundColor: '#fff',
                 borderRadius: 'var(--space-l)',
                 border: 'none',
             },

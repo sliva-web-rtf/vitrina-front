@@ -1,3 +1,4 @@
 import dynamic from 'next/dynamic';
 
-export const DetailsPageAsync = dynamic(() => import('./DetailsPage'));
+const DetailsPage = dynamic(() => import('./DetailsPage'));
+export default DetailsPage;

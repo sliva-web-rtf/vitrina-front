@@ -1,14 +1,12 @@
-'use client';
-
-import { useEffect } from 'react';
-import { Box, Grid } from '@mui/material';
-import { useGetProjectsQuery } from '../api/projectsApi';
-import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from '@/features/filter';
-import { ProjectsListSkeleton } from '@/widgets/ProjectsList/ui/ProjectsList.skeleton';
 import { ProjectCard } from '@/entities/project';
-import { ProjectsListEmpty } from '@/widgets/ProjectsList/ui/ProjectsList.empty';
+import { getFilter } from '@/features/filter';
 import { projectsListActions } from '@/widgets/ProjectsList';
+import { ProjectsListEmpty } from '@/widgets/ProjectsList/ui/ProjectsList.empty';
+import { ProjectsListSkeleton } from '@/widgets/ProjectsList/ui/ProjectsList.skeleton';
+import { Box, Grid } from '@mui/material';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useGetProjectsQuery } from '../api/projectsApi';
 
 export const ProjectsList = () => {
     const dispatch = useDispatch();

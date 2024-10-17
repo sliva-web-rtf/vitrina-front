@@ -1,25 +1,25 @@
-@import "variables";
-@import "reset";
+@import 'variables';
+@import 'reset';
 
 body {
-  position: relative;
-  background-color: var(--bg-color);
-  color: var(--font-color);
-  padding: 0 var(--space-xl) calc(2 * var(--space-xl));
-//   max-width: var(--page-max-width);
+    position: relative;
+    background-color: var(--secondary-color-95) !important;
+    color: var(--font-color);
+    padding: 0 var(--space-xl) calc(2 * var(--space-xl));
 }
 
 .customTemplate {
-  p {
-    word-wrap: break-word;
-  }
+    p {
+        word-wrap: break-word;
+    }
 
-  ul, ol {
-    padding-left: var(--space-xl);
-  }
+    ul,
+    ol {
+        padding-left: var(--space-xl);
+    }
 
-  a {
-    color: var(--primary-color);
-    text-decoration: underline;
-  }
+    a {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
 }

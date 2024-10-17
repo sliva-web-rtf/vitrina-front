@@ -3,12 +3,11 @@ import { lowercased } from '@/shared/lib/helpers/lowercased';
 import { MailtoLink, VStack } from '@/shared/ui';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
-import { memo } from 'react';
 import { User } from '../model/types/user';
 import classNames from './UserCard.module.scss';
 import { UserRoles } from './UserRoles';
 
-export const UserCard = memo((props: User) => {
+export const UserCard = (props: User) => {
     const { image, firstName, lastName, patronymic, description, email, roles } = props;
     const fullName = `${lastName} ${firstName} ${patronymic}`;
     const lowercasedEmail = lowercased(email);
@@ -35,6 +34,4 @@ export const UserCard = memo((props: User) => {
             </VStack>
         </VStack>
     );
-});
-
-UserCard.displayName = 'UserCard';
+};

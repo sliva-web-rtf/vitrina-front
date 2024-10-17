@@ -1,14 +1,14 @@
 .container {
-    width: var(--page-width);
-    margin: 0 auto;
+    align-items: center;
+    transform: translateY(-10dvh);
+    background-color: var(--secondary-color-95);
+    border-radius: var(--space-xl);
+    padding-top: var(--space-xl);
 }
 
 .details {
+    width: var(--page-width);
     gap: var(--space-xl);
-}
-
-.col {
-    gap: var(--space-l);
 }
 
 .block {

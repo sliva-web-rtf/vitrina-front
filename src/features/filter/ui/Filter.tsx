@@ -1,5 +1,3 @@
-'use client';
-
 import { ToggleButtons } from '@/features/ToggleButtons';
 import { BaseButton, BaseSelect, HStack } from '@/shared/ui';
 import { BaseSearch } from '@/shared/ui/Field/BaseSearch';
@@ -65,6 +63,7 @@ export const Filter = memo(() => {
                 <Stack
                     direction="row"
                     sx={(theme) => ({
+                        alignItems: 'center',
                         gap: 'var(--space-m)',
                         [theme.breakpoints.down('sm')]: {
                             flexDirection: 'column',

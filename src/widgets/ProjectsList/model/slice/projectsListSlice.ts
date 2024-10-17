@@ -1,5 +1,5 @@
+import { ProjectsListSchema } from '@/widgets/ProjectsList/model/types/projectsListSchema';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProjectsListSchema } from '@/widgets/ProjectsList/model/types/projectsListSchema.ts';
 
 export const initialState: ProjectsListSchema = {
     totalPages: 1,

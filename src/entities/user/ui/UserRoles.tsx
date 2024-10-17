@@ -1,7 +1,8 @@
 import { Typography } from '@mui/material';
+import { Role } from '../model/types/role';
 
 interface UserRolesProps {
-    roles?: string[];
+    roles?: Role[];
 }
 
 export const UserRoles = (props: UserRolesProps) => {
@@ -18,9 +19,9 @@ export const UserRoles = (props: UserRolesProps) => {
     return (
         <span>
             {roles.map((role, index) => (
-                <span key={role}>
-                    <Typography component="span" key={role} fontWeight={700} color="primary">
-                        {role}
+                <span key={role.id}>
+                    <Typography component="span" fontWeight={700} color="primary">
+                        {role.name}
                     </Typography>
                     {index < roles.length - 1 && <span>, </span>}
                 </span>

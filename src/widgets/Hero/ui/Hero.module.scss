@@ -8,6 +8,7 @@
     background-color: #062756;
     color: var(--inverted-font-color);
     overflow: hidden;
+    margin-top: 0 !important;
 }
 
 .container > div {
@@ -21,4 +22,10 @@
     width: 100%;
     height: 100%;
     z-index: 0;
+}
+
+.detailsHero {
+    position: relative;
+    width: 80%;
+    max-width: var(--page-width);
 }

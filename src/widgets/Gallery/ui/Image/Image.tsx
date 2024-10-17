@@ -33,7 +33,6 @@ export const Image = memo((props: ImageProps) => {
                     <Box className={classNames.container}>
                         <Box className={classNames.image}>
                             <ImageNext
-                                loading="lazy"
                                 src={src}
                                 alt={alt ?? 'Картинка проекта'}
                                 onClick={handleToggleModal}

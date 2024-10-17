@@ -9,7 +9,7 @@ type BaseSelectProps = TextFieldProps & {
 };
 
 const LoadingAdornment = () => (
-    <Box sx={{ position: 'absolute', right: 32 }}>
+    <Box sx={{ position: 'relative', right: 32 }}>
         <CircularProgress size={16} />
     </Box>
 );
@@ -26,7 +26,8 @@ export const BaseSelect = memo((props: BaseSelectProps) => {
                 native: true,
             }}
             sx={{
-                maxWidth: 250,
+                position: 'relative',
+                width: 250,
                 '& .MuiSvgIcon-root': {
                     top: 'unset',
                 },

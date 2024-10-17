@@ -1,3 +1,5 @@
+'use client';
+
 import { Filter, filterActions, getFilter } from '@/features/filter';
 import { BasePagination, VStack } from '@/shared/ui';
 import { getTotalPages, ProjectsList } from '@/widgets/ProjectsList';

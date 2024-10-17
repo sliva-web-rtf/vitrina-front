@@ -1,30 +1,22 @@
 import { VStack } from '@/shared/ui';
 import { Typography } from '@mui/material';
 import { Hero } from './Hero';
+import styles from './Hero.module.scss';
 
 interface DetailsHeroProps {
     name?: string;
-    description?: string;
-    contents?: string[];
+    subtitle?: string;
 }
 
 export const DetailsHero = (props: DetailsHeroProps) => {
-    const { name, description, contents } = props;
+    const { name, subtitle } = props;
 
     return (
         <Hero>
-            <VStack
-                spacing={6}
-                sx={{
-                    position: 'relative',
-                    width: '80%',
-                    maxWidth: 'var(--page-width)',
-                    maxHeight: '80%',
-                }}
-            >
+            <VStack spacing={6} className={styles.detailsHero}>
                 <VStack spacing={4}>
                     <Typography variant="h2">{name}</Typography>
-                    <Typography variant="h3">{description}</Typography>
+                    <Typography variant="h3">{subtitle}</Typography>
                 </VStack>
             </VStack>
         </Hero>

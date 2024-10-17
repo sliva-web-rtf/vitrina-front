@@ -1,8 +1,10 @@
-import { ReactNode } from 'react';
-import { ThemeProvider } from './ThemeProvider';
-import { StoreProvider } from './StoreProvider';
-import { ErrorBoundary } from './ErrorBoundary';
+'use client';
+
 import { CssBaseline } from '@mui/material';
+import { ReactNode } from 'react';
+import { ErrorBoundary } from './ErrorBoundary';
+import { StoreProvider } from './StoreProvider';
+import { ThemeProvider } from './ThemeProvider';
 
 interface ProvidersProps {
     readonly children: ReactNode;

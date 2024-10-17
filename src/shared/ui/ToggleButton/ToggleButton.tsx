@@ -30,7 +30,8 @@ export const BaseToggleButtonGroup = styled(ToggleButtonGroup)<ToggleButtonGroup
     '&': {
         columnGap: theme.spacing(1),
         borderRadius: '1000px',
-        background: theme.palette.secondary.light,
+        background: theme.palette.background.default,
         padding: theme.spacing(1),
+        height: 56,
     },
 }));

@@ -1,23 +1,24 @@
 .projectCard {
-  height: 300px;
-  background-color: var(--primary-color-light);
-  outline: 1px solid var(--border-color);
+    height: 300px;
+    background-color: var(--bg-color);
+    outline: 1px solid var(--border-color);
 }
 
 .clippedText {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .image {
-  height: 100px !important;
-  object-fit: cover;
+    height: 100px !important;
+    object-fit: cover;
 }
 
-.image, .projectCard {
+.image,
+.projectCard {
     border-radius: var(--space-m);
 }
 
@@ -27,11 +28,11 @@
 }
 
 @media (min-width: 768px) {
-  .projectCard {
-    height: var(--card-height);
-  }
+    .projectCard {
+        height: var(--card-height);
+    }
 
-  .image {
-    height: 50% !important;
-  }
+    .image {
+        height: 50% !important;
+    }
 }

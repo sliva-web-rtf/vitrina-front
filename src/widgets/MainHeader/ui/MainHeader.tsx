@@ -1,11 +1,7 @@
 'use client';
 
 import { Header } from '@/widgets/Header';
-
-const navLinks = [
-    { href: '#projects', text: 'Топ' },
-    { href: '#projects', text: 'Все проекты' },
-];
+import { navLinks } from '../model/constants';
 
 const navButton = { href: '#projects', text: 'Витрина проектов' };
 

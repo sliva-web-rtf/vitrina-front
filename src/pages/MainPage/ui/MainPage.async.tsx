@@ -1,3 +1,4 @@
 import dynamic from 'next/dynamic';
 
-export const MainPageAsync = dynamic(() => import('./MainPage'));
+const MainPage = dynamic(() => import('./MainPage'));
+export default MainPage;

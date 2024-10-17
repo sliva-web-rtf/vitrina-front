@@ -3,7 +3,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--bg-color);
+    background-color: var(--secondary-color-95);
     border-top-left-radius: var(--space-xl);
     border-top-right-radius: var(--space-xl);
 }
@@ -14,5 +14,3 @@
 .container span {
     color: var(--primary-color);
 }
-   
-   
