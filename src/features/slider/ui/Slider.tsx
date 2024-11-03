@@ -15,7 +15,6 @@ interface SliderProps {
 
 export const Slider = (props: SliderProps) => {
     const { items, amountPerSlide = 2, partialVisibilityGutter = 32 } = props;
-    const isAllVisible = items.length <= amountPerSlide;
 
     const responsive = {
         desktop: {
@@ -25,12 +24,12 @@ export const Slider = (props: SliderProps) => {
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: amountPerSlide,
+            items: 3,
             partialVisibilityGutter,
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
-            items: amountPerSlide,
+            items: 1,
             partialVisibilityGutter,
         },
     };
@@ -41,9 +40,9 @@ export const Slider = (props: SliderProps) => {
             autoPlaySpeed={5000}
             rewind
             rewindWithAnimation
-            showDots={!isAllVisible}
+            showDots
             customDot={<Dot />}
-            partialVisible={!isAllVisible}
+            partialVisible
             draggable={false}
             responsive={responsive}
             containerClass={styles.container}

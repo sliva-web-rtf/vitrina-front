@@ -10,6 +10,8 @@ export const VideoFrame = (props: VideoFrameProps) => {
 
     return (
         <iframe
+            width="100%"
+            style={{ aspectRatio: '16 / 9', borderRadius: 'var(--space-xl)', border: 'none' }}
             className={className}
             src={`https://www.youtube.com/embed/${url}`}
             title={`${name} video`}

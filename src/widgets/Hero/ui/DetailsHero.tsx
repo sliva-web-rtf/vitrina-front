@@ -1,7 +1,9 @@
+import gradient from '@/shared/assets/details-hero.svg';
 import { VStack } from '@/shared/ui';
 import { Typography } from '@mui/material';
-import { Hero } from './Hero';
-import styles from './Hero.module.scss';
+import Image from 'next/image';
+
+import classNames from './Hero.module.scss';
 
 interface DetailsHeroProps {
     name?: string;
@@ -12,13 +14,12 @@ export const DetailsHero = (props: DetailsHeroProps) => {
     const { name, subtitle } = props;
 
     return (
-        <Hero>
-            <VStack spacing={6} className={styles.detailsHero}>
-                <VStack spacing={4}>
-                    <Typography variant="h2">{name}</Typography>
-                    <Typography variant="h3">{subtitle}</Typography>
-                </VStack>
+        <VStack className={classNames.detailsHero}>
+            <VStack spacing={4} p={20}>
+                <Typography variant="h2">{name}</Typography>
+                <Typography variant="h3">{subtitle}</Typography>
             </VStack>
-        </Hero>
+            <Image src={gradient} alt="" className={classNames.gradient} />
+        </VStack>
     );
 };
