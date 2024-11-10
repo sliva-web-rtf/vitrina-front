@@ -1,9 +1,7 @@
-'use client';
-
 import { Header } from '@/widgets/Header';
 
 const navLinks = [
-    { href: '#issue', text: 'Проблема' },
+    { href: '#problem', text: 'Проблема' },
     { href: '#idea', text: 'Идея' },
     { href: '#solution', text: 'Решение' },
     { href: '#team', text: 'Команда' },

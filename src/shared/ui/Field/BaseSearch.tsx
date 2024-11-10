@@ -12,7 +12,14 @@ export const BaseSearch = (props: Omit<TextFieldProps, 'label'>) => (
                 </InputAdornment>
             ),
         }}
-        sx={{ width: '100%', maxWidth: 500 }}
+        sx={(theme) => ({
+            width: '100%',
+            maxWidth: 500,
+
+            [theme.breakpoints.down('lg')]: {
+                maxWidth: 'unset',
+            },
+        })}
         {...props}
     />
 );

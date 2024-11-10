@@ -9,6 +9,9 @@ export type DetailsPageSchema = {
     users: User[];
     previewImagePath: string | null;
 
+    problem?: string;
+    idea?: string;
+    solution?: string;
     subtitle?: string;
     markdown?: string;
     videoUrl?: string;

@@ -1,9 +1,8 @@
-'use client';
-
 import logo from '@/shared/assets/logo.svg';
 import { BaseButton, HStack } from '@/shared/ui';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-import { Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { IconButton, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NavLink } from '../model/navLink';
@@ -31,9 +30,12 @@ export const Header = (props: HeaderProps) => {
                 ))}
             </HStack>
 
-            <BaseButton variant="contained" endIcon={<ArrowForwardRoundedIcon />}>
+            <BaseButton className={styles.button} variant="contained" endIcon={<ArrowForwardRoundedIcon />}>
                 <Typography variant="subtitle1">{navButton.text}</Typography>
             </BaseButton>
+            <IconButton className={styles.burger}>
+                <MenuIcon />
+            </IconButton>
         </HStack>
     );
 };

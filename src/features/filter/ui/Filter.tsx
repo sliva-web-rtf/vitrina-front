@@ -55,7 +55,7 @@ export const Filter = memo(() => {
                 sx={(theme) => ({
                     gap: 'var(--space-xl)',
                     flexDirection: 'row',
-                    [theme.breakpoints.down('md')]: {
+                    [theme.breakpoints.down('lg')]: {
                         flexDirection: 'column',
                     },
                 })}

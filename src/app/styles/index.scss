@@ -1,6 +1,10 @@
 @import 'variables';
 @import 'reset';
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     position: relative;
     background-color: var(--secondary-color-95) !important;

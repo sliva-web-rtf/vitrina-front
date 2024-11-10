@@ -25,13 +25,17 @@ export const BaseSelect = memo((props: BaseSelectProps) => {
             SelectProps={{
                 native: true,
             }}
-            sx={{
+            sx={(theme) => ({
                 position: 'relative',
                 width: 250,
                 '& .MuiSvgIcon-root': {
                     top: 'unset',
                 },
-            }}
+
+                [theme.breakpoints.down('lg')]: {
+                    width: '100%',
+                },
+            })}
             InputProps={{
                 ...selectProps.InputProps,
                 endAdornment,
