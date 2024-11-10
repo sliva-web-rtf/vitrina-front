@@ -9,7 +9,7 @@ export const detailsSlice = createSlice({
     initialState,
     reducers: {
         changeEditableProject: (state, action: PayloadAction<ProjectDetails | undefined>) => {
-          state.editableProject = action.payload; 
+            state.editableProject = action.payload;
         },
     },
 });

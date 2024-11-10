@@ -30,10 +30,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         if (hasError) {
             return (
                 <Suspense fallback="">
-                    <Stack sx={{width: '100wh', height: '100vh'}} justifyContent='center' alignItems='center'>
-                        <Typography variant='h2'>
-                            Что-то пошло не так :(
-                        </Typography>
+                    <Stack sx={{ width: '100wh', height: '100vh' }} justifyContent="center" alignItems="center">
+                        <Typography variant="h2">Что-то пошло не так :(</Typography>
                     </Stack>
                 </Suspense>
             );

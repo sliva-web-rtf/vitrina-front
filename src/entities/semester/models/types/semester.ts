@@ -1,5 +1,5 @@
 export enum Semester {
-  None = 'None',
-  Spring = 'Spring',
-  Autumn = 'Autumn',
+    None = 'None',
+    Spring = 'Spring',
+    Autumn = 'Autumn',
 }

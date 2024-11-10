@@ -12,12 +12,12 @@ export const ProjectsListSkeleton = memo((props: ProjectsListSkeletonProps) => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2} alignItems='center' >
-            {items.map(item => (
-                <Grid key={item} item  xs={12} md={6} lg={4} xl={3}>
-                    <ProjectCardSkeleton />
-                </Grid>
-            ))}
+            <Grid container spacing={2} alignItems="center">
+                {items.map(item => (
+                    <Grid key={item} item xs={12} md={6} lg={4} xl={3}>
+                        <ProjectCardSkeleton />
+                    </Grid>
+                ))}
             </Grid>
         </Box>
     );
