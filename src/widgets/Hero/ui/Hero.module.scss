@@ -11,7 +11,7 @@
     margin-top: 0 !important;
 }
 
-.container > div {
+.container>div {
     z-index: 1;
 }
 
@@ -35,4 +35,26 @@
 
     min-height: 600px;
     overflow: hidden;
+}
+
+.detailsHeroContent {
+    padding: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+    .detailsHeroContent {
+        padding: calc(3 * var(--space-xl));
+    }
+}
+
+@media (min-width: 1024px) {
+    .detailsHeroContent {
+        padding: calc(4 * var(--space-xl));
+    }
+}
+
+@media (min-width: 1200px) {
+    .detailsHeroContent {
+        padding: calc(5 * var(--space-xl));
+    }
 }

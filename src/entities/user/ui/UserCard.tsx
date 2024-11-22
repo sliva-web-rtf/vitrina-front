@@ -1,6 +1,7 @@
 import defaultUserImage from '@/shared/assets/defaultUserImage.jpg';
 import { lowercased } from '@/shared/lib/helpers/lowercased';
-import { MailtoLink, VStack } from '@/shared/ui';
+import { protocolless } from '@/shared/lib/helpers/protocolless';
+import { DeepLink, VStack } from '@/shared/ui';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
 import { User } from '../model/types/user';
@@ -9,12 +10,11 @@ import { UserRoles } from './UserRoles';
 
 export const UserCard = (props: User) => {
     const { image, firstName, lastName, patronymic, description, email, roles } = props;
-    const fullName = `${lastName} ${firstName} ${patronymic}`;
     const lowercasedEmail = lowercased(email);
 
     return (
         <VStack className={classNames.card}>
-            <Image src={image || defaultUserImage} alt={fullName} />
+            <Image src={image || defaultUserImage} alt={`${lastName} ${firstName} ${patronymic}`} />
             <VStack className={classNames.content}>
                 <UserRoles roles={roles} />
 
@@ -26,11 +26,11 @@ export const UserCard = (props: User) => {
                     <Typography>{description}</Typography>
                 </VStack>
 
-                <MailtoLink email={lowercasedEmail}>
+                <DeepLink link={lowercasedEmail}>
                     <Typography color="secondary" fontWeight={700}>
-                        {lowercasedEmail}
+                        {protocolless(lowercasedEmail)}
                     </Typography>
-                </MailtoLink>
+                </DeepLink>
             </VStack>
         </VStack>
     );

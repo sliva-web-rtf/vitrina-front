@@ -14,5 +14,13 @@ export const Team = (props: TeamProps) => {
 
     const items = team.map((user) => <UserCard key={user.id} {...user} />);
 
-    return <Slider items={items} amountPerSlide={4} />;
+    const amountPerBreakpoint = {
+        xl: 5,
+        l: 4,
+        m: 3,
+        s: 2,
+        xs: 1,
+    };
+
+    return <Slider items={items} amountPerBreakpoint={amountPerBreakpoint} />;
 };

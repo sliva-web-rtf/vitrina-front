@@ -12,5 +12,13 @@ export const Gallery = (props: GalleryProps) => {
         return <Image key={image} src={image} alt={`gallery-img-${index}`} />;
     });
 
-    return <Slider items={items} amountPerSlide={2} />;
+    const amountPerBreakpoint = {
+        xl: 2,
+        l: 2,
+        m: 1,
+        s: 1,
+        xs: 1,
+    };
+
+    return <Slider items={items} amountPerBreakpoint={amountPerBreakpoint} />;
 };

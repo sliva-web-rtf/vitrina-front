@@ -4,6 +4,7 @@ import { Gallery } from '@/widgets/Gallery';
 import { Team } from '@/widgets/Team';
 import { Box } from '@mui/material';
 import { defaultText } from '../model/const';
+import classNames from './Details.module.scss';
 
 export const Details = (props: DetailsPageSchema) => {
     const { name, markdown, aim, client, contents, videoUrl, users, subtitle, problem, idea, solution } = props;
@@ -15,11 +16,11 @@ export const Details = (props: DetailsPageSchema) => {
                     <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: markdown }} />
                 </DetailsBlock>
             )}
-            <HStack spacing={3} justifyContent="space-between">
+            <HStack gap={3} justifyContent="space-between" className={classNames.hstack}>
                 <DetailsBlock anchor="problem" title="Проблема" text={problem || defaultText.problem} />
                 <DetailsBlock title="Цель проекта" text={aim || defaultText.aim} />
             </HStack>
-            <HStack spacing={3} justifyContent="space-between">
+            <HStack gap={3} justifyContent="space-between" className={classNames.hstack}>
                 <DetailsBlock anchor="solution" title="Решение" text={solution || defaultText.solution} />
                 <DetailsBlock anchor="idea" title="Идея" text={idea || defaultText.idea} />
             </HStack>

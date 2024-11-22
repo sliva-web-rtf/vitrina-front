@@ -15,7 +15,7 @@ export const DetailsHero = (props: DetailsHeroProps) => {
 
     return (
         <VStack className={classNames.detailsHero}>
-            <VStack spacing={4} p={20}>
+            <VStack spacing={4} className={classNames.detailsHeroContent}>
                 <Typography variant="h2">{name}</Typography>
                 <Typography variant="h3">{subtitle}</Typography>
             </VStack>

@@ -9,28 +9,45 @@ import styles from './Slider.module.scss';
 interface SliderProps {
     items: ReactNode[];
 
-    amountPerSlide?: number;
+    amountPerBreakpoint: {
+        xl: number;
+        l: number;
+        m: number;
+        s: number;
+        xs: number;
+    };
     partialVisibilityGutter?: number;
 }
 
 export const Slider = (props: SliderProps) => {
-    const { items, amountPerSlide = 2, partialVisibilityGutter = 32 } = props;
+    const { items, amountPerBreakpoint, partialVisibilityGutter = 32 } = props;
+    const { xl, l, m, s, xs } = amountPerBreakpoint;
 
     const responsive = {
-        desktop: {
-            breakpoint: { max: 1920, min: 1024 },
-            items: amountPerSlide,
+        xl: {
+            breakpoint: { max: 1920, min: 1600 },
+            items: xl,
             partialVisibilityGutter,
         },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 3,
+        l: {
+            breakpoint: { max: 1600, min: 1200 },
+            items: l,
             partialVisibilityGutter,
         },
-        mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 1,
+        m: {
+            breakpoint: { max: 1200, min: 768 },
+            items: m,
             partialVisibilityGutter,
+        },
+        s: {
+            breakpoint: { max: 768, min: 480 },
+            items: s,
+            partialVisibilityGutter: 0,
+        },
+        xs: {
+            breakpoint: { max: 480, min: 0 },
+            items: xs,
+            partialVisibilityGutter: 0,
         },
     };
 
