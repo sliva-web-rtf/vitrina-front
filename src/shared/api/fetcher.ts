@@ -9,7 +9,7 @@ export async function fetcher<T>(url: string, options: FetchOptions = {}): Promi
     const timeoutId = setTimeout(() => controller.abort(), timeout);
 
     try {
-        const response = await fetch(url, { ...fetchOptions, signal: controller.signal });
+        const response = await fetch(process.env.NEXT_PUBLIC_API + url, { ...fetchOptions, signal: controller.signal });
         clearTimeout(timeoutId);
 
         if (!response.ok) {

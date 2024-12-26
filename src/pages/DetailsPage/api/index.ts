@@ -1,10 +1,10 @@
-import { API, fetcher } from '@/shared/api';
+import { fetcher } from '@/shared/api';
 import { transformImageDtoToString } from '@/shared/lib/helpers/transfromImageDtoToString';
 import { DetailsPageSchema } from '../model/types';
 
 export const DetailsPageService = {
     async getProjectById(id: number | string) {
-        const response = await fetcher<DetailsPageSchema>(API + `/project/${id}`);
+        const response = await fetcher<DetailsPageSchema>(`/project/${id}`);
         const { contents } = response;
 
         return {

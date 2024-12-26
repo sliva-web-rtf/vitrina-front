@@ -1,3 +1,4 @@
+import { ellipsisTextStyle } from '@/shared/lib/const/ellipsisText';
 import { Typography } from '@mui/material';
 import { Role } from '../model/types/role';
 
@@ -17,7 +18,7 @@ export const UserRoles = (props: UserRolesProps) => {
     }
 
     return (
-        <span>
+        <span style={ellipsisTextStyle}>
             {roles.map((role, index) => (
                 <span key={role.id}>
                     <Typography component="span" fontWeight={700} color="primary">
