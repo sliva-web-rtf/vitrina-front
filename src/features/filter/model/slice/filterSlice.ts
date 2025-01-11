@@ -1,36 +1,30 @@
-import { ToggleOption } from '@/features/ToggleButtons/model/types/toggleOption';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FilterSchema } from '../types/filterSchema';
 
 export const initialState: FilterSchema = {
     name: '',
-    period: '',
-    organization: '',
-    semester: null,
+    customer: '',
+    projectType: '',
+    sphere: '',
     page: 1,
     pageSize: 16,
-    type: ToggleOption.Top,
 };
 
 export const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
-        setType: (state, action: PayloadAction<FilterSchema['type']>) => {
-            state.type = action.payload;
-            state.page = 1;
-        },
         setName: (state, action: PayloadAction<FilterSchema['name']>) => {
             state.name = action.payload;
         },
-        setSemester: (state, action: PayloadAction<string>) => {
-            state.semester = parseInt(action.payload, 10);
+        setCustomer: (state, action: PayloadAction<FilterSchema['customer']>) => {
+            (state.customer = action.payload), 10;
         },
-        setPeriod: (state, action: PayloadAction<FilterSchema['period']>) => {
-            state.period = action.payload;
+        setProjectType: (state, action: PayloadAction<FilterSchema['projectType']>) => {
+            state.projectType = action.payload;
         },
-        setOrganization: (state, action: PayloadAction<FilterSchema['organization']>) => {
-            state.organization = action.payload;
+        setSphere: (state, action: PayloadAction<FilterSchema['sphere']>) => {
+            state.sphere = action.payload;
         },
         setPage: (state, action: PayloadAction<FilterSchema['page']>) => {
             state.page = action.payload;

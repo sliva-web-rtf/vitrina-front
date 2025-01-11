@@ -1,6 +1,6 @@
 export enum FilterType {
     Name = 'name',
-    Semester = 'semester',
-    Period = 'period',
-    Organization = 'organization',
+    Customer = 'customer',
+    ProjectType = 'projectType',
+    Sphere = 'sphere',
 }

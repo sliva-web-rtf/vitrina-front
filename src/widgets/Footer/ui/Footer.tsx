@@ -1,6 +1,7 @@
 'use client';
 
 import telegramLogo from '@/shared/assets/telegram.svg';
+import vkLogo from '@/shared/assets/vk.svg';
 import { HStack, MailtoLink, SocialIcon } from '@/shared/ui';
 import { Stack, Typography } from '@mui/material';
 import styles from './Footer.module.scss';
@@ -28,8 +29,7 @@ export const Footer = () => (
             </Stack>
             <HStack spacing={2}>
                 <SocialIcon url="https://t.me/urfu_project" icon={telegramLogo} alt="Телеграм" />
-                {/* <SocialIcon url="https://vk.com/project__it" icon={whatsappLogo} alt="Whats App" /> */}
-                <SocialIcon url="https://vk.com/project__it" icon={telegramLogo} alt="Вконтакте" />
+                <SocialIcon url="https://vk.com/project__it" icon={vkLogo} alt="Вконтакте" />
             </HStack>
         </HStack>
 

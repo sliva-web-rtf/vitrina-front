@@ -1,7 +1,5 @@
-import { ToggleButtons } from '@/features/ToggleButtons';
-import { BaseButton, BaseSelect, HStack } from '@/shared/ui';
+import { BaseSelect } from '@/shared/ui';
 import { BaseSearch } from '@/shared/ui/Field/BaseSearch';
-import ClearIcon from '@mui/icons-material/Clear';
 import { Stack } from '@mui/material';
 import { ChangeEvent, memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,20 +10,19 @@ import { getFilter } from '../model/selectors/getFilter/getFilter';
 import { filterActions } from '../model/slice/filterSlice';
 import { FilterType } from '../model/types/filterType';
 
-const { setName, setSemester, setPeriod, setOrganization, clear } = filterActions;
+const { setName, setCustomer, setProjectType, setSphere } = filterActions;
 const actionMap = {
     [FilterType.Name]: setName,
-    [FilterType.Semester]: setSemester,
-    [FilterType.Period]: setPeriod,
-    [FilterType.Organization]: setOrganization,
+    [FilterType.Customer]: setCustomer,
+    [FilterType.ProjectType]: setProjectType,
+    [FilterType.Sphere]: setSphere,
 };
 
 export const Filter = memo(() => {
     const dispatch = useDispatch();
-    const { name, period, semester, organization } = useSelector(getFilter);
+    const { name, customer, projectType, sphere } = useSelector(getFilter);
     const [search, setSearch] = useState(name);
     const [debounceSearch] = useDebounce(search, 300);
-    const isFiltersApply = name || period || semester || organization;
 
     const handleFilterChange = useCallback(
         (type: FilterType) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,11 +30,6 @@ export const Filter = memo(() => {
         },
         [dispatch],
     );
-
-    const handleClearFilters = useCallback(() => {
-        dispatch(clear());
-        setSearch('');
-    }, [dispatch]);
 
     useEffect(() => {
         if (debounceSearch !== name) {
@@ -71,36 +63,28 @@ export const Filter = memo(() => {
                     })}
                 >
                     <BaseSelect
-                        label="Период"
+                        label="Заказчик"
                         options={periodOptions}
-                        value={period}
+                        value={customer}
                         loading={isPeriodsFetching}
-                        onChange={handleFilterChange(FilterType.Period)}
+                        onChange={handleFilterChange(FilterType.Customer)}
                     />
                     <BaseSelect
-                        label="Семестр"
+                        label="Тип проекта"
                         options={semesterOptions}
-                        value={semester || ''}
-                        onChange={handleFilterChange(FilterType.Semester)}
+                        value={projectType}
+                        onChange={handleFilterChange(FilterType.ProjectType)}
                     />
                     <BaseSelect
-                        label="Организация"
+                        label="Сфера"
                         options={orgsOptions}
-                        value={organization}
+                        value={sphere}
                         loading={isOrgsFetching}
-                        onChange={handleFilterChange(FilterType.Organization)}
+                        onChange={handleFilterChange(FilterType.Sphere)}
                     />
-                    {isFiltersApply && (
-                        <BaseButton variant="outlined" startIcon={<ClearIcon />} onClick={handleClearFilters}>
-                            Сбросить фильтры
-                        </BaseButton>
-                    )}
                 </Stack>
                 <BaseSearch placeholder="Поиск проекта" value={search} onChange={(e) => setSearch(e.target.value)} />
             </Stack>
-            <HStack justifyContent="center">
-                <ToggleButtons />
-            </HStack>
         </Stack>
     );
 });
