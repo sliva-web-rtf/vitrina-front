@@ -4,15 +4,19 @@ import { SelectOption } from '@/shared/lib/types/selectOption';
 
 const filterApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        getPeriods: build.query<Array<SelectOption>, void>({
-            query: () => '/project/periods',
+        getSpheres: build.query<Array<SelectOption>, void>({
+            query: () => '/project/spheres',
             transformResponse: (response: Array<string>) => mapFilterDtoToModel(response),
         }),
-        getOrganizations: build.query<Array<SelectOption>, void>({
-            query: () => '/project/organizations',
+        getCustomers: build.query<Array<SelectOption>, void>({
+            query: () => '/project/customers',
+            transformResponse: (response: Array<string>) => mapFilterDtoToModel(response),
+        }),
+        getProjectTypes: build.query<Array<SelectOption>, void>({
+            query: () => '/project/types',
             transformResponse: (response: Array<string>) => mapFilterDtoToModel(response),
         }),
     }),
 });
 
-export const { useGetPeriodsQuery, useGetOrganizationsQuery } = filterApi;
+export const { useGetSpheresQuery, useGetCustomersQuery, useGetProjectTypesQuery } = filterApi;

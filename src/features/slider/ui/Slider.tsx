@@ -27,17 +27,17 @@ export const Slider = (props: SliderProps) => {
         xl: {
             breakpoint: { max: 1920, min: 1600 },
             items: xl,
-            partialVisibilityGutter,
+            partialVisibilityGutter: 0,
         },
         l: {
             breakpoint: { max: 1600, min: 1200 },
             items: l,
-            partialVisibilityGutter,
+            partialVisibilityGutter: 0,
         },
         m: {
             breakpoint: { max: 1200, min: 768 },
             items: m,
-            partialVisibilityGutter,
+            partialVisibilityGutter: 0,
         },
         s: {
             breakpoint: { max: 768, min: 480 },
@@ -59,7 +59,7 @@ export const Slider = (props: SliderProps) => {
             rewindWithAnimation
             showDots
             customDot={<Dot />}
-            partialVisible
+            // partialVisible
             draggable={false}
             responsive={responsive}
             containerClass={styles.container}

@@ -4,8 +4,7 @@ import { Stack } from '@mui/material';
 import { ChangeEvent, memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useDebounce } from 'use-debounce';
-import { useGetOrganizationsQuery, useGetPeriodsQuery } from '../api/filterApi';
-import { semesterOptions } from '../model/const/semesterOptions';
+import { useGetCustomersQuery, useGetProjectTypesQuery, useGetSpheresQuery } from '../api/filterApi';
 import { getFilter } from '../model/selectors/getFilter/getFilter';
 import { filterActions } from '../model/slice/filterSlice';
 import { FilterType } from '../model/types/filterType';
@@ -37,8 +36,9 @@ export const Filter = memo(() => {
         }
     }, [dispatch, name, debounceSearch]);
 
-    const { isFetching: isPeriodsFetching, data: periodOptions } = useGetPeriodsQuery(undefined);
-    const { isFetching: isOrgsFetching, data: orgsOptions } = useGetOrganizationsQuery(undefined);
+    const { isFetching: isSpheresFetching, data: spheresOptions } = useGetSpheresQuery();
+    const { isFetching: isCustomersFetching, data: customersOptions } = useGetCustomersQuery();
+    const { isFetching: isProjectTypesFetching, data: projectTypesOptions } = useGetProjectTypesQuery();
 
     return (
         <Stack sx={{ rowGap: 'var(--space-xl)' }}>
@@ -63,23 +63,24 @@ export const Filter = memo(() => {
                     })}
                 >
                     <BaseSelect
+                        loading={isCustomersFetching}
                         label="Заказчик"
-                        options={periodOptions}
+                        options={customersOptions}
                         value={customer}
-                        loading={isPeriodsFetching}
                         onChange={handleFilterChange(FilterType.Customer)}
                     />
                     <BaseSelect
+                        loading={isProjectTypesFetching}
                         label="Тип проекта"
-                        options={semesterOptions}
+                        options={projectTypesOptions}
                         value={projectType}
                         onChange={handleFilterChange(FilterType.ProjectType)}
                     />
                     <BaseSelect
+                        loading={isSpheresFetching}
                         label="Сфера"
-                        options={orgsOptions}
+                        options={spheresOptions}
                         value={sphere}
-                        loading={isOrgsFetching}
                         onChange={handleFilterChange(FilterType.Sphere)}
                     />
                 </Stack>

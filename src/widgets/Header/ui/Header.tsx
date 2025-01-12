@@ -1,8 +1,8 @@
 import logo from '@/shared/assets/logo.svg';
 import { BaseButton, HStack } from '@/shared/ui';
+import { MobileMenu } from '@/widgets/MobileMenu';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-import MenuIcon from '@mui/icons-material/Menu';
-import { IconButton, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NavLink } from '../model/navLink';
@@ -17,7 +17,13 @@ export const Header = (props: HeaderProps) => {
     const { nav, navButton } = props;
 
     return (
-        <HStack component="header" className={styles.container} alignItems="center" justifyContent="space-between">
+        <HStack
+            component="header"
+            className={styles.container}
+            alignItems="center"
+            justifyContent="space-between"
+            zIndex={100000}
+        >
             <Link href="/">
                 <Image src={logo} alt="Проектный практикум" />
             </Link>
@@ -33,9 +39,7 @@ export const Header = (props: HeaderProps) => {
             <BaseButton className={styles.button} variant="contained" endIcon={<ArrowForwardRoundedIcon />}>
                 <Typography variant="subtitle1">{navButton.text}</Typography>
             </BaseButton>
-            <IconButton className={styles.burger}>
-                <MenuIcon />
-            </IconButton>
+            <MobileMenu className={styles.burger} nav={nav} />
         </HStack>
     );
 };
