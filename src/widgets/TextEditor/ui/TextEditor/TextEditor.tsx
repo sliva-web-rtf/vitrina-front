@@ -1,12 +1,12 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-import { formats, modules, EditorToolbar } from '../EditorToolbar/EditorToolbar';
+import { EditorToolbar, formats, modules } from '../EditorToolbar/EditorToolbar';
 
 interface TextEditorProps {
-    onChange: (value: string) => void;
-    value: string;
+    onChange: (innerValue: string) => void;
+    value?: string;
 }
 
 export const TextEditor = (props: TextEditorProps) => {
@@ -28,8 +28,8 @@ export const TextEditor = (props: TextEditorProps) => {
                     onChange={handleChange}
                 />
             </Box>
-            <Typography variant="h4">Предосмотр:</Typography>
-            <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: value }} />
+            {/* <Typography variant="h4">Предосмотр:</Typography> */}
+            {/* <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: value ?? '' }} /> */}
         </Stack>
     );
 };

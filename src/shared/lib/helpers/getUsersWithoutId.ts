@@ -1,8 +1,11 @@
 interface User {
-    id?: number;
     email: string;
-    fullname: string;
+    firstName: string;
+    lastName: string;
     roles: string[];
+
+    id?: number;
+    patronymic?: string;
 }
 
 export const getUsersWithoutId = (users: User[]) => {
