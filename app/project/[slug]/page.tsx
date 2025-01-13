@@ -1,5 +1,6 @@
-import DetailsPage, { DetailsPageSchema, DetailsPageService } from '@/pages/DetailsPage';
+import DetailsPage from '@/pages-components/DetailsPage';
 import { fetcher } from '@/shared/api';
+import { DetailsPageService } from '@/shared/services';
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
@@ -8,9 +9,9 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-    const projectsIds = await fetcher<number[]>('/project/ids')
+    const projectsIds = await fetcher<number[]>('/project/ids');
 
-    return projectsIds.map((id) => ({ slug: String(id) })); 
+    return projectsIds.map((id) => ({ slug: String(id) }));
 }
 
 export async function generateMetadata(context: Props): Promise<Metadata> {
@@ -22,13 +23,13 @@ export async function generateMetadata(context: Props): Promise<Metadata> {
 
         return { title: name, description };
     } catch (error) {
-        return {}
+        return {};
     }
 }
 
-export default async function Details(props: DetailsPageSchema & Props) {
+export default async function Details(props: Props) {
     const { params } = props;
-    const { slug } = params; 
+    const { slug } = params;
 
     try {
         const data = await DetailsPageService.getProjectById(slug);

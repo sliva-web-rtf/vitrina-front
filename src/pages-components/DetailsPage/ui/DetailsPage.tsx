@@ -1,8 +1,8 @@
+import { DetailsPageSchema } from '@/shared/services';
 import { VStack } from '@/shared/ui';
 import { Details } from '@/widgets/Details';
 import { DetailsHeader } from '@/widgets/DetailsHeader';
 import { DetailsHero } from '@/widgets/Hero';
-import { DetailsPageSchema } from '../model/types';
 
 const DetailsPage = (props: DetailsPageSchema) => {
     const { name, description, subtitle } = props;

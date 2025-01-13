@@ -1,4 +1,4 @@
-import { DetailsPageSchema } from '@/pages/DetailsPage';
+import { DetailsPageSchema } from '@/shared/services';
 import { DetailsBlock, HStack, VideoFrame, VStack } from '@/shared/ui';
 import { Gallery } from '@/widgets/Gallery';
 import { Team } from '@/widgets/Team';
