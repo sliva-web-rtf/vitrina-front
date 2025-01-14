@@ -4,12 +4,13 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'vitrina-urfu.ru',
+                hostname: 'vitrina-rtf.ru' | 'витрина.прокомпетенции.рф',
                 port: '',
                 pathname: '/api/project/image/*',
             },
         ],
     },
+    output: 'standalone',
 };
 
 export default nextConfig;
