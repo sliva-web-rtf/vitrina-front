@@ -2,10 +2,6 @@ name: release
 
 on:
     workflow_dispatch:
-        inputs:
-            branch:
-                description: 'branch name'
-                required: true
 
 permissions:
     actions: write
