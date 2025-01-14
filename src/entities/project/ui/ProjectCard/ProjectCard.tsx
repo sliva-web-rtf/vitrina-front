@@ -12,7 +12,7 @@ interface ProjectCardProps {
 export const ProjectCard = memo((props: ProjectCardProps) => {
     const { project } = props;
     return (
-        <Link className="link-block" href={`/projects/${project.id}`}>
+        <Link className="link-block" href={`/project/${project.id}`}>
             <Stack className={classNames.projectCard}>
                 <ProjectCardAvatar className={classNames.image} logoSrc={project.previewImagePath ?? undefined} />
                 <VStack p={3} spacing={4} justifyContent="space-between" height="100%">

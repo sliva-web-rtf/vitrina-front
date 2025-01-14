@@ -27,15 +27,15 @@ export const Details = (props: DetailsPageSchema) => {
 
             <DetailsBlock title="Заказчик" text={client || defaultText.client} />
 
-            {contents?.length && (
+            {Boolean(contents?.length) && (
                 <DetailsBlock title="Галерея" noBackground noPadding>
                     <Gallery images={contents} />
                 </DetailsBlock>
             )}
 
-            {videoUrl && (
+            {Boolean(videoUrl) && (
                 <DetailsBlock title="Видео" noBackground noPadding>
-                    <VideoFrame url={videoUrl} name={name} />
+                    <VideoFrame url={videoUrl as string} name={name} />
                 </DetailsBlock>
             )}
 

@@ -7,15 +7,13 @@
     padding: 0 calc(var(--space-l) / 2);
 }
 
-.item:first-child {
-    padding: 0;
-    padding-right: calc(var(--space-l) / 2);
-}
+// .item:first-child {
+//     padding-left: 0;
+// }
 
-.item:last-child {
-    padding: 0;
-    padding-left: calc(var(--space-l) / 2);
-}
+// .item:last-child {
+//     padding-right: 0;
+// }
 
 .dots {
     justify-content: center;
