@@ -2,6 +2,10 @@ name: release
 
 on:
     workflow_dispatch:
+        inputs:
+            branch:
+                description: 'branch name'
+                required: true
 
 permissions:
     actions: write
@@ -38,6 +42,7 @@ jobs:
 
             - name: Create release branch
               run: |
+                  git checkout ${{ github.event.inputs.branch }}
                   git checkout -b releases/${{ env.RELEASE_VERSION }}
                   git push origin releases/${{ env.RELEASE_VERSION }}
 
