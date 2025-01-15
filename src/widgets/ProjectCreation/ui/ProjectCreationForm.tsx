@@ -51,6 +51,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
             idea: project?.idea,
             solution: project?.solution,
             problem: project?.problem,
+            customBlocks: project?.customBlocks,
         },
     });
 
