@@ -10,6 +10,7 @@ export const projectCreationFormSchema = z.object({
     period: z.string().optional(),
     videoUrl: z.string().optional(),
     priority: z.number().optional(),
+    aim: z.string(),
     problem: z.string(),
     idea: z.string(),
     solution: z.string(),

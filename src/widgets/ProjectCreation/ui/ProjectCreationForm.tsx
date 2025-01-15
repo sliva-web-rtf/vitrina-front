@@ -47,6 +47,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
             videoUrl: project?.videoUrl,
             semester: project?.semester,
             period: project?.period,
+            aim: project?.aim,
             idea: project?.idea,
             solution: project?.solution,
             problem: project?.problem,
@@ -150,7 +151,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                                 control={control}
                                 name={`customBlocks.${index}.text`}
                                 render={({ field: { onChange, value } }) => (
-                                    <TextEditor onChange={onChange} value={value} />
+                                    <TextEditor index={index} onChange={onChange} value={value} />
                                 )}
                             />
 
@@ -174,6 +175,16 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                         Добавить блок
                     </BaseButton>
                 </Stack>
+                <BaseField
+                    multiline
+                    label="Цель проекта"
+                    required
+                    fullWidth
+                    autoComplete="off"
+                    {...register('aim')}
+                    error={Boolean(errors.aim)}
+                    helperText={errors.aim?.message}
+                />
                 <BaseField
                     multiline
                     label="Проблема"
