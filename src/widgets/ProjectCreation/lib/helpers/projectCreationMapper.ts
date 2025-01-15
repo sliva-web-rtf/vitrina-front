@@ -7,7 +7,7 @@ import { ProjectCreationFormSchema } from '../../model/types/projectCreationForm
 export const projectCreationToDto = (model: ProjectCreationFormSchema): CreateProjectDto => {
     return {
         name: model.name,
-        aim: model.solution,
+        aim: model.aim,
         description: model.description ?? '',
         client: model.client,
         semester: model.semester,
