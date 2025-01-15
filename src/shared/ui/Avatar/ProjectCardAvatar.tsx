@@ -1,5 +1,5 @@
-import { Stack, StackProps } from '@mui/material';
 import { BaseAvatar } from '@/shared/ui';
+import { Stack, StackProps } from '@mui/material';
 
 interface ProjectCardAvatarProps extends StackProps {
     readonly logoSrc?: string;

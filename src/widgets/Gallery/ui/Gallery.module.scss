@@ -14,3 +14,9 @@
     object-fit: cover !important;
     cursor: zoom-in;
 }
+
+.galleryImage {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+}

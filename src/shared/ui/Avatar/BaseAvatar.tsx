@@ -1,5 +1,4 @@
 import { Avatar, AvatarProps } from '@mui/material';
-import logo from '@/shared/assets/logo-icon.svg';
 
 export const BaseAvatar = (props: AvatarProps) => {
     const { src, ...otherProps } = props;
@@ -7,7 +6,7 @@ export const BaseAvatar = (props: AvatarProps) => {
     if (!src) {
         return (
             <Avatar
-                src={logo}
+                src="/logo.svg"
                 {...otherProps}
                 sx={{
                     width: 'auto',
@@ -17,7 +16,6 @@ export const BaseAvatar = (props: AvatarProps) => {
             />
         );
     }
-    
 
     return (
         <Avatar

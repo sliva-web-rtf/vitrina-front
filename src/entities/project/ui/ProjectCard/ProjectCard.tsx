@@ -25,7 +25,7 @@ export const ProjectCard = memo((props: ProjectCardProps) => {
                         </Typography>
                     </VStack>
                     <VStack>
-                        <Typography variant="subtitle1">Команда №4645</Typography>
+                        <Typography variant="subtitle1">Команда №{project.id}</Typography>
                         <Typography variant="subtitle2" color="secondary">
                             Студенческий проект · <span>Завершен</span>
                         </Typography>

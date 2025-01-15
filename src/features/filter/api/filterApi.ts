@@ -9,7 +9,7 @@ const filterApi = baseApi.injectEndpoints({
             transformResponse: (response: Array<string>) => mapFilterDtoToModel(response),
         }),
         getCustomers: build.query<Array<SelectOption>, void>({
-            query: () => '/project/customers',
+            query: () => '/project/organizations',
             transformResponse: (response: Array<string>) => mapFilterDtoToModel(response),
         }),
         getProjectTypes: build.query<Array<SelectOption>, void>({

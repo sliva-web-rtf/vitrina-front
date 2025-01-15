@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'vitrina-rtf.ru',
+                hostname: 'api.vitrina-rtf.ru',
                 port: '',
                 pathname: '/api/project/image/*',
             },
