@@ -2,6 +2,11 @@ import { User } from '@/entities/user';
 import { fetcher } from '@/shared/api';
 import { transformImageDtoToString } from '@/shared/lib/helpers/transfromImageDtoToString';
 
+export type CustomBlock = {
+    title: string;
+    text: string;
+};
+
 export type DetailsPageSchema = {
     name: string;
     description: string;
@@ -15,7 +20,7 @@ export type DetailsPageSchema = {
     solution: string;
 
     subtitle?: string;
-    markdown?: string;
+    customBlocks: CustomBlock[];
     videoUrl?: string;
     period?: string;
     semester?: number;

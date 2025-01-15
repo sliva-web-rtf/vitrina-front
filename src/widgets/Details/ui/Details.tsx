@@ -7,15 +7,15 @@ import { defaultText } from '../model/const';
 import classNames from './Details.module.scss';
 
 export const Details = (props: DetailsPageSchema) => {
-    const { name, markdown, aim, client, contents, videoUrl, users, subtitle, problem, idea, solution } = props;
+    const { name, customBlocks, aim, client, contents, videoUrl, users, subtitle, problem, idea, solution } = props;
 
     return (
         <VStack spacing={8}>
-            {markdown && (
-                <DetailsBlock title="Другая информация">
-                    <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: markdown }} />
+            {customBlocks?.map(({ title, text }, index) => (
+                <DetailsBlock key={`customBlock-${index}`} title={title}>
+                    <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: text }} />
                 </DetailsBlock>
-            )}
+            ))}
             <HStack gap={3} justifyContent="space-between" className={classNames.hstack}>
                 <DetailsBlock anchor="problem" title="Проблема" text={problem || defaultText.problem} />
                 <DetailsBlock title="Цель проекта" text={aim || defaultText.aim} />
