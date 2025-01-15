@@ -7,7 +7,7 @@ import { defaultText } from '../model/const';
 import classNames from './Details.module.scss';
 
 export const Details = (props: DetailsPageSchema) => {
-    const { name, customBlocks, aim, client, contents, videoUrl, users, subtitle, problem, idea, solution } = props;
+    const { name, customBlocks, aim, client, contents, videoUrl, users, problem, idea, solution } = props;
 
     return (
         <VStack spacing={8}>

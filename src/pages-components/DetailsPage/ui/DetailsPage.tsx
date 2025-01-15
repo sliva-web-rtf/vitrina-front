@@ -5,7 +5,7 @@ import { DetailsHeader } from '@/widgets/DetailsHeader';
 import { DetailsHero } from '@/widgets/Hero';
 
 const DetailsPage = (props: DetailsPageSchema) => {
-    const { name, description, subtitle } = props;
+    const { name, description } = props;
 
     return (
         <VStack spacing={6}>

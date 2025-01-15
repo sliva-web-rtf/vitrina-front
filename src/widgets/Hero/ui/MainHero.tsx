@@ -7,11 +7,11 @@ export const MainHero = () => {
         <Hero>
             <VStack spacing={4} width="50%" textAlign="center">
                 <Typography variant="h1">
-                    витрина
+                    Витрина
                     <br />
-                    ирит-ртф
+                    ИРИТ-РТФ
                 </Typography>
-                <Typography variant="h2">проекты, а не просто поделки</Typography>
+                <Typography variant="h2">Проекты, а не просто поделки</Typography>
             </VStack>
         </Hero>
     );

@@ -1,6 +1,6 @@
 import { User } from '@/entities/user';
-import { fetcher } from '@/shared/api';
 import { transformImageDtoToString } from '@/shared/lib/helpers/transfromImageDtoToString';
+import { fetcher } from '../api';
 
 export type CustomBlock = {
     title: string;
@@ -12,7 +12,7 @@ export type DetailsPageSchema = {
     description: string;
     aim: string;
     client: string;
-    contents: string[];
+    contents: (string | null)[];
     users: User[];
     previewImagePath: string | null;
     problem: string;
@@ -34,7 +34,7 @@ export const DetailsPageService = {
 
         return {
             ...response,
-            // @ts-expect-error Бредовый тип картинки на беке
+            // @ts-expect-error поменять тип картинок нада
             contents: contents.map(transformImageDtoToString),
         };
     },

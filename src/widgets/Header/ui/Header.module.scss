@@ -33,3 +33,11 @@
         display: inherit !important;
     }
 }
+
+.button {
+    cursor: default !important;
+}
+
+.button:hover {
+    background-color: var(--primary-color) !important;
+}
