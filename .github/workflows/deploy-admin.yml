@@ -47,7 +47,7 @@ jobs:
                   yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_PULLER }}
 
             - name: Check Docker image
-              run: docker pull cr.yandex/${{ vars.CR_ID }}/app:${{ github.event.inputs.version }}_latest
+              run: docker pull cr.yandex/${{ vars.CR_ID }}/admin:${{ github.event.inputs.version }}_latest
 
             - name: Deploy to production server
               uses: appleboy/ssh-action@v0.1.6
@@ -57,10 +57,10 @@ jobs:
                   key: ${{ secrets.SSH_PRIVATE_KEY_PROD }}
                   port: 22
                   script: |
-                      sudo docker stop vitrina-front || true
-                      sudo docker rm vitrina-front || true
-                      sudo docker run -d --restart unless-stopped --name vitrina-front --network vitrina \
-                        cr.yandex/${{ vars.CR_ID }}/app:${{ github.event.inputs.version }}_latest
+                      sudo docker stop vitrina-admin || true
+                      sudo docker rm vitrina-admin || true
+                      sudo docker run -d --restart unless-stopped --name vitrina-admin --network vitrina \
+                        cr.yandex/${{ vars.CR_ID }}/admin:${{ github.event.inputs.version }}_latest
 
             - name: Remove old Docker image
               uses: appleboy/ssh-action@v0.1.6
@@ -70,10 +70,3 @@ jobs:
                   key: ${{ secrets.SSH_PRIVATE_KEY_PROD }}
                   port: 22
                   script: 'sudo docker image prune -af'
-
-            - name: Add comment to issue
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              run: |
-                  ISSUE_NUMBER=$(gh issue list --search ${{ github.event.inputs.version }} --limit 1 --json number --jq ".[0].number")
-                  gh issue comment $ISSUE_NUMBER --body "Release v${{ github.event.inputs.version }} has been deployed to production.<br><br>**Date:** ${{ env.CURRENT_DATE }}<br>**Author:** ${{ github.actor }}"
