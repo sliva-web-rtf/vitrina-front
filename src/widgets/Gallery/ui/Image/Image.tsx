@@ -6,7 +6,6 @@ import { Box, Fade, Modal } from '@mui/material';
 import ImageNext from 'next/image';
 import { memo, useCallback, useState } from 'react';
 import classNames from './Image.module.scss';
-import { useCheckImageQuery } from './api';
 
 interface ImageProps {
     readonly src: string;
@@ -18,11 +17,11 @@ interface ImageProps {
 export const Image = memo((props: ImageProps) => {
     const [open, setOpen] = useState(false);
     const { src, alt, className } = props;
-    const { error } = useCheckImageQuery(src, { skip: !src });
+    // const { error } = useCheckImageQuery(src, { skip: !src });
 
     const handleToggleModal = useCallback(() => setOpen((prev) => !prev), []);
 
-    if (!src || error) {
+    if (!src) {
         return (
             <ImageNext
                 className={className}
