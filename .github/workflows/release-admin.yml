@@ -43,7 +43,7 @@ jobs:
                   yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_PUSHER }}
 
             - name: Build Docker image
-              run: docker build --platform=linux/amd64 -t cr.yandex/${{ vars.CR_ID }}/admin:${{ env.RELEASE_VERSION }} .
+              run: docker build --platform=linux/amd64 -t cr.yandex/${{ vars.CR_ID }}/admin:${{ env.RELEASE_VERSION }} --build-arg VITE_API=https://api.vitrina-rtf.ru/api --build-arg VITE_WITH_ADMIN=admin .
 
             - name: Tag Docker image with latest
               run: docker tag cr.yandex/${{ vars.CR_ID }}/admin:${{ env.RELEASE_VERSION }} cr.yandex/${{ vars.CR_ID }}/admin:${{ env.RELEASE_VERSION }}_latest
