@@ -5,15 +5,21 @@ export interface ProjectDetails {
     readonly id: number;
     readonly name: string;
     readonly description?: string;
-    readonly aim?: string;
-    readonly client?: string;
+    readonly idea?: string;
+    readonly solution?: string;
+    readonly problem?: string;
     readonly contents: Array<string>;
     readonly tags: Array<string>;
     readonly users: Array<User>;
-    readonly customTemplate?: string;
+
+    readonly aim?: string;
+    readonly client?: string;
+    readonly customBlocks?: string;
     readonly videoUrl?: string;
     readonly previewImagePath: string | null;
     readonly priority?: number;
     readonly semester?: Semester;
     readonly period?: string;
+    /* *depracated */
+    readonly customTemplate?: string;
 }

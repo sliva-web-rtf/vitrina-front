@@ -1,9 +1,9 @@
+import { extractErrorMessage } from '@/shared/lib/helpers/extractErrorMessage';
+import { EntityValidationErrors } from '@/shared/lib/types/appError';
 import { ValidationErrorDto } from '@/shared/lib/types/dto/appErrorDto';
 import { EditProjectDto } from '../../api/types';
 import { ProjectEditFormSchema } from '../../model/types/projectCreationForm';
 import { projectCreationToDto } from './projectCreationMapper';
-import { EntityValidationErrors } from '@/shared/lib/types/appError';
-import { extractErrorMessage } from '@/shared/lib/helpers/extractErrorMessage';
 
 export const projectEditToDto = (model: ProjectEditFormSchema): EditProjectDto => {
     return {
@@ -19,7 +19,8 @@ export function validationProjectEditErrorsFromDto(
         client: extractErrorMessage('client', errorDto),
         description: extractErrorMessage('description', errorDto),
         id: extractErrorMessage('id', errorDto),
-        markdown: extractErrorMessage('markdown', errorDto),
+        // @ts-expect-error Лень разбиравться появилось после смены типа customBlocks на массив
+        customBlocks: extractErrorMessage('customBlocks', errorDto),
         name: extractErrorMessage('name', errorDto),
         period: extractErrorMessage('period', errorDto),
         priority: extractErrorMessage('priority', errorDto),

@@ -1,6 +1,6 @@
-import { DetailsDto } from '../../model/types/DetailsDto';
 import { ProjectDetails } from '@/entities/project';
 import { capitalizeFirstLetter } from '@/shared/lib/helpers/capitalize';
+import { DetailsDto } from '../../model/types/DetailsDto';
 
 export const mapDetailsDtoToModel = (dto: DetailsDto): ProjectDetails => ({
     ...dto,

@@ -10,6 +10,10 @@ export function extractErrorMessage<T extends Record<string, any>>(
         return undefined;
     }
 
+    if (typeof field !== 'string') {
+        return undefined;
+    }
+
     return errorArray
         .filter(error => error.field === field)
         .map(error => error.detail)

@@ -5,21 +5,24 @@ interface UserCreationDto {
     email: string;
     firstName: string;
     lastName: string;
-    patronymic: string;
+    patronymic?: string;
     roles: { name: string }[];
 }
 
 export interface CreateProjectDto {
     name: string;
-    description?: string;
     aim?: string;
+    customBlocks: { title: string; text: string }[];
+    description?: string;
     priority?: number;
     client?: string;
     semester?: Semester;
     period?: string;
-    markdown?: string;
     videoUrl?: string;
     users?: UserCreationDto[];
+    problem: string;
+    idea: string;
+    solution: string;
 }
 
 export interface EditProjectDto extends CreateProjectDto {

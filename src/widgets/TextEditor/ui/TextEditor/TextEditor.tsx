@@ -1,16 +1,17 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-import { formats, modules, EditorToolbar } from '../EditorToolbar/EditorToolbar';
+import { EditorToolbar, formats, modules } from '../EditorToolbar/EditorToolbar';
 
 interface TextEditorProps {
-    onChange: (value: string) => void;
-    value: string;
+    index: number;
+    onChange: (innerValue: string) => void;
+    value?: string;
 }
 
 export const TextEditor = (props: TextEditorProps) => {
-    const { value, onChange } = props;
+    const { index, value, onChange } = props;
 
     const handleChange = (innerValue: string) => {
         onChange(innerValue);
@@ -19,17 +20,17 @@ export const TextEditor = (props: TextEditorProps) => {
     return (
         <Stack spacing={2}>
             <Box>
-                <EditorToolbar id="t1" />
+                <EditorToolbar id={`t${index}`} />
                 <ReactQuill
                     theme="snow"
-                    modules={modules('t1')}
+                    modules={modules(`t${index}`)}
                     formats={formats}
                     value={value}
                     onChange={handleChange}
                 />
             </Box>
-            <Typography variant="h4">Предосмотр:</Typography>
-            <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: value }} />
+            {/* <Typography variant="h4">Предосмотр:</Typography> */}
+            {/* <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: value ?? '' }} /> */}
         </Stack>
     );
 };

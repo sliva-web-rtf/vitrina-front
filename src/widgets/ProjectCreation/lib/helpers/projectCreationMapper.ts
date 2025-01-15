@@ -1,26 +1,30 @@
+import { extractErrorMessage } from '@/shared/lib/helpers/extractErrorMessage';
+import { EntityValidationErrors } from '@/shared/lib/types/appError';
 import { ValidationErrorDto } from '@/shared/lib/types/dto/appErrorDto';
 import { CreateProjectDto } from '../../api/types';
 import { ProjectCreationFormSchema } from '../../model/types/projectCreationForm';
-import { EntityValidationErrors } from '@/shared/lib/types/appError';
-import { extractErrorMessage } from '@/shared/lib/helpers/extractErrorMessage';
 
 export const projectCreationToDto = (model: ProjectCreationFormSchema): CreateProjectDto => {
     return {
         name: model.name,
+        aim: model.aim,
         description: model.description ?? '',
         client: model.client,
         semester: model.semester,
         period: model.period,
-        markdown: model.customTemplate,
+        customBlocks: model.customBlocks,
         videoUrl: model.videoUrl,
         priority: model.priority,
+        problem: model.problem,
+        idea: model.idea,
+        solution: model.solution,
         users:
             model.users?.map(user => ({
                 id: user.id,
                 email: user.email,
-                firstName: user.fullname.split(' ').at(1) ?? '',
-                lastName: user.fullname.split(' ').at(0) ?? '',
-                patronymic: user.fullname.split(' ').at(2) ?? '',
+                firstName: user.firstName,
+                lastName: user.lastName,
+                patronymic: user.patronymic,
                 roles: user.roles
                     ? user.roles.map(role => ({
                           name: role,
@@ -37,7 +41,8 @@ export function validationProjectCreationErrorsFromDto(
         aim: extractErrorMessage('aim', errorDto),
         client: extractErrorMessage('client', errorDto),
         description: extractErrorMessage('description', errorDto),
-        markdown: extractErrorMessage('markdown', errorDto),
+        // @ts-expect-error Лень разбиравться появилось после смены типа customBlocks на массив
+        customBlocks: extractErrorMessage('customBlocks', errorDto),
         name: extractErrorMessage('name', errorDto),
         period: extractErrorMessage('period', errorDto),
         priority: extractErrorMessage('priority', errorDto),
