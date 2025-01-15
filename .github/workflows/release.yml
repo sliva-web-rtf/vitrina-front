@@ -2,7 +2,7 @@ name: release
 
 on:
     workflow_dispatch:
-    
+
 permissions:
     actions: write
     attestations: write
@@ -48,15 +48,15 @@ jobs:
                   yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_PUSHER }}
 
             - name: Build Docker image
-              run: docker build --platform=linux/amd64 -t cr.yandex/${{ vars.CR_ID }}/app:${{ env.RELEASE_VERSION }} -f ./src/Vitrina.Web/Dockerfile ./src/
+              run: docker build --platform=linux/amd64 -t cr.yandex/${{ vars.CR_ID }}/old:${{ env.RELEASE_VERSION }} .
 
             - name: Tag Docker image with latest
-              run: docker tag cr.yandex/${{ vars.CR_ID }}/app:${{ env.RELEASE_VERSION }} cr.yandex/${{ vars.CR_ID }}/app:${{ env.RELEASE_VERSION }}_latest
+              run: docker tag cr.yandex/${{ vars.CR_ID }}/old:${{ env.RELEASE_VERSION }} cr.yandex/${{ vars.CR_ID }}/old:${{ env.RELEASE_VERSION }}_latest
 
             - name: Push Docker image
               run: |
-                  docker push cr.yandex/${{ vars.CR_ID }}/app:${{ env.RELEASE_VERSION }}
-                  docker push cr.yandex/${{ vars.CR_ID }}/app:${{ env.RELEASE_VERSION }}_latest
+                  docker push cr.yandex/${{ vars.CR_ID }}/old:${{ env.RELEASE_VERSION }}
+                  docker push cr.yandex/${{ vars.CR_ID }}/old:${{ env.RELEASE_VERSION }}_latest
 
             - name: Configure Git
               run: |
@@ -83,4 +83,4 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
-                  gh issue create --title "Release v${{ env.RELEASE_VERSION }}" --body "**Date:** ${{ env.CURRENT_DATE }}<br>**Author:** ${{ github.actor }}<br>**Version:** ${{ env.RELEASE_VERSION }}<br>**Commits:**<br>${{ env.COMMITS }}<br>**Docker Image:** cr.yandex/${{ vars.CR_ID }}/app:${{ env.RELEASE_VERSION }}"
+                  gh issue create --title "Release v${{ env.RELEASE_VERSION }}" --body "**Date:** ${{ env.CURRENT_DATE }}<br>**Author:** ${{ github.actor }}<br>**Version:** ${{ env.RELEASE_VERSION }}<br>**Commits:**<br>${{ env.COMMITS }}<br>**Docker Image:** cr.yandex/${{ vars.CR_ID }}/old:${{ env.RELEASE_VERSION }}"
