@@ -1,4 +1,4 @@
-name: deploy to production
+name: deploy to production(admin)
 
 on:
     workflow_dispatch:
