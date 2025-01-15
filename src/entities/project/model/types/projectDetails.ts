@@ -5,9 +5,9 @@ export interface ProjectDetails {
     readonly id: number;
     readonly name: string;
     readonly description?: string;
-    readonly idea: string;
-    readonly solution: string;
-    readonly problem: string;
+    readonly idea?: string;
+    readonly solution?: string;
+    readonly problem?: string;
     readonly contents: Array<string>;
     readonly tags: Array<string>;
     readonly users: Array<User>;
@@ -20,4 +20,6 @@ export interface ProjectDetails {
     readonly priority?: number;
     readonly semester?: Semester;
     readonly period?: string;
+    /* *depracated */
+    readonly customTemplate?: string;
 }
