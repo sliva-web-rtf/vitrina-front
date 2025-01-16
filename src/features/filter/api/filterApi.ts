@@ -1,5 +1,5 @@
-import { baseApi } from '@/shared/api';
 import { mapFilterDtoToModel } from '@/features/filter/lib/helpers/filterMapper.ts';
+import { baseApi } from '@/shared/api';
 import { SelectOption } from '@/shared/lib/types/selectOption.ts';
 
 const filterApi = baseApi.injectEndpoints({
@@ -12,7 +12,13 @@ const filterApi = baseApi.injectEndpoints({
             query: () => '/project/organizations',
             transformResponse: (response: Array<string>) => mapFilterDtoToModel(response),
         }),
+        getTypes: build.query<Array<string>, void>({
+            query: () => '/project/types',
+        }),
+        getSpheres: build.query<Array<string>, void>({
+            query: () => '/project/spheres',
+        }),
     }),
 });
 
-export const { useGetPeriodsQuery, useGetOrganizationsQuery } = filterApi;
+export const { useGetPeriodsQuery, useGetOrganizationsQuery, useGetTypesQuery, useGetSpheresQuery } = filterApi;

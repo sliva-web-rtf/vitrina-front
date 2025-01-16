@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import { BaseField } from '../Field/BaseField';
 
@@ -12,18 +13,20 @@ type AutocompleteCreateOptionProps = {
     onChange: (v: string | null) => void;
 
     label?: string;
+    loading?: boolean;
 };
 
 const filter = createFilterOptions<OptionType>();
 
 export const AutocompleteCreateOption = (props: AutocompleteCreateOptionProps) => {
-    const { label, options, value, onChange } = props;
+    const { label, options, value, onChange, loading } = props;
     const autocompleteOptions: OptionType[] = options.map(option =>
         typeof option === 'string' ? { title: option } : option,
     );
 
     return (
         <Autocomplete
+            loading={Boolean(loading)}
             value={value}
             onChange={(_, newValue) => {
                 if (typeof newValue === 'string') {
@@ -71,7 +74,21 @@ export const AutocompleteCreateOption = (props: AutocompleteCreateOptionProps) =
                 );
             }}
             freeSolo
-            renderInput={params => <BaseField {...params} label={label} />}
+            renderInput={params => (
+                <BaseField
+                    {...params}
+                    label={label}
+                    InputProps={{
+                        ...params.InputProps,
+                        endAdornment: (
+                            <>
+                                {Boolean(loading) ? <CircularProgress color="primary" size={20} /> : null}
+                                {params.InputProps.endAdornment}
+                            </>
+                        ),
+                    }}
+                />
+            )}
         />
     );
 };

@@ -1,4 +1,5 @@
 import { ProjectDetails } from '@/entities/project';
+import { useGetOrganizationsQuery, useGetSpheresQuery, useGetTypesQuery } from '@/features/filter/api/filterApi';
 import { getUsersWithoutId } from '@/shared/lib/helpers/getUsersWithoutId.ts';
 import { AppError, EntityValidationErrors } from '@/shared/lib/types/appError';
 import { AutocompleteCreateOption, BaseButton, BaseField } from '@/shared/ui';
@@ -19,9 +20,15 @@ interface ProjectCreationFormProps {
 
 export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const { onSuccess, project } = props;
+    const { isFetching: isOrgsFetching, data: orgs } = useGetOrganizationsQuery();
+    const { isFetching: isTypesFetching, data: typesOptions } = useGetTypesQuery();
+    const { isFetching: isSpheresFetching, data: spheresOptions } = useGetSpheresQuery();
+
     const [createProject, { isLoading: isCreationProjectLoading, error: projectCreationErrors }] =
         useCreateProjectMutation();
     const [editProject, { isLoading: isEditProjectLoading, error: projectEditErrors }] = useUpdateProjectMutation();
+
+    const orgsOptions = orgs?.map(opt => opt.value);
 
     const {
         register,
@@ -79,7 +86,6 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     };
 
     const onCreationSubmit = async (data: ProjectCreationFormSchema) => {
-        console.log(data);
         const newData = {
             ...data,
             customBlocks: data.customBlocks?.map(block => ({ ...block, id: undefined })) ?? [],
@@ -139,8 +145,9 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                         name="type"
                         render={({ field: { onChange, value } }) => (
                             <AutocompleteCreateOption
+                                loading={isTypesFetching}
                                 label="Тип проекта"
-                                options={rolesOptions}
+                                options={typesOptions ?? []}
                                 onChange={onChange}
                                 value={value ?? null}
                             />
@@ -151,8 +158,9 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                         name="sphere"
                         render={({ field: { onChange, value } }) => (
                             <AutocompleteCreateOption
+                                loading={isSpheresFetching}
                                 label="Cфера проекта"
-                                options={rolesOptions}
+                                options={spheresOptions ?? []}
                                 onChange={onChange}
                                 value={value ?? null}
                             />
@@ -249,7 +257,19 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                             Добавить блок
                         </BaseButton>
                     </Stack>
-                    <BaseField label="Заказчик" fullWidth autoComplete="off" {...register('client')} />
+                    <Controller
+                        control={control}
+                        name="client"
+                        render={({ field: { onChange, value } }) => (
+                            <AutocompleteCreateOption
+                                loading={isOrgsFetching}
+                                label="Заказчик"
+                                options={(orgsOptions as string[]) ?? []}
+                                onChange={onChange}
+                                value={value ?? null}
+                            />
+                        )}
+                    />
                     <BaseField label="ID видео" fullWidth autoComplete="off" {...register('videoUrl')} />
                     <BaseField
                         label="Приоритетность"
@@ -351,10 +371,18 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                     </Stack>
                 </Stack>
                 <Stack direction="row" justifyContent="center" spacing={2}>
-                    <BaseButton type="submit" variant="contained">
+                    <BaseButton
+                        type="submit"
+                        variant="contained"
+                        disabled={isCreationProjectLoading || isEditProjectLoading}
+                    >
                         Создать проект
                     </BaseButton>
-                    <BaseButton type="reset" disabled={!project} variant="contained">
+                    <BaseButton
+                        type="reset"
+                        disabled={!project || isCreationProjectLoading || isEditProjectLoading}
+                        variant="contained"
+                    >
                         Редактировать проект
                     </BaseButton>
                 </Stack>
