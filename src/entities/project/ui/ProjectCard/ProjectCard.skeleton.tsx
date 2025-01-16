@@ -7,14 +7,13 @@ export const ProjectCardSkeleton = () => {
             <Skeleton
                 className={classNames.image}
                 variant="rectangular"
-                sx={theme => ({
+                sx={(theme) => ({
                     width: '100%',
                     borderTopLeftRadius: theme.spacing(2),
                     borderTopRightRadius: theme.spacing(2),
                 })}
             />
-            <Stack p={3} spacing={2}>
-                {/*<ChipsListSkeleton />*/}
+            <Stack p={3} spacing={2} height="100%">
                 <Typography variant="h3">
                     <Skeleton />
                     <Skeleton width="70%" />
