@@ -8,7 +8,7 @@ import { memo, useCallback, useState } from 'react';
 import classNames from './Image.module.scss';
 
 interface ImageProps {
-    readonly src: string;
+    readonly src: string | null;
     readonly alt?: string;
     readonly className?: string;
     readonly width?: number;

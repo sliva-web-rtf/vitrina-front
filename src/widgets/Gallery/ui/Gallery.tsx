@@ -3,7 +3,7 @@ import styles from './Gallery.module.scss';
 import { Image } from './Image/Image';
 
 interface GalleryProps {
-    images: string[];
+    images: (string | null)[];
 }
 
 export const Gallery = (props: GalleryProps) => {
