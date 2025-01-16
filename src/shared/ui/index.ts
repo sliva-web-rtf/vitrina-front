@@ -1,6 +1,7 @@
 export { BaseAvatar } from './Avatar/BaseAvatar';
 export { ProjectCardAvatar } from './Avatar/ProjectCardAvatar';
 export { BaseButton } from './Button/BaseButton';
+export { BaseChip } from './Chip/Chip';
 export { DetailsBlock } from './DetailsBlock/DetailsBlock';
 export { EmptyOverlay } from './EmptyOverlay/EmptyOverlay';
 export { BaseField } from './Field/BaseField';
@@ -11,4 +12,3 @@ export { SocialIcon } from './SocialIcon/SocialIcon';
 export { HStack, VStack } from './Stack/Stack';
 export { BaseToggleButton, BaseToggleButtonGroup } from './ToggleButton/ToggleButton';
 export { VideoFrame } from './VideoFrame/VideoFrame';
-

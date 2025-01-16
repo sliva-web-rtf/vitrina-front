@@ -19,7 +19,8 @@ export type DetailsPageSchema = {
     idea: string;
     solution: string;
 
-    subtitle?: string;
+    type?: string;
+    sphere?: string;
     customBlocks: CustomBlock[];
     videoUrl?: string;
     period?: string;

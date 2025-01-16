@@ -42,9 +42,7 @@ export const BaseSelect = memo((props: BaseSelectProps) => {
             }}
             {...selectProps}
         >
-            <option value="" disabled>
-                {label}
-            </option>
+            <option value="">{label}</option>
             {options?.map((option) => (
                 <option key={option.value} value={option.value}>
                     {option.label}

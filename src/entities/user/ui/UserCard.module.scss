@@ -9,15 +9,14 @@
 }
 
 .card,
-.card img {
+.card img,
+.image {
     border-radius: var(--space-m);
 }
 
-.card img {
+.image {
     width: 100%;
-    height: auto;
-    aspect-ratio: 1/1;
-    object-fit: cover;
+    aspect-ratio: 2/1;
 }
 
 .content {
