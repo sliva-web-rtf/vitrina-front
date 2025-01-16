@@ -12,6 +12,9 @@ interface UserCreationDto {
 export interface CreateProjectDto {
     name: string;
     aim?: string;
+    problem: string;
+    idea: string;
+    solution: string;
     customBlocks: { title: string; text: string }[];
     description?: string;
     priority?: number;
@@ -20,9 +23,8 @@ export interface CreateProjectDto {
     period?: string;
     videoUrl?: string;
     users?: UserCreationDto[];
-    problem: string;
-    idea: string;
-    solution: string;
+    sphere?: string;
+    projectType?: string;
 }
 
 export interface EditProjectDto extends CreateProjectDto {

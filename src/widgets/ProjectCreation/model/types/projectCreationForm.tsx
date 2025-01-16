@@ -1,15 +1,10 @@
 import { ProjectDetails } from '@/entities/project';
-import { Semester } from '@/entities/semester';
 import { z } from 'zod';
 
 export const projectCreationFormSchema = z.object({
-    name: z.string({ required_error: 'Название проекта обязательно' }),
-    description: z.string().optional(),
-    client: z.string().optional(),
-    semester: z.nativeEnum(Semester).optional(),
-    period: z.string().optional(),
-    videoUrl: z.string().optional(),
-    priority: z.number().optional(),
+    name: z.string(),
+    description: z.string(),
+    client: z.string(),
     aim: z.string(),
     problem: z.string(),
     idea: z.string(),
@@ -22,7 +17,6 @@ export const projectCreationFormSchema = z.object({
         }),
     ),
     users: z.array(
-        // TODO: пересмотреть логику с юзерами
         z.object({
             id: z.number().optional(),
             email: z.string(),
@@ -32,6 +26,11 @@ export const projectCreationFormSchema = z.object({
             roles: z.array(z.string()),
         }),
     ),
+    projectType: z.string().optional(),
+    sphere: z.string().optional(),
+    period: z.string().optional(),
+    videoUrl: z.string().optional(),
+    priority: z.number().optional(),
 });
 
 export type ProjectCreationFormSchema = z.infer<typeof projectCreationFormSchema>;

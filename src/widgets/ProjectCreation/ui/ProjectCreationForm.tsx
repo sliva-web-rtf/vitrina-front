@@ -1,7 +1,7 @@
 import { ProjectDetails } from '@/entities/project';
 import { getUsersWithoutId } from '@/shared/lib/helpers/getUsersWithoutId.ts';
 import { AppError, EntityValidationErrors } from '@/shared/lib/types/appError';
-import { BaseButton, BaseField } from '@/shared/ui';
+import { AutocompleteCreateOption, BaseButton, BaseField } from '@/shared/ui';
 import { TextEditor } from '@/widgets/TextEditor';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Autocomplete, Chip, Stack, Typography } from '@mui/material';
@@ -16,12 +16,6 @@ interface ProjectCreationFormProps {
     onSuccess?: (id: ProjectDetails['id'], project: ProjectCreationFormSchema) => void;
     project?: ProjectDetails;
 }
-
-{
-    /*eslint-disable max-len*/
-}
-// TODO: отрефакторить логику, добавить нормальное тексты ошибок, catch и обработку ошибок с сервера. Подумать над
-//  naming'ом
 
 export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     const { onSuccess, project } = props;
@@ -45,7 +39,6 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
             description: project?.description,
             users: project?.users,
             videoUrl: project?.videoUrl,
-            semester: project?.semester,
             period: project?.period,
             aim: project?.aim,
             idea: project?.idea,
@@ -86,6 +79,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     };
 
     const onCreationSubmit = async (data: ProjectCreationFormSchema) => {
+        console.log(data);
         const newData = {
             ...data,
             customBlocks: data.customBlocks?.map(block => ({ ...block, id: undefined })) ?? [],
@@ -111,248 +105,265 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     };
 
     return (
-        <Stack spacing={2}>
-            <Stack component="form" spacing={2}>
-                <BaseField
-                    autoFocus
-                    required
-                    label="Название"
-                    fullWidth
-                    autoComplete="off"
-                    {...register('name')}
-                    error={Boolean(errors.name)}
-                    helperText={errors.name?.message}
-                />
-                <BaseField
-                    multiline
-                    label="Описание"
-                    required
-                    fullWidth
-                    autoComplete="off"
-                    {...register('description')}
-                    error={Boolean(errors.description)}
-                    helperText={errors.description?.message}
-                />
+        <Stack spacing={4}>
+            <Stack
+                spacing={2}
+                component="form"
+                onSubmit={handleSubmit(onCreationSubmit)}
+                onReset={handleSubmit(onUpdateSubmit)}
+            >
                 <Stack spacing={2}>
-                    <Typography>Кастомные блоки:</Typography>
-                    {customBlocksFields.map((field, index) => (
-                        <Stack
-                            sx={theme => ({
-                                borderWidth: '1px',
-                                borderStyle: 'solid',
-                                borderColor: theme.palette.primary.main,
-                                padding: '8px',
-                                borderRadius: '8px',
-                                gap: '0',
-                            })}
-                            key={field.id}
-                        >
-                            <BaseField label="Заголовок" {...register(`customBlocks.${index}.title` as const)} />
-                            <Controller
-                                control={control}
-                                name={`customBlocks.${index}.text`}
-                                render={({ field: { onChange, value } }) => (
-                                    <TextEditor index={index} onChange={onChange} value={value} />
-                                )}
+                    <BaseField
+                        required
+                        autoFocus
+                        label="Название"
+                        fullWidth
+                        autoComplete="off"
+                        {...register('name')}
+                        error={Boolean(errors.name)}
+                        helperText={errors.name?.message}
+                    />
+                    <BaseField
+                        required
+                        multiline
+                        rows={3}
+                        label="Описание"
+                        fullWidth
+                        autoComplete="off"
+                        {...register('description')}
+                        error={Boolean(errors.description)}
+                        helperText={errors.description?.message}
+                    />
+                    <Controller
+                        control={control}
+                        name="projectType"
+                        render={({ field: { onChange, value } }) => (
+                            <AutocompleteCreateOption
+                                label="Тип проекта"
+                                options={rolesOptions}
+                                onChange={onChange}
+                                value={value ?? null}
                             />
+                        )}
+                    />
+                    <Controller
+                        control={control}
+                        name="sphere"
+                        render={({ field: { onChange, value } }) => (
+                            <AutocompleteCreateOption
+                                label="Cфера проекта"
+                                options={rolesOptions}
+                                onChange={onChange}
+                                value={value ?? null}
+                            />
+                        )}
+                    />
+                    <BaseField
+                        required
+                        multiline
+                        rows={3}
+                        label="Цель проекта"
+                        fullWidth
+                        autoComplete="off"
+                        {...register('aim')}
+                        error={Boolean(errors.aim)}
+                        helperText={errors.aim?.message}
+                    />
+                    <BaseField
+                        required
+                        multiline
+                        rows={3}
+                        label="Проблема"
+                        fullWidth
+                        autoComplete="off"
+                        {...register('problem')}
+                        error={Boolean(errors.problem)}
+                        helperText={errors.problem?.message}
+                    />
+                    <BaseField
+                        required
+                        multiline
+                        rows={3}
+                        label="Идея"
+                        fullWidth
+                        autoComplete="off"
+                        {...register('idea')}
+                        error={Boolean(errors.idea)}
+                        helperText={errors.idea?.message}
+                    />
+                    <BaseField
+                        required
+                        multiline
+                        label="Решение"
+                        rows={3}
+                        fullWidth
+                        autoComplete="off"
+                        {...register('solution')}
+                        error={Boolean(errors.solution)}
+                        helperText={errors.solution?.message}
+                    />
+                    <Stack spacing={2}>
+                        <Typography>Кастомные блоки:</Typography>
+                        {customBlocksFields.map((field, index) => (
+                            <Stack
+                                sx={theme => ({
+                                    borderWidth: '1px',
+                                    borderStyle: 'solid',
+                                    borderColor: theme.palette.primary.main,
+                                    padding: '8px',
+                                    borderRadius: '8px',
+                                    gap: '0',
+                                })}
+                                key={field.id}
+                            >
+                                <BaseField
+                                    required
+                                    label="Заголовок"
+                                    {...register(`customBlocks.${index}.title` as const)}
+                                />
+                                <Controller
+                                    control={control}
+                                    name={`customBlocks.${index}.text`}
+                                    render={({ field: { onChange, value } }) => (
+                                        <TextEditor index={index} onChange={onChange} value={value} />
+                                    )}
+                                />
 
-                            <BaseButton color="error" type="button" onClick={() => removeCustomBlock(index)}>
-                                Удалить блок
-                            </BaseButton>
-                        </Stack>
-                    ))}
-                    <BaseButton
-                        color="success"
-                        variant="outlined"
-                        type="button"
-                        onClick={() =>
-                            appendCustomBlock({
-                                id: 0,
-                                title: '',
-                                text: '',
-                            })
-                        }
-                    >
-                        Добавить блок
-                    </BaseButton>
-                </Stack>
-                <BaseField
-                    multiline
-                    label="Цель проекта"
-                    required
-                    fullWidth
-                    autoComplete="off"
-                    {...register('aim')}
-                    error={Boolean(errors.aim)}
-                    helperText={errors.aim?.message}
-                />
-                <BaseField
-                    multiline
-                    label="Проблема"
-                    required
-                    fullWidth
-                    autoComplete="off"
-                    {...register('problem')}
-                    error={Boolean(errors.problem)}
-                    helperText={errors.problem?.message}
-                />
-                <BaseField
-                    multiline
-                    label="Идея"
-                    fullWidth
-                    required
-                    autoComplete="off"
-                    {...register('idea')}
-                    error={Boolean(errors.idea)}
-                    helperText={errors.idea?.message}
-                />
-                <BaseField
-                    multiline
-                    label="Решение"
-                    required
-                    fullWidth
-                    autoComplete="off"
-                    {...register('solution')}
-                    error={Boolean(errors.solution)}
-                    helperText={errors.solution?.message}
-                />
-                <BaseField label="Заказчик" fullWidth autoComplete="off" {...register('client')} />
-                <BaseField label="ID видео" fullWidth autoComplete="off" {...register('videoUrl')} />
-                <BaseField
-                    label="Приоритетность"
-                    type="number"
-                    {...register('priority', { valueAsNumber: true })}
-                    error={Boolean(errors.priority)}
-                    helperText={errors.priority?.message}
-                />
-
-                {/* <FormControl fullWidth>
-                        <InputLabel id="semester">Семестр</InputLabel>
-                        <Controller
-                            control={control}
-                            name={'semester'}
-                            render={({ field: { onChange, onBlur, value } }) => (
-                                <Select
-                                    onChange={onChange}
-                                    onBlur={onBlur}
-                                    value={value}
-                                    labelId="semester"
-                                    id="demo-simple-select"
-                                    label="Семестр"
-                                    error={Boolean(errors.semester)}
-                                >
-                                    <MenuItem value={Semester.None}>Отсутствует</MenuItem>
-                                    <MenuItem value={Semester.Spring}>Весенний</MenuItem>
-                                    <MenuItem value={Semester.Autumn}>Осенний</MenuItem>
-                                </Select>
-                            )}
-                        />
-                    </FormControl> */}
-                <BaseField
-                    label="Период"
-                    placeholder="2022/2023"
-                    fullWidth
-                    autoComplete="off"
-                    {...register('period')}
-                    error={Boolean(errors.period)}
-                    helperText={errors.period?.message}
-                />
-                <Stack spacing={2}>
-                    <Typography>Команда:</Typography>
-                    {userFields.map((field, index) => (
-                        <Stack
-                            sx={theme => ({
-                                borderWidth: '1px',
-                                borderStyle: 'solid',
-                                borderColor: theme.palette.primary.main,
-                                padding: '8px',
-                                borderRadius: '8px',
-                                gap: '4px',
-                            })}
-                            key={field.id}
+                                <BaseButton color="error" type="button" onClick={() => removeCustomBlock(index)}>
+                                    Удалить блок
+                                </BaseButton>
+                            </Stack>
+                        ))}
+                        <BaseButton
+                            color="success"
+                            variant="outlined"
+                            type="button"
+                            onClick={() =>
+                                appendCustomBlock({
+                                    id: 0,
+                                    title: '',
+                                    text: '',
+                                })
+                            }
                         >
-                            <BaseField required label="Фамилия" {...register(`users.${index}.lastName` as const)} />
-                            <BaseField required label="Имя" {...register(`users.${index}.firstName` as const)} />
-                            <BaseField label="Отчество" {...register(`users.${index}.patronymic` as const)} />
-                            <BaseField label="Контакты" {...register(`users.${index}.email` as const)} />
-                            <Controller
-                                control={control}
-                                name={`users.${index}.roles`}
-                                render={({ field: { onChange, onBlur, value } }) => (
-                                    <Autocomplete
-                                        multiple
-                                        options={rolesOptions}
-                                        onChange={(_, targetValue) => onChange(targetValue)}
-                                        onBlur={onBlur}
-                                        value={value}
-                                        freeSolo
-                                        renderTags={(value, getTagProps) =>
-                                            value.map((option, index) => (
-                                                <Chip
-                                                    variant="outlined"
-                                                    label={option}
-                                                    {...getTagProps({ index })}
-                                                    key={option}
-                                                />
-                                            ))
-                                        }
-                                        renderInput={params => (
-                                            <BaseField
-                                                {...params}
-                                                label="Роли"
-                                                required
-                                                onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
-                                                    if (e.key === 'Enter') {
-                                                        e.preventDefault();
-                                                        const input = e.target as HTMLInputElement;
-                                                        if (input.value.trim() !== '') {
-                                                            onChange([...value, input.value.trim()]);
-                                                            input.value = '';
+                            Добавить блок
+                        </BaseButton>
+                    </Stack>
+                    <BaseField label="Заказчик" fullWidth autoComplete="off" {...register('client')} />
+                    <BaseField label="ID видео" fullWidth autoComplete="off" {...register('videoUrl')} />
+                    <BaseField
+                        label="Приоритетность"
+                        type="number"
+                        {...register('priority', { valueAsNumber: true })}
+                        error={Boolean(errors.priority)}
+                        helperText={errors.priority?.message}
+                    />
+
+                    <BaseField
+                        label="Период"
+                        placeholder="2022/2023"
+                        fullWidth
+                        autoComplete="off"
+                        {...register('period')}
+                        error={Boolean(errors.period)}
+                        helperText={errors.period?.message}
+                    />
+                    <Stack spacing={2}>
+                        <Typography>Команда:</Typography>
+                        {userFields.map((field, index) => (
+                            <Stack
+                                sx={theme => ({
+                                    borderWidth: '1px',
+                                    borderStyle: 'solid',
+                                    borderColor: theme.palette.primary.main,
+                                    padding: '8px',
+                                    borderRadius: '8px',
+                                    gap: '4px',
+                                })}
+                                key={field.id}
+                            >
+                                <BaseField label="Фамилия" {...register(`users.${index}.lastName` as const)} />
+                                <BaseField label="Имя" {...register(`users.${index}.firstName` as const)} />
+                                <BaseField label="Отчество" {...register(`users.${index}.patronymic` as const)} />
+                                <BaseField label="Контакты" {...register(`users.${index}.email` as const)} />
+                                <Controller
+                                    control={control}
+                                    name={`users.${index}.roles`}
+                                    render={({ field: { onChange, onBlur, value } }) => (
+                                        <Autocomplete
+                                            multiple
+                                            options={rolesOptions}
+                                            onChange={(_, targetValue) => onChange(targetValue)}
+                                            onBlur={onBlur}
+                                            value={value}
+                                            freeSolo
+                                            renderTags={(value, getTagProps) =>
+                                                value.map((option, index) => (
+                                                    <Chip
+                                                        variant="outlined"
+                                                        label={option}
+                                                        {...getTagProps({ index })}
+                                                        key={option}
+                                                    />
+                                                ))
+                                            }
+                                            renderInput={params => (
+                                                <BaseField
+                                                    {...params}
+                                                    label="Роли"
+                                                    onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+                                                        if (e.key === 'Enter') {
+                                                            e.preventDefault();
+                                                            const input = e.target as HTMLInputElement;
+                                                            if (input.value.trim() !== '') {
+                                                                onChange([...value, input.value.trim()]);
+                                                                input.value = '';
+                                                            }
                                                         }
-                                                    }
-                                                }}
-                                            />
-                                        )}
-                                    />
-                                )}
-                            />
+                                                    }}
+                                                />
+                                            )}
+                                        />
+                                    )}
+                                />
 
-                            <BaseButton color="error" type="button" onClick={() => removeUser(index)}>
-                                Удалить
-                            </BaseButton>
-                        </Stack>
-                    ))}
-                    <BaseButton
-                        color="success"
-                        variant="outlined"
-                        type="button"
-                        onClick={() =>
-                            appendUser({
-                                id: 0,
-                                email: '',
-                                firstName: '',
-                                lastName: '',
-                                roles: [],
-                            })
-                        }
-                    >
-                        Добавить пользователя
+                                <BaseButton color="error" type="button" onClick={() => removeUser(index)}>
+                                    Удалить
+                                </BaseButton>
+                            </Stack>
+                        ))}
+                        <BaseButton
+                            color="success"
+                            variant="outlined"
+                            type="button"
+                            onClick={() =>
+                                appendUser({
+                                    id: 0,
+                                    email: '',
+                                    firstName: '',
+                                    lastName: '',
+                                    roles: [],
+                                })
+                            }
+                        >
+                            Добавить пользователя
+                        </BaseButton>
+                    </Stack>
+                </Stack>
+                <Stack direction="row" justifyContent="center" spacing={2}>
+                    <BaseButton type="submit" variant="contained">
+                        Создать проект
+                    </BaseButton>
+                    <BaseButton type="reset" disabled={!project} variant="contained">
+                        Редактировать проект
                     </BaseButton>
                 </Stack>
+                {/* TODO: подумать над семантическим решением и убрать костыли с loading стейтом */}
+                {isCreationProjectLoading && <Typography>Проект создается...</Typography>}
+                {projectCreationErrors && <Typography>При создании проекта что-то пошло не так</Typography>}
+                {isEditProjectLoading && <Typography>Редактируем проект...</Typography>}
+                {projectEditErrors && <Typography>При редактировании проекта что-то пошло не так</Typography>}
             </Stack>
-            <Stack direction="row" justifyContent="center" spacing={2}>
-                <BaseButton variant="contained" onClick={handleSubmit(onCreationSubmit)}>
-                    Создать проект
-                </BaseButton>
-                <BaseButton disabled={project === undefined} onClick={handleSubmit(onUpdateSubmit)} variant="contained">
-                    Редактировать проект
-                </BaseButton>
-            </Stack>
-            {/* TODO: подумать над семантическим решением и убрать костыли с loading стейтом */}
-            {isCreationProjectLoading && <Typography>Проект создается...</Typography>}
-            {projectCreationErrors && <Typography>При создании проекта что-то пошло не так</Typography>}
-            {isEditProjectLoading && <Typography>Редактируем проект...</Typography>}
-            {projectEditErrors && <Typography>При редактировании проекта что-то пошло не так</Typography>}
         </Stack>
     );
 });
