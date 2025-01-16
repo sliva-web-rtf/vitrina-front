@@ -39,9 +39,11 @@ export const Details = (props: DetailsPageSchema) => {
                 </DetailsBlock>
             )}
 
-            <DetailsBlock anchor="team" title="Команда проекта" noBackground noPadding>
-                <Team team={users} />
-            </DetailsBlock>
+            {Boolean(users?.length) && (
+                <DetailsBlock anchor="team" title="Команда проекта" noBackground noPadding>
+                    <Team team={users} />
+                </DetailsBlock>
+            )}
         </VStack>
     );
 };
