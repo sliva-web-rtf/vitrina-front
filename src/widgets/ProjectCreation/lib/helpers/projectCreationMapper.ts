@@ -11,7 +11,7 @@ export const projectCreationToDto = (model: ProjectCreationFormSchema): CreatePr
         description: model.description ?? '',
         client: model.client,
         sphere: model.sphere,
-        projectType: model.projectType,
+        type: model.type,
         period: model.period,
         customBlocks: model.customBlocks,
         videoUrl: model.videoUrl,

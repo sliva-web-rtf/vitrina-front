@@ -24,7 +24,7 @@ export interface CreateProjectDto {
     videoUrl?: string;
     users?: UserCreationDto[];
     sphere?: string;
-    projectType?: string;
+    type?: string;
 }
 
 export interface EditProjectDto extends CreateProjectDto {

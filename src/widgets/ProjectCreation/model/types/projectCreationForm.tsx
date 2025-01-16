@@ -26,7 +26,7 @@ export const projectCreationFormSchema = z.object({
             roles: z.array(z.string()),
         }),
     ),
-    projectType: z.string().optional(),
+    type: z.string().optional(),
     sphere: z.string().optional(),
     period: z.string().optional(),
     videoUrl: z.string().optional(),

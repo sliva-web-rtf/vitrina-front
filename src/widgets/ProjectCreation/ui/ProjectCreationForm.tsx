@@ -136,7 +136,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                     />
                     <Controller
                         control={control}
-                        name="projectType"
+                        name="type"
                         render={({ field: { onChange, value } }) => (
                             <AutocompleteCreateOption
                                 label="Тип проекта"
@@ -282,8 +282,8 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                                 })}
                                 key={field.id}
                             >
-                                <BaseField label="Фамилия" {...register(`users.${index}.lastName` as const)} />
-                                <BaseField label="Имя" {...register(`users.${index}.firstName` as const)} />
+                                <BaseField required label="Фамилия" {...register(`users.${index}.lastName` as const)} />
+                                <BaseField required label="Имя" {...register(`users.${index}.firstName` as const)} />
                                 <BaseField label="Отчество" {...register(`users.${index}.patronymic` as const)} />
                                 <BaseField label="Контакты" {...register(`users.${index}.email` as const)} />
                                 <Controller
