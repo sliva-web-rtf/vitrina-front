@@ -19,7 +19,7 @@ const actionMap = {
 
 export const Filter = memo(() => {
     const dispatch = useDispatch();
-    const { name, customer, projectType, sphere } = useSelector(getFilter);
+    const { name, customer, type, sphere } = useSelector(getFilter);
     const [search, setSearch] = useState(name);
     const [debounceSearch] = useDebounce(search, 300);
 
@@ -73,7 +73,7 @@ export const Filter = memo(() => {
                         loading={isProjectTypesFetching}
                         label="Тип проекта"
                         options={projectTypesOptions}
-                        value={projectType}
+                        value={type}
                         onChange={handleFilterChange(FilterType.ProjectType)}
                     />
                     <BaseSelect
