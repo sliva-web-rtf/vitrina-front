@@ -5,7 +5,7 @@ import { Hero } from './Hero';
 export const MainHero = () => {
     return (
         <Hero>
-            <VStack spacing={4} width="50%" textAlign="center">
+            <VStack spacing={4} width="80%" textAlign="center">
                 <Typography variant="h1">
                     Витрина
                     <br />
