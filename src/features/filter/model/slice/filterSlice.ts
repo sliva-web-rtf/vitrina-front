@@ -20,7 +20,7 @@ export const filterSlice = createSlice({
         setCustomer: (state, action: PayloadAction<FilterSchema['customer']>) => {
             (state.customer = action.payload), 10;
         },
-        setProjectType: (state, action: PayloadAction<FilterSchema['type']>) => {
+        setProjectType: (state, action: PayloadAction<FilterSchema['projectType']>) => {
             state.projectType = action.payload;
         },
         setSphere: (state, action: PayloadAction<FilterSchema['sphere']>) => {
