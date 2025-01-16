@@ -4,7 +4,7 @@ import { FilterSchema } from '../types/filterSchema';
 export const initialState: FilterSchema = {
     name: '',
     customer: '',
-    type: '',
+    projectType: '',
     sphere: '',
     page: 1,
     pageSize: 16,
@@ -21,7 +21,7 @@ export const filterSlice = createSlice({
             (state.customer = action.payload), 10;
         },
         setProjectType: (state, action: PayloadAction<FilterSchema['type']>) => {
-            state.type = action.payload;
+            state.projectType = action.payload;
         },
         setSphere: (state, action: PayloadAction<FilterSchema['sphere']>) => {
             state.sphere = action.payload;

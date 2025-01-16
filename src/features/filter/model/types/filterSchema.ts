@@ -4,6 +4,6 @@ export interface FilterSchema {
     page: number;
 
     customer?: string;
-    type?: string;
+    projectType?: string;
     sphere?: string;
 }

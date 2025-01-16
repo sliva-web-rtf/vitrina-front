@@ -9,7 +9,7 @@ const projectsApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
         getProjects: build.query<ProjectsModel, FilterSchema>({
             query: (req) => ({
-                url: '/project/search',
+                url: '/project/v2/search',
                 method: 'POST',
                 body: removeFalsyFields(req),
             }),
