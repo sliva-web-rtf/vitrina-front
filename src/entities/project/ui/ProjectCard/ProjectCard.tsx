@@ -15,7 +15,7 @@ export const ProjectCard = memo((props: ProjectCardProps) => {
         <Link className="link-block" href={`/project/${project.id}`}>
             <Stack className={classNames.projectCard}>
                 <ProjectCardAvatar className={classNames.image} logoSrc={project.previewImagePath ?? undefined} />
-                <VStack p={3} spacing={4} justifyContent="space-between" height="100%">
+                <VStack p={3} spacing={4} justifyContent="space-between" height="50%">
                     <VStack spacing={2}>
                         <Typography variant="h3" className={classNames.clippedText}>
                             {project.name}
