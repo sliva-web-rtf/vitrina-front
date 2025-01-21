@@ -1,0 +1,43 @@
+.gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.compactHero {
+    position: relative;
+    border-radius: var(--space-xl);
+
+    color: var(--inverted-font-color);
+    background-color: var(--primary-color);
+    margin-top: calc(5 * var(--space-xl)) !important;
+
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.compactHeroContent {
+    padding: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+    .compactHeroContent {
+        padding: calc(3 * var(--space-xl));
+    }
+}
+
+@media (min-width: 1024px) {
+    .compactHeroContent {
+        padding: calc(4 * var(--space-xl));
+    }
+}
+
+@media (min-width: 1200px) {
+    .compactHeroContent {
+        padding: calc(5 * var(--space-xl));
+    }
+}
