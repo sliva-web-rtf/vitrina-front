@@ -10,11 +10,13 @@
 
 .compactHero {
     position: relative;
-    border-radius: var(--space-xl);
+    border-radius: 0;
+
+    margin: 0 -32px;
+    padding-top: 184px;
 
     color: var(--inverted-font-color);
     background-color: var(--primary-color);
-    margin-top: calc(5 * var(--space-xl)) !important;
 
     min-height: 600px;
     overflow: hidden;
@@ -25,6 +27,13 @@
 }
 
 @media (min-width: 768px) {
+    .compactHero {
+        margin: 0;
+        padding-top: 0;
+        margin-top: calc(5 * var(--space-xl)) !important;
+        border-radius: var(--space-xl);
+    }
+
     .compactHeroContent {
         padding: calc(3 * var(--space-xl));
     }
