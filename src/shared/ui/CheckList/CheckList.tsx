@@ -19,7 +19,20 @@ export const CheckList = (props: { items: string[] }) => {
                         backgroundColor: '#fff',
                     }}
                 >
-                    <Typography sx={{ color: '#333', fontSize: '24px', fontWeight: 500, lineHeight: '33px' }}>
+                    <Typography
+                        sx={(theme) => ({
+                            fontSize: '24px',
+                            fontWeight: 500,
+                            lineHeight: '33px',
+                            [theme.breakpoints.down('xl')]: {
+                                fontSize: '22px',
+                            },
+                            [theme.breakpoints.down('sm')]: {
+                                fontSize: '16px',
+                                lineHeight: '20px',
+                            },
+                        })}
+                    >
                         {item}
                     </Typography>
                     <CheckCircleIcon sx={{ width: '48px', height: '48px', color: 'var(--primary-color)' }} />
