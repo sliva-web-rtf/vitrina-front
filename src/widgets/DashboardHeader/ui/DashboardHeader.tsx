@@ -1,10 +1,10 @@
 import { Header } from '@/widgets/Header';
 
 const navLinks = [
-    { text: 'Цель', href: '#' },
-    { text: 'Задачи', href: '#' },
-    { text: 'Партнерам', href: '#' },
-    { text: 'Студентам', href: '#' },
+    { text: 'Цель', href: '#goal' },
+    { text: 'Задачи', href: '#tasks' },
+    { text: 'Партнерам', href: '#partnership' },
+    { text: 'Студентам', href: '#studentsAwait' },
 ];
 
 const navButton = { text: 'О витрине проекта', href: '#' };

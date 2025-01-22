@@ -1,0 +1,35 @@
+.colorBlueText {
+    color: var(--primary-color);
+}
+
+.bigImageBg {
+    display: flex;
+    padding: 64px;
+    width: 100%;
+    max-width: 1856px;
+    height: 1107px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background-image: 
+    linear-gradient(
+        180deg, 
+        rgba(0, 0, 0, 0) 0%, 
+        rgba(0, 0, 0, 0.8) 75.48%, 
+        #000 100%
+    ), 
+    url('../../../shared/assets/dashboard-conference.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 32px;
+    gap: 50px;
+}
+
+@media (max-width: 1199px) {
+    .bigImageBg {
+        padding: 0;
+        justify-content: flex-start;
+        background: none;
+        height: auto;
+    }
+}
