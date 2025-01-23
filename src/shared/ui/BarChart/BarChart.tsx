@@ -1,32 +1,73 @@
 'use client';
 
 import React from 'react';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartData } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { useMediaQuery } from '@mui/material';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
-export const BarChart = (props: { data: ChartData<'bar', number[], string> }) => {
+interface BarChartProps {
+    data: {
+        label: string;
+        data: number;
+        backgroundColor: string;
+    }[];
+}
+
+export const BarChart = (props: BarChartProps) => {
     const { data } = props;
+
+    const matches = useMediaQuery('(max-width:768px)');
+
+    const barData = {
+        labels: [''],
+        datasets: data.map((dat) => ({ ...dat, data: [dat.data] })),
+    };
 
     const options = {
         indexAxis: 'y' as const,
         elements: {
             bar: {
-                borderWidth: 2,
+                borderWidth: 0,
+                borderSkipped: false,
+                barThickness: matches ? 60 : 80,
             },
         },
-        responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
-                position: 'right' as const,
+                position: 'bottom' as const,
+                align: matches ? ('start' as const) : ('center' as const),
             },
-            title: {
+            datalabels: {
                 display: true,
-                text: 'Chart.js Horizontal Bar Chart',
+                color: '#fff',
+                anchor: 'center',
+                align: 'center',
+                font: {
+                    size: matches ? 24 : 32,
+                    weight: 'bold',
+                },
+            },
+        },
+        scales: {
+            x: {
+                stacked: !matches,
+                display: false,
+                min: 0,
+                max: matches ? null : data.reduce((sum, item) => sum + item.data, 0),
+            },
+            y: {
+                stacked: !matches,
+                display: false,
+                min: -2,
+                max: 2,
             },
         },
     };
 
-    return <Bar data={data} options={options} />;
+    // @ts-ignore
+    return <Bar data={barData} options={options} />;
 };

@@ -3,15 +3,12 @@ import React from 'react';
 import { PieChart } from '@/shared/ui/PieChart/PieChart';
 import { DashboardBlock } from '@/shared/ui/DashboardBlock/DashboardBlock';
 
-const CHART_DATA = {
-    labels: ['Самостоятельные со своими темами', 'Внешний куратор', 'Самостоятельные с заказчиком', 'Преподаватели'],
-    datasets: [
-        {
-            data: [50, 50, 50, 50],
-            backgroundColor: ['#0066FF', '#7EACFF', '#C1D7FE', '#062756'],
-        },
-    ],
-};
+const CHART_DATA = [
+    { label: 'Самостоятельные со своими темами', data: 25, backgroundColor: '#0066FF' },
+    { label: 'Внешний куратор', data: 25, backgroundColor: '#7EACFF' },
+    { label: 'Самостоятельные с заказчиком', data: 25, backgroundColor: '#C1D7FE' },
+    { label: 'Преподаватели', data: 25, backgroundColor: '#062756' },
+];
 
 export const DistributionSection = () => {
     return (
