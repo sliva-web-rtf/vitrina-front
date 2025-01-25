@@ -1,11 +1,11 @@
-import { BaseButton, BaseField } from '@/shared/ui';
-import { memo, useEffect, useRef, useState } from 'react';
-import { useUploadImagesMutation } from '../../api/projectImagesApi';
-import { Stack, Typography } from '@mui/material';
 import { AppError, EntityValidationErrors } from '@/shared/lib/types/appError';
+import { BaseButton, BaseField } from '@/shared/ui';
+import { Stack, Typography } from '@mui/material';
+import { memo, useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
-import { UploadProjectImagesSchema } from '../../model/types/UploadProjectImagesSchema';
+import { useUploadImagesMutation } from '../../api/projectImagesApi';
 import { uploadImageUploadError } from '../../model/const/uploadImageUploadError';
+import { UploadProjectImagesSchema } from '../../model/types/UploadProjectImagesSchema';
 
 interface ProjectImagesUploaderProps {
     id?: number;
@@ -37,7 +37,7 @@ export const ProjectImagesUploader = memo((props: ProjectImagesUploaderProps) =>
                 value={projectId}
                 onChange={event => setID(Number(event.target.value))}
             />
-            <input type="file" ref={inputRef} multiple accept="image/png, image/jpeg, image/jpeg+-" />
+            <input type="file" ref={inputRef} multiple accept="image/webp, image/png, image/jpeg, image/jpeg+-" />
             <BaseButton
                 onClick={async () => {
                     if (inputRef != null) {
