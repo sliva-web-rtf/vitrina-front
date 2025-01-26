@@ -3,6 +3,6 @@
 import { Header } from '@/widgets/Header';
 import { navLinks } from '../model/constants';
 
-const navButton = { href: '#projects', text: 'Витрина проектов' };
+const navButton = { href: '/dashboard', text: 'О проектном практикуме' };
 
 export const MainHeader = () => <Header nav={navLinks} navButton={navButton} />;
