@@ -8,12 +8,14 @@ import { useMediaQuery } from '@mui/material';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
+type BarItem = {
+    label: string;
+    data: number;
+    backgroundColor: string;
+};
+
 interface BarChartProps {
-    data: {
-        label: string;
-        data: number;
-        backgroundColor: string;
-    }[];
+    data: BarItem[];
 }
 
 export const BarChart = (props: BarChartProps) => {

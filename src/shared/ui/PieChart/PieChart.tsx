@@ -9,12 +9,14 @@ import { useMediaQuery } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+type PieItem = {
+    label: string;
+    data: number;
+    backgroundColor: string;
+};
+
 interface PieChartProps {
-    data: {
-        label: string;
-        data: number;
-        backgroundColor: string;
-    }[];
+    data: PieItem[];
 }
 
 export const PieChart = (props: PieChartProps) => {
