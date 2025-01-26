@@ -16,7 +16,7 @@ export const DashboardBlock = (props: DashboardBlockProps) => {
     return (
         <Box sx={{ margin: '0 auto', maxWidth: '1544px' }}>
             <VStack
-                spacing={'32px'}
+                spacing={4}
                 sx={(theme) => ({
                     marginBottom: '96px',
                     [theme.breakpoints.down('lg')]: {

@@ -7,7 +7,7 @@ export const CheckList = (props: { items: string[] }) => {
     const { items } = props;
 
     return (
-        <VStack spacing={'16px'}>
+        <VStack spacing={2}>
             {items.map((item, index) => (
                 <HStack
                     key={index}

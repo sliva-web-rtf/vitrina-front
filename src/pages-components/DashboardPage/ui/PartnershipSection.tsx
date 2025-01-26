@@ -44,7 +44,7 @@ export const PartnershipSection = () => {
                     {OPPORTUNITIES.map((opportunity) => (
                         <VStack
                             key={opportunity.id}
-                            spacing={'48px'}
+                            spacing={6}
                             sx={(theme) => ({
                                 padding: '24px',
                                 width: '380px',
@@ -107,7 +107,7 @@ export const PartnershipSection = () => {
                         {UNIVERSITY_STATS.map((stat, index) => (
                             <VStack
                                 key={index}
-                                spacing={'32px'}
+                                spacing={4}
                                 sx={(theme) => ({
                                     padding: '24px',
                                     width: '295px',
