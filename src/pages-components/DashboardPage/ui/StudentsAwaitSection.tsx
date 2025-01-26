@@ -1,7 +1,7 @@
-'use client';
+import styles from './DashboardPage.module.scss'
 
 import React from 'react';
-import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import { HStack } from '@/shared/ui';
 import { CheckList } from '@/shared/ui/CheckList/CheckList';
@@ -12,24 +12,10 @@ export const StudentsAwaitSection = () => {
         <section id="studentsAwait">
             <DashboardBlock title="Студентов ждет:">
                 <HStack
-                    sx={(theme) => ({
-                        gap: '48px',
-                        [theme.breakpoints.down('lg')]: {
-                            flexDirection: 'column',
-                        },
-                    })}
+                    gap={6}
+                    className={styles['hStack']}
                 >
-                    <Typography
-                        sx={(theme) => ({
-                            fontSize: '32px',
-                            [theme.breakpoints.down('xl')]: {
-                                fontSize: '22px',
-                            },
-                            [theme.breakpoints.down('sm')]: {
-                                fontSize: '16px',
-                            },
-                        })}
-                    >
+                    <Typography variant="subtitle1">
                         Возможность попробовать себя во время учебы в университете в разных ролях: аналитика, тимлида,
                         дизайнера, разработчика, тестировщика и т.д.
                     </Typography>

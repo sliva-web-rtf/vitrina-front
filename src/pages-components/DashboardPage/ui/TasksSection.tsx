@@ -1,7 +1,7 @@
-'use client';
+import styles from './DashboardPage.module.scss';
 
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { Accordion } from '@/shared/ui/Accordion/Accordion';
 import { DashboardBlock } from '@/shared/ui/DashboardBlock/DashboardBlock';
@@ -46,19 +46,7 @@ export const TasksSection = () => {
                 title="Задачи"
                 subtitle="В рамках дисциплины студенты делают проекты по своей специальности вместе с партнёрами университета! Перечень направлений, по которым ведётся работа:"
             >
-                <Box
-                    sx={(theme) => ({
-                        padding: '64px',
-                        backgroundColor: 'var(--primary-color-99)',
-                        borderRadius: '32px',
-                        [theme.breakpoints.down('xl')]: {
-                            padding: '32px',
-                        },
-                        [theme.breakpoints.down('sm')]: {
-                            padding: '16px',
-                        },
-                    })}
-                >
+                <Box className={styles['highlight']}>
                     {ACCORDIONS.map((accordionData) => (
                         <Accordion key={accordionData.id} label={accordionData.label}>
                             {accordionData.text}
