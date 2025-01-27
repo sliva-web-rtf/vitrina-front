@@ -17,7 +17,7 @@ export const DashboardBlock = (props: DashboardBlockProps) => {
         if (!subtitle) {
             return;
         }
-        
+
         if (typeof subtitle === 'string') {
             return <Typography>{subtitle}</Typography>;
         }

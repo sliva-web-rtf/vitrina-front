@@ -1,4 +1,4 @@
-import styles from './DashboardPage.module.scss'
+import styles from './DashboardPage.module.scss';
 
 import React from 'react';
 import { Typography } from '@mui/material';
@@ -11,10 +11,7 @@ export const StudentsAwaitSection = () => {
     return (
         <section id="studentsAwait">
             <DashboardBlock title="Студентов ждет:">
-                <HStack
-                    gap={6}
-                    className={styles['hStack']}
-                >
+                <HStack gap={6} className={styles['hStack']}>
                     <Typography variant="subtitle1">
                         Возможность попробовать себя во время учебы в университете в разных ролях: аналитика, тимлида,
                         дизайнера, разработчика, тестировщика и т.д.

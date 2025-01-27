@@ -65,8 +65,7 @@ export const PartnershipSection = () => {
                 </Box>
                 <Box className={styles['bigImageBg']}>
                     <Typography>
-                        Вы сможете найти и проверить{' '}
-                        <span className={styles['colorBlueText']}>будущих сотрудников</span>
+                        Вы сможете найти и проверить <span className={styles['colorBlueText']}>будущих сотрудников</span>
                     </Typography>
                     <HStack className={styles['hStack']} gap={2} width={'100%'}>
                         {UNIVERSITY_STATS.map((stat, index) => (
