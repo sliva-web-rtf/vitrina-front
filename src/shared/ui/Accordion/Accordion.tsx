@@ -31,16 +31,7 @@ export const Accordion = (props: AccordionProps) => {
             >
                 <Typography
                     component="span"
-                    sx={(theme) => ({
-                        fontSize: '32px',
-                        fontWeight: 700,
-                        [theme.breakpoints.down('xl')]: {
-                            fontSize: '28px',
-                        },
-                        [theme.breakpoints.down('sm')]: {
-                            fontSize: '24px',
-                        },
-                    })}
+                    variant='h3'
                 >
                     {label}
                 </Typography>
@@ -48,9 +39,9 @@ export const Accordion = (props: AccordionProps) => {
             <AccordionDetails>
                 <Box
                     sx={(theme) => ({
-                        fontSize: '32px',
+                        fontSize: '24px',
                         [theme.breakpoints.down('xl')]: {
-                            fontSize: '22px',
+                            fontSize: '20px',
                         },
                         [theme.breakpoints.down('sm')]: {
                             fontSize: '16px',

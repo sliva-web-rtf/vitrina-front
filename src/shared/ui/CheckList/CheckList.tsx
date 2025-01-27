@@ -1,7 +1,9 @@
 import React from 'react';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // MUI icon example
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
+
 import { HStack, VStack } from '../Stack/Stack';
+
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 export const CheckList = (props: { items: string[] }) => {
     const { items } = props;
@@ -20,18 +22,7 @@ export const CheckList = (props: { items: string[] }) => {
                     }}
                 >
                     <Typography
-                        sx={(theme) => ({
-                            fontSize: '24px',
-                            fontWeight: 500,
-                            lineHeight: '33px',
-                            [theme.breakpoints.down('xl')]: {
-                                fontSize: '22px',
-                            },
-                            [theme.breakpoints.down('sm')]: {
-                                fontSize: '16px',
-                                lineHeight: '20px',
-                            },
-                        })}
+                        variant='body1'
                     >
                         {item}
                     </Typography>

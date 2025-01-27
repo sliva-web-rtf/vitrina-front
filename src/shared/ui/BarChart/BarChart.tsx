@@ -34,7 +34,7 @@ export const BarChart = (props: BarChartProps) => {
             bar: {
                 borderWidth: 0,
                 borderSkipped: false,
-                barThickness: matches ? 60 : 80,
+                barThickness: 20,
             },
         },
         maintainAspectRatio: false,
@@ -46,11 +46,9 @@ export const BarChart = (props: BarChartProps) => {
             datalabels: {
                 display: true,
                 color: '#fff',
-                anchor: 'center',
-                align: 'center',
                 font: {
-                    size: matches ? 24 : 32,
-                    weight: 'bold',
+                    size: matches ? 20 : 24,
+                    weight: 700,
                 },
             },
         },
@@ -59,7 +57,7 @@ export const BarChart = (props: BarChartProps) => {
                 stacked: !matches,
                 display: false,
                 min: 0,
-                max: matches ? null : data.reduce((sum, item) => sum + item.data, 0),
+                max: matches ? undefined : data.reduce((sum, item) => sum + item.data, 0),
             },
             y: {
                 stacked: !matches,
@@ -70,6 +68,5 @@ export const BarChart = (props: BarChartProps) => {
         },
     };
 
-    // @ts-ignore
     return <Bar data={barData} options={options} />;
 };
