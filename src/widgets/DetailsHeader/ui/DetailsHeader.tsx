@@ -7,6 +7,6 @@ const navLinks = [
     { href: '#team', text: 'Команда' },
 ];
 
-const navButton = { href: '/about', text: 'О проектном практикуме' };
+const navButton = { href: '/dashboard', text: 'О проектном практикуме' };
 
 export const DetailsHeader = () => <Header nav={navLinks} navButton={navButton} />;

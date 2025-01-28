@@ -36,7 +36,7 @@ export const Header = (props: HeaderProps) => {
                 ))}
             </HStack>
 
-            <BaseButton className={styles.button} variant="contained" endIcon={<ArrowForwardRoundedIcon />}>
+            <BaseButton className={styles.button} variant="contained" endIcon={<ArrowForwardRoundedIcon />} href={navButton.href}>
                 <Typography variant="subtitle1">{navButton.text}</Typography>
             </BaseButton>
             <MobileMenu className={styles.burger} nav={nav} />
