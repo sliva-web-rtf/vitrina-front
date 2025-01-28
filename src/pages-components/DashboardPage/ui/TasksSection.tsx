@@ -41,7 +41,7 @@ const ACCORDIONS = [
 
 export const TasksSection = () => {
     return (
-        <section id="tasks">
+        <Box id="tasks">
             <DashboardBlock
                 title="Задачи"
                 subtitle="В рамках дисциплины студенты делают проекты по своей специальности вместе с партнёрами университета! Перечень направлений, по которым ведётся работа:"
@@ -54,6 +54,6 @@ export const TasksSection = () => {
                     ))}
                 </Box>
             </DashboardBlock>
-        </section>
+        </Box>
     );
 };

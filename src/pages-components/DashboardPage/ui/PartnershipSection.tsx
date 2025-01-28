@@ -22,7 +22,7 @@ const UNIVERSITY_STATS = [
 
 export const PartnershipSection = () => {
     return (
-        <section id="partnership">
+        <Box id="partnership">
             <DashboardBlock
                 title="Возможности для партнеров"
                 subtitle="Вы сможете курировать студентов и развивать менеджерские компетенции ваших сотрудников, дать им
@@ -92,6 +92,6 @@ export const PartnershipSection = () => {
                     </HStack>
                 </Box>
             </DashboardBlock>
-        </section>
+        </Box>
     );
 };

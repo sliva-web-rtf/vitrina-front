@@ -1,10 +1,10 @@
 import styles from './DashboardPage.module.scss';
 
 import React from 'react';
+import { Box, Typography } from '@mui/material';
 
 import { BarChart } from '@/shared/ui/BarChart/BarChart';
 import { DashboardBlock } from '@/shared/ui/DashboardBlock/DashboardBlock';
-import { Typography } from '@mui/material';
 
 const TITLE = 'Основная цель'
 
@@ -24,12 +24,12 @@ const CHART_DATA = [
 
 export const GoalSection = () => {
     return (
-        <section id="goal">
+        <Box id="goal">
             <DashboardBlock title={TITLE} subtitle={<Typography>
                 {SUBTITLE}{SUBTITLE_COLORED}
             </Typography>}>
                 <BarChart data={CHART_DATA} />
             </DashboardBlock>
-        </section>
+        </Box>
     );
 };

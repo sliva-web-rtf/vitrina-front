@@ -13,7 +13,7 @@ import { StudentsAwaitSection } from './StudentsAwaitSection';
 const DashboardPage = () => {
     return (
         <>
-            <VStack spacing={6}>
+            <VStack gap={6}>
                 <DashboardHeader />
                 <HeroSection />
                 <GoalSection />

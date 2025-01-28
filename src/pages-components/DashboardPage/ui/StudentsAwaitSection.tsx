@@ -1,7 +1,7 @@
 import styles from './DashboardPage.module.scss';
 
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import { HStack } from '@/shared/ui';
 import { CheckList } from '@/shared/ui/CheckList/CheckList';
@@ -9,7 +9,7 @@ import { DashboardBlock } from '@/shared/ui/DashboardBlock/DashboardBlock';
 
 export const StudentsAwaitSection = () => {
     return (
-        <section id="studentsAwait">
+        <Box id="studentsAwait">
             <DashboardBlock title="Студентов ждет:">
                 <HStack gap={6} className={styles['hStack']}>
                     <Typography variant="subtitle1">
@@ -29,6 +29,6 @@ export const StudentsAwaitSection = () => {
                     />
                 </HStack>
             </DashboardBlock>
-        </section>
+        </Box>
     );
 };

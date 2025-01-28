@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '@mui/material';
 
 import { PieChart } from '@/shared/ui/PieChart/PieChart';
 import { DashboardBlock } from '@/shared/ui/DashboardBlock/DashboardBlock';
@@ -12,10 +13,10 @@ const CHART_DATA = [
 
 export const DistributionSection = () => {
     return (
-        <section id="distribution">
+        <Box id="distribution">
             <DashboardBlock title="Распределение студентов по кураторам">
                 <PieChart data={CHART_DATA} />
             </DashboardBlock>
-        </section>
+        </Box>
     );
 };
