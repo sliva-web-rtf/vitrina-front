@@ -1,0 +1,34 @@
+.hStack {
+    flex-direction: row;
+    align-items: center;
+}
+
+@media (max-width: 899px) {
+    .hStack {
+        flex-direction: column !important;
+        align-items: start;
+    }
+}
+
+// Showcase
+
+.showcase span {
+    color: var(--primary-color);
+}
+
+// Expert Card
+
+.expertCard {
+    height: 100% !important;
+    padding: 16px;
+    border: 1px solid var(--primary-color-95);
+    border-radius: var(--border-radius-m);
+}
+
+.avatar {
+    aspect-ratio: 1;
+}
+
+.secondaryText {
+    color: var(--tertiary-color-mono) !important;
+}
