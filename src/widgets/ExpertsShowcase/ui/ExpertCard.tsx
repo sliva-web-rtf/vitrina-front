@@ -1,10 +1,10 @@
 import styles from './ExpertsShowcase.module.scss';
 
 import React from 'react';
+import { Box, Typography } from '@mui/material';
 
 import { Expert } from '../model/types/Expert';
 import { BaseAvatar, HStack, VStack } from '@/shared/ui';
-import { Box, Typography } from '@mui/material';
 
 interface ExpertCardProps {
     expert: Expert;
@@ -16,7 +16,11 @@ export const ExpertCard = (props: ExpertCardProps) => {
     return (
         <VStack spacing={2} className={styles['expertCard']}>
             <Box>
-                <BaseAvatar src={expert.avatarUrl} alt={`Изображение ${expert.name}`} className={styles['avatar']} />
+                <BaseAvatar
+                    src={expert.avatarUrl}
+                    alt={`Изображение ${expert.name}`}
+                    className={styles['avatar']}
+                />
             </Box>
             <VStack spacing={1}>
                 <Typography variant="h4" color={'var(--primary-color-mono)'}>

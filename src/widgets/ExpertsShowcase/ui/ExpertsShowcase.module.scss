@@ -26,7 +26,9 @@
 }
 
 .avatar {
-    aspect-ratio: 1;
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 1 !important;
 }
 
 .secondaryText {

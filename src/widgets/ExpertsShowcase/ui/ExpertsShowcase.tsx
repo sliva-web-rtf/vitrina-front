@@ -16,7 +16,7 @@ export const ExpertsShowcase = () => {
                 труд!
             </Typography>
             <Box flexGrow={1}>
-                <Grid container spacing={2} alignItems="end">
+                <Grid container spacing={2} alignItems="stretch">
                     {TEST_EXPERTS.map((item) => (
                         <Grid key={item.id} item xs={6} md={4} lg={3} xl={2}>
                             <ExpertCard expert={item} />
