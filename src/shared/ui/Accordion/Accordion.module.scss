@@ -1,0 +1,30 @@
+.base {
+    background: none !important;
+    border-bottom: 1px solid #C1D7FE;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.base::before {
+    content: none !important;
+}
+
+.summary {
+    padding: 16px 24px !important;
+}
+
+.expandIcon {
+    color: var(--primary-color);
+    width: 56px !important;
+    height: 56px !important;
+}
+
+.detailsContent {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 599px) {
+    .detailsContent {
+        font-size: 16px;
+    }
+}
