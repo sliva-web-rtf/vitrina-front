@@ -47,6 +47,15 @@
     font-size: 56px;
 }
 
+.button {
+    width: max-content;
+    align-self: center;
+    cursor: default !important;
+}
+
+.button:hover {
+    background-color: var(--primary-color) !important;
+}
 
 @media (max-width: 1439px) {
     .highlight {
