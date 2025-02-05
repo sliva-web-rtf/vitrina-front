@@ -7,7 +7,7 @@ const navLinks = [
     { text: 'Студентам', href: '#studentsAwait' },
 ];
 
-const navButton = { text: 'О витрине проекта', href: '#' };
+const navButton = { text: 'К экспертам', href: '/experts' };
 
 export const DashboardHeader = () => {
     return <Header nav={navLinks} navButton={navButton} />;
