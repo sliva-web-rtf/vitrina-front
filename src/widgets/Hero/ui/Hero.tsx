@@ -1,4 +1,7 @@
-import { Box, Stack } from '@mui/material';
+import gradient from '@/shared/assets/hero-gradient.svg';
+import vectors from '@/shared/assets/hero-vectors.svg';
+import { Stack } from '@mui/material';
+import Image from 'next/image';
 import styles from './Hero.module.scss';
 
 interface HeroProps {
@@ -7,13 +10,10 @@ interface HeroProps {
 
 export const Hero = (props: HeroProps) => {
     return (
-        <Box className={styles['container']}>
-            <Box className={styles['heroContainer']}>
-                <Stack className={styles['hero']} alignItems="center" justifyContent="center">
-                    <Box className={styles['heroFrontRound']} />
-                    {props.children}
-                </Stack>
-            </Box>
-        </Box>
+        <Stack className={styles.container} alignItems="center" justifyContent="center">
+            {props.children}
+            <Image src={gradient} alt="" className={styles.gradient} />
+            <Image src={vectors} alt="" className={styles.gradient} />
+        </Stack>
     );
 };

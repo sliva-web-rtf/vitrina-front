@@ -6,6 +6,7 @@ html {
 }
 
 body {
+    position: relative;
     background-color: var(--secondary-color-95) !important;
     color: var(--font-color);
     padding: 0 var(--space-xl) calc(2 * var(--space-xl));
