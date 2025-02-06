@@ -1,15 +1,3 @@
-.hStack {
-    flex-direction: row;
-    align-items: center;
-}
-
-@media (max-width: 899px) {
-    .hStack {
-        flex-direction: column !important;
-        align-items: start;
-    }
-}
-
 // Showcase
 
 .showcase span {
@@ -20,6 +8,7 @@
 
 .expertCard {
     height: 100% !important;
+    aspect-ratio: 0.8 !important;
     padding: 16px;
     border: 1px solid var(--primary-color-95);
     border-radius: var(--border-radius-m);
@@ -33,4 +22,48 @@
 
 .secondaryText {
     color: var(--tertiary-color-mono) !important;
+}
+
+.stack {
+    height: 100% !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+}
+
+@media screen and (max-width: 550px) {
+    .secondaryText {
+        font-size: 10px !important;
+    }
+
+    .stack {
+        gap: 4px !important;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .mainText {
+        font-size: 14px !important;
+    }
+
+    .secondaryText {
+        font-size: 10px !important;
+    }
+
+    .stack {
+        gap: 1px !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .mainText {
+        font-size: 10px !important;
+    }
+
+    .secondaryText {
+        font-size: 8px !important;
+    }
+
+    .stack {
+        gap: 1px !important;
+    }
 }
