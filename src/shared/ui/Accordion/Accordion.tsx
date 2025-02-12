@@ -1,9 +1,12 @@
 'use client';
 
-import React, { ReactNode } from 'react';
+import styles from './Accordion.module.scss';
+
+import React, { ReactNode, useState } from 'react';
 import { Accordion as AccordionBase, AccordionDetails, AccordionSummary, Box, Typography } from '@mui/material';
 
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
 
 interface AccordionProps {
     label: string;
@@ -12,44 +15,30 @@ interface AccordionProps {
 
 export const Accordion = (props: AccordionProps) => {
     const { label, children } = props;
+    const [expanded, setExpanded] = useState<boolean>(false);
+
+    const handleExpand = () => {
+        setExpanded(!expanded);
+    };
 
     return (
-        <AccordionBase
-            sx={{
-                background: 'none',
-                borderBottom: '1px solid var(--primary-color-90)',
-                boxShadow: 'none',
-            }}
-        >
+        <AccordionBase expanded={expanded} onChange={handleExpand} className={styles['base']}>
             <AccordionSummary
                 expandIcon={
-                    <AddCircleOutlinedIcon sx={{ width: '56px', height: '56px', color: 'var(--primary-color)' }} />
+                    expanded ? (
+                        <RemoveCircleOutlinedIcon className={styles['expandIcon']} />
+                    ) : (
+                        <AddCircleOutlinedIcon className={styles['expandIcon']} />
+                    )
                 }
-                aria-controls="panel1-content"
-                id="panel1-header"
-                sx={{ padding: '16px 24px', border: 'none' }}
+                className={styles['summary']}
             >
-                <Typography
-                    component="span"
-                    variant='h3'
-                >
+                <Typography component="span" variant="h3">
                     {label}
                 </Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Box
-                    sx={(theme) => ({
-                        fontSize: '24px',
-                        [theme.breakpoints.down('xl')]: {
-                            fontSize: '20px',
-                        },
-                        [theme.breakpoints.down('sm')]: {
-                            fontSize: '16px',
-                        },
-                    })}
-                >
-                    {children}
-                </Box>
+                <Box className={styles['detailsContent']}>{children}</Box>
             </AccordionDetails>
         </AccordionBase>
     );

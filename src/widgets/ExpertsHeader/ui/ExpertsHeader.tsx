@@ -7,8 +7,8 @@ const navLinks = [
     { text: 'Студентам', href: '#studentsAwait' },
 ];
 
-const navButton = { text: 'К экспертам', href: '/experts' };
+const navButton = { text: 'Поделиться работой', href: '/share' };
 
-export const DashboardHeader = () => {
+export const ExpertsHeader = () => {
     return <Header nav={navLinks} navButton={navButton} />;
 };

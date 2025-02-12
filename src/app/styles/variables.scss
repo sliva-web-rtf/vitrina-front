@@ -5,6 +5,8 @@
     --space-xl: calc(var(--space-s) * 4);
 
     --border-radius: 16px;
+    --border-radius-m: calc(var(--border-radius) * 2);
+    --border-radius-l: calc(var(--border-radius) * 3);
 
     --page-max-width: 1920px;
     --page-width: min(calc(100dvw - 2 * var(--space-xl)), var(--page-max-width));
@@ -28,4 +30,8 @@
     // Dashboard colors
     --primary-color-99: #F8FBFF;
     --primary-color-90: #C1D7FE;
+
+    // Expert card
+    --primary-color-mono: #1A2633;
+    --tertiary-color-mono: #7F8B99;
 }
