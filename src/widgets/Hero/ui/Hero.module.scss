@@ -1,19 +1,63 @@
 .container {
-    position: relative;
-    width: 100dvw;
-    height: 90dvh;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #062756;
-    color: var(--inverted-font-color);
-    overflow: hidden;
-    margin-top: 0 !important;
+    margin-bottom: 85vh;
 }
 
-.container>div {
+.heroContainer {
+    position: absolute;
+    width: 100%;
+    height: 85vh;
+    left: 0;
+    background-color: #062756;
+    color: var(--inverted-font-color);
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero::before {
+    background-image: url('../../../shared/assets/hero-gradient.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero::after {
+    background-image: url('../../../shared/assets/hero-vectors.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero > div {
     z-index: 1;
 }
+
+.heroFrontRound {
+    position: absolute;
+    width: 100%;
+    height: 5vh;
+    top: calc(80vh + 1px);
+    left: 0;
+    background-color: var(--secondary-color-95);
+    border-top-left-radius: var(--space-xl);
+    border-top-right-radius: var(--space-xl);
+}
+
+// details hero
 
 .gradient {
     position: absolute;
