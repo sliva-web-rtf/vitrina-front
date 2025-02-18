@@ -1,3 +1,6 @@
+import '@/app/styles/reset.scss';
+import '@/app/styles/variables.scss';
+
 import { Providers } from '@/app/providers';
 import { Stack } from '@mui/material';
 import type { Metadata } from 'next';
@@ -21,9 +24,7 @@ export default function RootLayout(props: RootLayoutProps) {
             <body>
                 <Providers>
                     <Stack>
-                        <Stack component="main">
-                            {children}
-                        </Stack>
+                        <Stack component="main">{children}</Stack>
                     </Stack>
                 </Providers>
             </body>
