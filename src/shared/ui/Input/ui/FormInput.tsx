@@ -1,15 +1,21 @@
 import { styled, TextField, TextFieldProps } from '@mui/material';
 import React from 'react';
 
-const ForwarderFormInput = React.forwardRef<HTMLDivElement, TextFieldProps>((props, ref) => (
-    <TextField
-        {...props}
-        ref={ref}
-        variant="standard"
-        InputLabelProps={{ shrink: true }}
-        InputProps={{ ...props.InputProps, disableUnderline: true }}
-    />
-));
+const ForwarderFormInput = React.forwardRef<HTMLDivElement, Omit<TextFieldProps, 'variant'>>(
+    (props, ref) => {
+        const { InputLabelProps, InputProps, ...restProps } = props;
+
+        return (
+            <TextField
+                {...restProps}
+                ref={ref}
+                variant="standard"
+                InputLabelProps={{ ...InputLabelProps, shrink: true }}
+                InputProps={{ ...InputProps, disableUnderline: true }}
+            />
+        );
+    },
+);
 
 ForwarderFormInput.displayName = 'FormInput';
 
