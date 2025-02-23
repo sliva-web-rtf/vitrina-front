@@ -1,0 +1,82 @@
+'use client';
+
+import React, { useState } from 'react';
+import { Box, IconButton, InputAdornment, Typography } from '@mui/material';
+import { useForm } from 'react-hook-form';
+
+import { RegularLink } from '@/shared/ui/Link';
+import { SignInFormData } from '../model';
+import { VStack, BaseButton, HStack } from '@/shared/ui';
+import { ControlledFormInput } from '@/shared/ui/Input';
+
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
+export const SignInForm = () => {
+    const {
+        handleSubmit,
+        control,
+        formState: { errors },
+    } = useForm<SignInFormData>();
+
+    const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+
+    const onSubmit = (data: SignInFormData) => {};
+
+    return (
+        <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+            <VStack spacing={4}>
+                <VStack spacing={3}>
+                    <ControlledFormInput
+                        control={control}
+                        name="email"
+                        rules={{
+                            required: true,
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: 'Неправильный формат почты',
+                            },
+                        }}
+                        inputProps={{
+                            type: 'text',
+                            label: 'Почта*',
+                            placeholder: 'bogdanbikaev@urfu.me',
+                            error: Boolean(errors.email),
+                        }}
+                    />
+                    <ControlledFormInput
+                        control={control}
+                        name="password"
+                        rules={{ required: true }}
+                        inputProps={{
+                            type: passwordVisible ? 'text' : 'password',
+                            label: 'Пароль*',
+                            placeholder: 'Введите пароль',
+                            error: Boolean(errors.password),
+                            InputProps: {
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton onClick={() => setPasswordVisible(!passwordVisible)}>
+                                            {passwordVisible ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            },
+                        }}
+                    />
+                    <RegularLink href={'/reser-password'}>Забыли пароль?</RegularLink>
+                </VStack>
+                <VStack spacing={3}>
+                    <BaseButton type="submit" variant="contained" endIcon={<ArrowForwardRoundedIcon />}>
+                        <Typography variant="subtitle1">Продолжить</Typography>
+                    </BaseButton>
+                    <HStack spacing={0.5} alignSelf="center">
+                        <Typography>Нет аккаунта?</Typography>
+                        <RegularLink href={'/signup'}>Регистрация</RegularLink>
+                    </HStack>
+                </VStack>
+            </VStack>
+        </Box>
+    );
+};
