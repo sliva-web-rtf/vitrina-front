@@ -11,3 +11,9 @@
     background-position: center right;
     background-size: cover;
 }
+
+@media (max-width: 1024px) {
+    .bannerBg {
+        display: none;
+    }
+}
