@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .authorization {
         position: absolute;
         width: 100% !important;
@@ -15,5 +15,16 @@
         top: 0;
         left: 0;
         padding: var(--space-s) !important;
+    }
+}
+
+// Sign Up Step
+
+.halfInputsStack {
+    flex-wrap: wrap;
+    gap: var(--space-l);
+
+    & > * {
+        width: calc(50% - (var(--space-l) / 2));
     }
 }
