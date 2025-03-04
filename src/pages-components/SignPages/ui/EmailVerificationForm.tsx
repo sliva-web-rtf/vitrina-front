@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
-import { MuiOtpInput } from 'mui-one-time-password-input';
-import { styled, Typography } from '@mui/material';
 
 import { VStack } from '@/shared/ui';
+import { StyledOtpInput } from '@/shared/ui/OtpInput/StyledOtpInput';
+import { Typography } from '@mui/material';
 
-const StyledOtpInput = styled(MuiOtpInput)(() => ({
-    '& .MuiOtpInput-TextField': {
-        backgroundColor: '#F2F4F7',
-    },
-    '& .MuiOutlinedInput-notchedOutline': {
-        borderWidth: '0px',
-        borderRadius: '100px',
-    },
-}));
 
 export const EmailVerificationForm = () => {
     const [otp, setOtp] = useState('');
