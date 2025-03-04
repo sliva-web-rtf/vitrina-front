@@ -23,9 +23,7 @@ export default function RootLayout(props: RootLayoutProps) {
         <html lang="ru">
             <body>
                 <Providers>
-                    <Stack>
-                        <Stack component="main">{children}</Stack>
-                    </Stack>
+                    <Stack component="main">{children}</Stack>
                 </Providers>
             </body>
         </html>

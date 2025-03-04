@@ -65,7 +65,7 @@ export const SignInForm = () => {
                             },
                         }}
                     />
-                    <RegularLink href={'/reser-password'}>Забыли пароль?</RegularLink>
+                    <RegularLink href={'#'}>Забыли пароль?</RegularLink>
                 </VStack>
                 <VStack spacing={3}>
                     <BaseButton type="submit" variant="contained" endIcon={<ArrowForwardRoundedIcon />}>
