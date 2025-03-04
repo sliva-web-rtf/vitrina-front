@@ -8,6 +8,7 @@ import { Control, Controller, FieldErrors } from 'react-hook-form';
 import { VStack } from '@/shared/ui';
 import { SignUpFormData } from '../model';
 import { StyledToggleButtonGroup } from '@/shared/ui/ToggleButtonGroup/StyledToggleButtonGroup';
+import { Roles } from '../model/types/Roles';
 
 interface SignUpRoleSelectorProps {
     control: Control<SignUpFormData, any>;
@@ -34,15 +35,15 @@ export const SignUpRoleSelector = (props: SignUpRoleSelectorProps) => {
                             field.onChange(newAlignment);
                         }}
                     >
-                        <ToggleButton value="student">
+                        <ToggleButton value={Roles.student}>
                             <SchoolRoundedIcon />
                             <Typography variant="subtitle2">Студент</Typography>
                         </ToggleButton>
-                        <ToggleButton value="teacher">
+                        <ToggleButton value={Roles.teacher}>
                             <PersonIcon />
                             <Typography variant="subtitle2">Куратор</Typography>
                         </ToggleButton>
-                        <ToggleButton value="partner">
+                        <ToggleButton value={Roles.partner}>
                             <HandshakeIcon />
                             <Typography variant="subtitle2">Партнер</Typography>
                         </ToggleButton>

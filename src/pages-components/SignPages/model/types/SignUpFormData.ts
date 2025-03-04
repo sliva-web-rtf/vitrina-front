@@ -1,5 +1,7 @@
+import { Roles } from "./Roles";
+
 export type SignUpFormData = {
-    role: 'student' | 'teacher' | 'partner';
+    role: Roles;
     email: string;
     password: string;
     passwordConfirm: string;

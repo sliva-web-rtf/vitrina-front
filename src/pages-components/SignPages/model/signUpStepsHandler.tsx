@@ -8,6 +8,7 @@ import { SignUpTeacherStep } from '../ui/SignUpTeacherStep';
 import { SignUpFormData } from './types/SignUpFormData';
 import { SignUpStudentStep } from '../ui/SignUpStudentStep';
 import { SignUpPartnerStep } from '../ui/SignUpPartnerStep';
+import { Roles } from './types/Roles';
 
 export function getSignUpStep(
     step: number,
@@ -35,11 +36,11 @@ function getThirdStep(
     errors: FieldErrors<SignUpFormData>,
 ) {
     switch (role) {
-        case 'student':
+        case Roles.student:
             return <SignUpStudentStep control={control} errors={errors} />;
-        case 'teacher':
+        case Roles.teacher:
             return <SignUpTeacherStep control={control} errors={errors} />;
-        case 'partner':
+        case Roles.partner:
             return <SignUpPartnerStep control={control} errors={errors} />;
     }
 }
