@@ -9,6 +9,7 @@ import { TasksSection } from './TasksSection';
 import { DistributionSection } from './DistributionSection';
 import { PartnershipSection } from './PartnershipSection';
 import { StudentsAwaitSection } from './StudentsAwaitSection';
+import { MainGoalSection } from './MainGoalSection';
 
 const DashboardPage = () => {
     return (
@@ -16,11 +17,11 @@ const DashboardPage = () => {
             <VStack gap={6}>
                 <DashboardHeader />
                 <HeroSection />
+                <MainGoalSection />
                 <GoalSection />
+                <PartnershipSection />
                 <TasksSection />
                 <DistributionSection />
-                <PartnershipSection />
-                <StudentsAwaitSection />
             </VStack>
         </>
     );
