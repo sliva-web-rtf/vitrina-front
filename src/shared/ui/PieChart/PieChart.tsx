@@ -39,6 +39,7 @@ export const PieChart = (props: PieChartProps) => {
 
     const options = {
         responsive: true,
+        cutout: '65%',
         plugins: {
             legend: {
                 position: matches ? ('bottom' as const) : ('right' as const),
