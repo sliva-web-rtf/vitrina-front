@@ -13,12 +13,17 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
+const FORM_DEFAULTS: SignInFormData = {
+    email: '',
+    password: '',
+};
+
 export const SignInForm = () => {
     const {
         handleSubmit,
         control,
         formState: { errors },
-    } = useForm<SignInFormData>();
+    } = useForm<SignInFormData>({ defaultValues: FORM_DEFAULTS });
 
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 

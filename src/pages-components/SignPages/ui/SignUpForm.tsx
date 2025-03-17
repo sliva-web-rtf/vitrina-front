@@ -10,6 +10,20 @@ import { getSignUpStep, SignUpContext, SignUpFormData } from '../model';
 
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
+const FORM_DEFAULT: Omit<SignUpFormData, 'role'> = {
+    email: '',
+    firstName: '',
+    lastName: '',
+    middleName: '',
+    password: '',
+    passwordConfirm: '',
+    company: '',
+    companyPosition: '',
+    educaion: '',
+    teamRole: '',
+    grade: '',
+};
+
 export const SignUpForm = () => {
     const context = useContext(SignUpContext);
     if (!context) throw new Error('SignUpForm must be provided with SignUpContext provider');
@@ -22,10 +36,11 @@ export const SignUpForm = () => {
         control,
         formState: { errors },
         setError,
-    } = useForm<SignUpFormData>();
+    } = useForm<SignUpFormData>({ defaultValues: FORM_DEFAULT });
 
     const onSubmit = (data: SignUpFormData) => {
         setFormData(data);
+        console.log(typeof data.grade);
 
         if (currentStep === 1) {
             if (data.password !== data.passwordConfirm) {

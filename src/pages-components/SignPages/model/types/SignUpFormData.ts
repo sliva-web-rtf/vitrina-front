@@ -1,4 +1,4 @@
-import { Roles } from "./Roles";
+import { Roles } from './Roles';
 
 export type SignUpFormData = {
     role: Roles;
@@ -10,7 +10,7 @@ export type SignUpFormData = {
     middleName: string;
     teamRole?: string;
     educaion?: string;
-    grade?: number;
+    grade?: string;
     company?: string;
     companyPosition?: string;
-}
+};

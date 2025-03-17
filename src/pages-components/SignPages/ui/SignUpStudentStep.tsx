@@ -68,6 +68,7 @@ export const SignUpStudentStep = ({
                 name="grade"
                 rules={{ required: true }}
                 inputProps={{
+                    type: 'number',
                     label: 'Курс*',
                     error: Boolean(errors.grade),
                 }}
