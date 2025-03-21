@@ -3,13 +3,17 @@ import React, { useState } from 'react';
 import { VStack } from '@/shared/ui';
 import { StyledOtpInput } from '@/shared/ui/OtpInput/StyledOtpInput';
 import { Typography } from '@mui/material';
+import { SignUpFormData, SignUpResponse } from '../model';
+import { Control, Controller, FieldErrors } from 'react-hook-form';
 
 interface EmailVerificationFormProps {
     email: string;
+    control: Control<SignUpFormData, any>;
+    errors: FieldErrors<SignUpFormData>;
 }
 
 export const EmailVerificationForm = (props: EmailVerificationFormProps) => {
-    const { email } = props;
+    const { email, control, errors } = props;
 
     const [otp, setOtp] = useState('');
 
@@ -25,7 +29,12 @@ export const EmailVerificationForm = (props: EmailVerificationFormProps) => {
                     Мы отправили код подтверждения по адресу {email}
                 </Typography>
             </VStack>
-            <StyledOtpInput value={otp} onChange={handleChange} />
+            <Controller
+                name="confirmationCode"
+                control={control}
+                defaultValue=""
+                render={({ field }) => <StyledOtpInput {...field} length={6} inputMode="numeric" />}
+            />
         </VStack>
     );
 };

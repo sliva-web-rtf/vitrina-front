@@ -1,13 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Box, IconButton, InputAdornment, Typography } from '@mui/material';
+import { Box, IconButton, InputAdornment, Typography, Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import { RegularLink } from '@/shared/ui/Link';
-import { SignInFormData } from '../model';
 import { VStack, BaseButton, HStack } from '@/shared/ui';
 import { ControlledFormInput } from '@/shared/ui/Input';
+import { SignInFormData } from '../model';
+import { useLazySignInQuery } from '../api/signApi';
 
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -23,11 +24,20 @@ export const SignInForm = () => {
         handleSubmit,
         control,
         formState: { errors },
+        setError,
     } = useForm<SignInFormData>({ defaultValues: FORM_DEFAULTS });
+
+    const [PostSignIn, { isFetching, data }] = useLazySignInQuery();
 
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
-    const onSubmit = (data: SignInFormData) => {};
+    const onSubmit = async (data: SignInFormData) => {
+        try {
+            const res = await PostSignIn({ ...data, rememberMe: true });
+        } catch {
+            setError('root', { message: 'Произошла ошибка. Попробуйте позже' });
+        }
+    };
 
     return (
         <Box component="form" onSubmit={handleSubmit(onSubmit)}>
@@ -70,6 +80,11 @@ export const SignInForm = () => {
                             },
                         }}
                     />
+                    {errors.root && (
+                        <Typography color="error" textAlign="center">
+                            {errors.root.message}
+                        </Typography>
+                    )}
                     <RegularLink href={'#'}>Забыли пароль?</RegularLink>
                 </VStack>
                 <VStack spacing={3}>

@@ -24,9 +24,9 @@ export function getSignUpStep(
         case 2:
             return getThirdStep(formData.role, control, errors);
         case 3:
-            return <EmailVerificationForm email={formData.email} />;
+            return <EmailVerificationForm email={formData.email} control={control} errors={errors} />;
         default:
-            throw new RangeError('Step was out of range');
+            throw new Error('unexpected step value');
     }
 }
 

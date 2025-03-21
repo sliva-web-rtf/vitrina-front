@@ -42,7 +42,7 @@ export const SignUpPartnerStep = ({
                 rules={{ required: true }}
                 inputProps={{
                     label: 'Отчество*',
-                    error: Boolean(errors.middleName),
+                    error: Boolean(errors.surname),
                     autoComplete: 'additional-name patronymic',
                 }}
             />
@@ -51,7 +51,7 @@ export const SignUpPartnerStep = ({
                 name="company"
                 inputProps={{
                     label: 'Компания',
-                    error: Boolean(errors.company),
+                    error: Boolean(errors.companyName),
                 }}
             />
             <ControlledFormInput

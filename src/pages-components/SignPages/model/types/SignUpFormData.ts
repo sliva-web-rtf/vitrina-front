@@ -7,10 +7,11 @@ export type SignUpFormData = {
     passwordConfirm: string;
     firstName: string;
     lastName: string;
-    middleName: string;
+    surname: string;
     teamRole?: string;
-    educaion?: string;
-    grade?: string;
-    company?: string;
+    educationLevel?: string;
+    educationCourse?: string;
+    companyName?: string;
     companyPosition?: string;
+    confirmationCode: string;
 };

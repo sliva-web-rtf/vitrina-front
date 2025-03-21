@@ -3,10 +3,12 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Box, Typography } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { BaseButton, HStack, VStack } from '@/shared/ui';
 import { RegularLink } from '@/shared/ui/Link';
-import { getSignUpStep, SignUpContext, SignUpFormData } from '../model';
+import { getSignUpStep, SignUpContext, SignUpFormData, SignUpFormDataToSchemaMapper } from '../model';
+import { useLazySignUpQuery, useLazyConfirmQuery } from '../api/signApi';
 
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
@@ -14,22 +16,25 @@ const FORM_DEFAULT: Omit<SignUpFormData, 'role'> = {
     email: '',
     firstName: '',
     lastName: '',
-    middleName: '',
+    surname: '',
     password: '',
     passwordConfirm: '',
-    company: '',
+    companyName: '',
     companyPosition: '',
-    educaion: '',
+    educationCourse: '',
     teamRole: '',
-    grade: '',
+    educationLevel: '',
+    confirmationCode: '',
 };
 
 export const SignUpForm = () => {
     const context = useContext(SignUpContext);
-    if (!context) throw new Error('SignUpForm must be provided with SignUpContext provider');
+    if (!context) throw new Error('SignUpForm must be provided with SignUpContextProvider');
 
     const { currentStep, changeCurrentStep } = context;
     const [formData, setFormData] = useState<SignUpFormData>();
+    const [PostSignUp, { isFetching: signUpIsFetching, data: signUpData }] = useLazySignUpQuery();
+    const [PostConfirm, { isFetching: confirmIsFetching, data: confirmData }] = useLazyConfirmQuery();
 
     const {
         handleSubmit,
@@ -40,7 +45,6 @@ export const SignUpForm = () => {
 
     const onSubmit = (data: SignUpFormData) => {
         setFormData(data);
-        console.log(typeof data.grade);
 
         if (currentStep === 1) {
             if (data.password !== data.passwordConfirm) {
@@ -49,14 +53,26 @@ export const SignUpForm = () => {
             }
         }
 
+        if (currentStep === 2) {
+            PostSignUp(SignUpFormDataToSchemaMapper(data));
+        }
+
         try {
             changeCurrentStep(currentStep + 1);
         } catch (error) {
             if (error instanceof RangeError) {
-                alert(`Форма потдверждена\n${JSON.stringify(data)}`);
+                const numberUserId = Number(signUpData?.userId);
+                const numberConfirmationCode = Number(data.confirmationCode);
+
+                if (!numberUserId || !numberConfirmationCode)
+                    throw new Error('userId and confirmationCode must be a numbers');
+
+                PostConfirm({ userId: numberUserId, confirmationCode: numberConfirmationCode });
             }
         }
     };
+
+    if (signUpIsFetching || confirmIsFetching) return <CircularProgress />;
 
     return (
         <Box component="form" onSubmit={handleSubmit(onSubmit)}>

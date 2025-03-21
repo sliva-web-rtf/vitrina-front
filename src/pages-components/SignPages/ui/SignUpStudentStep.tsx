@@ -18,7 +18,7 @@ export const SignUpStudentStep = ({
         <HStack className={styles['halfInputsStack']}>
             <ControlledFormInput
                 control={control}
-                name="lastName"
+                name="surname"
                 rules={{ required: true }}
                 inputProps={{
                     label: 'Фамилия*',
@@ -38,11 +38,11 @@ export const SignUpStudentStep = ({
             />
             <ControlledFormInput
                 control={control}
-                name="middleName"
+                name="lastName"
                 rules={{ required: true }}
                 inputProps={{
                     label: 'Отчество*',
-                    error: Boolean(errors.middleName),
+                    error: Boolean(errors.surname),
                     autoComplete: 'additional-name patronymic',
                 }}
             />
@@ -56,21 +56,21 @@ export const SignUpStudentStep = ({
             />
             <ControlledFormInput
                 control={control}
-                name="educaion"
+                name="educationLevel"
                 rules={{ required: true }}
                 inputProps={{
                     label: 'Уровень образования*',
-                    error: Boolean(errors.educaion),
+                    error: Boolean(errors.educationCourse),
                 }}
             />
             <ControlledFormInput
                 control={control}
-                name="grade"
+                name="educationCourse"
                 rules={{ required: true }}
                 inputProps={{
                     type: 'number',
                     label: 'Курс*',
-                    error: Boolean(errors.grade),
+                    error: Boolean(errors.educationLevel),
                 }}
             />
         </HStack>

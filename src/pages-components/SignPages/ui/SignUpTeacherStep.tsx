@@ -40,7 +40,7 @@ export const SignUpTeacherStep = ({
                 rules={{ required: true }}
                 inputProps={{
                     label: 'Отчество*',
-                    error: Boolean(errors.middleName),
+                    error: Boolean(errors.surname),
                     autoComplete: 'additional-name patronymic',
                 }}
             />
