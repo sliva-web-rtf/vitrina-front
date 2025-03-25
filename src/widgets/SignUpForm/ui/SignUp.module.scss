@@ -1,0 +1,8 @@
+.halfInputsStack {
+    flex-wrap: wrap;
+    gap: var(--space-l);
+
+    & > * {
+        width: calc(50% - (var(--space-l) / 2));
+    }
+}
