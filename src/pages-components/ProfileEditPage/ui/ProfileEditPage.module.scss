@@ -1,3 +1,9 @@
 .spaceHeader {
     margin-top: 184px !important;
 }
+
+@media (max-width: 768px) {
+    .smHide {
+        display: none !important;
+    }
+}

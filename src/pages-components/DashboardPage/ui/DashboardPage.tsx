@@ -12,17 +12,15 @@ import { StudentsAwaitSection } from './StudentsAwaitSection';
 
 const DashboardPage = () => {
     return (
-        <>
-            <VStack gap={6}>
-                <DashboardHeader />
-                <HeroSection />
-                <GoalSection />
-                <TasksSection />
-                <DistributionSection />
-                <PartnershipSection />
-                <StudentsAwaitSection />
-            </VStack>
-        </>
+        <VStack gap={6}>
+            <DashboardHeader />
+            <HeroSection />
+            <GoalSection />
+            <TasksSection />
+            <DistributionSection />
+            <PartnershipSection />
+            <StudentsAwaitSection />
+        </VStack>
     );
 };
 

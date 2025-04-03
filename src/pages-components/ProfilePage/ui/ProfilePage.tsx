@@ -14,7 +14,7 @@ const ProfilePage = () => {
         <VStack>
             <DefaultHeader />
             <ProfileBanner />
-            <HStack spacing={8} padding={8} alignItems="start">
+            <HStack gap={8} padding={8} alignItems="start" className={styles['smVertical']}>
                 <Box className={styles['stepOnBannerWrapper']}>
                     <Box className={styles['stepOnBanner']}>
                         <ProfileUser />

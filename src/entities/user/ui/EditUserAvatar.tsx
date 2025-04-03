@@ -9,7 +9,7 @@ import { Typography } from '@mui/material';
 
 export const EditUserAvatar = () => {
     return (
-        <HStack spacing={4}>
+        <HStack gap={4} className={styles['smVertical']}>
             <Image
                 className={styles['avatar']}
                 src={defaultAvatar}
