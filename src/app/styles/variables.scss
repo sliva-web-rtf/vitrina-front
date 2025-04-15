@@ -8,6 +8,8 @@
     --border-radius-m: calc(var(--border-radius) * 2);
     --border-radius-l: calc(var(--border-radius) * 3);
 
+    --border-light-color: #e5e8ec;
+
     --page-max-width: 1920px;
     --page-width: min(calc(100dvw - 2 * var(--space-xl)), var(--page-max-width));
     --card-height: 450px;
@@ -28,10 +30,16 @@
     --border-color: #f0eff7;
 
     // Dashboard colors
-    --primary-color-99: #F8FBFF;
-    --primary-color-90: #C1D7FE;
+    --primary-color-99: #f8fbff;
+    --primary-color-90: #c1d7fe;
 
     // Expert card
-    --primary-color-mono: #1A2633;
-    --tertiary-color-mono: #7F8B99;
+    --primary-color-mono: #1a2633;
+    --tertiary-color-mono: #7f8b99;
+
+    // Authorization
+    --blue-color-50: #eaf3ff;
+    --mono-caption-color: #b2bac4;
+    --mono-border-color: #ccd1d9;
+    --brand-tertiary-color: #88adff;
 }

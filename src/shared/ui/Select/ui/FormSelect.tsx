@@ -1,7 +1,7 @@
 import { SelectOption } from '@/shared/lib/types/selectOption';
-import { Box, CircularProgress, TextFieldProps } from '@mui/material';
-import { memo } from 'react';
-import { BaseField } from '../Field/BaseField';
+import { TextFieldProps, Box, CircularProgress } from '@mui/material';
+import React, { memo } from 'react';
+import { FormField } from '../../Field/FormField';
 
 type BaseSelectProps = TextFieldProps & {
     readonly loading?: boolean;
@@ -14,13 +14,13 @@ const LoadingAdornment = () => (
     </Box>
 );
 
-export const BaseSelect = memo((props: BaseSelectProps) => {
+export const FormSelect = memo((props: BaseSelectProps) => {
     const { options, label, loading, ...selectProps } = props;
 
     const endAdornment = loading ? <LoadingAdornment /> : null;
 
     return (
-        <BaseField
+        <FormField
             select
             SelectProps={{
                 native: true,
@@ -48,8 +48,8 @@ export const BaseSelect = memo((props: BaseSelectProps) => {
                     {option.label}
                 </option>
             ))}
-        </BaseField>
+        </FormField>
     );
 });
 
-BaseSelect.displayName = 'BaseSelect';
+FormSelect.displayName = 'BaseSelect';

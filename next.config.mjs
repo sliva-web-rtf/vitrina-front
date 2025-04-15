@@ -11,6 +11,7 @@ const nextConfig = {
         ],
     },
     output: 'standalone',
+    transpilePackages: ['mui-one-time-password-input'],
 };
 
 export default nextConfig;

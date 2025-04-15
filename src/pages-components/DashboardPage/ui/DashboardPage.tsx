@@ -12,17 +12,15 @@ import { MainGoalSection } from './MainGoalSection';
 
 const DashboardPage = () => {
     return (
-        <>
-            <VStack gap={6}>
-                <DashboardHeader />
-                <HeroSection />
-                <MainGoalSection />
-                <GoalSection />
-                <PartnershipSection />
-                <TasksSection />
-                <DistributionSection />
-            </VStack>
-        </>
+        <VStack gap={6}>
+            <DashboardHeader />
+            <HeroSection />
+            <GoalSection />
+            <TasksSection />
+            <DistributionSection />
+            <PartnershipSection />
+            <StudentsAwaitSection />
+        </VStack>
     );
 };
 

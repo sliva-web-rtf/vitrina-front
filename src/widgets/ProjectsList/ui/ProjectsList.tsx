@@ -1,3 +1,5 @@
+'use client';
+
 import { ProjectCard } from '@/entities/project';
 import { getFilter } from '@/features/filter';
 import { projectsListActions } from '@/widgets/ProjectsList';

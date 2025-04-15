@@ -7,7 +7,7 @@ export { EmptyOverlay } from './EmptyOverlay/EmptyOverlay';
 export { BaseField } from './Field/BaseField';
 export { DeepLink, MailtoLink, TelLink } from './Link';
 export { BasePagination } from './Pagination/BasePagination';
-export { BaseSelect } from './Select/BaseSelect';
+export { BaseSelect } from './Select/ui/BaseSelect';
 export { SocialIcon } from './SocialIcon/SocialIcon';
 export { HStack, VStack } from './Stack/Stack';
 export { BaseToggleButton, BaseToggleButtonGroup } from './ToggleButton/ToggleButton';

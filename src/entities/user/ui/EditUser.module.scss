@@ -1,0 +1,28 @@
+.editUser {
+    width: 100%;
+    max-width: 500px;
+}
+
+.section {
+    padding: calc(var(--space-s) * 5);
+    width: 100% !important;
+    background-color: #fff;
+    border: 1px solid var(--border-light-color);
+    border-radius: calc(var(--border-radius) * 1.5);
+}
+
+// avatar
+
+.avatar {
+    border-radius: 100%;
+}
+
+.listPadding {
+    padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .smVertical {
+        flex-direction: column !important;
+    }
+}

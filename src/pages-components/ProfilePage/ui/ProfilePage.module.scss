@@ -1,0 +1,19 @@
+.stepOnBannerWrapper {
+    width: 380px;
+    position: relative;
+}
+
+.stepOnBanner {
+    position: absolute;
+    top: -134px;
+}
+
+@media (max-width: 1024px) {
+    .stepOnBanner {
+        position: unset;
+    }
+
+    .smVertical {
+        flex-direction: column !important;
+    }
+}

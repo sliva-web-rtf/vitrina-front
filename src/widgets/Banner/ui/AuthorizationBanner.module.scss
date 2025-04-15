@@ -1,0 +1,19 @@
+.bannerBg {
+    display: flex;
+    padding: var(--space-l);
+    width: 50% !important;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    background-image: url('../../../shared/assets/brand-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+}
+
+@media (max-width: 900px) {
+    .bannerBg {
+        display: none;
+    }
+}

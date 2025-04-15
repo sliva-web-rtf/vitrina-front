@@ -1,0 +1,16 @@
+.profileBannerContainer {
+    --height: 400px;
+    margin-bottom: var(--height);
+}
+
+.profileBanner {
+    position: absolute;
+    width: 100% !important;
+    height: var(--height);
+    left: 0;
+    top: 0;
+    background-image: url('../../../shared/assets/brand-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+}
