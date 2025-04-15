@@ -14,8 +14,8 @@ const OPPORTUNITIES = [
 ];
 
 const UNIVERSITY_STATS = [
-    { stat: '5+', text: 'Университетов' },
-    { stat: '2', text: 'Крупных НПО' },
+    { stat: '26', text: 'Заказчиков' },
+    { stat: '64', text: 'Куратора' },
     { stat: '3', text: 'Научные лаборатории' },
     { stat: '30+', text: 'IT-компаний' },
 ];
@@ -67,7 +67,7 @@ export const PartnershipSection = () => {
                     <Typography>
                         Вы сможете найти и проверить <span className={styles['colorBlueText']}>будущих сотрудников</span>
                     </Typography>
-                    <HStack className={styles['hStack']} gap={2} width={'100%'}>
+                    <HStack className={styles['hStack']} gap={2} width={'100%'} justifyContent={"center"}>
                         {UNIVERSITY_STATS.map((stat, index) => (
                             <VStack
                                 key={index}
@@ -75,6 +75,7 @@ export const PartnershipSection = () => {
                                 sx={{
                                     padding: '24px',
                                     width: '100%',
+                                    maxWidth: '300px',
                                     backgroundColor: 'var(--primary-color)',
                                     borderRadius: 'var(--border-radius)',
                                 }}
