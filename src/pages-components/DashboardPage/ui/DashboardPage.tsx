@@ -8,7 +8,6 @@ import { GoalSection } from './GoalSection';
 import { TasksSection } from './TasksSection';
 import { DistributionSection } from './DistributionSection';
 import { PartnershipSection } from './PartnershipSection';
-import { MainGoalSection } from './MainGoalSection';
 
 const DashboardPage = () => {
     return (
@@ -16,10 +15,9 @@ const DashboardPage = () => {
             <DashboardHeader />
             <HeroSection />
             <GoalSection />
+            <PartnershipSection />
             <TasksSection />
             <DistributionSection />
-            <PartnershipSection />
-            <StudentsAwaitSection />
         </VStack>
     );
 };
