@@ -1,10 +1,14 @@
-import { Providers } from '@/app/providers';
 import '@/app/styles/index.scss';
-import { Footer } from '@/widgets/Footer';
-import { Stack } from '@mui/material';
-import type { Metadata } from 'next';
-import { ReactNode } from 'react';
+
 import styles from './layout.module.scss';
+
+import type { Metadata } from 'next';
+import { Stack } from '@mui/material';
+import { ReactNode } from 'react';
+
+import { Providers } from '@/app/providers';
+import { Footer } from '@/widgets/Footer';
+import { DefaultHeader } from '@/widgets/Header';
 
 export const metadata: Metadata = {
     title: 'Витрина РТФ',
@@ -24,6 +28,7 @@ export default function RootLayout(props: RootLayoutProps) {
             <body>
                 <Providers>
                     <Stack className={styles.container}>
+                        <DefaultHeader />
                         <Stack component="main" className={styles.main}>
                             {children}
                         </Stack>

@@ -4,7 +4,6 @@ import React from 'react';
 
 import { ProfileUser } from '@/entities/user';
 import { HStack, VStack } from '@/shared/ui';
-import { DefaultHeader } from '@/widgets/Header';
 import { ProfileBanner } from '@/widgets/ProfileBanner';
 import { ProjectsList } from '@/widgets/ProjectsList';
 import { Box } from '@mui/material';
@@ -12,7 +11,6 @@ import { Box } from '@mui/material';
 const ProfilePage = () => {
     return (
         <VStack>
-            <DefaultHeader />
             <ProfileBanner />
             <HStack gap={8} padding={8} alignItems="start" className={styles['smVertical']}>
                 <Box className={styles['stepOnBannerWrapper']}>
