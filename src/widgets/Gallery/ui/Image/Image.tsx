@@ -19,7 +19,7 @@ export const Image = memo((props: ImageProps) => {
     const { src, alt, className } = props;
     // const { error } = useCheckImageQuery(src, { skip: !src });
 
-    const handleToggleModal = useCallback(() => setOpen((prev) => !prev), []);
+    const handleToggleModal = useCallback(() => setOpen(prev => !prev), []);
 
     if (!src) {
         return (

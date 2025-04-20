@@ -3,7 +3,7 @@ import { baseApi } from '@/shared/api';
 import { SelectOption } from '@/shared/lib/types/selectOption';
 
 const filterApi = baseApi.injectEndpoints({
-    endpoints: (build) => ({
+    endpoints: build => ({
         getSpheres: build.query<Array<SelectOption>, void>({
             query: () => '/project/spheres',
             transformResponse: (response: Array<string>) => mapFilterDtoToModel(response),

@@ -7,7 +7,7 @@ const StyledPagination = styled((props: PaginationProps) => {
     return (
         <Pagination
             shape="rounded"
-            renderItem={(item) => <PaginationItem {...item} />}
+            renderItem={item => <PaginationItem {...item} />}
             siblingCount={matches ? 3 : 0}
             {...props}
         />

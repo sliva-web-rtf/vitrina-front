@@ -11,7 +11,7 @@ export const Footer = () => (
         <HStack
             justifyContent="space-between"
             gap={6}
-            sx={(theme) => ({
+            sx={theme => ({
                 [theme.breakpoints.down('md')]: {
                     flexDirection: 'column',
                     gap: 4,
@@ -36,7 +36,7 @@ export const Footer = () => (
         <HStack
             justifyContent="space-between"
             gap={2}
-            sx={(theme) => ({
+            sx={theme => ({
                 [theme.breakpoints.down('sm')]: {
                     flexDirection: 'column',
                 },
@@ -54,7 +54,7 @@ export const Footer = () => (
             <Stack
                 spacing={1}
                 textAlign="end"
-                sx={(theme) => ({
+                sx={theme => ({
                     [theme.breakpoints.down('sm')]: {
                         textAlign: 'unset',
                     },

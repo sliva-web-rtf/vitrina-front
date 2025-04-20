@@ -44,7 +44,7 @@ export const Filter = memo(() => {
         <Stack sx={{ rowGap: 'var(--space-xl)' }}>
             <Stack
                 justifyContent="space-between"
-                sx={(theme) => ({
+                sx={theme => ({
                     gap: 'var(--space-xl)',
                     flexDirection: 'row',
                     [theme.breakpoints.down('lg')]: {
@@ -54,7 +54,7 @@ export const Filter = memo(() => {
             >
                 <Stack
                     direction="row"
-                    sx={(theme) => ({
+                    sx={theme => ({
                         alignItems: 'center',
                         gap: 'var(--space-m)',
                         [theme.breakpoints.down('sm')]: {
@@ -84,7 +84,7 @@ export const Filter = memo(() => {
                         onChange={handleFilterChange(FilterType.Sphere)}
                     />
                 </Stack>
-                <BaseSearch placeholder="Поиск проекта" value={search} onChange={(e) => setSearch(e.target.value)} />
+                <BaseSearch placeholder="Поиск проекта" value={search} onChange={e => setSearch(e.target.value)} />
             </Stack>
         </Stack>
     );

@@ -1,0 +1,54 @@
+name: release(admin)
+
+on:
+    workflow_dispatch:
+
+permissions:
+    actions: write
+    attestations: write
+    checks: write
+    contents: write
+    deployments: write
+    id-token: write
+    issues: write
+    discussions: write
+    packages: write
+    pages: write
+    pull-requests: write
+    repository-projects: write
+    security-events: write
+    statuses: write
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Set formatted date and time
+              run: echo "CURRENT_DATE=$(date +'%d-%m-%Y %H:%M')" >> $GITHUB_ENV
+
+            - name: Get release version
+              id: get_version
+              run: |
+                  VERSION_MAJOR=1
+                  VERSION_MINOR=0
+                  VERSION_PATCH=${{ github.run_number }}
+                  echo "RELEASE_VERSION=${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}" >> $GITHUB_ENV
+
+            - name: Login to Yandex Cloud Container Registry
+              id: login-cr
+              uses: yc-actions/yc-cr-login@v2
+              with:
+                  yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_PUSHER }}
+
+            - name: Build Docker image
+              run: docker build --platform=linux/amd64 -t cr.yandex/${{ vars.CR_ID }}/admin:${{ env.RELEASE_VERSION }} --build-arg VITE_API=https://api.vitrina-rtf.ru/api --build-arg VITE_WITH_ADMIN=admin .
+
+            - name: Tag Docker image with latest
+              run: docker tag cr.yandex/${{ vars.CR_ID }}/admin:${{ env.RELEASE_VERSION }} cr.yandex/${{ vars.CR_ID }}/admin:${{ env.RELEASE_VERSION }}_latest
+
+            - name: Push Docker image
+              run: |
+                  docker push cr.yandex/${{ vars.CR_ID }}/admin:${{ env.RELEASE_VERSION }}
+                  docker push cr.yandex/${{ vars.CR_ID }}/admin:${{ env.RELEASE_VERSION }}_latest
