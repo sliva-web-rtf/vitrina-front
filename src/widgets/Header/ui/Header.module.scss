@@ -41,3 +41,9 @@
 .button:hover {
     background-color: var(--primary-color) !important;
 }
+
+.nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
