@@ -64,7 +64,6 @@ export const AutocompleteCreateOption = (props: AutocompleteCreateOptionProps) =
                 return option.title;
             }}
             renderOption={(props, option) => {
-                // @ts-expect-error игнорим key
                 const { key, ...optionProps } = props;
 
                 return (
@@ -82,7 +81,7 @@ export const AutocompleteCreateOption = (props: AutocompleteCreateOptionProps) =
                         ...params.InputProps,
                         endAdornment: (
                             <>
-                                {Boolean(loading) ? <CircularProgress color="primary" size={20} /> : null}
+                                {loading ? <CircularProgress color="primary" size={20} /> : null}
                                 {params.InputProps.endAdornment}
                             </>
                         ),

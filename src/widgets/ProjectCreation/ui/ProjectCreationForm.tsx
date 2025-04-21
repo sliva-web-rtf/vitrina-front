@@ -73,7 +73,6 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
         control,
     });
 
-    // TODO: Возможно стоит вынести логику валидационных ошибок выше или отдельно, а также можно убрать фокус если он мешает
     const onValidationError = (
         validationData: EntityValidationErrors<EditProjectDto | CreateProjectDto> | undefined,
     ) => {
@@ -86,6 +85,7 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     };
 
     const onCreationSubmit = async (data: ProjectCreationFormSchema) => {
+        console.log('request send');
         const newData = {
             ...data,
             customBlocks: data.customBlocks?.map(block => ({ ...block, id: undefined })) ?? [],
