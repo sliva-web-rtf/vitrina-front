@@ -15,7 +15,7 @@ const NAV_LINKS = [
     { text: 'О нас', href: '/dashboard' },
 ];
 
-export const DefaultHeader = ({ transparent = false }: { transparent?: boolean }) => {
+export const Header = ({ transparent = false }: { transparent?: boolean }) => {
     return (
         <HStack
             component="header"
