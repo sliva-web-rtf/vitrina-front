@@ -11,7 +11,7 @@ import { Header } from '@/widgets/Header';
 
 const DashboardPage = () => {
     return (
-        <VStack gap={6}>
+        <VStack spacing={6}>
             <Header />
             <HeroSection />
             <GoalSection />

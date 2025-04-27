@@ -9,9 +9,5 @@ const HERO_TITLE =
 const HERO_TAGS = ['ИРИТ-РТФ', 'ИНФО', 'Проектное обучение'];
 
 export const HeroSection = () => {
-    return (
-        <Box>
-            <CompactHero title={HERO_TITLE} tags={HERO_TAGS} />
-        </Box>
-    );
+    return <CompactHero title={HERO_TITLE} tags={HERO_TAGS} />;
 };
