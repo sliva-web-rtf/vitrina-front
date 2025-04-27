@@ -1,16 +1,25 @@
 .container {
     position: absolute;
-    top: var(--space-xl);
-    left: 50%;
-    transform: translateX(-50%);
+    top: 0;
+    left: 0;
+    width: 100% !important;
 
     width: var(--page-width);
 
     background-color: var(--bg-color);
-    border-radius: 1000px;
-    padding: 12px;
+
+    padding: 12px 32px;
 
     z-index: 2;
+}
+
+.containerTransparent {
+    background: none;
+    color: #fff;
+}
+
+.containerTransparent .logo {
+    filter: brightness(0) invert(1);
 }
 
 .burger {
@@ -32,14 +41,6 @@
     .burger {
         display: inherit !important;
     }
-}
-
-.button {
-    cursor: default !important;
-}
-
-.button:hover {
-    background-color: var(--primary-color) !important;
 }
 
 .nav {

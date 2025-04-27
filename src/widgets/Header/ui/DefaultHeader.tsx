@@ -7,6 +7,7 @@ import { Box, Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/shared/assets/logo.svg';
+import classNames from 'classnames';
 
 const NAV_LINKS = [
     { text: 'Главная', href: '/' },
@@ -14,17 +15,17 @@ const NAV_LINKS = [
     { text: 'О нас', href: '/dashboard' },
 ];
 
-export const DefaultHeader = () => {
+export const DefaultHeader = ({ transparent = false }: { transparent?: boolean }) => {
     return (
         <HStack
             component="header"
-            className={styles['container']}
+            className={classNames(styles['container'], { [styles['containerTransparent']]: transparent })}
             alignItems="center"
             justifyContent="space-between"
             zIndex={100000}
         >
             <Link href="/">
-                <Image src={logo} alt="Проектный практикум" />
+                <Image className={styles['logo']} src={logo} alt="Проектный практикум" />
             </Link>
 
             <HStack component="nav" spacing={4} className={styles['nav']}>
@@ -34,6 +35,9 @@ export const DefaultHeader = () => {
                     </Link>
                 ))}
             </HStack>
+
+            <HStack></HStack>
+
             <MobileMenu className={styles['burger']} nav={NAV_LINKS} />
         </HStack>
     );
