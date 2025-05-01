@@ -42,7 +42,6 @@ export function validationProjectCreationErrorsFromDto(
         aim: extractErrorMessage('aim', errorDto),
         client: extractErrorMessage('client', errorDto),
         description: extractErrorMessage('description', errorDto),
-        // @ts-expect-error Лень разбиравться появилось после смены типа customBlocks на массив
         customBlocks: extractErrorMessage('customBlocks', errorDto),
         name: extractErrorMessage('name', errorDto),
         period: extractErrorMessage('period', errorDto),

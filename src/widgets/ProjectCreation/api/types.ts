@@ -12,10 +12,10 @@ interface UserCreationDto {
 export interface CreateProjectDto {
     name: string;
     aim?: string;
-    problem: string;
-    idea: string;
-    solution: string;
-    customBlocks: { title: string; text: string }[];
+    problem?: string;
+    idea?: string;
+    solution?: string;
+    customBlocks?: { title: string; text: string }[];
     description?: string;
     priority?: number;
     client?: string;

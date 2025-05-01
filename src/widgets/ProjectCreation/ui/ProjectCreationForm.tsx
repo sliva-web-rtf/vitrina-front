@@ -85,7 +85,6 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
     };
 
     const onCreationSubmit = async (data: ProjectCreationFormSchema) => {
-        console.log('request send');
         const newData = {
             ...data,
             customBlocks: data.customBlocks?.map(block => ({ ...block, id: undefined })) ?? [],
@@ -167,7 +166,6 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                         )}
                     />
                     <BaseField
-                        required
                         multiline
                         rows={3}
                         label="Цель проекта"
@@ -178,7 +176,6 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                         helperText={errors.aim?.message}
                     />
                     <BaseField
-                        required
                         multiline
                         rows={3}
                         label="Проблема"
@@ -189,7 +186,6 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                         helperText={errors.problem?.message}
                     />
                     <BaseField
-                        required
                         multiline
                         rows={3}
                         label="Идея"
@@ -200,7 +196,6 @@ export const ProjectCreationForm = memo((props: ProjectCreationFormProps) => {
                         helperText={errors.idea?.message}
                     />
                     <BaseField
-                        required
                         multiline
                         label="Решение"
                         rows={3}

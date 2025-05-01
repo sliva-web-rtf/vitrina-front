@@ -8,7 +8,9 @@ interface User {
     patronymic?: string;
 }
 
-export const getUsersWithoutId = (users: User[]) => {
+export const getUsersWithoutId = (users?: User[]) => {
+    if (!users) return [];
+
     return users.map(user => {
         return { ...user, id: undefined };
     });
