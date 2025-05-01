@@ -8,7 +8,6 @@ import { ReactNode } from 'react';
 
 import { Providers } from '@/app/providers';
 import { Footer } from '@/widgets/Footer';
-import { DefaultHeader } from '@/widgets/Header';
 
 export const metadata: Metadata = {
     title: 'Витрина РТФ',
@@ -28,7 +27,6 @@ export default function RootLayout(props: RootLayoutProps) {
             <body>
                 <Providers>
                     <Stack className={styles.container}>
-                        <DefaultHeader />
                         <Stack component="main" className={styles.main}>
                             {children}
                         </Stack>

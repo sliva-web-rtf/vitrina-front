@@ -7,10 +7,12 @@ import { GoalSection } from './GoalSection';
 import { TasksSection } from './TasksSection';
 import { DistributionSection } from './DistributionSection';
 import { PartnershipSection } from './PartnershipSection';
+import { Header } from '@/widgets/Header';
 
 const DashboardPage = () => {
     return (
         <VStack gap={6}>
+            <Header />
             <HeroSection />
             <GoalSection />
             <PartnershipSection />
