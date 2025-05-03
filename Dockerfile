@@ -3,12 +3,8 @@ FROM node:20-alpine AS build
 WORKDIR /app
 
 # Объявляем аргументы
-# ARG VITE_API
-# ARG VITE_WITH_ADMIN
-# ARG VITE_API_TOKEN
-
-ENV VITE_API=https://vitrina-rtf.ru/api
-ENV VITE_WITH_ADMIN=admin
+ARG VITE_API
+ARG VITE_WITH_ADMIN
 
 # Переменные окружения
 ENV VITE_MODE=production
