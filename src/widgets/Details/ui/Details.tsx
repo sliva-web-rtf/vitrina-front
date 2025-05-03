@@ -17,15 +17,15 @@ export const Details = (props: DetailsPageSchema) => {
                 </DetailsBlock>
             ))}
             <HStack gap={3} justifyContent="space-between" className={classNames.hstack}>
-                <DetailsBlock anchor="problem" title="Проблема" text={problem || defaultText.problem} />
-                <DetailsBlock title="Цель проекта" text={aim || defaultText.aim} />
+                {problem && <DetailsBlock anchor="problem" title="Проблема" text={problem || defaultText.problem} />}
+                {aim && <DetailsBlock title="Цель проекта" text={aim || defaultText.aim} />}
             </HStack>
             <HStack gap={3} justifyContent="space-between" className={classNames.hstack}>
-                <DetailsBlock anchor="solution" title="Решение" text={solution || defaultText.solution} />
-                <DetailsBlock anchor="idea" title="Идея" text={idea || defaultText.idea} />
+                {solution && <DetailsBlock anchor="solution" title="Решение" text={solution || defaultText.solution} />}
+                {idea && <DetailsBlock anchor="idea" title="Идея" text={idea || defaultText.idea} />}
             </HStack>
 
-            <DetailsBlock title="Заказчик" text={client || defaultText.client} />
+            {client && <DetailsBlock title="Заказчик" text={client || defaultText.client} />}
 
             {Boolean(contents?.length) && (
                 <DetailsBlock title="Галерея" noBackground noPadding>
