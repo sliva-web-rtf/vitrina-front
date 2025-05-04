@@ -1,3 +1,5 @@
+export const fetchCache = 'default-no-store';
+
 import DetailsPage from '@/pages-components/DetailsPage';
 import { fetcher } from '@/shared/api';
 import { DetailsPageService } from '@/shared/services';
