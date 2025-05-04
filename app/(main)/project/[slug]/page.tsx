@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 import DetailsPage from '@/pages-components/DetailsPage';
 import { fetcher } from '@/shared/api';
 import { DetailsPageService } from '@/shared/services';
