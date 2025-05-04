@@ -41,7 +41,11 @@ export const AutocompleteCreateOption = (props: AutocompleteCreateOptionProps) =
                 const filtered = filter(options, params);
 
                 const { inputValue } = params;
-                const isExisting = options.some(option => inputValue === option.title);
+                const isExisting = options.some(option => {
+                    if (!option) return;
+
+                    return inputValue === option.title;
+                });
                 if (inputValue !== '' && !isExisting) {
                     filtered.push({
                         inputValue,
@@ -55,6 +59,9 @@ export const AutocompleteCreateOption = (props: AutocompleteCreateOptionProps) =
             clearOnBlur
             options={autocompleteOptions}
             getOptionLabel={option => {
+                if (!option) {
+                    return '';
+                }
                 if (typeof option === 'string') {
                     return option;
                 }
@@ -68,7 +75,7 @@ export const AutocompleteCreateOption = (props: AutocompleteCreateOptionProps) =
 
                 return (
                     <li key={key} {...optionProps}>
-                        {option.title}
+                        {option ? option.title : ''}
                     </li>
                 );
             }}
