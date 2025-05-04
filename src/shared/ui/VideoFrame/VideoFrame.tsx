@@ -27,8 +27,7 @@ export const VideoFrame = ({ url, name = 'YouTube', className }: VideoFrameProps
         }, 5000);
 
         return () => clearTimeout(timeout);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [hasLoaded]);
 
     const handleIframeLoad = () => {
         setHasLoaded(true);

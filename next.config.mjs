@@ -9,6 +9,14 @@ const nextConfig = {
                 pathname: '/api/project/image/*',
             },
         ],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'vitrina-rtf.ru',
+                port: '',
+                pathname: '/api/project/image/*',
+            },
+        ],
     },
     output: 'standalone',
     transpilePackages: ['mui-one-time-password-input'],

@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+export const fetchCache = 'default-no-store';
 
 import DetailsPage from '@/pages-components/DetailsPage';
 import { fetcher } from '@/shared/api';
