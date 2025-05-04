@@ -14,6 +14,7 @@ export const Gallery = (props: GalleryProps) => {
     });
 
     const amountPerBreakpoint = {
+        xxl: 3,
         xl: 2,
         l: 2,
         m: 2,
