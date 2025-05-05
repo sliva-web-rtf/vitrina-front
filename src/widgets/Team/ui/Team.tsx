@@ -15,6 +15,7 @@ export const Team = (props: TeamProps) => {
     const items = team.map((user) => <UserCard key={user.id} {...user} />);
 
     const amountPerBreakpoint = {
+        xxl: 5,
         xl: 5,
         l: 4,
         m: 3,
