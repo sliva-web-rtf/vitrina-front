@@ -10,6 +10,7 @@ interface SliderProps {
     items: ReactNode[];
 
     amountPerBreakpoint: {
+        xxl: number;
         xl: number;
         l: number;
         m: number;
@@ -21,9 +22,14 @@ interface SliderProps {
 
 export const Slider = (props: SliderProps) => {
     const { items, amountPerBreakpoint, partialVisibilityGutter = 32 } = props;
-    const { xl, l, m, s, xs } = amountPerBreakpoint;
+    const { xxl, xl, l, m, s, xs } = amountPerBreakpoint;
 
     const responsive = {
+        xxl: {
+            breakpoint: { max: 3000, min: 1920 },
+            items: xxl,
+            partialVisibilityGutter: 0,
+        },
         xl: {
             breakpoint: { max: 1920, min: 1600 },
             items: xl,

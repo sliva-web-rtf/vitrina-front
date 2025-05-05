@@ -16,14 +16,22 @@ export const Details = (props: DetailsPageSchema) => {
                     <Box className="customTemplate" dangerouslySetInnerHTML={{ __html: text }} />
                 </DetailsBlock>
             ))}
-            <HStack gap={3} justifyContent="space-between" className={classNames.hstack}>
-                {problem && <DetailsBlock anchor="problem" title="Проблема" text={problem || defaultText.problem} />}
-                {aim && <DetailsBlock title="Цель проекта" text={aim || defaultText.aim} />}
-            </HStack>
-            <HStack gap={3} justifyContent="space-between" className={classNames.hstack}>
-                {solution && <DetailsBlock anchor="solution" title="Решение" text={solution || defaultText.solution} />}
-                {idea && <DetailsBlock anchor="idea" title="Идея" text={idea || defaultText.idea} />}
-            </HStack>
+            {(problem || aim) && (
+                <HStack gap={3} justifyContent="space-between" className={classNames.hstack}>
+                    {problem && (
+                        <DetailsBlock anchor="problem" title="Проблема" text={problem || defaultText.problem} />
+                    )}
+                    {aim && <DetailsBlock title="Цель проекта" text={aim || defaultText.aim} />}
+                </HStack>
+            )}
+            {(solution || idea) && (
+                <HStack gap={3} justifyContent="space-between" className={classNames.hstack}>
+                    {solution && (
+                        <DetailsBlock anchor="solution" title="Решение" text={solution || defaultText.solution} />
+                    )}
+                    {idea && <DetailsBlock anchor="idea" title="Идея" text={idea || defaultText.idea} />}
+                </HStack>
+            )}
 
             {client && <DetailsBlock title="Заказчик" text={client || defaultText.client} />}
 
