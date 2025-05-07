@@ -11,34 +11,38 @@ import classNames from 'classnames';
 
 const NAV_LINKS = [
     { text: 'Главная', href: '/' },
+    { text: 'Конструктор', href: '/constructor' },
     { text: 'Эксперты', href: '/experts' },
     { text: 'О нас', href: '/dashboard' },
 ];
 
 export const Header = ({ transparent = false }: { transparent?: boolean }) => {
     return (
-        <HStack
-            component="header"
-            className={classNames(styles['container'], { [styles['containerTransparent']]: transparent })}
-            alignItems="center"
-            justifyContent="space-between"
-            zIndex={100000}
-        >
-            <Link href="/">
-                <Image className={styles['logo']} src={logo} alt="Проектный практикум" />
-            </Link>
+        <Box>
+            <HStack
+                component="header"
+                className={classNames(styles['container'], { [styles['containerTransparent']]: transparent })}
+                alignItems="center"
+                justifyContent="space-between"
+                zIndex={100000}
+            >
+                <Link href="/">
+                    <Image className={styles['logo']} src={logo} alt="Проектный практикум" />
+                </Link>
 
-            <HStack component="nav" spacing={4} className={styles['nav']}>
-                {NAV_LINKS.map((item, index) => (
-                    <Link key={index} href={item.href}>
-                        <Typography variant="subtitle1">{item.text}</Typography>
-                    </Link>
-                ))}
+                <HStack component="nav" spacing={4} className={styles['nav']}>
+                    {NAV_LINKS.map((item, index) => (
+                        <Link key={index} href={item.href}>
+                            <Typography variant="subtitle1">{item.text}</Typography>
+                        </Link>
+                    ))}
+                </HStack>
+
+                <HStack></HStack>
+
+                <MobileMenu className={styles['burger']} nav={NAV_LINKS} />
             </HStack>
-
-            <HStack></HStack>
-
-            <MobileMenu className={styles['burger']} nav={NAV_LINKS} />
-        </HStack>
+            {!transparent && <Box className={styles['spacer']} />}
+        </Box>
     );
 };

@@ -1,0 +1,14 @@
+.constructorTemplate {
+    cursor: pointer;
+}
+
+.preview {
+    width: 256px;
+    aspect-ratio: 1.6;
+    border: 1px solid var(--mono-border-color);
+    cursor: pointer;
+}
+
+.header {
+    user-select: none;
+}
