@@ -1,12 +1,9 @@
-import '@/app/styles/reset.scss';
-import '@/app/styles/variables.scss';
+import '@/app/styles/index.scss';
 
 import { Providers } from '@/app/providers';
 import { Stack } from '@mui/material';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
-import { usePathname } from 'next/navigation';
-import { Header } from '@/widgets/Header';
 
 export const metadata: Metadata = {
     title: 'Витрина РТФ',
@@ -19,16 +16,12 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout(props: RootLayoutProps) {
-    const pathname = usePathname();
     const { children } = props;
-
-    const isHomePage = pathname === '/constructor';
 
     return (
         <html lang="ru">
             <body>
                 <Providers>
-                    {isHomePage ? <Header /> : <></>}
                     <Stack component="main">{children}</Stack>
                 </Providers>
             </body>
