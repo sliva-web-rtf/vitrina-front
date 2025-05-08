@@ -4,8 +4,6 @@
     left: 0;
     width: 100% !important;
 
-    width: var(--page-width);
-
     background-color: var(--bg-color);
 
     padding: 12px 32px;
@@ -47,4 +45,8 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.spacer {
+    height: 78px;
 }

@@ -9,7 +9,7 @@
 .expertCard {
     height: 100% !important;
     aspect-ratio: 0.8 !important;
-    padding: 16px;
+    padding: var(--space-m);
     border: 1px solid var(--primary-color-95);
     border-radius: var(--border-radius-m);
 }
@@ -22,6 +22,7 @@
 
 .secondaryText {
     color: var(--tertiary-color-mono) !important;
+    cursor: default;
 }
 
 .stack {
@@ -31,6 +32,11 @@
 }
 
 @media screen and (max-width: 550px) {
+    .expertCard {
+        padding: var(--space-s);
+        border-radius: var(--border-radius);
+    }
+
     .secondaryText {
         font-size: 10px !important;
     }

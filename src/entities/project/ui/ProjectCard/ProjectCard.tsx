@@ -1,9 +1,11 @@
-import { ProjectCardAvatar, VStack } from '@/shared/ui';
-import { Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import { memo } from 'react';
+import { Tooltip, Typography } from '@mui/material';
+
+import { ProjectCardAvatar, VStack } from '@/shared/ui';
 import type { Project } from '../..';
-import classNames from './ProjectCard.module.scss';
+import styles from './ProjectCard.module.scss';
+import classNames from 'classnames';
 
 interface ProjectCardProps {
     readonly project: Project;
@@ -13,25 +15,23 @@ export const ProjectCard = memo((props: ProjectCardProps) => {
     const { project } = props;
     return (
         <Link className="link-block" href={`/project/${project.id}`}>
-            <Stack className={classNames.projectCard}>
-                <ProjectCardAvatar className={classNames.image} logoSrc={project.previewImagePath ?? undefined} />
-                <VStack p={3} spacing={4} justifyContent="space-between" height="50%">
+            <VStack className={styles['projectCard']}>
+                <ProjectCardAvatar className={styles['image']} logoSrc={project.previewImagePath ?? undefined} />
+                <VStack className={styles['cardInfo']} p={3} spacing={4} justifyContent="space-between" height="50%">
                     <VStack spacing={2}>
-                        <Typography variant="h3" className={classNames.clippedText}>
-                            {project.name}
-                        </Typography>
-                        <Typography variant="subtitle2" className={classNames.clippedText}>
-                            {project.description}
-                        </Typography>
-                    </VStack>
-                    <VStack>
-                        <Typography variant="subtitle1">Команда №{project.id}</Typography>
-                        <Typography variant="subtitle2" color="secondary">
-                            Студенческий проект · <span>Завершен</span>
-                        </Typography>
+                        <Tooltip title={project.name} placement="top">
+                            <Typography variant="h3" className={styles['clippedName']}>
+                                {project.name}
+                            </Typography>
+                        </Tooltip>
+                        <Tooltip title={project.description} placement="top">
+                            <Typography variant="subtitle2" className={styles['clippedDescr']}>
+                                {project.description}
+                            </Typography>
+                        </Tooltip>
                     </VStack>
                 </VStack>
-            </Stack>
+            </VStack>
         </Link>
     );
 });

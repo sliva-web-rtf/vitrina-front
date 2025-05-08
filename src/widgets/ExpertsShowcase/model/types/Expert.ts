@@ -10,7 +10,7 @@ export const EXPERTS: Expert[] = [
     {
         id: 1,
         name: 'Шестеров Михаил Андреевич',
-        workCompany: 'УрФу ИРИТ-РТФ',
+        workCompany: 'УрФУ ИРИТ-РТФ',
         workPosition: 'Руководитель Проектного практикума',
     },
     {

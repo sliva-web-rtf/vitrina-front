@@ -18,7 +18,7 @@ export const ExpertsShowcase = () => {
             <Box flexGrow={1}>
                 <Grid container spacing={2} alignItems="center">
                     {EXPERTS.map((expert) => (
-                        <Grid key={expert.id} item xs={6} md={4} lg={3} xl={2}>
+                        <Grid key={expert.id} item xs={6} md={4} lg={3}>
                             <ExpertCard expert={expert} />
                         </Grid>
                     ))}
