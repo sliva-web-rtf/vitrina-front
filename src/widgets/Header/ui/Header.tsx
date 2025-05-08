@@ -11,7 +11,6 @@ import classNames from 'classnames';
 
 const NAV_LINKS = [
     { text: 'Главная', href: '/' },
-    { text: 'Конструктор', href: '/constructor' },
     { text: 'Эксперты', href: '/experts' },
     { text: 'О нас', href: '/dashboard' },
 ];
