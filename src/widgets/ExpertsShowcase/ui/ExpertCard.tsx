@@ -1,10 +1,10 @@
 import styles from './ExpertsShowcase.module.scss';
 
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Tooltip, Typography } from '@mui/material';
 
 import { Expert } from '../model/types/Expert';
-import { BaseAvatar, VStack } from '@/shared/ui';
+import { BaseAvatar, HStack, VStack } from '@/shared/ui';
 
 interface ExpertCardProps {
     expert: Expert;
@@ -19,13 +19,22 @@ export const ExpertCard = (props: ExpertCardProps) => {
             <Box>
                 <BaseAvatar src={avatarUrl} alt={`Изображение ${name}`} className={styles['avatar']} />
             </Box>
-            <VStack className={styles['stack']}>
+            <VStack className={styles['stack']} gap={0}>
                 <Typography variant="h4" color={'var(--primary-color-mono)'} className={styles['mainText']}>
                     {name}
                 </Typography>
-                <Typography variant="subtitle2" className={styles['secondaryText']}>
-                    {`${workCompany} • ${workPosition}`}
-                </Typography>
+                <HStack justifyContent="space-between">
+                    <Tooltip title={workCompany} placement="top" arrow>
+                        <Typography variant="subtitle2" noWrap className={styles['secondaryText']}>
+                            {workCompany}
+                        </Typography>
+                    </Tooltip>
+                    <Tooltip title={workPosition} placement="top" arrow>
+                        <Typography variant="subtitle2" noWrap className={styles['secondaryText']}>
+                            {workPosition}
+                        </Typography>
+                    </Tooltip>
+                </HStack>
             </VStack>
         </VStack>
     );

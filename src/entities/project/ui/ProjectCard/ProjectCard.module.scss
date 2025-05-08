@@ -1,12 +1,23 @@
 .projectCard {
+    --image-perc: 60%;
     height: 300px;
     background-color: var(--bg-color);
     outline: 1px solid var(--border-color);
 }
 
-.clippedText {
+.clippedName {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    min-height: calc(1em * 2);
+}
+
+.clippedDescr {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -15,6 +26,10 @@
 .image {
     height: 100px !important;
     object-fit: cover;
+}
+
+.cardInfo {
+    height: calc(100% - var(--image-perc)) !important;
 }
 
 .image,
@@ -33,6 +48,6 @@
     }
 
     .image {
-        height: 50% !important;
+        height: var(--image-perc) !important;
     }
 }

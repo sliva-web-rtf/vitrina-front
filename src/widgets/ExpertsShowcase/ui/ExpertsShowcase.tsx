@@ -5,7 +5,7 @@ import { Box, Grid, Typography } from '@mui/material';
 
 import { VStack } from '@/shared/ui';
 
-import { TEST_EXPERTS } from '../model/types/Expert';
+import { EXPERTS } from '../model/types/Expert';
 import { ExpertCard } from './ExpertCard';
 
 export const ExpertsShowcase = () => {
@@ -17,8 +17,8 @@ export const ExpertsShowcase = () => {
             </Typography>
             <Box flexGrow={1}>
                 <Grid container spacing={2} alignItems="center">
-                    {TEST_EXPERTS.map((expert) => (
-                        <Grid key={expert.id} item xs={6} md={4} lg={3} xl={2}>
+                    {EXPERTS.map((expert) => (
+                        <Grid key={expert.id} item xs={6} md={4} lg={3}>
                             <ExpertCard expert={expert} />
                         </Grid>
                     ))}
