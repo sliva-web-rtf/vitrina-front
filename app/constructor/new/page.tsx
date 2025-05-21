@@ -1,7 +1,9 @@
-import React from 'react';
+'use client';
+
+import { SortableBlockList } from '@/widgets/SortableBlockList';
 
 const page = () => {
-    return <div>page</div>;
+    return <SortableBlockList />;
 };
 
 export default page;
