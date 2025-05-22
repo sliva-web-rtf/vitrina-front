@@ -1,0 +1,46 @@
+.handle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+    z-index: 10;
+
+    &left {
+        left: -7px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: ew-resize;
+    }
+
+    &right {
+        right: -7px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: ew-resize;
+    }
+
+    &top-left {
+        top: -7px;
+        left: -7px;
+        cursor: nwse-resize;
+    }
+
+    &bottom-left {
+        bottom: -7px;
+        left: -7px;
+        cursor: nesw-resize;
+    }
+
+    &bottom-right {
+        bottom: -7px;
+        right: -7px;
+        cursor: nwse-resize;
+    }
+
+    &top-right {
+        top: -7px;
+        right: -7px;
+        cursor: nesw-resize;
+    }
+}
