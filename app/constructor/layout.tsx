@@ -1,4 +1,4 @@
-import '@/app/styles/index.scss';
+import '@/app/styles/global.scss';
 
 import { Providers } from '@/app/providers';
 import { Stack } from '@mui/material';
