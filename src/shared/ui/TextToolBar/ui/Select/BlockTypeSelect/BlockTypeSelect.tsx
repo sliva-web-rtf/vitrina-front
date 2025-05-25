@@ -3,9 +3,10 @@ import { Select, MenuItem } from '@mui/material';
 import { Editor } from '@tiptap/react';
 
 import { headingLevels } from '@/shared/lib/const/headingLevels';
-import { Level } from '@/shared/lib/types/Level';
 
 import styles from '../../TextToolBar.module.scss';
+
+type Level = (typeof headingLevels)[number];
 
 export const BlockTypeSelect = ({ editor }: { editor: Editor }) => {
     const currentBlockType = () => {

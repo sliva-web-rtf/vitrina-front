@@ -22,7 +22,7 @@ import { FontSize } from '../TextToolBar/ui/Select/FontSizeSelect/module/setFont
 
 import styles from './ResizableTextBlock.module.scss';
 
-export const ResizeTextBlock = () => {
+export const ResizableTextBlock = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const menuBarRef = useRef<HTMLDivElement>(null);
     const [isFocused, setIsFocused] = useState(false);

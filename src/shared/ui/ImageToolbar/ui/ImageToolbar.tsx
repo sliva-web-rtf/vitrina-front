@@ -5,7 +5,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckIcon from '@mui/icons-material/Check';
 
-import UploadIcon from '../../UploadIcon/UploadIcon';
+import MuiUploadIcon from '../../../assets/MuiUploadIcon';
 
 import styles from './ImageToolbar.module.scss';
 
@@ -21,7 +21,7 @@ interface ImageToolbarProps {
 export const ImageToolbar = ({ Upload, Copy, Delete, isCopied, hasImage, panelRef }: ImageToolbarProps) => (
     <Box ref={panelRef} className={styles.toolbar}>
         <IconButton onClick={Upload}>
-            <UploadIcon />
+            <MuiUploadIcon />
         </IconButton>
         <IconButton onClick={Copy} disabled={!hasImage} className={styles.copyButton}>
             {isCopied ? <CheckIcon /> : <ContentCopyIcon />}

@@ -1,6 +1,6 @@
 import { SvgIcon } from '@mui/material';
 
-const UploadIcon = () => (
+const MuiUploadIcon = () => (
     <SvgIcon>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -13,4 +13,4 @@ const UploadIcon = () => (
     </SvgIcon>
 );
 
-export default UploadIcon;
+export default MuiUploadIcon;

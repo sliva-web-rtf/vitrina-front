@@ -5,7 +5,7 @@ import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import FormatStrikethroughIcon from '@mui/icons-material/FormatStrikethrough';
 import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 
-import { FormatOption } from '@/shared/lib/types/FormatOption';
+import { FormatOption } from '@/shared/ui/TextToolBar/types/FormatOption';
 
 export const getFormatButtonOptions = (editor: Editor): FormatOption[] => [
     {
