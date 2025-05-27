@@ -1,16 +1,19 @@
 .container {
-    width: var(--page-width);
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     row-gap: var(--space-xl);
     min-height: 100vh;
-    margin: 0 auto;
 }
 
 .main {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    --side-padding: var(--space-xl);
+    display: flex;
+    margin: 0 auto;
+    width: var(--page-width);
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: var(--side-padding);
+    margin-right: var(--side-padding);
 }
- 
