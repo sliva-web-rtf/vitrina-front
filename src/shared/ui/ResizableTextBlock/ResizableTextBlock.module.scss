@@ -1,0 +1,34 @@
+.editorContainer {
+    width: 95%;
+    position: relative;
+    min-height: 50px;
+    outline: 2px solid transparent;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+
+    &.focused,
+    &:hover {
+        outline: 2px solid #3f72e0;
+    }
+}
+
+.editor {
+    padding: 16px;
+    outline: none;
+
+    & > div {
+        min-height: inherit;
+    }
+
+    :global(p.is-editor-empty)::before {
+        content: attr(data-placeholder);
+        color: #7f8b99;
+        float: left;
+        height: 0;
+        pointer-events: none;
+    }
+}
+
+.editorContainer:focus-within .editor :global(p.is-editor-empty)::before {
+    content: '';
+}

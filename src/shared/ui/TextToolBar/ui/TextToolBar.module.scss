@@ -1,0 +1,33 @@
+.textToolBar {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    top: -65px;
+
+    .circleTogglebutton {
+        border-radius: 50%;
+        border: none;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+
+        &.Mui-selected {
+            background-color: rgba(0, 0, 0, 0.12);
+        }
+    }
+
+    .selectWithoutUnderline {
+        &:before,
+        &:after {
+            border-bottom: none;
+        }
+
+        &:hover:not(.Mui-disabled):before {
+            border-bottom: none;
+        }
+    }
+}
