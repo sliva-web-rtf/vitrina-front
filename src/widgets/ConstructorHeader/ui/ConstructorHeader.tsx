@@ -20,7 +20,11 @@ export const ConstructorHeader = () => {
                 <ProjectNameInput value={name} className={styles['name']} onChange={(e) => setName(e.target.value)} />
             </HStack>
             <HStack className={styles['buttons']} spacing={0.5}>
-                <BaseButton className={styles['button']} variant="contained">
+                <BaseButton
+                    className={styles['button']}
+                    variant="contained"
+                    onClick={() => alert('dev in progress...')}
+                >
                     <Typography variant="body1">Опубликовать</Typography>
                 </BaseButton>
             </HStack>
