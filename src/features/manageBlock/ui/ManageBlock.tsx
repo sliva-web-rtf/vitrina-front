@@ -2,13 +2,18 @@ import { IconButton, Stack } from '@mui/material';
 import { FC } from 'react';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { useDispatch } from 'react-redux';
+import { deleteSection, duplicateSection } from '@/entities/constructorProject';
 
 type ManageBlock = {
     isHovered: boolean;
     isDragging: boolean;
+    index: number;
 };
 
-export const ManageBlock: FC<ManageBlock> = ({ isHovered, isDragging }) => {
+export const ManageBlock: FC<ManageBlock> = ({ isHovered, isDragging, index }) => {
+    const dispatch = useDispatch();
+
     return (
         <Stack
             sx={{
@@ -20,10 +25,10 @@ export const ManageBlock: FC<ManageBlock> = ({ isHovered, isDragging }) => {
             }}
         >
             <IconButton>
-                <ContentCopyIcon />
+                <ContentCopyIcon onClick={() => dispatch(duplicateSection(index))} />
             </IconButton>
             <IconButton>
-                <DeleteOutlineIcon />
+                <DeleteOutlineIcon onClick={() => dispatch(deleteSection(index))} />
             </IconButton>
         </Stack>
     );
