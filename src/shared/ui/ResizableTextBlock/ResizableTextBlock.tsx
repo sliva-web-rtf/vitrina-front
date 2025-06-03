@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { EditorContent, useEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
@@ -21,8 +21,11 @@ import { useResize } from '../../hooks/useResize/useTextResize';
 import { FontSize } from '../TextToolBar/ui/Select/FontSizeSelect/module/setFontSize';
 
 import styles from './ResizableTextBlock.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { SectionTypes, setSection } from '@/entities/constructorProject';
 
-export const ResizableTextBlock = () => {
+export const ResizableTextBlock = ({ html, index }: { html: string; index: number }) => {
+    const dispatch = useDispatch();
     const containerRef = useRef<HTMLDivElement>(null);
     const menuBarRef = useRef<HTMLDivElement>(null);
     const [isFocused, setIsFocused] = useState(false);
@@ -52,7 +55,18 @@ export const ResizableTextBlock = () => {
             },
         },
         immediatelyRender: false,
+        onUpdate: ({ editor }) => {
+            const content = editor.getHTML();
+            dispatch(setSection({ section: { type: SectionTypes.text, content }, index }));
+        },
     });
+
+    // Effect to initialize editor content from Redux if it exists
+    useEffect(() => {
+        if (editor && html) {
+            editor.commands.setContent(html);
+        }
+    }, [editor, html]);
 
     return (
         <Box ref={containerRef} className={`${styles.editorContainer} ${isFocused ? styles.focused : ''}`}>
