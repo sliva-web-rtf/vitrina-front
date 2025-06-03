@@ -9,7 +9,7 @@ const ForwardedProjectNameInput = React.forwardRef<HTMLDivElement, TextFieldProp
         const placeholderLength = props.placeholder?.toString().length || 0;
 
         return Math.max(valueLength, placeholderLength);
-    }, [props.value, props.placeholder]);
+    }, [props]);
 
     return (
         <TextField

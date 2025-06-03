@@ -1,26 +1,30 @@
 import { InstrumentsSideBar } from '@/widgets/InstrumentsSideBar';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addSection, SectionTypes } from '@/entities/constructorProject'; // Import the Redux action
 
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 
-const SIDE_BAR_BLOCKS = [
+const getSideBarBlocks = (dispatch: ReturnType<typeof useDispatch>) => [
     {
         name: 'Контент',
         actions: [
             {
                 name: 'Текст',
                 icon: <DescriptionOutlinedIcon />,
-                action: () => console.log('HELLO'),
+                action: () => {
+                    dispatch(addSection({ type: SectionTypes.text, content: '<p>Новый текстовый блок</p>' }));
+                },
             },
             {
                 name: 'Изображение',
                 icon: <DescriptionOutlinedIcon />,
-                action: () => console.log('HELLO'),
+                action: () => alert('in progress...'),
             },
             {
                 name: 'Ссылка на соцсеть',
                 icon: <DescriptionOutlinedIcon />,
-                action: () => console.log('HELLO'),
+                action: () => alert('in progress...'),
             },
             {
                 name: 'Карусель',
@@ -47,5 +51,7 @@ const SIDE_BAR_BLOCKS = [
 ];
 
 export const ConstructorSideBar = () => {
+    const dispatch = useDispatch();
+    const SIDE_BAR_BLOCKS = getSideBarBlocks(dispatch);
     return <InstrumentsSideBar blocks={SIDE_BAR_BLOCKS} />;
 };
