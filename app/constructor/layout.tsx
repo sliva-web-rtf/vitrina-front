@@ -1,5 +1,7 @@
 import '@/app/styles/global.scss';
 
+import styles from './layout.module.scss';
+
 import { Providers } from '@/app/providers';
 import { Stack } from '@mui/material';
 import type { Metadata } from 'next';
@@ -23,8 +25,8 @@ export default function RootLayout(props: RootLayoutProps) {
         <html lang="ru">
             <body>
                 <Providers>
-                    <Stack component="main">
-                        <ConstructorHeader />
+                    <ConstructorHeader />
+                    <Stack component="main" className={styles.main}>
                         {children}
                     </Stack>
                 </Providers>

@@ -1,9 +1,7 @@
-'use client';
-
-import { SortableBlockList } from '@/widgets/SortableBlockList';
+import ConstructorEditorPage from '@/pages-components/ConstructorEditorPage';
 
 const page = () => {
-    return <SortableBlockList />;
+    return <ConstructorEditorPage />;
 };
 
 export default page;
