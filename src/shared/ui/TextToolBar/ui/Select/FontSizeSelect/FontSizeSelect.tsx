@@ -9,7 +9,7 @@ export const FontSizeSelect = ({ editor }: { editor: Editor }) => {
     return (
         <Select
             variant="standard"
-            value={editor.getAttributes('fontSize')?.fontSize || '16px'}
+            value={editor.getAttributes('textStyle')?.fontSize || '16px'}
             onChange={(e) => {
                 editor.chain().focus().setFontSize(e.target.value).run();
             }}

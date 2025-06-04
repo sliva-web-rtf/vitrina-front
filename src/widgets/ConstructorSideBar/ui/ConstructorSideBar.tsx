@@ -13,7 +13,7 @@ const getSideBarBlocks = (dispatch: ReturnType<typeof useDispatch>) => [
                 name: 'Текст',
                 icon: <DescriptionOutlinedIcon />,
                 action: () => {
-                    dispatch(addSection({ type: SectionTypes.text, content: '<p>Новый текстовый блок</p>' }));
+                    dispatch(addSection({ type: SectionTypes.text, content: '' }));
                 },
             },
             {

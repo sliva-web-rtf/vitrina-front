@@ -31,6 +31,7 @@ export const ResizableTextBlock = ({ html, index }: { html: string; index: numbe
     const [isFocused, setIsFocused] = useState(false);
     useFocus(containerRef, setIsFocused, menuBarRef);
     const { handleResize } = useResize(containerRef);
+    const isInitialized = useRef(false);
 
     const editor = useEditor({
         extensions: [
@@ -43,10 +44,10 @@ export const ResizableTextBlock = ({ html, index }: { html: string; index: numbe
                 types: ['heading', 'paragraph'],
             }),
             TextStyle,
+            FontSize,
             FontFamily.configure({
                 types: ['textStyle'],
             }),
-            FontSize,
             Underline,
         ],
         editorProps: {
@@ -55,18 +56,17 @@ export const ResizableTextBlock = ({ html, index }: { html: string; index: numbe
             },
         },
         immediatelyRender: false,
+        onCreate: ({ editor }) => {
+            if (html && !isInitialized.current) {
+                editor.commands.setContent(html, false);
+                isInitialized.current = true;
+            }
+        },
         onUpdate: ({ editor }) => {
             const content = editor.getHTML();
             dispatch(setSection({ section: { type: SectionTypes.text, content }, index }));
         },
     });
-
-    // Effect to initialize editor content from Redux if it exists
-    useEffect(() => {
-        if (editor && html) {
-            editor.commands.setContent(html);
-        }
-    }, [editor, html]);
 
     return (
         <Box ref={containerRef} className={`${styles.editorContainer} ${isFocused ? styles.focused : ''}`}>
