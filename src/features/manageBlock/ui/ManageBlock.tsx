@@ -2,6 +2,7 @@ import { IconButton, Stack } from '@mui/material';
 import { FC } from 'react';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import styles from './ManageBlock.module.scss';
 
 type ManageBlock = {
     isHovered: boolean;
@@ -11,12 +12,9 @@ type ManageBlock = {
 export const ManageBlock: FC<ManageBlock> = ({ isHovered, isDragging }) => {
     return (
         <Stack
+            className={styles.container}
             sx={{
-                position: 'absolute',
                 opacity: isHovered && !isDragging ? 1 : 0,
-                left: -40,
-                top: '25%',
-                bottom: '25%',
             }}
         >
             <IconButton>
