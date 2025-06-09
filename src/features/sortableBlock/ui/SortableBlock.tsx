@@ -3,8 +3,9 @@ import { FC, useState } from 'react';
 import { CSS } from '@dnd-kit/utilities';
 import { HStack } from '@/shared/ui';
 import { ManageBlock } from '@/features/manageBlock';
-import { DragHandler } from '@/entities/dragHandler';
+import { DragHandler } from '@/features/dragHandler';
 import { Stack, Typography } from '@mui/material';
+import styles from './SortableBlock.module.scss';
 
 type SortableBlockProps = {
     id: string;
@@ -20,11 +21,8 @@ export const SortableBlock: FC<SortableBlockProps> = ({ id }) => {
         <>
             <HStack
                 ref={setNodeRef}
+                className={styles.container}
                 sx={{
-                    position: 'relative',
-                    background: '#fff',
-                    padding: '32px 64px',
-                    borderBottom: '5px dotted #E5E8EC',
                     transform: CSS.Transform.toString(transform),
                     transition,
                     opacity: isDragging ? 0.5 : 1,
