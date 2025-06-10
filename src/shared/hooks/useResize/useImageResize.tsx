@@ -2,7 +2,7 @@ import { RefObject, useCallback } from 'react';
 
 import { Position } from '@/shared/lib/types/Position';
 
-import { INITIAL_WIDTH, MIN_WIDTH } from '../../lib/const/imageSize';
+import { INITIAL_WIDTH, MIN_WIDTH, MAX_WIDTH } from '../../lib/const/imageSize';
 
 export const useResize = (boxRef: RefObject<HTMLDivElement>, imgRef: RefObject<HTMLImageElement>) => {
     const handleResize = useCallback(
@@ -52,8 +52,9 @@ export const useResize = (boxRef: RefObject<HTMLDivElement>, imgRef: RefObject<H
                 }
 
                 const minHeight = MIN_WIDTH / naturalAspect;
-                box.style.width = `${Math.max(newWidth, MIN_WIDTH)}px`;
-                box.style.height = `${Math.max(newHeight, minHeight)}px`;
+                const maxHeight = MAX_WIDTH / naturalAspect;
+                box.style.width = `${Math.min(Math.max(newWidth, MIN_WIDTH), MAX_WIDTH)}px`;
+                box.style.height = `${Math.min(Math.max(newHeight, minHeight), maxHeight)}px`;
             };
 
             const onMouseUp = () => {

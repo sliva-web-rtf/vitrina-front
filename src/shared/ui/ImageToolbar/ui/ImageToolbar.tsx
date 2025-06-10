@@ -5,7 +5,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckIcon from '@mui/icons-material/Check';
 
-import MuiUploadIcon from '../../../assets/MuiUploadIcon';
+import MuiUploadIcon from '../../../assets/Icons/MuiUploadIcon';
 
 import styles from './ImageToolbar.module.scss';
 

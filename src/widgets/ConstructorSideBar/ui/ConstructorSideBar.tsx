@@ -17,7 +17,7 @@ const getSideBarBlocks = (dispatch: ReturnType<typeof useDispatch>) => [
                         addSection({
                             id: Date.now().toString(),
                             type: SectionTypes.text,
-                            content: '<p>Новый текстовый блок</p>',
+                            content: '',
                         }),
                     );
                 },
