@@ -31,7 +31,7 @@ export const SortableBlockList = ({ sections }: { sections: SectionSchema[] }) =
     };
 
     return (
-        <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <DndContext id={'dnd-context'} sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
             <SortableContext items={sections.map((section) => section.id)} strategy={verticalListSortingStrategy}>
                 <Box sx={{ width: '1496px', margin: '0 auto' }}>
                     {sections.map((section, index) => (
