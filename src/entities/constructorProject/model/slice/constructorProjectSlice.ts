@@ -9,7 +9,7 @@ const isBrowser = typeof window !== 'undefined';
 
 const initialState: ConstructorProjectSchema = {
     name: 'Новый проект',
-    sections: [{ type: SectionTypes.text, content: 'Текстовый блок' }],
+    sections: [{ id: Date.now().toString(), type: SectionTypes.text, content: 'Текстовый блок' }],
 };
 
 const loadStateFromLocalStorage = (): ConstructorProjectSchema => {
