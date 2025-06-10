@@ -9,7 +9,7 @@ const isBrowser = typeof window !== 'undefined';
 
 const initialState: ConstructorProjectSchema = {
     name: 'Новый проект',
-    sections: [{ type: SectionTypes.text, content: 'Текстовый блок' }],
+    sections: [{ id: Date.now().toString(), type: SectionTypes.text, content: 'Текстовый блок' }],
 };
 
 const loadStateFromLocalStorage = (): ConstructorProjectSchema => {
@@ -60,7 +60,7 @@ const constructorProjectSlice = createSlice({
         duplicateSection(state, action: PayloadAction<number>) {
             const index = action.payload;
             if (index >= 0 && index < state.sections.length) {
-                const sectionToDuplicate = state.sections[index];
+                const sectionToDuplicate = { ...state.sections[index], id: Date.now().toString() };
                 state.sections.splice(index + 1, 0, sectionToDuplicate);
                 saveStateToLocalStorage(state);
             }
