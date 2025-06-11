@@ -13,6 +13,8 @@ import { useLazySignInQuery } from '../api/signInApi';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useDispatch } from 'react-redux';
+import { setToken } from '@/entities/user';
 
 const FORM_DEFAULTS: SignInFormData = {
     email: '',
@@ -31,9 +33,15 @@ export const SignInForm = () => {
 
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
+    const dispatch = useDispatch();
+
     const onSubmit = async (data: SignInFormData) => {
         try {
             const res = await PostSignIn({ ...data, rememberMe: true });
+
+            if (res.isSuccess) {
+                dispatch(setToken(res.data));
+            }
         } catch {
             setError('root', { message: 'Произошла ошибка. Попробуйте позже' });
         }

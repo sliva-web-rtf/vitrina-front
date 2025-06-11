@@ -8,6 +8,7 @@ import { AuthorizationBanner } from '@/widgets/Banner';
 import { HStack, VStack } from '@/shared/ui';
 
 import logo from '@/shared/assets/logo.svg';
+import Link from 'next/link';
 
 interface AuthorizationWrapperProps {
     children: ReactNode;
@@ -21,7 +22,9 @@ export const AuthorizationWrapper = (props: AuthorizationWrapperProps) => {
         <HStack justifyContent="center">
             <VStack className={styles['authorization']}>
                 <Box alignSelf={'start'}>
-                    <Image src={logo} alt="Проектный практикум" />
+                    <Link href="/">
+                        <Image src={logo} alt="Проектный практикум" />
+                    </Link>
                 </Box>
                 {children}
                 {endAdornment || (

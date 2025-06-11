@@ -4,12 +4,14 @@ import { baseApi } from '@/shared/api';
 import { filterReducer } from '@/features/filter';
 import { projectsListReducer } from '@/widgets/ProjectsList';
 import { detailsReducer } from '@/entities/project';
+import { authReducer } from '@/entities/user';
 
 // TODO: добавить динамическую подгрузку стейта.
 const rootReducer = combineReducers({
     filter: filterReducer,
     projectsList: projectsListReducer,
     projectDetails: detailsReducer,
+    auth: authReducer,
     [baseApi.reducerPath]: baseApi.reducer,
 });
 
