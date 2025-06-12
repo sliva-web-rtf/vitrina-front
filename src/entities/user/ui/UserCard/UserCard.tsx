@@ -3,9 +3,9 @@ import { lowercased } from '@/shared/lib/helpers/lowercased';
 import { protocolless } from '@/shared/lib/helpers/protocolless';
 import { DeepLink, ProjectCardAvatar, VStack } from '@/shared/ui';
 import { Typography } from '@mui/material';
-import { User } from '../model/types/user';
+import { User } from '../../model/types/user';
 import classNames from './UserCard.module.scss';
-import { UserRoles } from './UserRoles';
+import { UserRoles } from '../UserRoles';
 
 export const UserCard = (props: User) => {
     const { firstName, lastName, patronymic, description, email, roles } = props;
