@@ -1,10 +1,13 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
-import { Box, IconButton } from '@mui/material';
+import { useEditor, EditorContent } from '@tiptap/react';
+import { Image as ImageTiptap } from '@tiptap/extension-image';
+import { StarterKit } from '@tiptap/starter-kit';
+
+import { Box, Button, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import Image from 'next/image';
 
 import { Position } from '@/shared/lib/types/Position';
 
@@ -23,14 +26,41 @@ export const ResizableImageBlock = () => {
     const boxRef = useRef<HTMLDivElement>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const panelRef = useRef<HTMLDivElement>(null);
-    const imgRef = useRef<HTMLImageElement>(null);
 
     const [isFocused, setIsFocused] = useState(false);
 
-    const { imageUrl, imageBlob, handleImageUpload, handleDelete } = useImageManagement();
+    const { imageUrl, imageBlob, handleImageUpload, handleDelete } = useImageManagement(boxRef);
     const { isCopied, copyToClipboard } = useClipboard();
-    const { handleResize, handleImageLoad } = useResize(boxRef, imgRef);
+    const { handleResize, handleImageLoad } = useResize(boxRef);
     useFocusManagement(boxRef, setIsFocused, panelRef);
+
+    const editor = useEditor({
+        immediatelyRender: false,
+        extensions: [StarterKit, ImageTiptap],
+        content: imageUrl ? `<img src="${imageUrl}" alt="uploaded image" />` : '',
+        editable: false,
+    });
+
+    useEffect(() => {
+        if (editor && imageUrl) {
+            editor.commands.setContent(`<img src="${imageUrl}" alt="uploaded image" />`);
+        } else if (editor) {
+            editor.commands.setContent('');
+        }
+    }, [editor, imageUrl]);
+
+    useEffect(() => {
+        if (!imageUrl || !boxRef.current) return;
+
+        const img = boxRef.current.querySelector('img');
+        if (!img) return;
+
+        if (!img.complete) {
+            img.onload = () => handleImageLoad(img);
+        } else {
+            handleImageLoad(img);
+        }
+    }, [imageUrl, handleImageLoad]);
 
     return (
         <Box className={`${styles.container} ${isFocused ? styles.focused : ''}`} ref={boxRef}>
@@ -45,9 +75,9 @@ export const ResizableImageBlock = () => {
             {isFocused && (
                 <>
                     <ImageToolbar
-                        Upload={() => fileInputRef.current?.click()}
-                        Copy={() => copyToClipboard(imageBlob)}
-                        Delete={handleDelete}
+                        upload={() => fileInputRef.current?.click()}
+                        copy={() => copyToClipboard(imageBlob)}
+                        delete={handleDelete}
                         isCopied={isCopied}
                         hasImage={!!imageUrl}
                         panelRef={panelRef}
@@ -62,16 +92,7 @@ export const ResizableImageBlock = () => {
             )}
 
             {imageUrl ? (
-                <Image
-                    src={imageUrl}
-                    alt="editable content"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    onLoad={handleImageLoad}
-                    ref={imgRef}
-                    className={styles.image}
-                />
+                <EditorContent editor={editor} />
             ) : (
                 <IconButton onClick={() => fileInputRef.current?.click()} className={styles.uploadButton}>
                     <AddIcon />
