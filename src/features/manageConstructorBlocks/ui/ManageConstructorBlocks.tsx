@@ -3,15 +3,16 @@ import { FC } from 'react';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useDispatch } from 'react-redux';
+
 import { deleteSection, duplicateSection } from '@/entities/constructorProject';
 
-type ManageBlock = {
+type manageConstructorBlocksProps = {
     isHovered: boolean;
     isDragging: boolean;
     sectionId: string;
 };
 
-export const ManageBlock: FC<ManageBlock> = ({ isHovered, isDragging, sectionId }) => {
+export const ManageConstructorBlocks: FC<manageConstructorBlocksProps> = ({ isHovered, isDragging, sectionId }) => {
     const dispatch = useDispatch();
 
     return (

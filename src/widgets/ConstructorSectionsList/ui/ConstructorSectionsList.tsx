@@ -1,14 +1,14 @@
 'use client';
 
 import { SectionSchema, SectionTypes, setSections } from '@/entities/constructorProject';
-import { SortableBlock } from '@/features/sortableBlock';
+import { ConstructorSortableBlock } from '@/features/constructorSortableBlock';
 import { ResizableImageBlock, ResizableTextBlock } from '@/shared/ui';
 import { closestCenter, DndContext, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
-export const SortableBlockList = ({ sections }: { sections: SectionSchema[] }) => {
+export const ConstructorSectionsList = ({ sections }: { sections: SectionSchema[] }) => {
     const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
     const dispatch = useDispatch();
 
@@ -37,9 +37,9 @@ export const SortableBlockList = ({ sections }: { sections: SectionSchema[] }) =
             <SortableContext items={sections.map((section) => section.id)} strategy={verticalListSortingStrategy}>
                 <Box sx={{ width: '1496px', margin: '0 auto' }}>
                     {sections.map((section) => (
-                        <SortableBlock key={section.id} id={section.id}>
+                        <ConstructorSortableBlock key={section.id} id={section.id}>
                             {renderSection(section)}
-                        </SortableBlock>
+                        </ConstructorSortableBlock>
                     ))}
                 </Box>
             </SortableContext>

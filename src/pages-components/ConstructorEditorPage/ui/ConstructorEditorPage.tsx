@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react';
-import { HStack, VStack } from '@/shared/ui';
-import { SortableBlockList } from '@/widgets/SortableBlockList';
-import { ConstructorSideBar } from '@/widgets/ConstructorSideBar';
 import { useSelector } from 'react-redux';
+
+import { HStack } from '@/shared/ui';
+import { ConstructorSectionsList } from '@/widgets/ConstructorSectionsList';
+import { ConstructorSideBar } from '@/widgets/ConstructorSideBar';
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 
 function ConstructorEditorPage() {
@@ -12,7 +13,7 @@ function ConstructorEditorPage() {
 
     return (
         <HStack spacing={3} justifyContent="center">
-            <SortableBlockList sections={sections} />
+            <ConstructorSectionsList sections={sections} />
             <ConstructorSideBar />
         </HStack>
     );

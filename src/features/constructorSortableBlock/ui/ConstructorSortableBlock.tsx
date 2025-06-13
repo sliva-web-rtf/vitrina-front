@@ -4,17 +4,16 @@ import { useSortable } from '@dnd-kit/sortable';
 import { FC, ReactNode, useEffect, useState } from 'react';
 import { CSS } from '@dnd-kit/utilities';
 import { HStack } from '@/shared/ui';
-import { ManageBlock } from '@/features/manageBlock';
+import { ManageConstructorBlocks } from '@/features/manageConstructorBlocks';
 import { DragHandler } from '@/features/dragHandler';
-import { Stack, Typography } from '@mui/material';
-import styles from './SortableBlock.module.scss';
+import { Stack } from '@mui/material';
 
-type SortableBlockProps = {
+type ConstructorSortableBlockProps = {
     id: string;
     children: ReactNode;
 };
 
-export const SortableBlock: FC<SortableBlockProps> = ({ id, children }) => {
+export const ConstructorSortableBlock: FC<ConstructorSortableBlockProps> = ({ id, children }) => {
     const { setActivatorNodeRef, attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
         id,
     });
@@ -42,7 +41,7 @@ export const SortableBlock: FC<SortableBlockProps> = ({ id, children }) => {
                     onMouseOver={() => setIsHovered(true)}
                     onMouseOut={() => setIsHovered(false)}
                 >
-                    <ManageBlock isHovered={isHovered} isDragging={isDragging} sectionId={id} />
+                    <ManageConstructorBlocks isHovered={isHovered} isDragging={isDragging} sectionId={id} />
                     <DragHandler
                         isHovered={isHovered}
                         setActivatorNodeRef={setActivatorNodeRef}

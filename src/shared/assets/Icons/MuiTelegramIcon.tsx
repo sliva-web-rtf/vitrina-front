@@ -1,7 +1,7 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
 
-const TelegramIcon = (props: SvgIconProps) => {
+const MuiTelegramIcon = (props: SvgIconProps) => {
     return (
         <SvgIcon {...props} viewBox="0 0 30 25">
             <path
@@ -14,4 +14,4 @@ const TelegramIcon = (props: SvgIconProps) => {
     );
 };
 
-export default TelegramIcon;
+export default MuiTelegramIcon;

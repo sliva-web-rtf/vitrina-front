@@ -1,7 +1,7 @@
 import { SvgIcon, SvgIconProps } from '@mui/material';
 import React from 'react';
 
-const DeleteIcon = (props: SvgIconProps) => {
+const MuiDeleteIcon = (props: SvgIconProps) => {
     return (
         <SvgIcon {...props} viewBox="0 0 24 24">
             <path
@@ -14,4 +14,4 @@ const DeleteIcon = (props: SvgIconProps) => {
     );
 };
 
-export default DeleteIcon;
+export default MuiDeleteIcon;
