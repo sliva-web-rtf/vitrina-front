@@ -40,26 +40,29 @@ const constructorProjectSlice = createSlice({
             state.sections.push(action.payload);
             saveStateToLocalStorage(state);
         },
-        setSection(state, action: PayloadAction<{ section: SectionSchema; index: number }>) {
-            const { section, index } = action.payload;
-            state.sections[index] = section;
-            saveStateToLocalStorage(state);
+        setSection(state, action: PayloadAction<{ section: SectionSchema }>) {
+            const { section } = action.payload;
+            const index = state.sections.findIndex((s) => s.id === section.id);
+            if (index !== -1) {
+                state.sections[index] = section;
+                saveStateToLocalStorage(state);
+            }
         },
         setSections(state, action: PayloadAction<SectionSchema[]>) {
-            console.log('setSections action payload:', action.payload);
             state.sections = action.payload;
             saveStateToLocalStorage(state);
         },
-        deleteSection(state, action: PayloadAction<number>) {
-            const index = action.payload;
-            if (index >= 0 && index < state.sections.length) {
+        deleteSection(state, action: PayloadAction<string>) {
+            const index = state.sections.findIndex((s) => s.id === action.payload);
+            if (index !== -1) {
                 state.sections.splice(index, 1);
                 saveStateToLocalStorage(state);
             }
         },
-        duplicateSection(state, action: PayloadAction<number>) {
-            const index = action.payload;
-            if (index >= 0 && index < state.sections.length) {
+        duplicateSection(state, action: PayloadAction<string>) {
+            const id = action.payload;
+            const index = state.sections.findIndex((s) => s.id === id);
+            if (index !== -1) {
                 const sectionToDuplicate = { ...state.sections[index], id: Date.now().toString() };
                 state.sections.splice(index + 1, 0, sectionToDuplicate);
                 saveStateToLocalStorage(state);

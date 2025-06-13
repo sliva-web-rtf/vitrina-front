@@ -8,10 +8,10 @@ import { deleteSection, duplicateSection } from '@/entities/constructorProject';
 type ManageBlock = {
     isHovered: boolean;
     isDragging: boolean;
-    index: number;
+    sectionId: string;
 };
 
-export const ManageBlock: FC<ManageBlock> = ({ isHovered, isDragging, index }) => {
+export const ManageBlock: FC<ManageBlock> = ({ isHovered, isDragging, sectionId }) => {
     const dispatch = useDispatch();
 
     return (
@@ -25,10 +25,10 @@ export const ManageBlock: FC<ManageBlock> = ({ isHovered, isDragging, index }) =
             }}
         >
             <IconButton>
-                <ContentCopyIcon onClick={() => dispatch(duplicateSection(index))} />
+                <ContentCopyIcon onClick={() => dispatch(duplicateSection(sectionId))} />
             </IconButton>
             <IconButton>
-                <DeleteOutlineIcon onClick={() => dispatch(deleteSection(index))} />
+                <DeleteOutlineIcon onClick={() => dispatch(deleteSection(sectionId))} />
             </IconButton>
         </Stack>
     );

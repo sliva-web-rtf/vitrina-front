@@ -1,21 +1,35 @@
 'use client';
 
+import React, { useEffect, useRef, useState } from 'react';
 import { styled, TextField, TextFieldProps } from '@mui/material';
-import React, { useEffect, useMemo, useState } from 'react';
 
 const ForwardedProjectNameInput = React.forwardRef<HTMLDivElement, TextFieldProps>((props, ref) => {
-    const inputWidth = useMemo(() => {
-        const valueLength = props.value?.toString().length || 0;
-        const placeholderLength = props.placeholder?.toString().length || 0;
+    const [inputWidth, setInputWidth] = useState(0);
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-        return Math.max(valueLength, placeholderLength);
-    }, [props]);
+    useEffect(() => {
+        if (!canvasRef.current) {
+            canvasRef.current = document.createElement('canvas');
+        }
+
+        const canvas = canvasRef.current;
+        const context = canvas.getContext('2d');
+
+        if (context) {
+            const font = getComputedStyle(document.body).font;
+            context.font = font;
+            const text = props.value?.toString() || '';
+            const textWidth = context.measureText(text).width;
+
+            setInputWidth(textWidth + 5);
+        }
+    }, [props.value]);
 
     return (
         <TextField
             {...props}
             inputProps={{
-                style: { width: `${inputWidth}ch` },
+                style: { width: `${inputWidth}px` },
             }}
             ref={ref}
         />

@@ -24,14 +24,15 @@ import styles from './ResizableTextBlock.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { SectionTypes, setSection } from '@/entities/constructorProject';
 
-export const ResizableTextBlock = ({ html, index }: { html: string; index: number }) => {
+export const ResizableTextBlock = ({ html, id }: { html: string; id: string }) => {
     const dispatch = useDispatch();
     const containerRef = useRef<HTMLDivElement>(null);
     const menuBarRef = useRef<HTMLDivElement>(null);
-    const [isFocused, setIsFocused] = useState(false);
-    useFocus(containerRef, setIsFocused, menuBarRef);
-    const { handleResize } = useResize(containerRef);
     const isInitialized = useRef(false);
+    const [isFocused, setIsFocused] = useState(false);
+    const { handleResize } = useResize(containerRef);
+
+    useFocus(containerRef, setIsFocused, menuBarRef);
 
     const editor = useEditor({
         extensions: [
@@ -64,7 +65,7 @@ export const ResizableTextBlock = ({ html, index }: { html: string; index: numbe
         },
         onUpdate: ({ editor }) => {
             const content = editor.getHTML();
-            dispatch(setSection({ section: { type: SectionTypes.text, content }, index }));
+            dispatch(setSection({ section: { id: id, type: SectionTypes.text, content } }));
         },
     });
 

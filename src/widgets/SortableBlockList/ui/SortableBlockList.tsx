@@ -16,8 +16,8 @@ export const SortableBlockList = ({ sections }: { sections: SectionSchema[] }) =
         const { active, over } = event;
 
         if (active.id !== over?.id) {
-            const oldIndex = sections.indexOf(active.id);
-            const newIndex = sections.indexOf(over.id);
+            const oldIndex = sections.findIndex((s) => s.id === active.id);
+            const newIndex = sections.findIndex((s) => s.id === over.id);
             const newSections = arrayMove(sections, oldIndex, newIndex);
             dispatch(setSections(newSections));
         }
@@ -26,7 +26,7 @@ export const SortableBlockList = ({ sections }: { sections: SectionSchema[] }) =
     const renderSection = (section: SectionSchema) => {
         switch (section.type) {
             case SectionTypes.text:
-                return <ResizableTextBlock html={section.content} index={sections.indexOf(section)} />;
+                return <ResizableTextBlock html={section.content} id={section.id} />;
         }
     };
 
@@ -34,8 +34,8 @@ export const SortableBlockList = ({ sections }: { sections: SectionSchema[] }) =
         <DndContext id={'dnd-context'} sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
             <SortableContext items={sections.map((section) => section.id)} strategy={verticalListSortingStrategy}>
                 <Box sx={{ width: '1496px', margin: '0 auto' }}>
-                    {sections.map((section, index) => (
-                        <SortableBlock key={index} id={section.id} index={index}>
+                    {sections.map((section) => (
+                        <SortableBlock key={section.id} id={section.id}>
                             {renderSection(section)}
                         </SortableBlock>
                     ))}
