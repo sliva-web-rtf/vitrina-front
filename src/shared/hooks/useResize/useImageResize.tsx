@@ -4,7 +4,7 @@ import { Position } from '@/shared/lib/types/Position';
 
 import { INITIAL_WIDTH, MIN_WIDTH, MAX_WIDTH } from '../../lib/const/imageSize';
 
-export const useResize = (boxRef: RefObject<HTMLDivElement>, imgRef: RefObject<HTMLImageElement>) => {
+export const useResize = (boxRef: RefObject<HTMLDivElement>) => {
     const handleResize = useCallback(
         (position: Position) => (e: React.MouseEvent) => {
             e.preventDefault();
@@ -16,9 +16,10 @@ export const useResize = (boxRef: RefObject<HTMLDivElement>, imgRef: RefObject<H
             const startWidth = box.offsetWidth;
             const startHeight = box.offsetHeight;
 
-            const naturalAspect =
-                imgRef.current?.naturalWidth && imgRef.current?.naturalHeight
-                    ? imgRef.current.naturalWidth / imgRef.current.naturalHeight
+            const img = box.querySelector('img');
+            const aspectRatio =
+                img?.naturalWidth && img?.naturalHeight
+                    ? img.naturalWidth / img.naturalHeight
                     : startWidth / startHeight;
 
             const onMouseMove = (moveEvent: MouseEvent) => {
@@ -33,26 +34,26 @@ export const useResize = (boxRef: RefObject<HTMLDivElement>, imgRef: RefObject<H
                     case 'bottom-left':
                     case 'left':
                         newWidth = startWidth - deltaX;
-                        newHeight = newWidth / naturalAspect;
+                        newHeight = newWidth / aspectRatio;
                         break;
                     case 'top-right':
                     case 'bottom-right':
                     case 'right':
                         newWidth = startWidth + deltaX;
-                        newHeight = newWidth / naturalAspect;
+                        newHeight = newWidth / aspectRatio;
                         break;
                     case 'top':
                         newHeight = startHeight - deltaY;
-                        newWidth = newHeight * naturalAspect;
+                        newWidth = newHeight * aspectRatio;
                         break;
                     case 'bottom':
                         newHeight = startHeight + deltaY;
-                        newWidth = newHeight * naturalAspect;
+                        newWidth = newHeight * aspectRatio;
                         break;
                 }
 
-                const minHeight = MIN_WIDTH / naturalAspect;
-                const maxHeight = MAX_WIDTH / naturalAspect;
+                const minHeight = MIN_WIDTH / aspectRatio;
+                const maxHeight = MAX_WIDTH / aspectRatio;
                 box.style.width = `${Math.min(Math.max(newWidth, MIN_WIDTH), MAX_WIDTH)}px`;
                 box.style.height = `${Math.min(Math.max(newHeight, minHeight), maxHeight)}px`;
             };
@@ -65,16 +66,17 @@ export const useResize = (boxRef: RefObject<HTMLDivElement>, imgRef: RefObject<H
             window.addEventListener('mousemove', onMouseMove);
             window.addEventListener('mouseup', onMouseUp);
         },
-        [boxRef, imgRef],
+        [boxRef],
     );
 
     const handleImageLoad = useCallback(
-        (e: React.SyntheticEvent<HTMLImageElement>) => {
-            if (!boxRef.current) return;
-            const img = e.target as HTMLImageElement;
+        (img: HTMLImageElement) => {
+            const box = boxRef.current;
+            if (!box || !img) return;
+
             const aspectRatio = img.naturalWidth / img.naturalHeight;
-            boxRef.current.style.width = `${INITIAL_WIDTH}px`;
-            boxRef.current.style.height = `${INITIAL_WIDTH / aspectRatio}px`;
+            box.style.width = `${INITIAL_WIDTH}px`;
+            box.style.height = `${INITIAL_WIDTH / aspectRatio}px`;
         },
         [boxRef],
     );

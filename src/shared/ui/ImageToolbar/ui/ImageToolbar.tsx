@@ -10,23 +10,23 @@ import MuiUploadIcon from '../../../assets/Icons/MuiUploadIcon';
 import styles from './ImageToolbar.module.scss';
 
 interface ImageToolbarProps {
-    Upload: (e: React.MouseEvent) => void;
-    Copy: (e: React.MouseEvent) => void;
-    Delete: (e: React.MouseEvent) => void;
+    uploadFunc: (e: React.MouseEvent) => void;
+    copyFunc: (e: React.MouseEvent) => void;
+    deleteFunc: (e: React.MouseEvent) => void;
     isCopied: boolean;
     hasImage: boolean;
     panelRef: React.RefObject<HTMLDivElement>;
 }
 
-export const ImageToolbar = ({ Upload, Copy, Delete, isCopied, hasImage, panelRef }: ImageToolbarProps) => (
+export const ImageToolbar = ({ uploadFunc, copyFunc, deleteFunc, isCopied, hasImage, panelRef }: ImageToolbarProps) => (
     <Box ref={panelRef} className={styles.toolbar}>
-        <IconButton onClick={Upload}>
+        <IconButton onClick={uploadFunc}>
             <MuiUploadIcon />
         </IconButton>
-        <IconButton onClick={Copy} disabled={!hasImage} className={styles.copyButton}>
+        <IconButton onClick={copyFunc} disabled={!hasImage} className={styles.copyButton}>
             {isCopied ? <CheckIcon /> : <ContentCopyIcon />}
         </IconButton>
-        <IconButton onClick={Delete} disabled={!hasImage}>
+        <IconButton onClick={deleteFunc} disabled={!hasImage}>
             <DeleteIcon />
         </IconButton>
     </Box>
