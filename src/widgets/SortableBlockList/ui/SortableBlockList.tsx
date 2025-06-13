@@ -2,7 +2,7 @@
 
 import { SectionSchema, SectionTypes, setSections } from '@/entities/constructorProject';
 import { SortableBlock } from '@/features/sortableBlock';
-import { ResizableTextBlock } from '@/shared/ui';
+import { ResizableImageBlock, ResizableTextBlock } from '@/shared/ui';
 import { closestCenter, DndContext, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { Box } from '@mui/material';
@@ -27,6 +27,8 @@ export const SortableBlockList = ({ sections }: { sections: SectionSchema[] }) =
         switch (section.type) {
             case SectionTypes.text:
                 return <ResizableTextBlock html={section.content} id={section.id} />;
+            case SectionTypes.image:
+                return <ResizableImageBlock html={section.content} id={section.id} />;
         }
     };
 

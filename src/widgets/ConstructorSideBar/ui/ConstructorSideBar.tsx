@@ -25,7 +25,15 @@ const getSideBarBlocks = (dispatch: ReturnType<typeof useDispatch>) => [
             {
                 name: 'Изображение',
                 icon: <DescriptionOutlinedIcon />,
-                action: () => alert('in progress...'),
+                action: () => {
+                    dispatch(
+                        addSection({
+                            id: Date.now().toString(),
+                            type: SectionTypes.image,
+                            content: '',
+                        }),
+                    );
+                },
             },
             {
                 name: 'Ссылка на соцсеть',
