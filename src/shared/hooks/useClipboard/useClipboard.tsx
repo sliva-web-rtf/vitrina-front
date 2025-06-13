@@ -10,20 +10,17 @@ export const useClipboard = () => {
         }
     }, [isCopied]);
 
-    const copyToClipboard = async (blob: Blob | null) => {
-        if (!blob) return;
+    const copyToClipboard = (imageBase64: string | null) => {
+        if (!imageBase64) return;
 
-        try {
-            if (!navigator.clipboard?.write) {
-                throw new Error('Clipboard API not supported');
-            }
-
-            const copyBlob = new Blob([blob], { type: blob.type });
-            await navigator.clipboard.write([new ClipboardItem({ [copyBlob.type]: copyBlob })]);
-            setIsCopied(true);
-        } catch (err) {
-            console.error('Copy failed:', err);
-        }
+        navigator.clipboard
+            .writeText(imageBase64)
+            .then(() => {
+                console.log('Image copied to clipboard successfully!');
+            })
+            .catch((error) => {
+                console.error('Failed to copy image to clipboard:', error);
+            });
     };
 
     return { isCopied, copyToClipboard };

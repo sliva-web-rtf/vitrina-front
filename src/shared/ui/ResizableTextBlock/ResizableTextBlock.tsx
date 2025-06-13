@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { EditorContent, useEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
@@ -21,13 +21,18 @@ import { useResize } from '../../hooks/useResize/useTextResize';
 import { FontSize } from '../TextToolBar/ui/Select/FontSizeSelect/module/setFontSize';
 
 import styles from './ResizableTextBlock.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { SectionTypes, setSection } from '@/entities/constructorProject';
 
-export const ResizableTextBlock = () => {
+export const ResizableTextBlock = ({ html, id }: { html: string; id: string }) => {
+    const dispatch = useDispatch();
     const containerRef = useRef<HTMLDivElement>(null);
     const menuBarRef = useRef<HTMLDivElement>(null);
+    const isInitialized = useRef(false);
     const [isFocused, setIsFocused] = useState(false);
-    useFocus(containerRef, setIsFocused, menuBarRef);
     const { handleResize } = useResize(containerRef);
+
+    useFocus(containerRef, setIsFocused, menuBarRef);
 
     const editor = useEditor({
         extensions: [
@@ -40,10 +45,10 @@ export const ResizableTextBlock = () => {
                 types: ['heading', 'paragraph'],
             }),
             TextStyle,
+            FontSize,
             FontFamily.configure({
                 types: ['textStyle'],
             }),
-            FontSize,
             Underline,
         ],
         editorProps: {
@@ -52,6 +57,16 @@ export const ResizableTextBlock = () => {
             },
         },
         immediatelyRender: false,
+        onCreate: ({ editor }) => {
+            if (html && !isInitialized.current) {
+                editor.commands.setContent(html, false);
+                isInitialized.current = true;
+            }
+        },
+        onUpdate: ({ editor }) => {
+            const content = editor.getHTML();
+            dispatch(setSection({ section: { id: id, type: SectionTypes.text, content } }));
+        },
     });
 
     return (

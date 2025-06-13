@@ -1,3 +1,4 @@
+import { ConstructorProjectSchema } from '@/entities/constructorProject';
 import { DetailsSchema } from '@/entities/project';
 import { FilterSchema } from '@/features/filter';
 import { baseApi } from '@/shared/api';
@@ -7,6 +8,7 @@ export interface StateSchema {
     filter: FilterSchema;
     projectsList: ProjectsListSchema;
     projectDetails: DetailsSchema;
+    constructorProject: ConstructorProjectSchema;
     [baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 }
 

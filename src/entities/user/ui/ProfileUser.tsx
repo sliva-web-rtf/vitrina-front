@@ -11,7 +11,7 @@ import defaultProfilePicture from '@/shared/assets/defaultUserImage.jpg';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PhoneIcon from '@mui/icons-material/Phone';
-import TelegramIcon from '@/shared/ui/MuiIcons/TelegramIcon';
+import TelegramIcon from '@/shared/assets/Icons/MuiTelegramIcon';
 import { RegularLink } from '@/shared/ui/Link';
 
 type Tag = {

@@ -1,9 +1,7 @@
-import ConstructorWelcomePage from '@/pages-components/ConstructorWelcomePage';
-import { SortableBlockList } from '@/widgets/SortableBlockList';
+import ConstructorEditorPage from '@/pages-components/ConstructorEditorPage';
 
 const page = () => {
-    // return <SortableBlockList />;
-    return <ConstructorWelcomePage />;
+    return <ConstructorEditorPage />;
 };
 
 export default page;

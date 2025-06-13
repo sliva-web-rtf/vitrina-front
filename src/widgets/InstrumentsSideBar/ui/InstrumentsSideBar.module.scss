@@ -1,0 +1,29 @@
+.sideBar {
+    min-width: 250px;
+}
+
+.block {
+    background-color: var(--inverted-font-color);
+    border-radius: var(--border-radius);
+    box-shadow:
+        0 4px 8px 0 rgba(31, 33, 41, 0.04),
+        0 0 4px 0 rgba(31, 33, 41, 0.12);
+}
+
+.blockHeader {
+    padding: calc(var(--space-s) * 1.5) var(--space-m);
+    background-color: var(--mono-bg-color);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.blockAction {
+    padding: var(--space-s) var(--space-m);
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.blockAction:hover {
+    background-color: var(--mono-bg-color);
+}

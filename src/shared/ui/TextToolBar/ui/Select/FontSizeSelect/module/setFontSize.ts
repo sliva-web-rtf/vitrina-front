@@ -1,5 +1,4 @@
-// extensions/FontSize.ts
-import { Mark, mergeAttributes } from '@tiptap/core';
+import { Mark } from '@tiptap/core';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType = any> {
@@ -13,51 +12,37 @@ declare module '@tiptap/core' {
 export const FontSize = Mark.create({
     name: 'fontSize',
 
-    addOptions() {
-        return {
-            HTMLAttributes: {},
-        };
-    },
-
-    addAttributes() {
-        return {
-            fontSize: {
-                default: null,
-                parseHTML: (element) => element.style.fontSize || null,
-                renderHTML: (attributes) => {
-                    if (!attributes.fontSize) return {};
-                    return {
-                        style: `font-size: ${attributes.fontSize}`,
-                    };
-                },
-            },
-        };
-    },
-
-    parseHTML() {
+    addGlobalAttributes() {
         return [
             {
-                style: 'font-size',
+                types: ['textStyle'],
+                attributes: {
+                    fontSize: {
+                        default: null,
+                        parseHTML: (element) => element.style.fontSize || null,
+                        renderHTML: (attributes) => {
+                            if (!attributes.fontSize) return {};
+                            return {
+                                style: `font-size: ${attributes.fontSize}`,
+                            };
+                        },
+                    },
+                },
             },
         ];
-    },
-
-    renderHTML({ HTMLAttributes }) {
-        return ['span', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0];
     },
 
     addCommands() {
         return {
             setFontSize:
                 (fontSize: string) =>
-                ({ commands }) => {
-                    return commands.setMark(this.name, { fontSize });
-                },
+                ({ chain }) =>
+                    chain().setMark('textStyle', { fontSize }).run(),
+
             unsetFontSize:
                 () =>
-                ({ commands }) => {
-                    return commands.unsetMark(this.name);
-                },
+                ({ chain }) =>
+                    chain().setMark('textStyle', { fontSize: null }).run(),
         };
     },
 });

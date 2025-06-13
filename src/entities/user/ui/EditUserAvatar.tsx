@@ -8,8 +8,8 @@ import Image from 'next/image';
 
 import defaultAvatar from '@/shared/assets/defaultUserImage.jpg';
 import { Menu, MenuItem, Typography } from '@mui/material';
-import DeleteIcon from '@/shared/ui/MuiIcons/DeleteIcon';
-import EditIcon from '@/shared/ui/MuiIcons/EditIcon';
+import DeleteIcon from '@/shared/assets/Icons/MuiDeleteIcon';
+import EditIcon from '@/shared/assets/Icons/MuiEditIcon';
 
 export const EditUserAvatar = () => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
