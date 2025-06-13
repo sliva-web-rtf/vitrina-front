@@ -5,8 +5,9 @@ import { FC, ReactNode, useEffect, useState } from 'react';
 import { CSS } from '@dnd-kit/utilities';
 import { HStack } from '@/shared/ui';
 import { ManageBlock } from '@/features/manageBlock';
-import { DragHandler } from '@/entities/dragHandler';
+import { DragHandler } from '@/features/dragHandler';
 import { Stack, Typography } from '@mui/material';
+import styles from './SortableBlock.module.scss';
 
 type SortableBlockProps = {
     id: string;

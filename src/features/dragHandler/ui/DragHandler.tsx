@@ -1,6 +1,7 @@
 import { IconButton } from '@mui/material';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { FC } from 'react';
+import styles from './DragHandler.module.scss';
 
 type DragHandlerProps = {
     isHovered: boolean;
@@ -11,17 +12,10 @@ export const DragHandler: FC<DragHandlerProps> = ({ isHovered, setActivatorNodeR
     return (
         <IconButton
             ref={setActivatorNodeRef}
+            className={styles.wrapper}
             sx={{
-                marginRight: '30px',
-                justifyContent: 'center',
-                margin: 'auto 0',
                 opacity: isHovered ? 1 : 0,
                 cursor: isHovered ? 'grab' : 'auto',
-                position: 'absolute',
-                left: 0,
-                top: '50%',
-                bottom: '50%',
-                backgroundColor: 'transparent !important',
             }}
             {...args}
         >

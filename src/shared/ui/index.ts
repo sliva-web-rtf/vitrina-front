@@ -14,3 +14,4 @@ export { BaseToggleButton, BaseToggleButtonGroup } from './ToggleButton/ToggleBu
 export { VideoFrame } from './VideoFrame/VideoFrame';
 export { ResizableImageBlock } from './ResizableImageBlock';
 export { ResizableTextBlock } from './ResizableTextBlock/ResizableTextBlock';
+export { ConstructorInstrument } from './ConstructorInstrument/ConstructorInstrument';
