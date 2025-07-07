@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { AuthSchema } from '../types/AuthSchema';
 import { User } from '../types/user';
+import userApi from '../../api/userApi';
 
 const LOCAL_STORAGE_KEY = 'auth';
 
@@ -14,7 +16,7 @@ const loadStateFromLocalStorage = (): AuthSchema => {
         return {
             token,
             expiresIn,
-            user: null,
+            isAuthorized: false,
         };
     }
     return initialState;
@@ -23,14 +25,12 @@ const loadStateFromLocalStorage = (): AuthSchema => {
 const saveStateToLocalStorage = (state: AuthSchema) => {
     if (isBrowser) {
         if (state.token) localStorage.setItem(LOCAL_STORAGE_KEY, state.token);
-        if (state.expiresIn) localStorage.setItem(LOCAL_STORAGE_KEY, state.expiresIn.toString());
+        if (state.expiresIn) localStorage.setItem(`${LOCAL_STORAGE_KEY}_expiresIn`, state.expiresIn.toString());
     }
 };
 
 const initialState: AuthSchema = {
-    token: null,
-    expiresIn: null,
-    user: null,
+    isAuthorized: false,
 };
 
 const loadedState: AuthSchema = loadStateFromLocalStorage();
@@ -45,12 +45,13 @@ const authSlice = createSlice({
             saveStateToLocalStorage(state);
         },
         clearToken(state) {
-            state.token = null;
-            state.expiresIn = null;
+            state.token = undefined;
+            state.expiresIn = undefined;
             saveStateToLocalStorage(state);
         },
         setUser(state, action: PayloadAction<User>) {
             state.user = action.payload;
+            state.isAuthorized = true;
         },
     },
 });

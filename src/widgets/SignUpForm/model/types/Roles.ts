@@ -1,5 +1,5 @@
 export enum Roles {
-    student,
-    teacher,
-    partner,
+    Student,
+    Curator,
+    Partner,
 }
