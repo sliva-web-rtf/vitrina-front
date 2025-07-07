@@ -19,9 +19,9 @@ export function getSignUpStep(
     switch (step) {
         case 0:
             return <SignUpRoleSelector control={control} errors={errors} />;
-        case 1:
-            return <SignUpMainStep control={control} errors={errors} />;
         case 2:
+            return <SignUpMainStep control={control} errors={errors} />;
+        case 1:
             return getThirdStep(formData.role, control, errors);
         case 3:
             return <EmailVerificationForm email={formData.email} control={control} errors={errors} />;
@@ -36,11 +36,11 @@ function getThirdStep(
     errors: FieldErrors<SignUpFormData>,
 ) {
     switch (role) {
-        case Roles.student:
+        case Roles.Student:
             return <SignUpStudentStep control={control} errors={errors} />;
-        case Roles.teacher:
+        case Roles.Curator:
             return <SignUpTeacherStep control={control} errors={errors} />;
-        case Roles.partner:
+        case Roles.Partner:
             return <SignUpPartnerStep control={control} errors={errors} />;
     }
 }

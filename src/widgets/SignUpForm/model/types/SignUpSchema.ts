@@ -4,8 +4,8 @@ export interface SignUpSchema {
     passwordConfirm: string;
     educationLevel: string;
     educationCourse: number;
-    roleInTeam: string;
+    roleOnPlatform: string;
     firstName: string;
     lastName: string;
-    surname: string;
+    patronymic: string;
 }
