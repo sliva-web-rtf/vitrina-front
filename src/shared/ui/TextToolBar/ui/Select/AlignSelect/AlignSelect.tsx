@@ -1,5 +1,5 @@
 import { Select, MenuItem, ListItemIcon } from '@mui/material';
-import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import MuiFormatAlignLeftIcon from '@/shared/assets/Icons/MuiFormatAlignLeftIcon';
 import { Editor } from '@tiptap/react';
 
 import { alignOptions } from '../../../const/alignOptions';
@@ -25,7 +25,7 @@ export const AlignSelect = ({ editor }: { editor: Editor }) => {
             sx={{ minWidth: 30 }}
             renderValue={(value) => {
                 const option = alignOptions.find((opt) => opt.value === value);
-                return option ? option.icon : <FormatAlignLeftIcon />;
+                return option ? option.icon : <MuiFormatAlignLeftIcon />;
             }}
             className={styles.selectWithoutUnderline}
         >

@@ -1,36 +1,36 @@
 import { Editor } from '@tiptap/core';
-import FormatBoldIcon from '@mui/icons-material/FormatBold';
-import FormatItalicIcon from '@mui/icons-material/FormatItalic';
-import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
-import FormatStrikethroughIcon from '@mui/icons-material/FormatStrikethrough';
-import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
+import MuiFormatBoldIcon from '@/shared/assets/Icons/MuiFormatBoldIcon';
+import MuiFormatItalicIcon from '@/shared/assets/Icons/MuiFormatItalicIcon';
+import MuiFormatUnderlinedIcon from '@/shared/assets/Icons/MuiFormatUnderlinedIcon';
+import MuiFormatStrikethroughIcon from '@/shared/assets/Icons/MuiFormatStrikethroughIcon';
+import MuiFormatColorFillIcon from '@/shared/assets/Icons/MuiFormatColorFillIcon';
 
 import { FormatOption } from '@/shared/ui/TextToolBar/types/FormatOption';
 
 export const getFormatButtonOptions = (editor: Editor): FormatOption[] => [
     {
         format: 'bold',
-        icon: <FormatBoldIcon />,
+        icon: <MuiFormatBoldIcon />,
         action: () => editor.chain().focus().toggleBold().run(),
     },
     {
         format: 'italic',
-        icon: <FormatItalicIcon />,
+        icon: <MuiFormatItalicIcon />,
         action: () => editor.chain().focus().toggleItalic().run(),
     },
     {
         format: 'underline',
-        icon: <FormatUnderlinedIcon />,
+        icon: <MuiFormatUnderlinedIcon />,
         action: () => editor.chain().focus().toggleUnderline().run(),
     },
     {
         format: 'strike',
-        icon: <FormatStrikethroughIcon />,
+        icon: <MuiFormatStrikethroughIcon />,
         action: () => editor.chain().focus().toggleStrike().run(),
     },
     {
         format: 'highlight',
-        icon: <FormatColorFillIcon />,
+        icon: <MuiFormatColorFillIcon />,
         action: () => editor.chain().focus().toggleHighlight().run(),
     },
 ];

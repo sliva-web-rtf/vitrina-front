@@ -1,0 +1,16 @@
+.header {
+    padding: var(--space-m) var(--space-2xl);
+    justify-content: space-between;
+    background-color: var(--bg-color);
+    box-shadow:
+        0 2px 4px 0 rgba(31, 33, 41, 0.04),
+        0 0 6px 0 rgba(31, 33, 41, 0.04);
+}
+
+.name {
+    max-height: 32px !important;
+}
+
+.button {
+    padding: calc(var(--space-s) * 1.5) var(--space-l) !important;
+}

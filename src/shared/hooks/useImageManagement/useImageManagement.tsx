@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { RefObject, useState } from 'react';
 
-export const useImageManagement = () => {
+import { INITIAL_WIDTH, ASPECT_RATIO } from '../../lib/const/imageSize';
+
+export const useImageManagement = (boxRef: RefObject<HTMLDivElement>) => {
     const [imageUrl, setImageUrl] = useState<string | null>(null);
     const [imageBlob, setImageBlob] = useState<Blob | null>(null);
 
@@ -18,6 +20,11 @@ export const useImageManagement = () => {
         if (imageUrl) URL.revokeObjectURL(imageUrl);
         setImageUrl(null);
         setImageBlob(null);
+        const box = boxRef.current;
+        if (!box) return;
+
+        box.style.width = `${INITIAL_WIDTH}px`;
+        box.style.height = `${INITIAL_WIDTH / ASPECT_RATIO}px`;
     };
 
     return { imageUrl, imageBlob, handleImageUpload, handleDelete };

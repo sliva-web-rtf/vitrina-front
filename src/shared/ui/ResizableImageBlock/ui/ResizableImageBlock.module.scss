@@ -23,11 +23,20 @@
         }
     }
 
-    .image {
+    img {
+        display: block;
         width: 100%;
         height: 100%;
         object-fit: contain;
     }
+}
+
+.container > div:last-child,
+.container > div:last-child > div {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hiddenInput {
