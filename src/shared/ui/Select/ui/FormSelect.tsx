@@ -1,23 +1,14 @@
 import { SelectOption } from '@/shared/lib/types/selectOption';
-import { TextFieldProps, Box, CircularProgress } from '@mui/material';
+import { TextFieldProps, Box, CircularProgress, styled } from '@mui/material';
 import React, { memo } from 'react';
 import { FormField } from '../../Field/FormField';
 
 type BaseSelectProps = TextFieldProps & {
-    readonly loading?: boolean;
     readonly options?: Array<SelectOption>;
 };
 
-const LoadingAdornment = () => (
-    <Box sx={{ position: 'relative', right: 32 }}>
-        <CircularProgress size={16} />
-    </Box>
-);
-
-export const FormSelect = memo((props: BaseSelectProps) => {
-    const { options, label, loading, ...selectProps } = props;
-
-    const endAdornment = loading ? <LoadingAdornment /> : null;
+const MemoFormSelect = memo((props: BaseSelectProps) => {
+    const { options, label, ...selectProps } = props;
 
     return (
         <FormField
@@ -25,21 +16,7 @@ export const FormSelect = memo((props: BaseSelectProps) => {
             SelectProps={{
                 native: true,
             }}
-            sx={(theme) => ({
-                position: 'relative',
-                width: 250,
-                '& .MuiSvgIcon-root': {
-                    top: 'unset',
-                },
-
-                [theme.breakpoints.down('lg')]: {
-                    width: '100%',
-                },
-            })}
-            InputProps={{
-                ...selectProps.InputProps,
-                endAdornment,
-            }}
+            InputProps={selectProps.InputProps}
             {...selectProps}
         >
             <option value="">{label}</option>
@@ -52,4 +29,42 @@ export const FormSelect = memo((props: BaseSelectProps) => {
     );
 });
 
-FormSelect.displayName = 'BaseSelect';
+const ForwardedFormSelect = React.forwardRef<HTMLDivElement, BaseSelectProps>((props, ref) => {
+    const { options, label, ...selectProps } = props;
+
+    return (
+        <FormField
+            select
+            SelectProps={{
+                native: true,
+            }}
+            InputProps={selectProps.InputProps}
+            {...selectProps}
+        >
+            <option value="">{label}</option>
+            {options?.map((option) => (
+                <option key={option.value} value={option.value}>
+                    {option.label}
+                </option>
+            ))}
+        </FormField>
+    );
+});
+
+const StyledFormSelect = styled(ForwardedFormSelect)(({ theme }) => ({
+    position: 'relative',
+    '& .MuiInputBase-root': {
+        padding: '12.5px 16px',
+    },
+    '& .MuiSvgIcon-root': {
+        top: 'unset',
+    },
+    '& .MuiTextField-root': {
+        width: 'auto',
+    },
+}));
+
+MemoFormSelect.displayName = 'BaseSelect';
+ForwardedFormSelect.displayName = 'BaseSelect';
+
+export { StyledFormSelect as FormSelect };

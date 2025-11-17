@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from 'axios';
 
 export const apiClient = axios.create({
@@ -6,6 +7,25 @@ export const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+=======
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { StateSchema } from './StateSchema';
+import { baseApi } from '@/shared/api';
+import { filterReducer } from '@/features/filter';
+import { projectsListReducer } from '@/widgets/ProjectsList';
+import { detailsReducer } from '@/entities/project';
+import { constructorProjectReducer } from '@/entities/constructorProject';
+import { authReducer } from '@/entities/user';
+
+// TODO: добавить динамическую подгрузку стейта.
+const rootReducer = combineReducers({
+    filter: filterReducer,
+    projectsList: projectsListReducer,
+    projectDetails: detailsReducer,
+    auth: authReducer,
+    constructorProject: constructorProjectReducer,
+    [baseApi.reducerPath]: baseApi.reducer,
+>>>>>>> 73109a8c3f19913dbae25fd5a9ec15a77a01d887
 });
 
 apiClient.interceptors.request.use(

@@ -13,14 +13,14 @@ export const SignUpFormDataToSchemaMapper = (formData: SignUpFormData): SignUpSc
     if (!educationLevel) throw new Error('educationLevel is null');
 
     return {
-        firstName,
-        lastName,
-        surname,
         email,
         password,
         passwordConfirm,
-        educationCourse: numberEducationCourse,
         educationLevel,
-        roleInTeam: Roles[role],
+        educationCourse: numberEducationCourse,
+        roleOnPlatform: Roles[role],
+        firstName,
+        lastName: surname,
+        patronymic: lastName,
     };
 };

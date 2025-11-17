@@ -1,0 +1,32 @@
+@import 'variables';
+@import 'reset';
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--secondary-color-95) !important;
+    color: var(--font-color);
+}
+
+ul,
+ol {
+    padding-left: var(--space-xl);
+}
+
+.customTemplate {
+    p {
+        word-wrap: break-word;
+    }
+
+    ul,
+    ol {
+        padding-left: var(--space-xl);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+}

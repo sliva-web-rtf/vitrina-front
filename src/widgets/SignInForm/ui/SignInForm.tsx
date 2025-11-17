@@ -3,10 +3,13 @@
 import React, { useState } from 'react';
 import { Box, IconButton, InputAdornment, Typography, Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 
 import { RegularLink } from '@/shared/ui/Link';
 import { VStack, BaseButton, HStack } from '@/shared/ui';
 import { ControlledFormInput } from '@/shared/ui/Input';
+import { setToken } from '@/entities/user';
 import { SignInFormData } from '../model/types/SignInFormData';
 import { useLazySignInQuery } from '../api/signInApi';
 
@@ -31,11 +34,18 @@ export const SignInForm = () => {
 
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
+    const dispatch = useDispatch();
+    const router = useRouter();
+
     const onSubmit = async (data: SignInFormData) => {
         try {
-            const res = await PostSignIn({ ...data, rememberMe: true });
-        } catch {
-            setError('root', { message: 'Произошла ошибка. Попробуйте позже' });
+            const res = await PostSignIn({ ...data, rememberMe: true }).unwrap();
+
+            dispatch(setToken(res));
+            router.push('/');
+        } catch (e: any) {
+            setError('root', { message: e?.data?.message || 'Произошла ошибка. Попробуйте позже' });
+            console.log(e);
         }
     };
 

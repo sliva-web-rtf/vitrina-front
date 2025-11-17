@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Box, Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useRouter } from 'next/navigation';
 
 import { BaseButton, HStack, VStack } from '@/shared/ui';
 import { RegularLink } from '@/shared/ui/Link';
@@ -14,6 +15,8 @@ import { SignUpFormDataToSchemaMapper } from '../model/types/mappers/SignUpMappe
 import { useLazySignUpQuery, useLazyConfirmQuery } from '../api/SignUpApi';
 
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import { useDispatch } from 'react-redux';
+import { setToken } from '@/entities/user';
 
 const FORM_DEFAULT: Omit<SignUpFormData, 'role'> = {
     email: '',
@@ -36,8 +39,14 @@ export const SignUpForm = () => {
 
     const { currentStep, changeCurrentStep } = context;
     const [formData, setFormData] = useState<SignUpFormData>();
-    const [PostSignUp, { isFetching: signUpIsFetching, data: signUpData }] = useLazySignUpQuery();
-    const [PostConfirm, { isFetching: confirmIsFetching, data: confirmData }] = useLazyConfirmQuery();
+    const [PostSignUp, { isFetching: signUpIsFetching, data: signUpData, error: signUpError }] = useLazySignUpQuery();
+    const [
+        PostConfirm,
+        { isFetching: confirmIsFetching, data: confirmData, error: PostConfirmError },
+        ConfirmIsSuccess,
+    ] = useLazyConfirmQuery();
+    const router = useRouter();
+    const dispatch = useDispatch();
 
     const {
         handleSubmit,
@@ -75,7 +84,20 @@ export const SignUpForm = () => {
         }
     };
 
+    useEffect(() => {
+        if (ConfirmIsSuccess && confirmData) {
+            dispatch(setToken(confirmData.token));
+            router.push('/');
+        }
+    }, [confirmData, ConfirmIsSuccess, dispatch, router]);
+
     if (signUpIsFetching || confirmIsFetching) return <CircularProgress />;
+
+    if (signUpError || PostConfirmError) {
+        return (
+            <Typography color="error">Произошла ошибка при выполнении запроса. Пожалуйста повторите попытку</Typography>
+        );
+    }
 
     return (
         <Box component="form" onSubmit={handleSubmit(onSubmit)}>
