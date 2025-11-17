@@ -3,7 +3,7 @@
 import { CssBaseline } from '@mui/material';
 import { ReactNode } from 'react';
 import { ErrorBoundary } from './ErrorBoundary';
-import { StoreProvider } from './StoreProvider';
+import { QueryProvider } from './QueryProvider';
 import { ThemeProvider } from './ThemeProvider';
 
 interface ProvidersProps {
@@ -15,12 +15,12 @@ export function Providers(props: ProvidersProps) {
 
     return (
         <ErrorBoundary>
-            <StoreProvider>
+            <QueryProvider> {}
                 <ThemeProvider>
                     <CssBaseline />
                     {children}
                 </ThemeProvider>
-            </StoreProvider>
+            </QueryProvider> {}
         </ErrorBoundary>
     );
 }

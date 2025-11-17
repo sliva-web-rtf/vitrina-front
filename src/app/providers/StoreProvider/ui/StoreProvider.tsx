@@ -1,20 +1,19 @@
 'use client';
 
-import { DeepPartial } from '@/shared/lib/types/DeepPartial';
 import { ReactNode } from 'react';
-import { Provider } from 'react-redux';
-import { StateSchema } from '../config/StateSchema';
-import { createReduxStore } from '../config/store';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@/shared/api/query-client';
 
-interface StoreProviderProps {
+interface QueryProviderProps {
     children?: ReactNode;
-    initialState?: DeepPartial<StateSchema>;
 }
 
-export const StoreProvider = (props: StoreProviderProps) => {
-    const { children, initialState } = props;
+export const QueryProvider = (props: QueryProviderProps) => {
+    const { children } = props;
 
-    const store = createReduxStore(initialState as StateSchema);
-
-    return <Provider store={store}>{children}</Provider>;
+    return (
+        <QueryClientProvider client={queryClient}>
+            {children}
+        </QueryClientProvider>
+    );
 };

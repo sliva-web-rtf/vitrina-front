@@ -1,1 +1,1 @@
-export { StoreProvider } from './ui/StoreProvider';
+export { QueryProvider } from './ui/QueryProvider';

@@ -1,32 +1,32 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { StateSchema } from './StateSchema';
-import { baseApi } from '@/shared/api';
-import { filterReducer } from '@/features/filter';
-import { projectsListReducer } from '@/widgets/ProjectsList';
-import { detailsReducer } from '@/entities/project';
+import axios from 'axios';
 
-// TODO: добавить динамическую подгрузку стейта.
-const rootReducer = combineReducers({
-    filter: filterReducer,
-    projectsList: projectsListReducer,
-    projectDetails: detailsReducer,
-    [baseApi.reducerPath]: baseApi.reducer,
+export const apiClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api',
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
-export function createReduxStore(initialState?: StateSchema) {
-    const store = configureStore({
-        reducer: rootReducer,
-        middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware({
-                serializableCheck: false,
-            }).concat(baseApi.middleware),
-        preloadedState: initialState,
-        devTools: process.env.NEXT_PUBLIC_MODE === 'development',
-    });
+apiClient.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
-    return store;
-}
-
-export type Store = ReturnType<typeof createReduxStore>;
-
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem('token');
+    }
+    return Promise.reject(error);
+  }
+);
