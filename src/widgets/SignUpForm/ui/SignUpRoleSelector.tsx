@@ -35,15 +35,15 @@ export const SignUpRoleSelector = (props: SignUpRoleSelectorProps) => {
                             field.onChange(newAlignment);
                         }}
                     >
-                        <ToggleButton value={Roles.student}>
+                        <ToggleButton value={Roles.Student}>
                             <SchoolRoundedIcon />
                             <Typography variant="subtitle2">Студент</Typography>
                         </ToggleButton>
-                        <ToggleButton value={Roles.teacher}>
+                        <ToggleButton value={Roles.Curator}>
                             <PersonIcon />
                             <Typography variant="subtitle2">Куратор</Typography>
                         </ToggleButton>
-                        <ToggleButton value={Roles.partner}>
+                        <ToggleButton value={Roles.Partner}>
                             <HandshakeIcon />
                             <Typography variant="subtitle2">Партнер</Typography>
                         </ToggleButton>

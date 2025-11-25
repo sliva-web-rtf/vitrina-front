@@ -8,11 +8,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/shared/assets/logo.svg';
 import classNames from 'classnames';
+import { HeaderUser } from '@/entities/user';
 
 const NAV_LINKS = [
     { text: 'Главная', href: '/' },
     { text: 'Эксперты', href: '/experts' },
     { text: 'О нас', href: '/dashboard' },
+    { text: 'Конструктор', href: '/constructor' },
 ];
 
 export const Header = ({ transparent = false }: { transparent?: boolean }) => {
@@ -37,7 +39,9 @@ export const Header = ({ transparent = false }: { transparent?: boolean }) => {
                     ))}
                 </HStack>
 
-                <HStack></HStack>
+                <HStack className={styles['profile']}>
+                    <HeaderUser />
+                </HStack>
 
                 <MobileMenu className={styles['burger']} nav={NAV_LINKS} />
             </HStack>

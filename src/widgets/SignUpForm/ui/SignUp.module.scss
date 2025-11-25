@@ -3,6 +3,10 @@
     gap: var(--space-l);
 
     & > * {
-        width: calc(50% - (var(--space-l) / 2));
+        width: calc(50% - (var(--space-l) / 2)) !important;
     }
+}
+
+.fix-select {
+    width: calc(50% - (var(--space-l) / 2)) !important;
 }

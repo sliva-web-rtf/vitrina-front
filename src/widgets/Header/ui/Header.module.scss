@@ -31,6 +31,7 @@
 @media (max-width: 1024px) {
     .container {
         nav,
+        .profile,
         .button {
             display: none;
         }
@@ -39,12 +40,6 @@
     .burger {
         display: inherit !important;
     }
-}
-
-.nav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 .spacer {

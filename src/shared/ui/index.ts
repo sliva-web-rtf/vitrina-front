@@ -12,3 +12,6 @@ export { SocialIcon } from './SocialIcon/SocialIcon';
 export { HStack, VStack } from './Stack/Stack';
 export { BaseToggleButton, BaseToggleButtonGroup } from './ToggleButton/ToggleButton';
 export { VideoFrame } from './VideoFrame/VideoFrame';
+export { ResizableImageBlock } from './ResizableImageBlock';
+export { ResizableTextBlock } from './ResizableTextBlock/ResizableTextBlock';
+export { ConstructorInstrument } from './ConstructorInstrument/ConstructorInstrument';

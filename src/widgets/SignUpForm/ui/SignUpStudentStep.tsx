@@ -3,9 +3,18 @@ import styles from './SignUp.module.scss';
 import React from 'react';
 import { Control, FieldErrors } from 'react-hook-form';
 
-import { HStack } from '@/shared/ui';
+import { BaseSelect, HStack } from '@/shared/ui';
 import { ControlledFormInput } from '@/shared/ui/Input';
 import { SignUpFormData } from '../model/types/SignUpFormData';
+import { ControlledFormSelect, FormSelect } from '@/shared/ui/Select';
+
+const EDU_LEVEL_OPTIONS = [
+    { label: 'Бакалавр', value: 'Bachelors' },
+    { label: 'Специалитет', value: 'Specialty' },
+    { label: 'Магистратура', value: 'Magistracy' },
+    { label: 'Выпускник', value: 'Postgraduate' },
+    { label: 'Не студент', value: 'NotStudent' },
+];
 
 export const SignUpStudentStep = ({
     control,
@@ -54,14 +63,11 @@ export const SignUpStudentStep = ({
                     error: Boolean(errors.teamRole),
                 }}
             />
-            <ControlledFormInput
+            <ControlledFormSelect
                 control={control}
                 name="educationLevel"
                 rules={{ required: true }}
-                inputProps={{
-                    label: 'Уровень образования*',
-                    error: Boolean(errors.educationCourse),
-                }}
+                options={EDU_LEVEL_OPTIONS}
             />
             <ControlledFormInput
                 control={control}
@@ -70,7 +76,7 @@ export const SignUpStudentStep = ({
                 inputProps={{
                     type: 'number',
                     label: 'Курс*',
-                    error: Boolean(errors.educationLevel),
+                    error: Boolean(errors.educationCourse),
                 }}
             />
         </HStack>
