@@ -8,12 +8,8 @@ export interface StateSchema {
     filter: FilterSchema;
     projectsList: ProjectsListSchema;
     projectDetails: DetailsSchema;
-<<<<<<< HEAD
-=======
     constructorProject: ConstructorProjectSchema;
     auth: AuthSchema;
-    [baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
->>>>>>> 73109a8c3f19913dbae25fd5a9ec15a77a01d887
 }
 
 export type StateSchemaKey = keyof StateSchema;

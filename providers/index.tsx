@@ -4,8 +4,8 @@ import { CssBaseline } from '@mui/material';
 import { ReactNode } from 'react';
 import { ErrorBoundary } from './ErrorBoundary';
 import { QueryProvider } from './QueryProvider';
-import { StoreProvider } from './StoreProvider';
 import { ThemeProvider } from './ThemeProvider';
+import { UserProvider } from '@/entities/user';
 
 interface ProvidersProps {
     readonly children: ReactNode;
@@ -16,14 +16,13 @@ export function Providers(props: ProvidersProps) {
 
     return (
         <ErrorBoundary>
-            <StoreProvider>
-                <QueryProvider>
-                    <ThemeProvider>
-                        <CssBaseline />
-                        {children}
-                    </ThemeProvider>
-                </QueryProvider>
-            </StoreProvider>
+            <QueryProvider> {}
+                <ThemeProvider>
+                    <CssBaseline />
+                    <UserProvider />
+                    {children}
+                </ThemeProvider>
+            </QueryProvider> {}
         </ErrorBoundary>
     );
 }

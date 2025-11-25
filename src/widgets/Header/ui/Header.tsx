@@ -14,6 +14,7 @@ const NAV_LINKS = [
     { text: 'Главная', href: '/' },
     { text: 'Эксперты', href: '/experts' },
     { text: 'О нас', href: '/dashboard' },
+    { text: 'Конструктор', href: '/constructor' },
 ];
 
 export const Header = ({ transparent = false }: { transparent?: boolean }) => {
