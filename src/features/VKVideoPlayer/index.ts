@@ -1,0 +1,1 @@
+export { default as VKVideoPlayer } from './ui/VKVideoPlayer';
