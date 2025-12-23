@@ -7,6 +7,8 @@ import { closestCenter, DndContext, PointerSensor, useSensor, useSensors } from 
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import VKVideoPlayer from '@/features/VKVideoPlayer/ui/VKVideoPlayer';
+
 
 export const ConstructorSectionsList = ({ sections }: { sections: SectionSchema[] }) => {
     const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
@@ -29,6 +31,8 @@ export const ConstructorSectionsList = ({ sections }: { sections: SectionSchema[
                 return <ResizableTextBlock html={section.content} id={section.id} />;
             case SectionTypes.image:
                 return <ResizableImageBlock html={section.content} id={section.id} />;
+            case SectionTypes.vkVideo:
+                return <VKVideoPlayer videoUrl={section.videoUrl ?? ''} />;
         }
     };
 

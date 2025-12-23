@@ -1,0 +1,1 @@
+export { VKVideoWidget } from './ui/VKVideoWidget';

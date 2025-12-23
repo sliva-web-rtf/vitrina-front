@@ -4,4 +4,5 @@ export type SectionSchema = {
     id: string;
     type: SectionTypes;
     content: string;
+    videoUrl?: string;
 };

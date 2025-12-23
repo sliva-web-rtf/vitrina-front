@@ -36,6 +36,19 @@ const getSideBarBlocks = (dispatch: ReturnType<typeof useDispatch>) => [
                 },
             },
             {
+                name: 'VK Видео',
+                icon: <DescriptionOutlinedIcon />,
+                action: () => {
+                    dispatch(
+                        addSection({
+                            id: Date.now().toString(),
+                            type: SectionTypes.vkVideo,
+                            videoUrl: '',
+                        }),
+                    );
+                },
+            },
+            {
                 name: 'Ссылка на соцсеть',
                 icon: <DescriptionOutlinedIcon />,
                 action: () => alert('in progress...'),
