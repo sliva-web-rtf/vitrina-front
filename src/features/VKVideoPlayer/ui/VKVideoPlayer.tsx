@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface VKVideoPlayerProps {
   videoUrl: string;
@@ -11,52 +11,62 @@ const VKVideoPlayer: React.FC<VKVideoPlayerProps> = ({
   videoUrl,
   width = '100%',
   height = 360,
-  className = '',
+  className,
 }) => {
-  const [videoId, setVideoId] = useState<string | null>(null);
-  
+  const [parsedVideoId, setParsedVideoId] = useState<string | null>(null);
+
   useEffect(() => {
     const patterns = [
       /video-(\d+_\d+)/,
       /video\?z=video-(\d+_\d+)/,
       /vk\.com\/video(\d+_\d+)/,
     ];
-    
+
     for (const pattern of patterns) {
       const match = videoUrl.match(pattern);
-      if (match && match[1]) {
-        setVideoId(match[1]);
+      if (match?.[1]) {
+        setParsedVideoId(match[1]);
         return;
       }
     }
-    
+
     if (/^\d+_\d+$/.test(videoUrl)) {
-      setVideoId(videoUrl);
+      setParsedVideoId(videoUrl);
+    } else {
+      setParsedVideoId(null);
     }
   }, [videoUrl]);
-  
-  if (!videoId) {
+
+  if (!parsedVideoId) {
     return (
-      <div className={`p-4 border border-red-300 rounded ${className}`}>
-        <p className="text-red-500">Неверная ссылка на VK видео</p>
+      <div
+        className={className}
+        style={{
+          padding: 16,
+          border: '1px solid #f5a5a5',
+          borderRadius: 6,
+          color: '#d32f2f',
+        }}
+      >
+        Неверная ссылка на VK видео
       </div>
     );
   }
-  
-  const [ownerId, videoIdOnly] = videoId.split('_');
-  const embedUrl = `https://vk.com/video_ext.php?oid=${ownerId}&id=${videoIdOnly}`;
-  
+
+  const [ownerId, videoId] = parsedVideoId.split('_');
+  const embedUrl = `https://vk.com/video_ext.php?oid=${ownerId}&id=${videoId}`;
+
   return (
-    <div className={`overflow-hidden rounded-lg ${className}`}>
+    <div className={className} style={{ overflow: 'hidden', borderRadius: 8 }}>
       <iframe
         src={embedUrl}
         width={width}
         height={height}
-        frameBorder="0"
-        allowFullScreen
+        frameBorder={0}
         allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+        allowFullScreen
         title="VK Video"
-        className="w-full rounded"
+        style={{ width: '100%', borderRadius: 8 }}
       />
     </div>
   );
