@@ -8,6 +8,8 @@ import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-ki
 import { Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import VKVideoPlayer from '@/features/VKVideoPlayer/ui/VKVideoPlayer';
+import { updateSection } from '@/entities/constructorProject/model/slice/constructorProjectSlice';
+
 
 
 export const ConstructorSectionsList = ({ sections }: { sections: SectionSchema[] }) => {
@@ -32,7 +34,20 @@ export const ConstructorSectionsList = ({ sections }: { sections: SectionSchema[
             case SectionTypes.image:
                 return <ResizableImageBlock html={section.content} id={section.id} />;
             case SectionTypes.vkVideo:
-                return <VKVideoPlayer videoUrl={section.videoUrl ?? ''} />;
+                return (
+                    <VKVideoPlayer
+                    videoUrl={section.videoUrl ?? ''}
+                    onChange={(url) =>
+                        dispatch(
+                            updateSection({
+                                id: section.id,
+                                changes: { videoUrl: url },
+                            })
+                        )
+                    }
+                />
+            );
+
         }
     };
 

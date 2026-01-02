@@ -68,10 +68,17 @@ const constructorProjectSlice = createSlice({
                 saveStateToLocalStorage(state);
             }
         },
+        updateSection: (state, action) => {
+            const { id, changes } = action.payload;
+            const section = state.sections.find((s) => s.id === id);
+            if (section) {
+                Object.assign(section, changes);
+            }
+        },
     },
 });
 
-export const { setProjectName, addSection, setSection, setSections, duplicateSection, deleteSection } =
+export const { setProjectName, addSection, setSection, setSections, duplicateSection, deleteSection, updateSection } =
     constructorProjectSlice.actions;
 
 export const { reducer: constructorProjectReducer } = constructorProjectSlice;

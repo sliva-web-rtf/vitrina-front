@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 
 interface VKVideoPlayerProps {
   videoUrl: string;
+  onChange?: (url: string) => void;
   width?: number | string;
   height?: number | string;
-  className?: string;
 }
+
 
 const VKVideoPlayer: React.FC<VKVideoPlayerProps> = ({
   videoUrl,
+  onChange,
   width = '100%',
   height = 360,
-  className,
 }) => {
   const [parsedVideoId, setParsedVideoId] = useState<string | null>(null);
 
@@ -37,27 +38,37 @@ const VKVideoPlayer: React.FC<VKVideoPlayerProps> = ({
     }
   }, [videoUrl]);
 
-  if (!parsedVideoId) {
-    return (
-      <div
-        className={className}
-        style={{
-          padding: 16,
-          border: '1px solid #f5a5a5',
-          borderRadius: 6,
-          color: '#d32f2f',
-        }}
-      >
-        Неверная ссылка на VK видео
+if (!parsedVideoId) {
+  return (
+    <div style={{ padding: 16, border: '1px dashed #ccc' }}>
+      <div style={{ marginBottom: 8 }}>
+        Вставьте ссылку на VK видео
       </div>
-    );
-  }
+
+      {onChange && (
+        <input
+          type="text"
+          value={videoUrl}
+          placeholder="https://vk.com/video-123_456"
+          onChange={(e) => onChange(e.target.value)}
+          style={{
+            width: '100%',
+            padding: 8,
+            border: '1px solid #ccc',
+            borderRadius: 4,
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
 
   const [ownerId, videoId] = parsedVideoId.split('_');
   const embedUrl = `https://vk.com/video_ext.php?oid=${ownerId}&id=${videoId}`;
 
   return (
-    <div className={className} style={{ overflow: 'hidden', borderRadius: 8 }}>
+    <div style={{ overflow: 'hidden', borderRadius: 8 }}>
       <iframe
         src={embedUrl}
         width={width}
