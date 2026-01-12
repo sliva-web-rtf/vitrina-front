@@ -12,9 +12,9 @@ import { HeaderUser } from '@/entities/user';
 
 const NAV_LINKS = [
     { text: 'Главная', href: '/' },
-    { text: 'Конструктор', href: '/constructor' },
     { text: 'Эксперты', href: '/experts' },
     { text: 'О нас', href: '/dashboard' },
+    { text: 'Конструктор', href: '/constructor' },
 ];
 
 export const Header = ({ transparent = false }: { transparent?: boolean }) => {
